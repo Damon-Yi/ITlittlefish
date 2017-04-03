@@ -14,14 +14,16 @@
 	margin-top: .44rem;
 }
 .performance_Mes >p:nth-child(2){
-	line-height: 1.35rem;
+	line-height: 1.15rem;
+	font-size: .55rem;
 }
 .performance_Mes >p:nth-child(3){
-	margin-bottom: .5rem;
+	margin-bottom: .7rem;
+	font-size: .26rem;
 }
 .performance_Mes >p img{
-	width: .5rem;
-	height: .5rem;
+	width: .6rem;
+	height: .6rem;
 	position: relative;
 	top: 3px;
 }
@@ -43,7 +45,12 @@
 	margin-top: .12rem;
 }
 .upgrade{
-	border-right: .06rem solid #987864;
+	border-right: .06rem solid white;
+}
+.monthlytit{
+	content: '';
+	overflow: hidden;
+	clear: both;
 }
 .monthly{
 	width: 50%;
@@ -72,26 +79,14 @@
 .resultslist{
 	font-size: .24rem;
 	width: 100%;
-	content: '';
-	overflow: hidden;
-	clear: both;
 }
 .resultslist p{
+	display: flex;
 	width: 100%;
+	justify-content: space-between;
 	background: #f2f2f2;
 	height: .6rem;
 	line-height: .6rem;
-}
-.resultslist p>span{
-	width: 50%;
-	text-indent: 4%;
-	float: left;
-}
-.resultslist p a{
-	width: 46%;
-	float: left;
-	text-align: right;
-	margin-right: 4%;
 }
 .resultscontent{
 	width: 100%;
@@ -103,4 +98,60 @@
 	text-align: center;
 	width: 25%;
 	float: left;
+}
+.accounttitle{
+	width: 100%;
+	background: #f2f2f2;
+	height: .6rem;
+	line-height: .6rem;
+	font-size: .24rem;
+}
+.accounttitle>span{
+	width: 50%;
+	text-indent: 4%;
+	float: left;
+}
+.accounttitle a{
+	width: 46%;
+	float: left;
+	text-align: right;
+	margin-right: 4%;
+}
+.accountMes{
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 -3%;
+	font-size: .24rem;
+}
+.account{
+	width: 100%;
+	line-height: .6rem;
+	height: .6rem;
+	padding: 0 3%;
+	border-bottom: 1px solid #D1D1D1;
+}
+.account span{
+	display: inline-block;
+	text-align: center;
+}
+.account span:nth-child(1){
+	width: 20%;
+}
+.account span:nth-child(2){
+	width: 40%;
+}
+.account span:nth-child(3){
+	width: 20%;
+}
+.account span:nth-child(4){
+	width: 15%;
+	color:#ff9201;
+}
+.empty{
+	width: 95%;
+	height: 1.4rem;
+	margin: 0 auto;
+	background: #b0b0b0;
+	margin-bottom: .2rem;
+	margin-top: .2rem;
 }

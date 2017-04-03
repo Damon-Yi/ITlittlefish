@@ -17,6 +17,7 @@ input[type="button"]{padding:0;}
 .show {display: block;}
 .left{width: .23rem;height: .23rem;border-bottom: 1px solid #000000;display: inline-block;border-right: 1px solid #000000;transform: rotate(-45deg);position: relative;top: 2px;}
 .bordernone{border: none !important;}
+.next{width: .28rem;height: .28rem;position: relative;top: 2px;}
 
 /* media */
 /* 横屏 */
@@ -32,11 +33,18 @@ input[type="button"]{padding:0;}
     .moneycodelogo{
     	height: 3.6rem;
     }
+    .singlerLogo{
+    	height: 3rem;
+    }
+    
 }
 /* 窗口宽度<768,设计宽度=640 */
 @media screen and (max-width:767px){
     .moneycodelogo{
     	height: 3.4rem;
+    }
+    .singlerLogo{
+    	height: 2.8rem;
     }
 }
 /* 窗口宽度<640,设计宽度=480 */
@@ -44,11 +52,17 @@ input[type="button"]{padding:0;}
     .moneycodelogo{
     	height: 3.2rem;
     }
+    .singlerLogo{
+    	height: 2.6rem;
+    }
 }
 /* 窗口宽度<480,设计宽度=320 */
 @media screen and (max-width:479px){
     .moneycodelogo{
     	height: 3rem;
+    }
+    .singlerLogo{
+    	height: 2.4rem;
     }
 }
 /* windows UI 贴靠 */
