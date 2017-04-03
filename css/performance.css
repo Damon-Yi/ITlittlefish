@@ -29,32 +29,28 @@
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	padding: 0 4%;
 	background: black;
 	background: rgba(0,0,0,0.3);
 	height: .58rem;
 	line-height: .3rem;
-	display: flex;
 }
 .member p{
 	width: 50%;
-	margin-top: .14rem;
+	float: left;
 	height: .3rem;
 	box-sizing: border-box;
 	text-align: center;
+	margin-top: .12rem;
 }
 .upgrade{
 	border-right: .06rem solid #987864;
 }
-.monthlytit{
-	display: flex;
-}
 .monthly{
-	width: 100%;
+	width: 50%;
 	padding: 0 4%;
-	flex: 1;
+	float: left;
 	font-size: .24rem;
-	border-right: 3px solid #B5B59B;
+	border-right: 1px solid #B5B59B;
 	margin: .24rem 0;
 	box-sizing: border-box;
 }
@@ -87,10 +83,12 @@
 }
 .resultscontent{
 	width: 100%;
-	padding: 0 4%;
 	height: .6rem;
 	line-height: .6rem;
-	display: flex;
 	border-bottom: 1px solid #B5B59B;
-	justify-content: space-between;
+}
+.resultscontent span{
+	text-align: center;
+	width: 25%;
+	float: left;
 }

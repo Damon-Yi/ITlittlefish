@@ -11,8 +11,10 @@
 	overflow: hidden;
 	clear: both;
 }
-.user_Mes{
-	display: flex;
+.user_Mes >div{
+	float: left;
+	width: 33%;
+	text-align: center;
 }
 .user_img{
 	width: 1.5rem;
@@ -23,10 +25,6 @@
 	margin-left: 4%;
 	line-height: .72rem;
 	font-size: .30rem;
-}
-.user_Mes div{
-	flex: 1;
-	text-align: center;
 }
 .user_Mes div:nth-child(1){
 	text-align: right;
@@ -45,10 +43,10 @@
 	background: rgba(0,0,0,0.3);
 	height: .58rem;
 	line-height: .3rem;
-	display: flex;
 }
 .member p{
 	width: 50%;
+	float: left;
 	height: .3rem;
 	box-sizing: border-box;
 	text-align: center;
@@ -60,12 +58,14 @@
 .navigationUl{
 	width: 92%;
 	margin: 0 auto;
-	display: flex;
-	justify-content: space-around;
 	border-bottom: 2px solid #E0E0E0;
+	content: '';
+	overflow: hidden;
+	clear: both;
 }
 .navigationUl >a{
 	width: 33%;
+	float: left;
 	box-sizing: border-box;
 }
 .border_left_right{
@@ -84,14 +84,17 @@
 	height: .82rem;
 }
 .sharefriend{
-	display: flex;
 	font-size: .24rem;
 	color: #000000;
 	text-align: center;
 	margin-top: .2rem;
+	content: '';
+	overflow: hidden;
+	clear: both;
 }
 .sharefriend div{
-	flex: 1;
+	width: 50%;
+	float: left;
 }
 .sharefriend img{
 	width: 1.65rem;

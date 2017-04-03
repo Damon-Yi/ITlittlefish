@@ -16,7 +16,7 @@ input[type="button"]{padding:0;}
 .hide {display: none;}
 .show {display: block;}
 .left{width: .23rem;height: .23rem;border-bottom: 1px solid #000000;display: inline-block;border-right: 1px solid #000000;transform: rotate(-45deg);position: relative;top: 2px;}
-
+.bordernone{border: none !important;}
 
 /* media */
 /* 横屏 */

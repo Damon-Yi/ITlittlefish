@@ -45,10 +45,10 @@
 	background: rgba(0,0,0,0.3);
 	height: .58rem;
 	line-height: .3rem;
-	display: flex;
 }
 .member p{
 	width: 50%;
+	float: left;
 	height: .3rem;
 	box-sizing: border-box;
 	text-align: center;
@@ -64,4 +64,67 @@
 .memberbar{
 	text-align: center;
 	font-size: .24rem;
+	
+}
+.memberbar ul{
+	margin-top:.23rem;
+	content: "";
+	overflow: hidden;
+	clear: both;
+}
+.memberbar ul li{
+	border-right: 1px solid #d1d1d1;
+	margin-bottom: .23rem;
+}
+.memberbar ul >a{
+	width: 50%;
+	display: inline-block;
+	float: left;
+	border-bottom: 1px solid #d1d1d1;
+}
+.memberbar dd{
+	color: #010101;
+}
+.memberarea{
+	width: 100%;
+	padding: 0 4%;
+	font-size: .24rem;
+	content: "";,
+	overflow: hidden;
+	clear: both;
+	height: 1.55rem;
+	border-bottom: 1px solid #d1d1d1;
+}
+.memberarea >div{
+	width: 25%;
+	float: left;
+	text-align: center;
+	margin-top: .35rem;
+	
+	
+}
+.memberarea img{
+	width: .6rem;
+	height: .6rem;
+}
+.membercode p,.memberfun p{
+	font-size: .16rem;
+	line-height: .2rem;
+	color: #000000;
+}
+.memberadd{
+	width: 10% !important;
+	position: relative;
+	left: .2rem;
+}
+.memberfun{
+	width: 40% !important;
+}
+.empty{
+	width: 96%;
+	height: 1.35rem;
+	background: #b0b0b0;
+	margin: 0 auto;
+	margin-top: .5rem;
+	margin-bottom: .2rem;
 }
