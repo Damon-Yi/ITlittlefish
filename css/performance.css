@@ -1,0 +1,96 @@
+.performance_Mes{
+	text-align: center;
+	font-size: .32rem;
+	color: white;
+	background: url(../images/user_bg.png);
+	background-size: 100% 100%;
+	content: '';
+	overflow: hidden;
+	clear: both;
+	padding-bottom: .58rem;
+	position: relative;
+}
+.performance_Mes >p:nth-child(1){
+	margin-top: .44rem;
+}
+.performance_Mes >p:nth-child(2){
+	line-height: 1.35rem;
+}
+.performance_Mes >p:nth-child(3){
+	margin-bottom: .5rem;
+}
+.performance_Mes >p img{
+	width: .5rem;
+	height: .5rem;
+	position: relative;
+	top: 3px;
+}
+.member{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding: 0 4%;
+	background: black;
+	background: rgba(0,0,0,0.3);
+	height: .58rem;
+	line-height: .3rem;
+	display: flex;
+}
+.member p{
+	width: 50%;
+	margin-top: .14rem;
+	height: .3rem;
+	box-sizing: border-box;
+	text-align: center;
+}
+.upgrade{
+	border-right: .06rem solid #987864;
+}
+.monthlytit{
+	display: flex;
+}
+.monthly{
+	width: 100%;
+	padding: 0 4%;
+	flex: 1;
+	font-size: .24rem;
+	border-right: 3px solid #B5B59B;
+	margin: .24rem 0;
+	box-sizing: border-box;
+}
+.bordernone{
+	border: none;
+}
+.monthly img{
+	width: .6rem;
+	height: .6rem;
+	position: relative;
+	top: .2rem;
+	margin-right: .1rem;
+}
+.results{
+	margin-top: .2rem;
+	font-size: .6rem;
+	text-align: center;
+}
+.resultslist{
+	font-size: .24rem;
+	width: 100%;
+}
+.resultslist p{
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	background: #f2f2f2;
+	height: .6rem;
+	line-height: .6rem;
+}
+.resultscontent{
+	width: 100%;
+	padding: 0 4%;
+	height: .6rem;
+	line-height: .6rem;
+	display: flex;
+	border-bottom: 1px solid #B5B59B;
+	justify-content: space-between;
+}
