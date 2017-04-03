@@ -107,9 +107,10 @@
             (touch.y2 && Math.abs(touch.y1 - touch.y2) > 30))
 
           swipeTimeout = setTimeout(function() {
-            touch.el.trigger('swipe')
+            /*20170403 Damo, Uncaught TypeError: Cannot read property 'trigger' of undefined*/
+            /*touch.el.trigger('swipe')
             touch.el.trigger('swipe' + (swipeDirection(touch.x1, touch.x2, touch.y1, touch.y2)))
-            touch = {}
+            touch = {}*/
           }, 0)
 
         // normal tap
