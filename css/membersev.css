@@ -1,0 +1,75 @@
+.moneycodelogo{
+	width: 100%;
+}
+.moneycodelogo img{
+	width: 100%;
+	height: 100%;
+}
+.memberarea{
+	width: 100%;
+	padding: 0 4%;
+	font-size: .24rem;
+	content: "";,
+	overflow: hidden;
+	clear: both;
+	height: 1.55rem;
+	border-bottom: 1px solid #d1d1d1;
+}
+.memberarea >div{
+	width: 25%;
+	float: left;
+	text-align: center;
+	margin-top: .25rem;
+	
+	
+}
+.memberarea img{
+	width: .6rem;
+	height: .6rem;
+}
+.membercode p,.memberfun p{
+	font-size: .16rem;
+	line-height: .2rem;
+	color: #000000;
+}
+.memberadd{
+	width: 10% !important;
+	position: relative;
+	left: .2rem;
+}
+.memberfun{
+	width: 40% !important;
+}
+.agreement{
+	font-size: .2rem;
+	margin: .45rem 0 0 .35rem;
+}
+.agreement img{
+	width: .3rem;
+	height: .3rem;
+	position: relative;
+	top: .1rem;
+}
+.gobuy{
+	font-size: .3rem;
+	height: .7rem;
+	line-height: .7rem;
+	content: '';
+	overflow: hidden;
+	clear: both;
+	position: absolute;
+	bottom: .2rem;
+}
+.gobuy div{
+	float: left;
+	text-align: center;
+	color: white;
+}
+.gobuyleft{
+	width: 60%;
+	background: #bababa;
+}
+.gobuyright{
+	width: 40%;
+	background: #ff5959;
+}

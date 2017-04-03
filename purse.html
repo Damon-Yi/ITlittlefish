@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/purse.css"/>
+    <script src="js/public.js"></script>
+    <style>
+        
+    </style>
+    <script type="text/javascript">
+        var aScroll;
+        function loaded () {
+            aScroll = new IScroll('#cont_wrapper',{
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true,click: true 
+            });
+        }
+       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <div class="page_header">钱包</div>
+    <div id="cont_wrapper">
+        <div>
+            <div class="performance_Mes">
+            	<p>余额</p>
+            	<p>
+            		<img src="images/yue.png"/>
+            		<span>0.00元</span>
+            	</p>
+            	<p>收入计入余额，可消费可提现</p>
+            	<div class="member">
+					<p class="upgrade">我要提现</p> 
+					<p class="recharge">我要充值</p> 
+				</div>
+            </div>
+            <!--余额明细-->
+            <div class="monthlytit">
+            	<div class="monthly">
+            		<p>
+            			<img src="images/mounthtly.png"/> 
+            			<span> 鱼币余额 </span>
+            		</p>
+            		<p class="results">
+            			<span>0.00</span>
+            		</p>
+            	</div>
+            	<div class="monthly bordernone">
+            		<p>
+            			<img src="images/mounthtly.png"/> 
+            			<span> 累计充值  ( 元 ) </span>
+            		</p>
+            		<p class="results">
+            			<span>0.00</span>
+            		</p>
+            	</div>
+            </div>
+            <div class="monthlytit">
+            	<div class="monthly">
+            		<p>
+            			<img src="images/mounthtly.png"/> 
+            			<span> 累计总收入  ( 元 ) </span>
+            		</p>
+            		<p class="results">
+            			<span>0.00</span>
+            		</p>
+            	</div>
+            	<div class="monthly bordernone">
+            		<p>
+            			<img src="images/mounthtly.png"/> 
+            			<span> 累计总支出  ( 元 ) </span>
+            		</p>
+            		<p class="results">
+            			<span>0.00</span>
+            		</p>
+            	</div>
+            </div>
+            <div style="height: .2rem;background: #bababa;"></div>
+            <div class="accountMes">
+            	<p class="accounttitle">
+            		<span>账户明细</span>
+            		<a href="#">
+            			<span>更多</span>
+            			<img class="next" src="images/next.png"/>
+            		</a>
+            	</p>
+            	<p class="account">
+            		<span>邀请好友</span>
+            		<span>2017-03-03 09:30</span>
+            		<span>返佣</span>
+            		<span>+10</span>
+            	</p>
+            	<p class="account">
+            		<span>购买鱼币</span>
+            		<span>2017-03-03 09:30</span>
+            		<span>返佣</span>
+            		<span>+10</span>
+            	</p>
+            	<p class="account">
+            		<span>赠<span style="margin: 0 .1rem;"></span>送</span>
+            		<span>2017-03-03 09:30</span>
+            		<span>返佣</span>
+            		<span>+10</span>
+            	</p>
+            	<p class="account">
+            		<span>精准推送</span>
+            		<span>2017-03-03 09:30</span>
+            		<span>返佣</span>
+            		<span>+10</span>
+            	</p>
+            </div>
+            <div class="empty"></div>	
+        </div>
+    </div>
+    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
+    <script>
+        
+    </script>
+</html>
