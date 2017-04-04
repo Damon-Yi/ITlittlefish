@@ -26,6 +26,11 @@
 	line-height: .72rem;
 	font-size: .30rem;
 }
+.user_Mes{
+	content: "";
+	overflow: hidden;
+	clear: both;
+}
 .user_Mes div:nth-child(1){
 	text-align: right;
 }
@@ -39,7 +44,6 @@
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	background: black;
 	background: rgba(0,0,0,0.3);
 	height: .58rem;
 	line-height: .3rem;
@@ -51,9 +55,15 @@
 	box-sizing: border-box;
 	text-align: center;
 	margin-top: .12rem;
+	color: white;
 }
 .upgrade{
 	border-right: .06rem solid #987864;
+}
+.navigation{
+	content: '';
+	overflow: hidden;
+	clear: both;
 }
 .navigationUl{
 	width: 92%;
