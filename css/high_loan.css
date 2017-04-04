@@ -54,3 +54,10 @@
 .h_rules .h_rules_check>i{display: inline-block;width: 0.26rem;height: 0.26rem;border-radius: 100%;background-color: #bfbfbf;margin-right: 0.14rem;position: relative;top: 0.02rem;}
 .h_rules .h_rules_check.active>i{background-color: #ff9000;}       
 .h_rules>a{color: #ff9000;font-size: 0.22rem;}
+/*已提交*/
+.h_suc{}
+.h_suc .h_suc_img1{width: 100%;height:2rem;margin:0.86rem auto;}
+.h_suc .h_suc_img1>img{width: 100%;height:100%;}
+.h_suc .h_suc_img2{width: 90%;height:2rem;margin:1.36rem auto 0.6rem;}
+.h_suc .h_suc_img2>img{width: 100%;height:100%;}
+.h_suc .h_suc_txt{width:94%;margin:auto;font-size: 0.27rem;color: #ffaf66;text-align: center;letter-spacing: 2px;}
