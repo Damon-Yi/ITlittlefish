@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>贷款申请</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/precision_push.css" rel="stylesheet" type="text/css">
+    <script src="js/public.js"></script>
+    <script type="text/javascript">
+        var aScroll;
+        function loaded () {
+            aScroll = new IScroll('#cont_wrapper',{
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true,click: true 
+            });
+        }
+       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <div class="page_header">
+        <p>精准推送</p>
+        <div class="right_add"><i class="position"></i><span>深圳</span></div>
+    </div>
+    <div id="cont_wrapper">
+        <div>
+            <div class="h_require">
+                <div class="h_ad"><img src="../images/precision_loan_01.png"></div>
+                <div class="h_r_form">
+                    <div class="h_r_row"><span class="h_r_row_txt">姓名</span><input class="h_r_row_input" type="text" name="" placeholder="请填写您的姓名"></div>
+                    <div class="h_r_row"><span class="h_r_row_txt">手机号</span><input class="h_r_row_input" type="number" name="" placeholder="请填写您的手机号"></div>
+                    <div class="h_r_row"><span class="h_r_row_txt">申请的城市</span><input class="h_r_row_input" type="text" name="" placeholder="请填写您的城市"></div>
+                    <div class="h_r_row">
+                        <div class="h_r_col"><span class="h_r_col_txt">年龄</span><input class="h_r_col_input_1" type="number" name="" placeholder="请填写您的姓年龄"></div>
+                        <div class="h_r_col"><span class="h_r_col_txt">性别</span><input class="h_r_col_input_1" type="text" name="" placeholder="请填写您的性别"></div>
+                    </div>
+                    <div class="h_r_row">
+                        <div class="h_r_col"><span class="h_r_col_txt">贷款金额(万)</span><input class="h_r_col_input_2" type="number" name="" placeholder="如2.5"></div>
+                        <div class="h_r_col"><span class="h_r_col_txt">贷款年限(年)</span><input class="h_r_col_input_2" type="number" name="" placeholder="请填写贷款年限"></div>
+                    </div>
+                    <div class="h_r_row">
+                        <span class="h_r_row_txt">工作信息</span>
+                        <select class="h_r_row_select">
+                            <option value="">请选择</option>
+                            <option value="">工薪族</option>
+                        </select>
+                    </div>
+                    <div class="h_r_row">
+                        <span class="h_r_row_txt">有无信用卡</span>
+                        <div class="h_r_row_radio">
+                            <span>有<i></i></span><span>无<i></i></span>
+                        </div>
+                    </div>
+                    <div class="h_r_row">
+                        <span class="h_r_row_txt">手机有无实名认证</span>
+                        <div class="h_r_row_radio">
+                            <span>有<i></i></span><span>无<i></i></span>
+                        </div>
+                    </div>
+                    <div class="h_r_row">
+                        <span class="h_r_row_txt">有无征信记录</span>
+                        <div class="h_r_row_radio">
+                            <span>有<i></i></span><span>无<i></i></span>
+                        </div>
+                    </div>
+                    <div class="h_r_row">
+                        <span class="h_r_row_txt">连续半年缴纳公积金</span>
+                        <div class="h_r_row_radio">
+                            <span>有<i></i></span><span>无<i></i></span>
+                        </div>
+                    </div>
+                    <div class="h_r_row">
+                        <span class="h_r_row_txt">连续半年缴纳社保</span>
+                        <div class="h_r_row_radio">
+                            <span>有<i></i></span><span>无<i></i></span>
+                        </div>
+                    </div>
+                    <div class="h_r_row">
+                        <span class="h_r_row_txt">月收入(元)</span><input class="h_r_row_input" type="number" name="" placeholder="请输入">
+                    </div>
+                </div>
+            </div>
+            <a href="high_loan_apply_suc.html" class="apply_btn">立即申请</a>
+            <div class="h_rules">
+                <span class="h_rules_check"><i></i>同意</span><a href="javascript:;"><<小鱼儿帮帮贷贷款申请协议>></a>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
+    <script>
+        /*有无选择*/
+        $('.h_r_row_radio>span').on('tap',function(){
+            $(this).siblings().removeClass('active');
+            $(this).addClass('active');
+        });
+        /*是否同意协议*/
+        $('.h_rules .h_rules_check').on('tap',function(){
+            $(this).toggleClass('active');
+        });
+        /*获取验证码*/
+        $('.get_code_btn').on('tap',function(){
+            getCodefun($('.get_code_btn'),5,function(){
+                console.log('send...');
+            });
+        })
+    </script>
+</html>

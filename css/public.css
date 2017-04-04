@@ -90,6 +90,7 @@ input[type="button"]{padding:0;}
 .color_orange{color: #ff8604;}
 .color_green{color: #62fb26;}
 .color_gray{color: #4b4b4b;}
+.color_red{color: #ff3301;}
 .apply_btn{width:98.4%;height:0.62rem;line-height:0.62rem;text-align:center;color:#fff;display:block;font-size:0.36rem;border-radius:2px;margin:0 auto;background: -moz-linear-gradient(left, #ffa800 0%,#ff7900 100%);background: -webkit-gradient(left, #ffa800 0%,#ff7900 100%);background: -webkit-linear-gradient(left, #ffa800 0%,#ff7900 100%);background: -o-linear-gradient(left, #ffa800 0%,#ff7900 100%);background: -ms-linear-gradient(left, #ffa800 0%,#ff7900 100%);background: linear-gradient(left, #ffa800 0%,#ff7900 100%);}
 
 @-webkit-keyframes animDialog {

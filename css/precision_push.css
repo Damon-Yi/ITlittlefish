@@ -1,0 +1,33 @@
+/*精准推送*/
+.h_require{font-size: 0.24rem;margin-bottom:0.14rem;border-bottom: 1px solid #dedede;}
+.h_require .h_ad{width: 100%;height: 2.18rem;}
+.h_require .h_ad>img{width: 100%;height:100%;display: block;}
+.h_require .h_tips{color: #fff;padding:0.1rem 0.04rem 0.24rem;font-size: 0.24rem;position: relative;}
+.h_require .h_tips:after{content: '';display: block;position: absolute;bottom: 0;left:50%;margin-left:-0.09rem;border-color: transparent transparent #fff transparent;border-width: 0.18rem;border-style: solid;}
+.h_require .h_r_form{}
+.h_require .h_r_row{background-color: #fff;border-bottom: 1px solid #dedede;padding: 0.14rem 0.04rem 0.14rem 0.28rem;overflow: auto;}
+.h_require .h_r_row:last-child{border-bottom:none;}
+.h_require .h_r_row .h_r_col{width: 50%;float: left;}
+.h_require .h_r_row .h_r_col_txt{margin-right:0.1rem;}
+.h_require .h_r_row .h_r_col_input_1{width:70%;border:none;font-size: 0.22rem;height: 0.36rem;}
+.h_require .h_r_row .h_r_col_input_2{width:40%;border:none;font-size: 0.22rem;height: 0.36rem;}
+.h_require .h_r_row .h_r_row_txt{display: inline-block;width:50%;height: 0.36rem;line-height: 0.36rem;font-size: 0.26rem;}
+.h_require .h_r_row .h_r_row_input{width:40%;border:none;font-size: 0.22rem;height: 0.36rem;}
+.h_require .h_r_row .h_r_row_select{width:40%;border:none;font-size: 0.22rem;height: 0.36rem;}
+
+.h_require .h_r_row .h_r_row_radio{width:40%;font-size: 0.22rem;height: 0.36rem;display: inline-block;}
+.h_require .h_r_row .h_r_row_radio>span{display: inline-block;width: 50%;height: 0.36rem;line-height: 0.36rem;}
+.h_require .h_r_row .h_r_row_radio>span>i{display: inline-block;vertical-align: middle;width: 0.22rem;height: 0.22rem;border-radius: 100%;background-color: #bfbfbf;margin-left: 0.2rem;}    
+.h_require .h_r_row .h_r_row_radio>span.active>i{background-color: #ff9000;}
+.h_require .h_r_row .h_r_row_vilde_code{width:42%;font-size: 0.22rem;display: inline-block;}
+.h_require .h_r_row .h_r_row_vilde_code .vilde_code{width:50%;border:none;font-size: 0.22rem;height: 0.36rem;}
+.h_require .h_r_row .h_r_row_vilde_code .get_code_btn{width:50%;font-size: 0.2rem;height: 0.45rem;line-height: 0.45rem;background-color: #ff9000;color: #fff;text-align: center;display: inline-block;border-radius: 3px;}
+
+.h_rules{color: #000;font-size: 0.29rem;text-align: center;margin: 0.34rem auto;line-height: 1;}
+.h_rules .h_rules_check{margin-right: 0.14rem;display: inline-block;vertical-align: middle;}
+.h_rules .h_rules_check>i{display: inline-block;width: 0.26rem;height: 0.26rem;border-radius: 100%;background-color: #bfbfbf;margin-right: 0.14rem;position: relative;top: 0.02rem;}
+.h_rules .h_rules_check.active>i{background-color: #ff9000;}       
+.h_rules>a{color: #ff9000;font-size: 0.22rem;}
+/*精准推送结果*/
+.h_push_tips{color: #a7a7a7;padding:0.14rem;font-size: 0.24rem;}
+
