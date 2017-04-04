@@ -40,3 +40,24 @@
 .h_require .h_r_row .h_r_row_txt{display: inline-block;width:56%;height: 0.36rem;line-height: 0.36rem;font-size: 0.26rem;}
 .h_require .h_r_row .h_r_row_input{width:40%;border:none;font-size: 0.22rem;height: 0.36rem;}
 .h_require .h_r_row .h_r_row_select{width:40%;border:none;font-size: 0.22rem;height: 0.36rem;}
+/*高额贷-贷款申请*/
+.h_require .h_r_row .h_r_row_radio{width:40%;font-size: 0.22rem;height: 0.36rem;display: inline-block;}
+.h_require .h_r_row .h_r_row_radio>span{display: inline-block;width: 50%;height: 0.36rem;line-height: 0.36rem;}
+.h_require .h_r_row .h_r_row_radio>span>i{display: inline-block;vertical-align: middle;width: 0.22rem;height: 0.22rem;border-radius: 100%;background-color: #bfbfbf;margin-left: 0.2rem;}    
+.h_require .h_r_row .h_r_row_radio>span.active>i{background-color: #ff9000;}
+.h_require .h_r_row .h_r_row_vilde_code{width:42%;font-size: 0.22rem;display: inline-block;}
+.h_require .h_r_row .h_r_row_vilde_code .vilde_code{width:50%;border:none;font-size: 0.22rem;height: 0.36rem;}
+.h_require .h_r_row .h_r_row_vilde_code .get_code_btn{width:50%;font-size: 0.2rem;height: 0.45rem;line-height: 0.45rem;background-color: #ff9000;color: #fff;text-align: center;display: inline-block;border-radius: 3px;}
+
+.h_rules{color: #000;font-size: 0.29rem;text-align: center;margin: 0.34rem auto;line-height: 1;}
+.h_rules .h_rules_check{margin-right: 0.14rem;display: inline-block;vertical-align: middle;}
+.h_rules .h_rules_check>i{display: inline-block;width: 0.26rem;height: 0.26rem;border-radius: 100%;background-color: #bfbfbf;margin-right: 0.14rem;position: relative;top: 0.02rem;}
+.h_rules .h_rules_check.active>i{background-color: #ff9000;}       
+.h_rules>a{color: #ff9000;font-size: 0.22rem;}
+/*已提交*/
+.h_suc{}
+.h_suc .h_suc_img1{width: 100%;height:2rem;margin:0.86rem auto;}
+.h_suc .h_suc_img1>img{width: 100%;height:100%;}
+.h_suc .h_suc_img2{width: 90%;height:2rem;margin:1.36rem auto 0.6rem;}
+.h_suc .h_suc_img2>img{width: 100%;height:100%;}
+.h_suc .h_suc_txt{width:94%;margin:auto;font-size: 0.27rem;color: #ffaf66;text-align: center;letter-spacing: 2px;}

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>贷款需求</title>
+    <title>贷款申请</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
@@ -22,22 +22,10 @@
         }
        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
     </script>
-    <style type="text/css">
-        .h_r_row_radio{width:40%;font-size: 0.22rem;height: 0.36rem;display: inline-block;}
-        .h_r_row_radio>span{display: inline-block;width: 50%;height: 0.36rem;line-height: 0.36rem;}
-        .h_r_row_radio>span>i{display: inline-block;vertical-align: middle;width: 0.22rem;height: 0.22rem;border-radius: 100%;background-color: #bfbfbf;margin-left: 0.2rem;}    
-        .h_r_row_radio>span.active>i{background-color: #ff9000;}
-
-        .h_rules{color: #000;font-size: 0.29rem;text-align: center;margin: 0.34rem auto;line-height: 1;}
-        .h_rules .h_rules_check{margin-right: 0.14rem;display: inline-block;vertical-align: middle;}
-        .h_rules .h_rules_check>i{display: inline-block;width: 0.26rem;height: 0.26rem;border-radius: 100%;background-color: #bfbfbf;margin-right: 0.14rem;    position: relative;top: 0.02rem;}
-        .h_rules .h_rules_check.active>i{background-color: #ff9000;}       
-        .h_rules>a{color: #ff9000;font-size: 0.22rem;}
-    </style>
 </head>
 <body onload="loaded()">
     <div class="page_header">
-        <p>贷款需求</p>
+        <p>贷款申请</p>
         <div class="right_add"><i class="position"></i><span>深圳</span></div>
     </div>
     <div id="cont_wrapper">
@@ -83,14 +71,16 @@
                         </div>
                     </div>
                     <div class="h_r_row">
-                        <span class="h_r_row_txt">月收入(元)</span><input class="h_r_row_input" type="number" name="" placeholder="请填写月收入">
+                        <span class="h_r_row_txt">月收入(元)</span><input class="h_r_row_input" type="number" name="" placeholder="请输入">
                     </div>
                     <div class="h_r_row">
-                        <span class="h_r_row_txt">验证码</span>
+                        <span class="h_r_row_txt">验证码</span><div class="h_r_row_vilde_code">
+                            <input class="vilde_code" type="text" name="" placeholder="请输入"><div class="get_code_btn">发送验证码</div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <a href="javascript:;" class="apply_btn">立即申请</a>
+            <a href="high_loan_apply_suc.html" class="apply_btn">立即申请</a>
             <div class="h_rules">
                 <span class="h_rules_check"><i></i>同意</span><a href="javascript:;"><<小鱼儿帮帮贷贷款申请协议>></a>
             </div>
@@ -100,12 +90,20 @@
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
     <script>
+        /*有无选择*/
         $('.h_r_row_radio>span').on('tap',function(){
             $(this).siblings().removeClass('active');
             $(this).addClass('active');
         });
+        /*是否同意协议*/
         $('.h_rules .h_rules_check').on('tap',function(){
             $(this).toggleClass('active');
         });
+        /*获取验证码*/
+        $('.get_code_btn').on('tap',function(){
+            getCodefun($('.get_code_btn'),5,function(){
+                console.log('send...');
+            });
+        })
     </script>
 </html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>贷款需求</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/high_loan.css" rel="stylesheet" type="text/css">
+    <script src="js/public.js"></script>
+    <script type="text/javascript">
+        var aScroll;
+        function loaded () {
+            aScroll = new IScroll('#cont_wrapper',{
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true,click: true 
+            });
+        }
+       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <div class="page_header">
+        <p>已提交</p>
+        <div class="right_add"></div>
+    </div>
+    <div id="cont_wrapper">
+        <div>
+            <div class="h_suc">
+                <div class="h_suc_img1"><img src="../images/high_loan_13.png"></div>
+                <div class="h_suc_txt">
+                    <p>正在为您批核最优产品，稍后会有专人与您联系，请留意接听电话，感谢您的支持！</p>
+                </div>
+                <div class="h_suc_img2"><img src="../images/high_loan_14.png"></div>
+            </div>
+            <a href="high_loan_index.html" class="apply_btn">确定</a>
+        </div>
+    </div>
+    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <script>
+    </script>
+</html>
