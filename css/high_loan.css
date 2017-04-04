@@ -1,0 +1,42 @@
+/*高额贷-首页*/
+.h_index{padding-bottom: 0.64rem;}
+.h_index .h_ad{width: 100%;height: 2.78rem;}
+.h_index .h_ad>img{width: 100%;height:100%;display: block;}
+.h_index .h_msg{width: 100%;height: 0.4rem;position: relative;overflow: hidden;z-index: 1;font-size: 0.2rem;margin-top: 0.04rem;}
+.h_index .h_msg .swiper-slide{padding: 0 0.2rem;}
+.h_index .h_info_1{font-size: 0.2rem;color: #000;overflow: auto;padding: 0.1rem 0;border-top:1px solid #ccc;}
+.h_index .h_info_1 .h_info_col{width: 50%;float: left;border-right:1px solid #ccc;padding: 0 0.06rem;}
+.h_index .h_info_1 .h_info_col:last-child{border-right:none;}
+.h_index .h_info_1 .h_big_td{border-bottom:1px solid #ccc;}
+.h_index .h_info_1 .h_big_td:last-child{border-bottom:none;}
+.h_index .h_info_1 .h_big_td>div{display: inline-block;vertical-align: middle;}
+.h_index .h_info_1 .h_size_1{width: 0.84rem;height: 0.68rem;}
+.h_index .h_info_1 .h_size_2{width: 1rem;height: 1.48rem;}
+.h_index .h_info_1 .h_td_txt{width: 64%;text-align: center;}
+.h_index .h_info_1 .h_td_txt.h_txt_1{width: 40%;margin-left: 14%;}
+.h_index .h_info_1 .h_td_img{}
+.h_index .h_info_2{margin-top: 0.04rem;}
+.h_index .h_info_2 .h_info_row{font-size: 0;border-bottom:1px solid #ccc;padding: 0.04rem 0.14rem;}
+.h_index .h_info_2 .h_info_row>img{width: 0.66rem;height: 0.63rem;display: inline-block;vertical-align: middle;margin-right:0.04rem;}
+.h_index .h_info_2 .h_info_row>span{display: inline-block;vertical-align: middle;}
+.h_index .h_info_2 .h_info_row .h_txt_2{color: #000;font-size: 0.2rem;}
+.h_index .h_info_2 .h_info_row .h_txt_3{color: #737373;font-size: 0.18rem;}
+.week_hot{font-size: 0;border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;margin-top: 0.1rem;}
+.week_hot .week_hot_title{margin-bottom: 0.1rem;}
+.week_hot .week_hot_title>img{width: 1.44rem;height: 0.45rem;margin-top: -1px;margin-left:0.16rem;}
+.week_hot .week_hot_cont{margin-bottom: 0.1rem;position: relative;}
+.week_hot .week_hot_cont .swiper-slide{width: 1.82rem;height: 1.76rem;background-color: #636363;}
+.week_hot .week_hot_cont .swiper_btn{width:0.36rem;height: 0.64;position: absolute;top: 50%;margin-top:-0.32rem;z-index: 2;}
+.week_hot .week_hot_cont .swiper_btn>img{width:100%;height: 100%;}
+.week_hot .week_hot_cont .prev_btn{left: 0.12rem;}
+.week_hot .week_hot_cont .next_btn{right: 0.12rem;}
+/*高额贷-贷款需求*/
+.h_require{background-color: #bfbfbf;font-size: 0.24rem;padding-bottom:2rem;}
+.h_require .h_tips{color: #fff;padding:0.1rem 0.04rem 0.24rem;font-size: 0.24rem;position: relative;}
+.h_require .h_tips:after{content: '';display: block;position: absolute;bottom: 0;left:50%;margin-left:-0.09rem;border-color: transparent transparent #fff transparent;border-width: 0.18rem;border-style: solid;}
+.h_require .h_r_form{}
+.h_require .h_r_row{background-color: #fff;border-bottom: 1px solid #dedede;padding: 0.18rem 0.04rem 0.18rem 0.28rem;}
+.h_require .h_r_row:last-child{border-bottom:none;}
+.h_require .h_r_row .h_r_row_txt{display: inline-block;width:56%;height: 0.36rem;line-height: 0.36rem;font-size: 0.26rem;}
+.h_require .h_r_row .h_r_row_input{width:40%;border:none;font-size: 0.22rem;height: 0.36rem;}
+.h_require .h_r_row .h_r_row_select{width:40%;border:none;font-size: 0.22rem;height: 0.36rem;}
