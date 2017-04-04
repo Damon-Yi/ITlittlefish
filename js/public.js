@@ -77,3 +77,28 @@ function getBase64Image(src) {
     //return dataURL
     return dataURL.replace("data:image/png;base64,", "");
 }
+/*获取验证码*/
+function getCodefun(obj,time,sendCodeFun){
+    var me = {};
+    me.obj = obj;
+    me.wait= time;
+    me.time = function(obj) { 
+        obj.addClass('disable');
+        if (me.wait == 0) { 
+            obj.text("获取验证码"); 
+            me.wait = time; 
+            obj.removeClass('disable');
+        }else { 
+            obj.text(me.wait + "s"); 
+            me.wait--;
+            setTimeout(function(){ 
+                me.time(obj);
+            },1000);
+        } 
+    } 
+    if(!me.obj.hasClass('disable')){
+        me.time(me.obj);
+        sendCodeFun();
+    }
+    return me;
+}
