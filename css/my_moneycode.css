@@ -1,0 +1,89 @@
+.moneycodelogo{
+	width: 100%;
+}
+.moneycodelogo img{
+	width: 100%;
+}
+.upgrade{
+	height: .62rem;
+	line-height: .62rem;
+	border-top: 1px solid #b5b59b;
+	border-bottom: 1px solid #b5b59b;
+	font-size: .24rem;
+	text-indent: 4%;
+}
+.upgrade span{
+	color: #010101;
+	
+}
+.sharefriend{
+	font-size: .24rem;
+	color: #000000;
+	text-align: center;
+	margin-top: .2rem;
+	border-bottom: 1px solid #b5b59b;
+	content: '';
+	overflow: hidden;
+	clear: both;
+}
+.sharefriend div{
+	float: left;
+	width: 50%;
+	margin-bottom: .2rem;
+	
+}
+.sharefriend img{
+	width: 2.73rem;
+	height: 2.73rem;
+	
+}
+.sharefriend dd{
+	line-height: .5rem;
+}
+.sharefriend span{
+	font-size: .3rem;
+	color: white;
+	background: #ff9000;
+	display: inline-block;
+	padding: .1rem .3rem;
+	margin-top: 1.1rem;
+}
+.sharefriend a{
+	color: #000000;
+}
+.accumulative{
+	width: 100%;
+	height: 1.04rem;
+	padding: 0 4%;
+	line-height: 1.04rem;
+	margin: 0 auto;
+	font-size: .3rem;
+	border-bottom: 1px solid #b5b59b;
+	position: relative;
+}
+.accumulative span:nth-child(2){
+	float: right;
+}
+.recordlist{
+	width: 100%;
+	padding: 0 4%;
+	height: .5rem;
+	line-height: .5rem;
+	font-size: .24rem;
+	box-sizing: border-box;
+	border-bottom: 1px solid #b5b59b;
+}
+.recordlist span{
+	display: inline-block
+}
+.recordlist span:nth-child(1){
+	width: 25%;
+}
+.recordlist span:nth-child(2){
+	text-align: center;
+	width: 30%;
+}
+.recordlist span:nth-child(3){
+	width: 40%;
+	text-align: right;
+}

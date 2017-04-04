@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/my_singlerecord.css"/>
+    <script src="js/public.js"></script>
+    <style>
+        
+    </style>
+    <script type="text/javascript">
+        var aScroll;
+        function loaded () {
+            aScroll = new IScroll('#cont_wrapper',{
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true,click: true 
+            });
+        }
+       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <div class="page_header">抢单/甩单记录</div>
+    <div id="cont_wrapper">
+        <div>
+            <div class="singlerLogo">
+            	<a href="#" class="singlerMes">
+            		<p>抢单说明</p>
+            	</a>
+            	<div class="singlerall">
+            		<p>累计抢单 <span>60</span>次</p>
+            		<p>累计甩单 <span>60</span>次</p>
+            	</div>
+            	<div class="singlerstyle">
+            		<p>抢单</p>
+            		<p>甩单</p>
+            	</div>
+            </div> 
+            <div class="dottitle">
+            	<span>抢单</span><span>记录</span>
+            </div>
+            <div class="dotlist">
+            	<ul>
+            		<li class="dotproduct bordernone">姓名</li>
+            		<li class="dotdate bordernone">手机号</li>
+            		<li class="dotstyle bordernone">抢单日期</li>
+            		<li class="dotproduct bordernone">订单详情</li>
+            		<li class="dotdate bordernone">申请日期</li>
+            		<li class="dotstyle bordernone">是否申请</li>
+            	</ul>
+            	<div class="singlefirst">
+	            	<ul>
+	            		<li>张三</li>
+	            		<li>15118057969</li>
+	            		<li>2017/3/28</li>
+	            		<li>订单详情</li>
+	            		<li>-请选择-</li>
+	            		<li class="bordernone">-请选择-</li>
+	            	</ul>
+	            	<ul>
+	            		<li>张三</li>
+	            		<li>15118057969</li>
+	            		<li>2017/3/28</li>
+	            		<li>订单详情</li>
+	            		<li>-请选择-</li>
+	            		<li class="bordernone">-请选择-</li>
+	            	</ul>
+            	</div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
+    <script src="js/singlerecord.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        
+    </script>
+</html>

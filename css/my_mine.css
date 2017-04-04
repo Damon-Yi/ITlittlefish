@@ -1,0 +1,134 @@
+.user_info{
+	width: 100%;
+	height: auto;
+	background: url(../images/user_bg.png) no-repeat;
+	background-size:100% auto;
+	color: white;
+	font-size: .3rem;
+	position: relative;
+	padding-bottom: .58rem;
+	content: '';
+	overflow: hidden;
+	clear: both;
+}
+.user_Mes >div{
+	float: left;
+	width: 33%;
+	text-align: center;
+}
+.user_img{
+	width: 1.5rem;
+	height: 1.5rem;
+}
+.grade{
+	margin-top: .3rem;
+	margin-left: 4%;
+	line-height: .72rem;
+	font-size: .30rem;
+}
+.user_Mes{
+	content: "";
+	overflow: hidden;
+	clear: both;
+}
+.user_Mes div:nth-child(1){
+	text-align: right;
+}
+.user_Mes div:nth-child(2) p{
+	margin-top: .3rem;
+}
+.user_Mes div:nth-child(3){
+	margin-top: 1rem;
+}
+.member{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	background: rgba(0,0,0,0.3);
+	height: .58rem;
+	line-height: .3rem;
+}
+.member p{
+	width: 50%;
+	float: left;
+	height: .3rem;
+	box-sizing: border-box;
+	text-align: center;
+	margin-top: .12rem;
+	color: white;
+}
+.upgrade{
+	border-right: .06rem solid #987864;
+}
+.navigation{
+	content: '';
+	overflow: hidden;
+	clear: both;
+}
+.navigationUl{
+	width: 92%;
+	margin: 0 auto;
+	border-bottom: 2px solid #E0E0E0;
+	content: '';
+	overflow: hidden;
+	clear: both;
+}
+.navigationUl >a{
+	width: 33%;
+	float: left;
+	box-sizing: border-box;
+}
+.border_left_right{
+	border-left: 2px solid #e0e0e0;
+	border-right: 2px solid #e0e0e0;
+}
+.navigation_list{
+	font-size: .24rem;
+	text-align: center;
+	padding:.3rem 0 .12rem;
+	color: #010101;
+	
+}
+.navigation_list img{
+	width: .9rem;
+	height: .82rem;
+}
+.sharefriend{
+	font-size: .24rem;
+	color: #000000;
+	text-align: center;
+	margin-top: .2rem;
+	content: '';
+	overflow: hidden;
+	clear: both;
+}
+.sharefriend div{
+	width: 50%;
+	float: left;
+}
+.sharefriend img{
+	width: 1.65rem;
+	height: 1.65rem;
+	
+}
+.sharefriend dd{
+	line-height: .5rem;
+}
+.sharefriend span{
+	font-size: .24rem;
+	color: white;
+	background: #ff9000;
+	display: inline-block;
+	padding: 5px 10px;
+	margin-top: .6rem;
+}
+.sharefriend a{
+	color: #000000;
+}
+.empty{
+	width: 95%;
+	height: 1.4rem;
+	margin: 0 auto;
+	background: #b0b0b0;
+	margin-bottom: 5px;
+}

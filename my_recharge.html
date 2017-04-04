@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/my_recharge.css"/>
+    <script src="js/public.js"></script>
+    <style>
+        
+    </style>
+    <script type="text/javascript">
+        var aScroll;
+        function loaded () {
+            aScroll = new IScroll('#cont_wrapper',{
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true,click: true 
+            });
+        }
+       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()" style="background: #e2e2e2;">
+    <div class="page_header">充值</div>
+    <div id="cont_wrapper">
+        <div>
+            <div class="rechargetitle" style="background: white;">
+            	<span>选择充值金额</span>
+            </div>
+            <div class="pricelist" style="background: white;">
+            	<p class="rechargeprice backcolor">
+            		<span>100鱼币</span>
+            		<span>(送10鱼币)</span>
+            	</p>
+            	<p class="rechargeprice">
+            		<span>100鱼币</span>
+            		<span>(送10鱼币)</span>
+            	</p>
+            	<p class="rechargeprice">
+            		<span>100鱼币</span>
+            		<span>(送10鱼币)</span>
+            	</p>
+            	<p class="rechargeprice">
+            		<span>100鱼币</span>
+            		<span>(送10鱼币)</span>
+            	</p>
+            	<p class="rechargeprice">
+            		<span>100鱼币</span>
+            		<span>(送10鱼币)</span>
+            	</p>
+            	<p class="rechargeprice">
+            		<span>100鱼币</span>
+            		<span>(送10鱼币)</span>
+            	</p>
+            </div>
+            <div class="rechargenum" style="background: white;">
+            	<span>充值金额</span>
+            	<span>100元</span>
+            </div>
+            <div class="rechargeapply">
+            	<span>选择支付方式</span>
+            </div>
+            <div class="applylist">
+            	<img src="images/weixin.png"/>
+            	<span>微信支付</span>
+            	<span class="checked bordercolor01"><img src="images/xuanzhong.png"/></span>
+            </div>
+            <div class="applylist">
+            	<img src="images/jingdong.png"/>
+            	<span>京东支付</span>
+            	<span class="checked bordercolor02"></span>
+            </div>
+            <div class="applylist">
+            	<img src="images/yinlian.png"/>
+            	<span>银联支付</span>
+            	<span class="checked bordercolor02"></span>
+            </div>
+            <div class="applylist">
+            	<span class="choise bordercolor02"><img src="images/xuanzhong.png"/></span>
+            	<em style="position: relative;top: -0.1rem;">同意</em>
+            	<a href="#" style="font-size: .2rem;position: relative;top: -0.13rem;color: #FFA835;"><< <em>小鱼儿帮帮贷协议</em> >></a>
+            </div>
+            <div class="goapply">立刻充值</div>
+            <div class="Tips">
+            	<p>鱼币说明</p>
+            	<p>鱼币是小鱼儿帮帮贷平台的电子贷向，1鱼币的价值等于1元人命币</p>
+            	<p>融币仅限于注册用户购买平台服务功能使用</p>
+            </div>
+        </div>
+        
+    </div>
+    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
+    <script>
+        $(".checked").on("tap",function(){
+        	if($(this).children().length){
+        		$(this).removeClass("bordercolor01")
+        		$(this).children().remove()
+        	}
+        })
+    </script>
+</html>

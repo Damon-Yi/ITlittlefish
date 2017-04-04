@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/my_documentation.css"/>
+    <script src="js/public.js"></script>
+    <style>
+        
+    </style>
+    <script type="text/javascript">
+        var aScroll;
+        function loaded () {
+            aScroll = new IScroll('#cont_wrapper',{
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true,click: true 
+            });
+        }
+       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <div class="page_header">贷款记录</div>
+    <div id="cont_wrapper">
+        <div>
+       		<!--用户信息-->
+            <div class="user_info">
+				<p class="grade">等级V1</p>
+				<div class="user_Mes">
+					<div>
+						<img class="user_img" src="images/user_icon.png"/>
+					</div>
+					<div>
+						<p><span>昵称：</span><span>小美</span></p>
+	                    <p><span>135****5622</span></p>
+					</div>
+					<div>
+						<p>余额</p>
+	                    <p style="font-size: 0.4rem;">0.00元</p>
+					</div>
+				</div>
+			</div>
+			<!--借款记录-->
+            <div class="dottitle">
+            	<span>贷款</span><span>记录</span>
+            </div>
+            <!--借款记录列表-->
+            <div class="dotlist">
+            	<ul>
+            		<li class="dotproduct bordernone">贷款产品</li>
+            		<li class="dotdate bordernone">申请日期</li>
+            		<li class="dotstyle bordernone">是否成功</li>
+            	</ul>
+            	<ul>
+            		<li>壹财宝</li>
+            		<li>2017-03-03</li>
+            		<li>-请选择-</li>
+            	</ul>
+            	<ul>
+            		<li>壹财宝</li>
+            		<li>2017-03-03</li>
+            		<li>-请选择-</li>
+            	</ul>
+            	<ul>
+            		<li>壹财宝</li>
+            		<li>2017-03-03</li>
+            		<li>-请选择-</li>
+            	</ul>
+            	<ul>
+            		<li>壹财宝</li>
+            		<li>2017-03-03</li>
+            		<li>-请选择-</li>
+            	</ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
+    <script>
+        
+    </script>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/my_performance.css"/>
+    <script src="js/public.js"></script>
+    <style>
+        
+    </style>
+    <script type="text/javascript">
+        var aScroll;
+        function loaded () {
+            aScroll = new IScroll('#cont_wrapper',{
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true,click: true 
+            });
+        }
+       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <div class="page_header">业绩管理</div>
+    <div id="cont_wrapper">
+        <div>
+            <!--业绩管理头部信息-->
+            <div class="performance_Mes">
+            	<p>本月业绩达成率</p>
+            	<p>
+            		<img src="images/upgradea.png"/>
+            		<span>99%</span>
+            	</p>
+            	<p>申请成功，日获顾客户总额</p>
+            	<div class="member">
+					<p class="upgrade">销售总监(<span>0066</span>)</p> 
+					<p class="recharge">全国</p> 
+				</div>
+            </div>
+             <!--月总业绩与月总件数-->
+            <div class="monthlytit">
+            	<div class="monthly">
+            		<p>
+            			<img src="images/mounthtly.png"/> 
+            			<span> 本月总业绩  ( 万 ) </span>
+            		</p>
+            		<p class="results">
+            			<span>0.00</span>
+            		</p>
+            	</div>
+            	<div class="monthly bordernone">
+            		<p>
+            			<img src="images/mounthtly.png"/> 
+            			<span> 本月总业绩  ( 万 ) </span>
+            		</p>
+            		<p class="results">
+            			<span>0.00</span>
+            		</p>
+            	</div>
+            </div>
+            <!--业绩列表-->
+            <div class="resultslist">
+            	<p>
+            		<span>本月业绩</span>
+            		<a href="#">
+            			<span>更多</span>
+            			<img class="next" src="images/next.png"/>
+            		</a>
+            	</p>
+            	<div class="resultscontent">
+            		<span>区域</span>
+            		<span>业绩</span>
+            		<span>达成率</span>
+            		<span>获佣</span>
+            	</div>
+            	<div class="resultscontent">
+            		<span>东区</span>
+            		<span>200万</span>
+            		<span>99%</span>
+            		<span>50000</span>
+            	</div>
+            	<div class="resultscontent">
+            		<span>东区</span>
+            		<span>200万</span>
+            		<span>99%</span>
+            		<span>50000</span>
+            	</div>
+            	
+            	<p>
+            		<span>二月业绩</span>
+            		<a href="#">
+            			<span>更多</span>
+            			<img class="next" src="images/next.png"/>
+            		</a>
+            	</p>
+            	<div class="resultscontent">
+            		<span>区域</span>
+            		<span>业绩</span>
+            		<span>达成率</span>
+            		<span>获佣</span>
+            	</div>
+            	<div class="resultscontent">
+            		<span>东区</span>
+            		<span>200万</span>
+            		<span>99%</span>
+            		<span>50000</span>
+            	</div>
+            	<div class="resultscontent">
+            		<span>东区</span>
+            		<span>200万</span>
+            		<span>99%</span>
+            		<span>50000</span>
+            	</div>
+            	
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
+    <script>
+        
+    </script>
+</html>
