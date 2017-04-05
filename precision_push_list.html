@@ -8,274 +8,343 @@
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <link href="css/public.css" rel="stylesheet" type="text/css">
     <link href="css/precision_push.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="plugin/dropload/dropload.css">
     <script src="js/public.js"></script>
-    <script type="text/javascript">
-        var aScroll;
-        function loaded () {
-            aScroll = new IScroll('#cont_wrapper',{
-                scrollbars: true,
-                mouseWheel: true,
-                interactiveScrollbars: true,
-                shrinkScrollbars: 'scale',
-                fadeScrollbars: true,click: true 
-            });
-        }
-       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-    </script>
-    <style type="text/css">
-        .h_push{background-color: #e9e9e9;}
-        .h_push_list{font-size: 0.18rem;color: #000;border-bottom: 1px solid #fff;}
-        .h_push_list .h_push_item{background-color: #fff;border-radius: 3px;margin: 0 0.14rem 0.36rem;}
-        .h_push_list .h_push_item .h_push_row_1{overflow: auto;padding:0.15rem 0.04rem 0.04rem 0.15rem;text-align: center;}
-        .h_push_list .h_push_item .h_push_row_1>div{float: left;}
-
-        .h_push_list .h_push_item .h_push_col_1{font-size: 0;width: 17.5%;padding-top: 0.06rem;}
-        .h_push_list .h_push_item .h_push_img_header{width: 1.05rem;height: 0.24rem;}
-        .h_push_list .h_push_item .h_push_img_header>img{width:100%;height: 100%;}
-        .h_push_list .h_push_item .h_push_img_logo{width: 1.05rem;height: 1.02rem;background-color: #5d5d5d;}
-        .h_push_list .h_push_item .h_push_img_logo>img{width:100%;height: 100%;}
-
-        .h_push_list .h_push_item .h_push_col_2{width: 37%;}
-        .h_push_list .h_push_item .h_push_p_1{font-size: 0.22rem;margin: 0.24rem auto 0.08rem;}
-        .h_push_list .h_push_item .h_push_p_2{font-size: 0.18rem;color: #585858;}
-        .h_push_list .h_push_item .h_push_p_3{font-size: 0.18rem;margin-top: 0.12rem;}
-
-        .h_push_list .h_push_item .h_push_col_3{width:45.5%;}
-        .h_push_list .h_push_item .h_push_tr{border-bottom: 1px solid #d1d1d1;}
-        .h_push_list .h_push_item .h_push_tr:last-child{border-bottom:none;}
-        .h_push_list .h_push_item .h_push_td{display: inline-block;vertical-align: middle;width: 48%;border-right: 1px solid #d1d1d1;padding:0.08rem 0;}
-        .h_push_list .h_push_item .h_push_td:last-child{border-right:none;}
-
-        .h_push_list .h_push_item .h_push_row_2{font-size: 0.24rem;padding:0 0.18rem;}
-        .h_push_list .h_push_item .h_push_row_2 .h_max_num{font-size: 0.32rem;color: #ff9000;}
-        .h_push_list .h_push_item .h_push_row_3{overflow: auto;padding:0 0.16rem 0.12rem;}
-        .h_push_list .h_push_item .h_push_row_3>span{float: left;display: block;width: 1.04rem;border:2px solid #dbdbdb;border-radius: 0.1rem;text-align: center;padding:0.06rem 0;margin: 0.12rem 0.12rem 0 0;font-size: 0.18rem;color: #dbdbdb;}
-        .h_push_list .h_push_item .h_push_row_3>span.active{border-color:#ff9000;color: #ff9000;}
-    </style>
 </head>
-<body onload="loaded()">
+<body>
     <div class="page_header">
         <p>精准推送</p>
         <div class="right_add"><i class="position"></i><span>深圳</span></div>
     </div>
-    <div id="cont_wrapper">
-        <div>
-            <div class="h_push">
-                <div class="h_push_tips">根据您提交的信息，精准推送以下产品</div>
-                <div class="h_push_list">
-                    <div class="h_push_item">
-                        <div class="h_push_row_1">
-                            <div class="h_push_col_1">
-                                <div class="h_push_img_header"><img src="../images/precision_loan_02.png"></div>
-                                <div class="h_push_img_logo"><img src="../images/precision_loan_03.png"></div>
+    <div class="h_push_tips">根据您提交的信息，精准推送以下产品</div>
+    <div class="h_push">
+        <div class="h_push_list">
+            <div class="h_push_item">
+                <div class="h_push_row_1">
+                    <div class="h_push_col_1">
+                        <div class="h_push_img_header"><img src="../images/precision_loan_02.png"></div>
+                        <div class="h_push_img_logo"><img src="../images/precision_loan_03.png"></div>
+                    </div>
+                    <div class="h_push_col_2">
+                        <p class="h_push_p_1">平安i贷-应急贷</p>
+                        <p class="h_push_p_2">适用人群：所有人群</p>
+                        <p class="h_push_p_3">申请人数：1135248人</p>
+                    </div>
+                    <div class="h_push_col_3">
+                        <div class="h_push_tr">
+                            <div class="h_push_td">
+                                <p class="">成功率</p>
+                                <p class="color_red">45.00%</p>
                             </div>
-                            <div class="h_push_col_2">
-                                <p class="h_push_p_1">平安i贷-应急贷</p>
-                                <p class="h_push_p_2">适用人群：所有人群</p>
-                                <p class="h_push_p_3">申请人数：1135248人</p>
-                            </div>
-                            <div class="h_push_col_3">
-                                <div class="h_push_tr">
-                                    <div class="h_push_td">
-                                        <p class="">成功率</p>
-                                        <p class="color_red">45.00%</p>
-                                    </div>
-                                    <div class="h_push_td">
-                                        <p class="">日利率</p>
-                                        <p class="color_red">1%</p>
-                                    </div>
-                                </div>
-                                <div class="h_push_tr">
-                                    <div class="h_push_td">
-                                        <p class="">平均额度</p>
-                                        <p class="color_red">0.50万</p>
-                                    </div>
-                                    <div class="h_push_td">
-                                        <p class="">平均用时</p>
-                                        <p class="color_red">当天放款</p>
-                                    </div>
-                                </div>
+                            <div class="h_push_td">
+                                <p class="">日利率</p>
+                                <p class="color_red">1%</p>
                             </div>
                         </div>
-                        <div class="h_push_row_2">
-                            <p>最高额度：<span class="h_max_num">3万</span></p>
-                        </div>
-                        <div class="h_push_row_3">
-                            <span class="active">身份证</span><span>网购账号</span><span>支付宝账号</span><span>信用卡</span><span>手机认证</span>
+                        <div class="h_push_tr">
+                            <div class="h_push_td">
+                                <p class="">平均额度</p>
+                                <p class="color_red">0.50万</p>
+                            </div>
+                            <div class="h_push_td">
+                                <p class="">平均用时</p>
+                                <p class="color_red">当天放款</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="h_push_item">
-                        <div class="h_push_row_1">
-                            <div class="h_push_col_1">
-                                <div class="h_push_img_header"><img src="../images/precision_loan_02.png"></div>
-                                <div class="h_push_img_logo"><img src="../images/precision_loan_04.png"></div>
+                </div>
+                <div class="h_push_row_2">
+                    <p>最高额度：<span class="h_max_num">3万</span></p>
+                </div>
+                <div class="h_push_row_3">
+                    <span class="active">身份证</span><span>网购账号</span><span>支付宝账号</span><span>信用卡</span><span>手机认证</span>
+                </div>
+            </div>
+            <div class="h_push_item">
+                <div class="h_push_row_1">
+                    <div class="h_push_col_1">
+                        <div class="h_push_img_header"><img src="../images/precision_loan_02.png"></div>
+                        <div class="h_push_img_logo"><img src="../images/precision_loan_04.png"></div>
+                    </div>
+                    <div class="h_push_col_2">
+                        <p class="h_push_p_1">曹操贷-极速贷款</p>
+                        <p class="h_push_p_2">适用人群：上班族、个体户、大学生</p>
+                        <p class="h_push_p_3">申请人数：337290人</p>
+                    </div>
+                    <div class="h_push_col_3">
+                        <div class="h_push_tr">
+                            <div class="h_push_td">
+                                <p class="">成功率</p>
+                                <p class="color_red">25.00%</p>
                             </div>
-                            <div class="h_push_col_2">
-                                <p class="h_push_p_1">曹操贷-极速贷款</p>
-                                <p class="h_push_p_2">适用人群：上班族、个体户、大学生</p>
-                                <p class="h_push_p_3">申请人数：337290人</p>
-                            </div>
-                            <div class="h_push_col_3">
-                                <div class="h_push_tr">
-                                    <div class="h_push_td">
-                                        <p class="">成功率</p>
-                                        <p class="color_red">25.00%</p>
-                                    </div>
-                                    <div class="h_push_td">
-                                        <p class="">日利率</p>
-                                        <p class="color_red">0.3%</p>
-                                    </div>
-                                </div>
-                                <div class="h_push_tr">
-                                    <div class="h_push_td">
-                                        <p class="">平均额度</p>
-                                        <p class="color_red">0.10万</p>
-                                    </div>
-                                    <div class="h_push_td">
-                                        <p class="">平均用时</p>
-                                        <p class="color_red">2小时</p>
-                                    </div>
-                                </div>
+                            <div class="h_push_td">
+                                <p class="">日利率</p>
+                                <p class="color_red">0.3%</p>
                             </div>
                         </div>
-                        <div class="h_push_row_2">
-                            <p>最高额度：<span class="h_max_num">0.3万</span></p>
-                        </div>
-                        <div class="h_push_row_3">
-                            <span class="active">身份证</span><span>网购账号</span><span>支付宝账号</span><span>信用卡</span><span>手机认证</span>
+                        <div class="h_push_tr">
+                            <div class="h_push_td">
+                                <p class="">平均额度</p>
+                                <p class="color_red">0.10万</p>
+                            </div>
+                            <div class="h_push_td">
+                                <p class="">平均用时</p>
+                                <p class="color_red">2小时</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="h_push_item">
-                        <div class="h_push_row_1">
-                            <div class="h_push_col_1">
-                                <div class="h_push_img_header"><img src="../images/precision_loan_02.png"></div>
-                                <div class="h_push_img_logo"><img src="../images/precision_loan_05.png"></div>
+                </div>
+                <div class="h_push_row_2">
+                    <p>最高额度：<span class="h_max_num">0.3万</span></p>
+                </div>
+                <div class="h_push_row_3">
+                    <span class="active">身份证</span><span>网购账号</span><span>支付宝账号</span><span>信用卡</span><span>手机认证</span>
+                </div>
+            </div>
+            <div class="h_push_item">
+                <div class="h_push_row_1">
+                    <div class="h_push_col_1">
+                        <div class="h_push_img_header"><img src="../images/precision_loan_02.png"></div>
+                        <div class="h_push_img_logo"><img src="../images/precision_loan_05.png"></div>
+                    </div>
+                    <div class="h_push_col_2">
+                        <p class="h_push_p_1">现金侠-极速贷款</p>
+                        <p class="h_push_p_2">适用人群：所有人群</p>
+                        <p class="h_push_p_3">申请人数：1135248人</p>
+                    </div>
+                    <div class="h_push_col_3">
+                        <div class="h_push_tr">
+                            <div class="h_push_td">
+                                <p class="">成功率</p>
+                                <p class="color_red">20.00%</p>
                             </div>
-                            <div class="h_push_col_2">
-                                <p class="h_push_p_1">现金侠-极速贷款</p>
-                                <p class="h_push_p_2">适用人群：所有人群</p>
-                                <p class="h_push_p_3">申请人数：1135248人</p>
-                            </div>
-                            <div class="h_push_col_3">
-                                <div class="h_push_tr">
-                                    <div class="h_push_td">
-                                        <p class="">成功率</p>
-                                        <p class="color_red">20.00%</p>
-                                    </div>
-                                    <div class="h_push_td">
-                                        <p class="">日利率</p>
-                                        <p class="color_red">0.3%</p>
-                                    </div>
-                                </div>
-                                <div class="h_push_tr">
-                                    <div class="h_push_td">
-                                        <p class="">平均额度</p>
-                                        <p class="color_red">0.10万</p>
-                                    </div>
-                                    <div class="h_push_td">
-                                        <p class="">平均用时</p>
-                                        <p class="color_red">1小时</p>
-                                    </div>
-                                </div>
+                            <div class="h_push_td">
+                                <p class="">日利率</p>
+                                <p class="color_red">0.3%</p>
                             </div>
                         </div>
-                        <div class="h_push_row_2">
-                            <p>最高额度：<span class="h_max_num">3万</span></p>
-                        </div>
-                        <div class="h_push_row_3">
-                            <span class="active">身份证</span><span>网购账号</span><span>支付宝账号</span><span>信用卡</span><span>手机认证</span>
+                        <div class="h_push_tr">
+                            <div class="h_push_td">
+                                <p class="">平均额度</p>
+                                <p class="color_red">0.10万</p>
+                            </div>
+                            <div class="h_push_td">
+                                <p class="">平均用时</p>
+                                <p class="color_red">1小时</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="h_push_item">
-                        <div class="h_push_row_1">
-                            <div class="h_push_col_1">
-                                <div class="h_push_img_header"><img src="../images/precision_loan_02.png"></div>
-                                <div class="h_push_img_logo"></div>
+                </div>
+                <div class="h_push_row_2">
+                    <p>最高额度：<span class="h_max_num">3万</span></p>
+                </div>
+                <div class="h_push_row_3">
+                    <span class="active">身份证</span><span>网购账号</span><span>支付宝账号</span><span>信用卡</span><span>手机认证</span>
+                </div>
+            </div>
+            <div class="h_push_item">
+                <div class="h_push_row_1">
+                    <div class="h_push_col_1">
+                        <div class="h_push_img_header"><img src="../images/precision_loan_02.png"></div>
+                        <div class="h_push_img_logo"></div>
+                    </div>
+                    <div class="h_push_col_2">
+                        <p class="h_push_p_1">xxxx-产品名字</p>
+                        <p class="h_push_p_2">适用人群：xxxx</p>
+                        <p class="h_push_p_3">申请人数：xxxxxx人</p>
+                    </div>
+                    <div class="h_push_col_3">
+                        <div class="h_push_tr">
+                            <div class="h_push_td">
+                                <p class="">成功率</p>
+                                <p class="color_red">xxx%</p>
                             </div>
-                            <div class="h_push_col_2">
-                                <p class="h_push_p_1">xxxx-产品名字</p>
-                                <p class="h_push_p_2">适用人群：xxxx</p>
-                                <p class="h_push_p_3">申请人数：xxxxxx人</p>
-                            </div>
-                            <div class="h_push_col_3">
-                                <div class="h_push_tr">
-                                    <div class="h_push_td">
-                                        <p class="">成功率</p>
-                                        <p class="color_red">xxx%</p>
-                                    </div>
-                                    <div class="h_push_td">
-                                        <p class="">日利率</p>
-                                        <p class="color_red">xx%</p>
-                                    </div>
-                                </div>
-                                <div class="h_push_tr">
-                                    <div class="h_push_td">
-                                        <p class="">平均额度</p>
-                                        <p class="color_red">xxxx万</p>
-                                    </div>
-                                    <div class="h_push_td">
-                                        <p class="">平均用时</p>
-                                        <p class="color_red">x小时</p>
-                                    </div>
-                                </div>
+                            <div class="h_push_td">
+                                <p class="">日利率</p>
+                                <p class="color_red">xx%</p>
                             </div>
                         </div>
-                        <div class="h_push_row_2">
-                            <p>最高额度：<span class="h_max_num">xxxx万</span></p>
-                        </div>
-                        <div class="h_push_row_3">
-                            <span class="active">身份证</span><span>网购账号</span><span>支付宝账号</span><span>信用卡</span><span>手机认证</span>
+                        <div class="h_push_tr">
+                            <div class="h_push_td">
+                                <p class="">平均额度</p>
+                                <p class="color_red">xxxx万</p>
+                            </div>
+                            <div class="h_push_td">
+                                <p class="">平均用时</p>
+                                <p class="color_red">x小时</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="h_push_item">
-                        <div class="h_push_row_1">
-                            <div class="h_push_col_1">
-                                <div class="h_push_img_header"><img src="../images/precision_loan_02.png"></div>
-                                <div class="h_push_img_logo"></div>
+                </div>
+                <div class="h_push_row_2">
+                    <p>最高额度：<span class="h_max_num">xxxx万</span></p>
+                </div>
+                <div class="h_push_row_3">
+                    <span class="active">身份证</span><span>网购账号</span><span>支付宝账号</span><span>信用卡</span><span>手机认证</span>
+                </div>
+            </div>
+            <div class="h_push_item">
+                <div class="h_push_row_1">
+                    <div class="h_push_col_1">
+                        <div class="h_push_img_header"><img src="../images/precision_loan_02.png"></div>
+                        <div class="h_push_img_logo"></div>
+                    </div>
+                    <div class="h_push_col_2">
+                        <p class="h_push_p_1">xxxx-产品名字</p>
+                        <p class="h_push_p_2">适用人群：xxxx</p>
+                        <p class="h_push_p_3">申请人数：xxxxxx人</p>
+                    </div>
+                    <div class="h_push_col_3">
+                        <div class="h_push_tr">
+                            <div class="h_push_td">
+                                <p class="">成功率</p>
+                                <p class="color_red">xxx%</p>
                             </div>
-                            <div class="h_push_col_2">
-                                <p class="h_push_p_1">xxxx-产品名字</p>
-                                <p class="h_push_p_2">适用人群：xxxx</p>
-                                <p class="h_push_p_3">申请人数：xxxxxx人</p>
-                            </div>
-                            <div class="h_push_col_3">
-                                <div class="h_push_tr">
-                                    <div class="h_push_td">
-                                        <p class="">成功率</p>
-                                        <p class="color_red">xxx%</p>
-                                    </div>
-                                    <div class="h_push_td">
-                                        <p class="">日利率</p>
-                                        <p class="color_red">xx%</p>
-                                    </div>
-                                </div>
-                                <div class="h_push_tr">
-                                    <div class="h_push_td">
-                                        <p class="">平均额度</p>
-                                        <p class="color_red">xxxx万</p>
-                                    </div>
-                                    <div class="h_push_td">
-                                        <p class="">平均用时</p>
-                                        <p class="color_red">x小时</p>
-                                    </div>
-                                </div>
+                            <div class="h_push_td">
+                                <p class="">日利率</p>
+                                <p class="color_red">xx%</p>
                             </div>
                         </div>
-                        <div class="h_push_row_2">
-                            <p>最高额度：<span class="h_max_num">xxxx万</span></p>
-                        </div>
-                        <div class="h_push_row_3">
-                            <span class="active">身份证</span><span>网购账号</span><span>支付宝账号</span><span>信用卡</span><span>手机认证</span>
+                        <div class="h_push_tr">
+                            <div class="h_push_td">
+                                <p class="">平均额度</p>
+                                <p class="color_red">xxxx万</p>
+                            </div>
+                            <div class="h_push_td">
+                                <p class="">平均用时</p>
+                                <p class="color_red">x小时</p>
+                            </div>
                         </div>
                     </div>
+                </div>
+                <div class="h_push_row_2">
+                    <p>最高额度：<span class="h_max_num">xxxx万</span></p>
+                </div>
+                <div class="h_push_row_3">
+                    <span class="active">身份证</span><span>网购账号</span><span>支付宝账号</span><span>信用卡</span><span>手机认证</span>
                 </div>
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
-    <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
+    <script type="text/javascript" src="plugin/zepto/touch.js"></script>
+    <script src="plugin/dropload/dropload.min.js"></script>
     <script>
-        
+        $(function(){
+            // 页数
+            var page = 0;
+            // 每页展示10个
+            var size = 10;
+
+            // dropload
+            $('.h_push').dropload({
+                scrollArea : window,
+                domUp : {
+                    domClass   : 'dropload-up',
+                    domRefresh : '<div class="dropload-refresh">↓下拉刷新</div>',
+                    domUpdate  : '<div class="dropload-update">↑释放更新</div>',
+                    domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中...</div>'
+                },
+                domDown : {
+                    domClass   : 'dropload-down',
+                    domRefresh : '<div class="dropload-refresh">↑上拉加载更多</div>',
+                    domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中...</div>',
+                    domNoData  : '<div class="dropload-noData">暂无数据</div>'
+                },
+                loadUpFn : function(me){
+                    /*$.ajax({
+                        type: 'GET',
+                        url: 'json/update.json',
+                        dataType: 'json',
+                        success: function(data){
+                            var result = '';
+                            for(var i = 0; i < data.lists.length; i++){
+                                result +=   '<a class="item opacity" href="'+data.lists[i].link+'">'
+                                                +'<img src="'+data.lists[i].pic+'" alt="">'
+                                                +'<h3>'+data.lists[i].title+'</h3>'
+                                                +'<span class="date">'+data.lists[i].date+'</span>'
+                                            +'</a>';
+                            }
+                            // 为了测试，延迟1秒加载
+                            setTimeout(function(){
+                                $('.lists').html(result);
+                                // 每次数据加载完，必须重置
+                                me.resetload();
+                                // 重置页数，重新获取loadDownFn的数据
+                                page = 0;
+                                // 解锁loadDownFn里锁定的情况
+                                me.unlock();
+                                me.noData(false);
+                            },1000);
+                        },
+                        error: function(xhr, type){
+                            alert('Ajax error!');
+                            // 即使加载出错，也得重置
+                            me.resetload();
+                        }
+                    });*/
+                    // 为了测试，延迟1秒加载
+                    setTimeout(function(){
+                        // 每次数据加载完，必须重置
+                        me.resetload();
+                        // 重置页数，重新获取loadDownFn的数据
+                        page = 0;
+                        // 解锁loadDownFn里锁定的情况
+                        me.unlock();
+                        me.noData(false);
+                    },1000);
+                },
+                loadDownFn : function(me){
+                    page++;
+                    // 拼接HTML
+                    var result = '';
+                    /*$.ajax({
+                        type: 'GET',
+                        url: 'http://ons.me/tools/dropload/json.php?page='+page+'&size='+size,
+                        dataType: 'json',
+                        success: function(data){
+                            var arrLen = data.length;
+                            if(arrLen > 0){
+                                for(var i=0; i<arrLen; i++){
+                                    result +=   '<a class="item opacity" href="'+data[i].link+'">'
+                                                    +'<img src="'+data[i].pic+'" alt="">'
+                                                    +'<h3>'+data[i].title+'</h3>'
+                                                    +'<span class="date">'+data[i].date+'</span>'
+                                                +'</a>';
+                                }
+                            // 如果没有数据
+                            }else{
+                                // 锁定
+                                me.lock();
+                                // 无数据
+                                me.noData();
+                            }
+                            // 为了测试，延迟1秒加载
+                            setTimeout(function(){
+                                // 插入数据到页面，放到最后面
+                                $('.lists').append(result);
+                                // 每次数据插入，必须重置
+                                me.resetload();
+                            },1000);
+                        },
+                        error: function(xhr, type){
+                            alert('Ajax error!');
+                            // 即使加载出错，也得重置
+                            me.resetload();
+                        }
+                    });*/
+                    setTimeout(function(){
+                        // 锁定
+                        me.lock();
+                        // 无数据
+                        me.noData();
+                        // 每次数据插入，必须重置
+                        me.resetload();
+                    },1000);
+                },
+                threshold : 50
+            });
+        });
     </script>
+</body>
 </html>

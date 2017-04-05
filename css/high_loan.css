@@ -1,5 +1,5 @@
 /*高额贷-首页*/
-.h_index{padding-bottom: 0.64rem;}
+.h_index{padding-bottom: 0.64rem;overflow-x:hidden;}
 .h_index .h_ad{width: 100%;height: 2.78rem;}
 .h_index .h_ad>img{width: 100%;height:100%;display: block;}
 .h_index .h_msg{width: 100%;height: 0.4rem;position: relative;overflow: hidden;z-index: 1;font-size: 0.2rem;margin-top: 0.04rem;}
