@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>精准推送</title>
+    <title>抢单/甩单</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
@@ -22,16 +22,22 @@
         }
        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
     </script>
+    <style>
+        .h_require .h_tips{font-size: 0.18rem;background-color: #cccacb;}
+        .seprate_area{height: 0.5rem;background-color: #cccacb;}
+        .remark{font-size: 0.16rem;color: #808080;padding: 0.1rem 0.08rem;}
+    </style>
 </head>
 <body onload="loaded()">
     <div class="page_header">
-        <p>精准推送</p>
+        <p>甩单申请</p>
         <div class="right_add"><i class="position"></i><span>深圳</span></div>
     </div>
     <div id="cont_wrapper">
         <div>
             <div class="h_require">
-                <div class="h_ad"><img src="../images/precision_loan_01.png"></div>
+                <!-- <div class="h_ad"><img src="../images/precision_loan_01.png"></div> -->
+                <div class="h_tips"><p>加入会员，尊享更多优惠，实现平台利润共享，点击加入“会员专区</p></div>
                 <div class="h_r_form">
                     <div class="h_r_row"><span class="h_r_row_txt">姓名</span><input class="h_r_row_input" type="text" name="" placeholder="请填写您的姓名"></div>
                     <div class="h_r_row"><span class="h_r_row_txt">手机号</span><input class="h_r_row_input" type="number" name="" placeholder="请填写您的手机号"></div>
@@ -45,11 +51,10 @@
                         <div class="h_r_col"><span class="h_r_col_txt">贷款年限(年)</span><input class="h_r_col_input_2" type="number" name="" placeholder="请填写贷款年限"></div>
                     </div>
                     <div class="h_r_row">
-                        <span class="h_r_row_txt">工作信息</span>
-                        <select class="h_r_row_select">
-                            <option value="">请选择</option>
-                            <option value="">工薪族</option>
-                        </select>
+                        <span class="h_r_row_txt">有无固定资产</span>
+                        <div class="h_r_row_radio">
+                            <span>有<i></i></span><span>无<i></i></span>
+                        </div>
                     </div>
                     <div class="h_r_row">
                         <span class="h_r_row_txt">有无信用卡</span>
@@ -70,6 +75,14 @@
                         </div>
                     </div>
                     <div class="h_r_row">
+                        <span class="h_r_row_txt">工作信息</span>
+                        <select class="h_r_row_select">
+                            <option value="">请选择</option>
+                            <option value="">工薪族</option>
+                        </select>
+                    </div>
+                    <div class="seprate_area"></div>
+                    <div class="h_r_row">
                         <span class="h_r_row_txt">连续半年缴纳公积金</span>
                         <div class="h_r_row_radio">
                             <span>有<i></i></span><span>无<i></i></span>
@@ -84,11 +97,15 @@
                     <div class="h_r_row">
                         <span class="h_r_row_txt">月收入(元)</span><input class="h_r_row_input" type="number" name="" placeholder="请输入">
                     </div>
+                    <div class="h_r_row">
+                        <span class="h_r_row_txt">其他说明</span><input class="h_r_row_input" type="text" name="" placeholder="请输入">
+                    </div>
                 </div>
             </div>
-            <a href="precision_push_list.html" class="apply_btn">立即申请</a>
-            <div class="h_rules">
-                <span class="h_rules_check"><i></i>同意</span><a href="javascript:;"><<小鱼儿帮帮贷贷款申请协议>></a>
+            <a href="grab_drop_order_apply_suc.html" class="apply_btn">提交申请</a>
+            <div class="remark">
+                <p>免责声明：请务必填写客户真实信息，且取得客户授权，平台严厉打击客户信
+息倒卖，一经查实将追究责任</p>
             </div>
         </div>
     </div>

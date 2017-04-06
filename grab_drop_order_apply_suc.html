@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>高额贷</title>
+    <title>抢单/甩单</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
@@ -22,6 +22,13 @@
         }
        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
     </script>
+    <style>
+        .h_suc_p1{font-size: 0.27rem;color: #000;}
+        .h_suc_p1>a{color: #ffaf66;font-weight: bold;}
+        .h_suc_p2{font-size: 0.25rem;color: #000;margin: 0.32rem auto;}
+        .h_suc_p3{font-size: 0.25rem;color: #000;}
+        .h_suc_p3>a{color: #ffaf66;font-weight: bold;}
+    </style>
 </head>
 <body onload="loaded()">
     <div class="page_header">
@@ -33,11 +40,13 @@
             <div class="h_suc">
                 <div class="h_suc_img1"><img src="../images/high_loan_13.png"></div>
                 <div class="h_suc_txt">
-                    <p>正在为您批核最优产品，稍后会有专人与您联系，请留意接听电话，感谢您的支持！</p>
+                    <p class="h_suc_p1">甩单申请正在审核过程中，预计1个工作日后在<a href="javascript:;">“我的-抢单/甩单”</a>查看甩单申请结果</p>
+                    <p class="h_suc_p2">加入会员，尊享优惠、实现平台利润共享</p>
+                    <p class="h_suc_p3">点击进入<a href="javascript:;">”会员专享”</a></p>
                 </div>
                 <div class="h_suc_img2"><img src="../images/high_loan_14.png"></div>
             </div>
-            <a href="high_loan_index.html" class="apply_btn">确定</a>
+            <a href="grab_drop_order.html" class="apply_btn">确定</a>
         </div>
     </div>
     <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
