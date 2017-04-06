@@ -13,13 +13,14 @@
     <style>
         body{background-color: #e9e9e9;}
         .gd_order{color: #000;font-size: 0.18rem;}
+        .gd_order .gd_top_cont{position: absolute;top: 0;left: 0;width: 100%;z-index: 2;}
         .gd_order .or_type_wrap{background-color: #fff;}
         .gd_order .or_type{width: 2.86rem;margin: 0 auto;overflow: auto;}
         .gd_order .or_type>a{width: 50%;float: left;display: block;height: 100%;font-size: 0.31rem;color: #000;border:1px solid #ff9000;text-align: center;height: 0.62rem;line-height: 0.62rem;margin-left:-1px;}
         .gd_order .or_type>a:first-child{margin-left:0;}
         .gd_order .or_type>a.active{background: url(../images/grab_order_09.png) no-repeat center center;background-size:100% 100%;color: #fff;}
         .gd_order .or_filter{width: 100%;overflow: auto;margin-top:-1px;}
-        .gd_order .or_filter>li{display: block;width: 33.33%;float: left;background-color:#ff9000;text-align: center;color: #fff;height: 0.62rem;line-height: 0.62rem;font-size: 0.32rem;position: relative;}
+        .gd_order .or_filter>li{display: block;width: 50%;float: left;background-color:#ff9000;text-align: center;color: #fff;height: 0.62rem;line-height: 0.62rem;font-size: 0.32rem;position: relative;}
         .gd_order .or_filter>li:after{content: '';display: block;border-width: 0.09rem;border-style:solid;border-color:transparent #bc9b70 #bc9b70 transparent;position: absolute;right: 0.04rem;bottom:0.04rem;}
         .gd_order .gd_tips{font-size: 0.18rem;color: #fff;background-color:#ffce4b;padding:0.04rem 0.2rem; }
         .gd_order .gd_tips>img{width: 0.2rem;height: 0.2rem;margin-right: 0.08rem;vertical-align: middle;display: inline-block;}
@@ -42,21 +43,78 @@
         .gd_order .gd_order_item .gd_grab_btn{background: url(../images/grab_order_03.png) no-repeat center center;background-size:100% 100%;color: #fff;width:1.56rem;height: 0.65rem;text-align: center;line-height: 0.65rem;font-size:0.24rem;float: right;}
 
         .gd_order_cont{position: absolute;top: 1.58rem;bottom:0;width: 100%;left: 0;overflow-y: scroll;}
+
+        /*选择省市*/
+        .filter_cont{position:absolute;top: -65%;width: 100%;height: 50%;z-index: 1;-webkit-transition-duration: 0.4s;border-bottom: solid 1px #e5e5e5;overflow-x:hidden; }
+        .filter_cont>ul{margin: 0;padding: 0;overflow: auto;height: 100%;width: 100%;-webkit-transition-duration: 0.4s;}
+        .filter_cont>ul>li{font-size: 0.24rem;padding:0.1rem 0 0.1rem 0.4rem;border-bottom: solid 1px #eee;}
+        .filter_cont>ul>li:last-child{border-bottom:none;}
+        .filter_cont>ul.filter_l1{background: #fafafa;position: absolute;z-index: 1;}
+        .filter_cont>ul.filter_l2{background: #eee;position: absolute;z-index: 2;left: 100%;}
+        .filter_cont>ul.filter_l2>li{border-bottom: solid 1px #e5e5e5;}
+        .filter_cont>ul.filter_l2>li:last-child{border-bottom:none;}
+        .filter_cont_show{top: 1.58rem;}
+        .order_type_wrap.filter_cont{height:1.8rem;}
     </style>
 </head>
 <body>
     <div class="gd_order">
-        <div class="or_type_wrap">
-            <div class="or_type">
-                <a href="javascript:;" class="active">抢单</a><a href="javascript:;">甩单</a>
+        <div class="gd_top_cont">
+            <div class="or_type_wrap">
+                <div class="or_type">
+                    <a href="javascript:;" class="active">抢单</a><a href="javascript:;">甩单</a>
+                </div>
             </div>
+            <ul class="or_filter">
+                <li class="or_city"><span>城市</span></li>
+                <li class="or_order_type"><span>订单分类</span></li>
+                <!-- <li><span>筛选</span></li> -->
+            </ul>
+            <div class="gd_tips"><img src="../images/grab_order_01.png" alt=""><span>VIP会员，每天都有一次免费抢单哦！</span></div>
         </div>
-        <ul class="or_filter">
-            <li><span>城市</span></li>
-            <li><span>订单分类</span></li>
-            <li><span>筛选</span></li>
-        </ul>
-        <div class="gd_tips"><img src="../images/grab_order_01.png" alt=""><span>VIP会员，每天都有一次免费抢单哦！</span></div>
+        <div class="city_wrap filter_cont">
+            <ul class="filter_l1" id="gradew">
+                <li>哈尔滨</li>
+                <li>全国</li>
+                <li>北京</li>
+                <li>天津</li>
+                <li>河北</li>
+                <li>山西</li>
+                <li>内蒙古</li>
+                <li>辽宁</li>
+                <li>吉林</li>
+                <li>黑龙江</li>
+                <li>上海</li>
+                <li>江苏</li>
+                <li>山东</li>
+                <li>河南</li>
+                <li>湖北</li>
+                <li>湖南</li>
+                <li>广东</li>
+                <li>广西</li>
+                <li>海南</li>
+            </ul>
+            <ul class="filter_l2" id="gradet">
+                <li>全河北</li>
+                <li>石家庄</li>
+                <li>唐山</li>
+                <li>秦皇岛</li>
+                <li>邢台</li>
+                <li>保定</li>
+                <li>张家口</li>
+                <li>承德</li>
+                <li>沧州</li>
+                <li>廊坊</li>
+                <li>衡水</li>
+            </ul>
+        </div>
+        <div class="order_type_wrap filter_cont">
+            <ul class="filter_l1">
+                <li>全部订单</li>
+                <li>可抢订单</li>
+                <li>免费订单</li>
+            </ul>
+        </div>
         <div class="gd_order_cont">
             <div class="gd_order_list">
                 <div class="gd_order_item">
@@ -186,133 +244,162 @@
             $(this).siblings().removeClass('active');
             $(this).addClass('active');
         });
+        /*选择省市*/
+        $(".or_city").on('click',function(){
+            $('.order_type_wrap').removeClass('filter_cont_show');
+            if ($('.city_wrap').hasClass('filter_cont_show')) {
+                $('.city_wrap').removeClass('filter_cont_show');
+            } else {
+                $('.city_wrap').addClass('filter_cont_show');
+            }
+        });
+        $(".city_wrap .filter_l1>li").click(function(){
+            $(".city_wrap .filter_l2").css("left","50%");
+        });
+        $(".city_wrap .filter_l2>li").click(function(){
+            $('.or_city>span').text($(this).text());
+            $('.city_wrap').removeClass('filter_cont_show');
+        });
+        /*选择订单类型*/
+        $(".or_order_type").on('click',function(){
+            $('.city_wrap').removeClass('filter_cont_show');
+            if ($('.order_type_wrap').hasClass('filter_cont_show')) {
+                $('.order_type_wrap').removeClass('filter_cont_show');
+            } else {
+                $('.order_type_wrap').addClass('filter_cont_show');
+            }
+        });
+        $(".order_type_wrap .filter_l1>li").click(function(){
+            $('.or_order_type>span').text($(this).text());
+            $('.order_type_wrap').removeClass('filter_cont_show');
+        });
         $(function(){
 
-    var itemIndex = 0;
-    var tab1LoadEnd = false;
-    var tab2LoadEnd = false;
-    // tab
-    $('.or_type>a').on('click',function(){
-        var $this = $(this);
-        itemIndex = $this.index();
-        $this.addClass('active').siblings('.item').removeClass('active');
-        $('.gd_order_list').eq(itemIndex).show().siblings('.gd_order_list').hide();
+            var itemIndex = 0;
+            var tab1LoadEnd = false;
+            var tab2LoadEnd = false;
+            // tab
+            $('.or_type>a').on('click',function(){
+                var $this = $(this);
+                itemIndex = $this.index();
+                $this.addClass('active').siblings('.item').removeClass('active');
+                $('.gd_order_list').eq(itemIndex).show().siblings('.gd_order_list').hide();
 
-        // 如果选中菜单一
-        if(itemIndex == '0'){
-            // 如果数据没有加载完
-            if(!tab1LoadEnd){
-                // 解锁
-                dropload.unlock();
-                dropload.noData(false);
-            }else{
-                // 锁定
-                dropload.lock('down');
-                dropload.noData();
-            }
-        // 如果选中菜单二
-        }else if(itemIndex == '1'){
-            if(!tab2LoadEnd){
-                // 解锁
-                dropload.unlock();
-                dropload.noData(false);
-            }else{
-                // 锁定
-                dropload.lock('down');
-                dropload.noData();
-            }
-        }
-        // 重置
-        dropload.resetload();
-    });
+                // 如果选中菜单一
+                if(itemIndex == '0'){
+                    // 如果数据没有加载完
+                    if(!tab1LoadEnd){
+                        // 解锁
+                        dropload.unlock();
+                        dropload.noData(false);
+                    }else{
+                        // 锁定
+                        dropload.lock('down');
+                        dropload.noData();
+                    }
+                // 如果选中菜单二
+                }else if(itemIndex == '1'){
+                    if(!tab2LoadEnd){
+                        // 解锁
+                        dropload.unlock();
+                        dropload.noData(false);
+                    }else{
+                        // 锁定
+                        dropload.lock('down');
+                        dropload.noData();
+                    }
+                }
+                // 重置
+                dropload.resetload();
+            });
 
-    var counter = 0;
-    // 每页展示4个
-    var num = 4;
-    var pageStart = 0,pageEnd = 0;
+            var counter = 0;
+            // 每页展示4个
+            var num = 4;
+            var pageStart = 0,pageEnd = 0;
 
-    // dropload
-    var dropload = $('.gd_order_cont').dropload({
-        scrollArea : window,
-        domUp : {
-            domClass   : 'dropload-up',
-            domRefresh : '<div class="dropload-refresh">↓下拉刷新</div>',
-            domUpdate  : '<div class="dropload-update">↑释放更新</div>',
-            domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中...</div>'
-        },
-        domDown : {
-            domClass   : 'dropload-down',
-            domRefresh : '<div class="dropload-refresh">↑上拉加载更多</div>',
-            domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中...</div>',
-            domNoData  : '<div class="dropload-noData">暂无数据</div>'
-        },
-        loadUpFn : function(me){
-            // 加载菜单一的数据
-            if(itemIndex == '0'){
-                console.log('加载菜单一的数据');
-                
-                setTimeout(function(){
-                    // 数据加载完
-                    tab1LoadEnd = true;
-                    // 每次数据加载完，必须重置
-                    me.resetload();
-                    // 重置页数，重新获取loadDownFn的数据
-                    page = 0;
-                    // 解锁loadDownFn里锁定的情况
-                    me.unlock();
-                    me.noData(false);
-                },1000);
-            // 加载菜单二的数据
-            }else if(itemIndex == '1'){
-                console.log('加载菜单二的数据');
-                
-                setTimeout(function(){
-                    // 数据加载完
-                    tab2LoadEnd = true;
-                    // 每次数据加载完，必须重置
-                    me.resetload();
-                    // 重置页数，重新获取loadDownFn的数据
-                    page = 0;
-                    // 解锁loadDownFn里锁定的情况
-                    me.unlock();
-                    me.noData(false);
-                },1000);
-            }
-        },
-        loadDownFn : function(me){
-            // 加载菜单一的数据
-            if(itemIndex == '0'){
-                console.log('加载菜单一的数据');
-                
-                setTimeout(function(){
-                    // 数据加载完
-                    tab1LoadEnd = true;
-                    // 锁定
-                    me.lock();
-                    // 无数据
-                    me.noData();
-                                    
-                    // 每次数据加载完，必须重置
-                    me.resetload();
-                },2000);
-            // 加载菜单二的数据
-            }else if(itemIndex == '1'){
-                console.log('加载菜单二的数据');
-                
-                setTimeout(function(){
-                    // 数据加载完
-                    tab2LoadEnd = true;
-                    // 锁定
-                    me.lock();
-                    // 无数据
-                    me.noData();       
-                    // 每次数据加载完，必须重置
-                    me.resetload();
-                },2000);
-            }
-        }
-    });
-});
+            // dropload
+            var dropload = $('.gd_order_cont').dropload({
+                scrollArea : window,
+                domUp : {
+                    domClass   : 'dropload-up',
+                    domRefresh : '<div class="dropload-refresh">↓下拉刷新</div>',
+                    domUpdate  : '<div class="dropload-update">↑释放更新</div>',
+                    domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中...</div>'
+                },
+                domDown : {
+                    domClass   : 'dropload-down',
+                    domRefresh : '<div class="dropload-refresh">↑上拉加载更多</div>',
+                    domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中...</div>',
+                    domNoData  : '<div class="dropload-noData">暂无数据</div>'
+                },
+                loadUpFn : function(me){
+                    // 加载菜单一的数据
+                    if(itemIndex == '0'){
+                        console.log('加载菜单一的数据');
+                        
+                        setTimeout(function(){
+                            // 数据加载完
+                            tab1LoadEnd = true;
+                            // 每次数据加载完，必须重置
+                            me.resetload();
+                            // 重置页数，重新获取loadDownFn的数据
+                            page = 0;
+                            // 解锁loadDownFn里锁定的情况
+                            me.unlock();
+                            me.noData(false);
+                        },1000);
+                    // 加载菜单二的数据
+                    }else if(itemIndex == '1'){
+                        console.log('加载菜单二的数据');
+                        
+                        setTimeout(function(){
+                            // 数据加载完
+                            tab2LoadEnd = true;
+                            // 每次数据加载完，必须重置
+                            me.resetload();
+                            // 重置页数，重新获取loadDownFn的数据
+                            page = 0;
+                            // 解锁loadDownFn里锁定的情况
+                            me.unlock();
+                            me.noData(false);
+                        },1000);
+                    }
+                },
+                loadDownFn : function(me){
+                    // 加载菜单一的数据
+                    if(itemIndex == '0'){
+                        console.log('加载菜单一的数据');
+                        
+                        setTimeout(function(){
+                            // 数据加载完
+                            tab1LoadEnd = true;
+                            // 锁定
+                            me.lock();
+                            // 无数据
+                            me.noData();
+                                            
+                            // 每次数据加载完，必须重置
+                            me.resetload();
+                        },2000);
+                    // 加载菜单二的数据
+                    }else if(itemIndex == '1'){
+                        console.log('加载菜单二的数据');
+                        
+                        setTimeout(function(){
+                            // 数据加载完
+                            tab2LoadEnd = true;
+                            // 锁定
+                            me.lock();
+                            // 无数据
+                            me.noData();       
+                            // 每次数据加载完，必须重置
+                            me.resetload();
+                        },2000);
+                    }
+                }
+            });
+        });
     </script>
 </body>
 </html>
