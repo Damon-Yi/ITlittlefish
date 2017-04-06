@@ -12,49 +12,6 @@
     <script src="js/public.js"></script>
     <style>
         body{background-color: #e9e9e9;}
-        .gd_order{color: #000;font-size: 0.18rem;}
-        .gd_order .gd_top_cont{position: absolute;top: 0;left: 0;width: 100%;z-index: 2;}
-        .gd_order .or_type_wrap{background-color: #fff;}
-        .gd_order .or_type{width: 2.86rem;margin: 0 auto;overflow: auto;}
-        .gd_order .or_type>a{width: 50%;float: left;display: block;height: 100%;font-size: 0.31rem;color: #000;border:1px solid #ff9000;text-align: center;height: 0.62rem;line-height: 0.62rem;margin-left:-1px;}
-        .gd_order .or_type>a:first-child{margin-left:0;}
-        .gd_order .or_type>a.active{background: url(../images/grab_order_09.png) no-repeat center center;background-size:100% 100%;color: #fff;}
-        .gd_order .or_filter{width: 100%;overflow: auto;margin-top:-1px;}
-        .gd_order .or_filter>li{display: block;width: 50%;float: left;background-color:#ff9000;text-align: center;color: #fff;height: 0.62rem;line-height: 0.62rem;font-size: 0.32rem;position: relative;}
-        .gd_order .or_filter>li:after{content: '';display: block;border-width: 0.09rem;border-style:solid;border-color:transparent #bc9b70 #bc9b70 transparent;position: absolute;right: 0.04rem;bottom:0.04rem;}
-        .gd_order .gd_tips{font-size: 0.18rem;color: #fff;background-color:#ffce4b;padding:0.04rem 0.2rem; }
-        .gd_order .gd_tips>img{width: 0.2rem;height: 0.2rem;margin-right: 0.08rem;vertical-align: middle;display: inline-block;}
-        .gd_tips>span{line-height: 1;vertical-align: middle;display: inline-block;}
-        .gd_order .gd_order_list{font-size: 0.22rem;}
-        .gd_order .gd_order_item{background-color: #fff;margin-bottom:0.2rem;padding: 0.22rem 0 0.02rem;}
-        .gd_order .gd_order_item .gd_o_row{overflow: auto;margin-bottom:0.1rem; }
-        .gd_order .gd_order_item .gd_o_col{display: inline-block;vertical-align: middle;}
-        .gd_order .gd_order_item .gd_o_col1{width: 81%;padding-left:0.3rem; padding-right:0.2rem;}
-        .gd_order .gd_order_item .gd_o_col1 .gd_o_info1{padding-bottom: 0.14rem;border-bottom:1px solid #ddd;}
-        .gd_order .gd_order_item .gd_o_col1 .gd_o_info1>span{margin-right:0.2rem; }
-        .gd_order .gd_order_item .gd_o_col1 .gd_o_info2{font-size: 0.18rem;padding-top: 0.16rem;}
-        .gd_order .gd_order_item .gd_o_col1 .gd_o_info2>span{margin-right:0.1rem;}
-        .gd_order .gd_order_item .gd_o_col1 .gd_o_name{font-size: 0.36rem;}
-        .gd_order .gd_order_item .gd_o_col1 .gd_o_edu{color: #ff7800;font-size: 0.21rem;}
-        .gd_order .gd_order_item .gd_o_col1 .gd_o_edu>i{font-size: 0.36rem;font-style: normal;}
-        .gd_order .gd_order_item .gd_o_col1 .gd_o_flag{width: 0.26rem;height: 0.27rem;}
-        .gd_order .gd_order_item .gd_o_col2{color: #ff9000;font-size: 0.21rem;text-align: center;}
-        .gd_order .gd_order_item .gd_o_col2 .gd_o_fish{width: 0.9rem;height: 0.7rem;}
-        .gd_order .gd_order_item .gd_grab_btn{background: url(../images/grab_order_03.png) no-repeat center center;background-size:100% 100%;color: #fff;width:1.56rem;height: 0.65rem;text-align: center;line-height: 0.65rem;font-size:0.24rem;float: right;}
-
-        .gd_order_cont{position: absolute;top: 1.58rem;bottom:0;width: 100%;left: 0;overflow-y: scroll;}
-
-        /*选择省市*/
-        .filter_cont{position:absolute;top: -65%;width: 100%;height: 50%;z-index: 1;-webkit-transition-duration: 0.4s;border-bottom: solid 1px #e5e5e5;overflow-x:hidden; }
-        .filter_cont>ul{margin: 0;padding: 0;overflow: auto;height: 100%;width: 100%;-webkit-transition-duration: 0.4s;}
-        .filter_cont>ul>li{font-size: 0.24rem;padding:0.1rem 0 0.1rem 0.4rem;border-bottom: solid 1px #eee;}
-        .filter_cont>ul>li:last-child{border-bottom:none;}
-        .filter_cont>ul.filter_l1{background: #fafafa;position: absolute;z-index: 1;}
-        .filter_cont>ul.filter_l2{background: #eee;position: absolute;z-index: 2;left: 100%;}
-        .filter_cont>ul.filter_l2>li{border-bottom: solid 1px #e5e5e5;}
-        .filter_cont>ul.filter_l2>li:last-child{border-bottom:none;}
-        .filter_cont_show{top: 1.58rem;}
-        .order_type_wrap.filter_cont{height:1.8rem;}
     </style>
 </head>
 <body>
@@ -133,7 +90,7 @@
                         </div>
                     </div>
                     <div class="gd_o_row">
-                        <div class="gd_grab_btn">立即抢单</div>
+                        <a class="gd_grab_btn" href="grab_drop_order_details.html">立即抢单</a>
                     </div>
                 </div>
                 <div class="gd_order_item">
@@ -152,7 +109,7 @@
                         </div>
                     </div>
                     <div class="gd_o_row">
-                        <div class="gd_grab_btn">立即抢单</div>
+                        <a class="gd_grab_btn" href="grab_drop_order_details.html">立即抢单</a>
                     </div>
                 </div>
                 <div class="gd_order_item">
@@ -171,7 +128,7 @@
                         </div>
                     </div>
                     <div class="gd_o_row">
-                        <div class="gd_grab_btn">立即抢单</div>
+                        <a class="gd_grab_btn" href="grab_drop_order_details.html">立即抢单</a>
                     </div>
                 </div>
                 <div class="gd_order_item">
@@ -190,7 +147,7 @@
                         </div>
                     </div>
                     <div class="gd_o_row">
-                        <div class="gd_grab_btn">立即抢单</div>
+                        <a class="gd_grab_btn" href="grab_drop_order_details.html">立即抢单</a>
                     </div>
                 </div>
             </div>
@@ -211,7 +168,7 @@
                         </div>
                     </div>
                     <div class="gd_o_row">
-                        <div class="gd_grab_btn">立即抢单</div>
+                        <a class="gd_grab_btn" href="grab_drop_order_details.html">立即抢单</a>
                     </div>
                 </div>
                 <div class="gd_order_item">
@@ -230,7 +187,7 @@
                         </div>
                     </div>
                     <div class="gd_o_row">
-                        <div class="gd_grab_btn">立即抢单</div>
+                        <a class="gd_grab_btn" href="grab_drop_order_details.html">立即抢单</a>
                     </div>
                 </div>
             </div>

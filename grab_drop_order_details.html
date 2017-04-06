@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>订单详情</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/high_loan.css" rel="stylesheet" type="text/css">
+    <link href="plugin/swiper/swiper.3.1.7.min.css" rel="stylesheet" type="text/css">
+    <script src="js/public.js"></script>
+    <script type="text/javascript">
+        var aScroll;
+        function loaded () {
+            aScroll = new IScroll('#cont_wrapper',{
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true,click: true 
+            });
+        }
+       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+    <style>
+        body{background-color: #cccacb;}
+    </style>
+</head>
+<body onload="loaded()">
+    <div class="page_header">
+        <p>订单详情</p>
+        <div class="right_add"><span>抢单规则</span></div>
+    </div>
+    <div id="cont_wrapper">
+        <div>
+            <div class="or_details">
+                <div class="or_header">
+                    <div class="or_col1">
+                        <p class="or_p1"><span class="u_name">李先生/女士</span><span class="u_pbone">13575612233</span></p>
+                        <p class="or_p2"><span class="u_time">5分钟之前更新</span><span>2017-03-09申请</span></p>
+                    </div>
+                    <div class="or_col2">
+                        <img class="u_fish" src="../images/grab_order_002.png" alt="">
+                        <p class="or_p3"><span  class="u_num">79</span>鱼币</p>
+                    </div>
+                </div>
+                <div class="or_bord">
+                    <div class="or_col">
+                        <p class="or_num">1</p>
+                        <p>申请贷款金额（万）</p>
+                    </div>
+                    <div class="or_col">
+                        <p class="or_num">12</p>
+                        <p>贷款期限（个月）</p>
+                    </div>
+                </div>
+                <div class="or_u_info">
+                    <p class="or_u_title">身份信息</p>
+                    <p class="or_u_txt"><span>年龄</span><span>24岁</span></p>
+                    <p class="or_u_txt"><span>所在城市</span><span>深圳</span></p>
+                    <p class="or_u_txt"><span>置业身份</span><span>工薪族</span></p>
+                    <p class="or_u_txt"><span>月收入(元)</span><span>4500</span></p>
+                    <p class="or_u_title">资产信息</p>
+                    <p class="or_u_txt"><span>名下房产</span><span>无房产</span></p>
+                    <p class="or_u_txt"><span>名下车产</span><span>无车产</span></p>
+                    <p class="or_u_txt"><span>有无连续六个月以上缴纳公积金</span><span>有</span></p>
+                    <p class="or_u_txt"><span>有无连续六个月以上缴纳社保</span><span>有</span></p>
+                    <p class="or_u_txt"><span>是否有信用卡</span><span>有</span></p>
+                </div>
+                <div class="or_oper">
+                    <a href="high_loan_requirement.html" class="apply_btn">抢单</a>
+                    <a href="javascript:;" class="rule_btn">请遵守抢单规则</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
+    <script>
+        
+    </script>
+</html>
