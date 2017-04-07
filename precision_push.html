@@ -24,7 +24,7 @@
             <div class="h_r_form">
                 <div class="h_r_row"><span class="h_r_row_txt">姓名</span><input class="h_r_row_input" type="text" name="" placeholder="请填写您的姓名"></div>
                 <div class="h_r_row"><span class="h_r_row_txt">手机号</span><input class="h_r_row_input" type="number" name="" placeholder="请填写您的手机号"></div>
-                <div class="h_r_row"><span class="h_r_row_txt">申请的城市</span><input class="h_r_row_input" type="text" name="" placeholder="请填写您的城市" id="showCityPicker3"></div>
+                <div class="h_r_row"><span class="h_r_row_txt">申请的城市</span><div id="showCityPicker3" class="city_select">请选择城市</div></div>
                 <div class="h_r_row">
                     <div class="h_r_col"><span class="h_r_col_txt">年龄</span><input class="h_r_col_input_1" type="number" name="" placeholder="请填写您的姓年龄"></div>
                     <div class="h_r_col"><span class="h_r_col_txt">性别</span><input class="h_r_col_input_1" type="text" name="" placeholder="请填写您的性别"></div>
@@ -111,16 +111,35 @@
                         //return false;
                     });
                 }, false);
-                /*//有无选择
-                $('.h_r_row_radio>span').on('tap',function(){
+                //有无选择
+                var radioSelects = $('.h_r_row_radio>span');
+                radioSelects.each(function(i, obj) {
+                     obj.addEventListener('tap', function() {
+                        var spans = this.parentNode.children;
+                        for(var i =0;i<spans.length;i++) {
+                            if(hasClass(spans[i], 'active')){
+                                removeClass(spans[i], 'active');
+                            }
+                        }
+                        addClass(this, 'active');
+                     });
+                });
+                //是否同意协议
+                var ruleCheck = $('.h_rules .h_rules_check');
+                ruleCheck.each(function(i, obj) {
+                     obj.addEventListener('tap', function() {
+                        toggleClass(this, 'active')
+                     });
+                });
+                /*$('.h_r_row_radio>span').on('tap',function(){
                     $(this).siblings().removeClass('active');
                     $(this).addClass('active');
                 });
                 //是否同意协议
                 $('.h_rules .h_rules_check').on('tap',function(){
                     $(this).toggleClass('active');
-                });
-                */
+                });*/
+                
             });
         })(mui, document);
     </script>

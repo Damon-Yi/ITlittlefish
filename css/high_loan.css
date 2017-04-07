@@ -60,7 +60,7 @@
 /*已提交*/
 .h_suc{}
 .h_suc .h_suc_img1{width: 100%;height:2rem;margin:0.6rem auto;}
-.h_suc .h_suc_img1>img{width: 100%;height:100%;}
+.h_suc .h_suc_img1>img{max-width: 100%;max-height: 100%;display: block;margin: 0 auto;}
 .h_suc .h_suc_img2{width: 90%;height:2rem;margin:0.6rem auto;}
-.h_suc .h_suc_img2>img{width: 100%;height:100%;}
+.h_suc .h_suc_img2>img{max-width: 100%;max-height: 100%;display: block;margin: 0 auto;}
 .h_suc .h_suc_txt{width:94%;margin:auto;font-size: 0.27rem;color: #ffaf66;text-align: center;letter-spacing: 2px;}
