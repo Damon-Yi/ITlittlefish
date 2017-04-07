@@ -9,26 +9,13 @@
     <link href="css/public.css" rel="stylesheet" type="text/css">
     <link href="css/precision_push.css" rel="stylesheet" type="text/css">
     <script src="js/public.js"></script>
-    <script type="text/javascript">
-        var aScroll;
-        function loaded () {
-            aScroll = new IScroll('#cont_wrapper',{
-                scrollbars: true,
-                mouseWheel: true,
-                interactiveScrollbars: true,
-                shrinkScrollbars: 'scale',
-                fadeScrollbars: true,click: true 
-            });
-        }
-       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-    </script>
     <style>
         .h_require .h_tips{font-size: 0.18rem;background-color: #cccacb;}
         .seprate_area{height: 0.5rem;background-color: #cccacb;}
         .remark{font-size: 0.16rem;color: #808080;padding: 0.1rem 0.08rem;}
     </style>
 </head>
-<body onload="loaded()">
+<body>
     <div class="page_header">
         <p>甩单申请</p>
         <div class="right_add"><i class="position"></i><span>深圳</span></div>
@@ -41,7 +28,7 @@
                 <div class="h_r_form">
                     <div class="h_r_row"><span class="h_r_row_txt">姓名</span><input class="h_r_row_input" type="text" name="" placeholder="请填写您的姓名"></div>
                     <div class="h_r_row"><span class="h_r_row_txt">手机号</span><input class="h_r_row_input" type="number" name="" placeholder="请填写您的手机号"></div>
-                    <div class="h_r_row"><span class="h_r_row_txt">申请的城市</span><input class="h_r_row_input" type="text" name="" placeholder="请填写您的城市"></div>
+                    <div class="h_r_row"><span class="h_r_row_txt">申请的城市</span><div id="showCityPicker3" class="city_select">请选择城市</div></div>
                     <div class="h_r_row">
                         <div class="h_r_col"><span class="h_r_col_txt">年龄</span><input class="h_r_col_input_1" type="number" name="" placeholder="请填写您的姓年龄"></div>
                         <div class="h_r_col"><span class="h_r_col_txt">性别</span><input class="h_r_col_input_1" type="text" name="" placeholder="请填写您的性别"></div>
@@ -114,24 +101,56 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
+    <!-- <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
-    <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
+    <script type="text/javascript" src="plugin/zepto/touch.js"></script></body> -->
+    <link href="plugin/mui//css/mui.picker.min.css" rel="stylesheet" />
+    <link href="plugin/mui//css/mui.poppicker.css" rel="stylesheet" />
+    <script src="plugin/mui//js/mui.min.js"></script>
+    <script src="plugin/mui/js/mui.picker.min.js"></script>
+    <script src="plugin/mui/js/mui.poppicker.js"></script>
+    <script src="plugin/mui/js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
     <script>
-        /*有无选择*/
-        $('.h_r_row_radio>span').on('tap',function(){
-            $(this).siblings().removeClass('active');
-            $(this).addClass('active');
-        });
-        /*是否同意协议*/
-        $('.h_rules .h_rules_check').on('tap',function(){
-            $(this).toggleClass('active');
-        });
-        /*获取验证码*/
-        $('.get_code_btn').on('tap',function(){
-            getCodefun($('.get_code_btn'),5,function(){
-                console.log('send...');
+        (function($, doc) {
+            $.init();
+            $.ready(function() {
+                //省市区级联
+                var cityPicker3 = new $.PopPicker({
+                    layer: 3
+                });
+                cityPicker3.setData(cityData3);
+                var showCityPickerButton = doc.getElementById('showCityPicker3');
+                showCityPickerButton.addEventListener('tap', function(event) {
+                    var _that = this;
+                    cityPicker3.show(function(items) {
+                        var city = items[0].text+' '+items[1].text+' '+items[2].text;
+                        _that.innerHTML = city;
+                        console.log(city);
+                        //返回 false 可以阻止选择框的关闭
+                        //return false;
+                    });
+                }, false);
+                //有无选择
+                var radioSelects = $('.h_r_row_radio>span');
+                radioSelects.each(function(i, obj) {
+                     obj.addEventListener('tap', function() {
+                        var spans = this.parentNode.children;
+                        for(var i =0;i<spans.length;i++) {
+                            if(hasClass(spans[i], 'active')){
+                                removeClass(spans[i], 'active');
+                            }
+                        }
+                        addClass(this, 'active');
+                     });
+                });
+                //是否同意协议
+                var ruleCheck = $('.h_rules .h_rules_check');
+                ruleCheck.each(function(i, obj) {
+                     obj.addEventListener('tap', function() {
+                        toggleClass(this, 'active')
+                     });
+                });
             });
-        })
+        })(mui, document);
     </script>
 </html>

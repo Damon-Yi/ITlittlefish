@@ -31,7 +31,7 @@
                 <div class="h_r_row"><span class="h_r_row_txt">姓名</span><input class="h_r_row_input" type="text" name="" placeholder="请填写您的姓名"></div>
                 <div class="h_r_row"><span class="h_r_row_txt">性别</span><input class="h_r_row_input" type="text" name="" placeholder="请填写您的性别"></div>
                 <div class="h_r_row"><span class="h_r_row_txt">手机号</span><input class="h_r_row_input" type="number" name="" placeholder="请填写您的手机号"></div>
-                <div class="h_r_row"><span class="h_r_row_txt">所在城市</span><input class="h_r_row_input" type="text" name="" placeholder="请填写您的城市"></div>
+                <div class="h_r_row"><span class="h_r_row_txt">所在城市</span><div id="showCityPicker3" class="city_select">请选择城市</div></div>
                 <div class="h_r_row"><span class="h_r_row_txt">出生年月</span><div class="date_select">请选择</div></div>
                 <div class="h_r_title">基本资料</div>
                 <div class="h_r_row"><span class="h_r_row_txt">身份证号码</span><input class="h_r_row_input" type="text" name="" placeholder="请填写您的姓名"></div>
@@ -53,8 +53,11 @@
     <script type="text/javascript" src="plugin/zepto/touch.js"></script></body> -->
     <link href="plugin/mui//css/mui.min.css" rel="stylesheet" />
     <link href="plugin/mui//css/mui.picker.min.css" rel="stylesheet" />
+    <link href="plugin/mui//css/mui.poppicker.css" rel="stylesheet" />
     <script src="plugin/mui//js/mui.min.js"></script>
     <script src="plugin/mui/js/mui.picker.min.js"></script>
+    <script src="plugin/mui/js/mui.poppicker.js"></script>
+    <script src="plugin/mui/js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
     <script>
         (function($) {
             $.init();
@@ -62,14 +65,9 @@
             var btns = $('.date_select');
             btns.each(function(i, btn) {
                 btn.addEventListener('tap', function() {
-                    var optionsJson = this.getAttribute('data-options') || '{}';
-                    var options = JSON.parse(optionsJson);
-                    var id = this.getAttribute('id');
-                    /*
-                     * 首次显示时实例化组件
-                     * 示例为了简洁，将 options 放在了按钮的 dom 上
-                     * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
-                     */
+                    
+                    var _that = this;
+                    
                     var picker = new $.DtPicker({
                         type: "date",//设置日历初始视图模式 
                         beginDate: new Date(1900, 00, 01),//设置开始日期 
@@ -78,14 +76,32 @@
                     });
                     picker.show(function(rs) {
                         console.log(rs);
-                        /* 
-                         * 返回 false 可以阻止选择框的关闭
-                         * return false;
-                         */
+                        _that.innerHTML = rs.value;
                         picker.dispose();
                     });
                 }, false);
             });
-        })(mui);        
+        })(mui); 
+         (function($, doc) {
+            $.init();
+            $.ready(function() {
+                //省市区级联
+                var cityPicker3 = new $.PopPicker({
+                    layer: 3
+                });
+                cityPicker3.setData(cityData3);
+                var showCityPickerButton = doc.getElementById('showCityPicker3');
+                showCityPickerButton.addEventListener('tap', function(event) {
+                    var _that = this;
+                    cityPicker3.show(function(items) {
+                        var city = items[0].text+' '+items[1].text+' '+items[2].text;
+                        _that.innerHTML = city;
+                        console.log(city);
+                        //返回 false 可以阻止选择框的关闭
+                        //return false;
+                    });
+                }, false);
+            });
+        })(mui, document);       
     </script>
 </html>

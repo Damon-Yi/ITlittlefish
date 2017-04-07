@@ -105,8 +105,11 @@
                 cityPicker3.setData(cityData3);
                 var showCityPickerButton = doc.getElementById('showCityPicker3');
                 showCityPickerButton.addEventListener('tap', function(event) {
+                    var _that = this;
                     cityPicker3.show(function(items) {
-                        console.log(items);
+                        var city = items[0].text+' '+items[1].text+' '+items[2].text;
+                        _that.innerHTML = city;
+                        console.log(city);
                         //返回 false 可以阻止选择框的关闭
                         //return false;
                     });
@@ -131,15 +134,6 @@
                         toggleClass(this, 'active')
                      });
                 });
-                /*$('.h_r_row_radio>span').on('tap',function(){
-                    $(this).siblings().removeClass('active');
-                    $(this).addClass('active');
-                });
-                //是否同意协议
-                $('.h_rules .h_rules_check').on('tap',function(){
-                    $(this).toggleClass('active');
-                });*/
-                
             });
         })(mui, document);
     </script>
