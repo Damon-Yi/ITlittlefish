@@ -22,6 +22,10 @@
         }
        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
     </script>
+    <style>
+        .career_type{display: none;}
+        .career_type.active{display: block;}
+    </style>
 </head>
 <body onload="loaded()">
     <div class="page_header">
@@ -36,19 +40,19 @@
                     
                     <div class="h_r_row">
                         <span class="h_r_row_txt">有无信用卡</span>
-                        <div class="h_r_row_radio">
+                        <div class="h_r_row_radio radio_option">
                             <span>有<i></i></span><span>无<i></i></span>
                         </div>
                     </div>
                     <div class="h_r_row">
                         <span class="h_r_row_txt">有无固定资产</span>
-                        <div class="h_r_row_radio">
+                        <div class="h_r_row_radio radio_option">
                             <span>有<i></i></span><span>无<i></i></span>
                         </div>
                     </div>
                     <div class="h_r_row">
                         <span class="h_r_row_txt">手机有无实名认证</span>
-                        <div class="h_r_row_radio">
+                        <div class="h_r_row_radio radio_option">
                             <span>有<i></i></span><span>无<i></i></span>
                         </div>
                     </div>
@@ -59,8 +63,7 @@
                     </div>
                     <div class="h_r_row">
                         <span class="h_r_row_txt">工作信息</span>
-                        <select class="h_r_row_select">
-                            <option value="">请选择</option>
+                        <select class="h_r_row_select career_info">
                             <option value="1">工薪族</option>
                             <option value="2">企业主</option>
                             <option value="3">在校学生</option>
@@ -68,7 +71,7 @@
                             <option value="5">自由职业者</option>
                         </select>
                     </div>
-                    <div class="career_type_1">
+                    <div class="career_type career_type_0 active">
                         <div class="h_r_row">
                             <span class="h_r_row_txt">月收入(元)</span><select class="h_r_row_select">
                                 <option value="">2000以下</option>
@@ -82,18 +85,18 @@
                         </div>
                         <div class="h_r_row">
                             <span class="h_r_row_txt">连续半年缴纳公积金</span>
-                            <div class="h_r_row_radio">
+                            <div class="h_r_row_radio radio_option">
                                 <span>有<i></i></span><span>无<i></i></span>
                             </div>
                         </div>
                         <div class="h_r_row">
                             <span class="h_r_row_txt">连续半年缴纳社保</span>
-                            <div class="h_r_row_radio">
+                            <div class="h_r_row_radio radio_option">
                                 <span>有<i></i></span><span>无<i></i></span>
                             </div>
                         </div>
                     </div>
-                    <div class="career_type_2">
+                    <div class="career_type career_type_1">
                         <div class="h_r_row"><span class="h_r_row_txt">企业实际经营所在地</span><input class="h_r_row_input" type="text" name="" placeholder=""></div>
                         <div class="h_r_row"><span class="h_r_row_txt">每月对公流水(万元)</span><input class="h_r_row_input" type="text" name="" placeholder=""></div>
                         <div class="h_r_row"><span class="h_r_row_txt">每月对私流水(万元)</span><input class="h_r_row_input" type="text" name="" placeholder=""></div>
@@ -120,12 +123,12 @@
                         </div>
                         <div class="h_r_row">
                             <span class="h_r_row_txt">是否已办营业执照</span>
-                            <div class="h_r_row_radio">
+                            <div class="h_r_row_radio radio_option">
                                 <span>有<i></i></span><span>无<i></i></span>
                             </div>
                         </div>
                     </div>
-                    <div class="career_type_3">
+                    <div class="career_type career_type_2">
                         <div class="h_r_row"><span class="h_r_row_txt">学校名称</span><input class="h_r_row_input" type="text" name="" placeholder=""></div>
                         <div class="h_r_row">
                             <span class="h_r_row_txt">在读学历</span><select class="h_r_row_select">
@@ -150,15 +153,15 @@
                         <div class="h_r_row"><span class="h_r_row_txt">所在城市</span><input class="h_r_row_input" type="text" name="" placeholder=""></div>
                         <div class="h_r_row">
                             <span class="h_r_row_txt">电商账户</span>
-                            <div class="h_r_row_radio">
+                            <div class="h_r_row_radio checkbox_option">
                                 <span>淘宝账户<i></i></span><span>京东账户<i></i></span>
                             </div>
                         </div>
                     </div>
-                    <div class="career_type_4">
+                    <div class="career_type career_type_3">
                         <div class="h_r_row">
                             <span class="h_r_row_txt">电商账户</span>
-                            <div class="h_r_row_radio">
+                            <div class="h_r_row_radio checkbox_option">
                                 <span>淘宝账户<i></i></span><span>京东账户<i></i></span>
                             </div>
                         </div>
@@ -174,7 +177,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="career_type_5">
+                    <div class="career_type career_type_4">
                         <div class="h_r_row">
                             <span class="h_r_row_txt">月收入(元)</span><select class="h_r_row_select">
                                 <option value="">2000以下</option>
@@ -188,7 +191,7 @@
                         </div>
                         <div class="h_r_row">
                             <span class="h_r_row_txt">是否有使用</span>
-                            <div class="h_r_row_radio">
+                            <div class="h_r_row_radio checkbox_option">
                                 <span>芝麻信用<i></i></span><span>京东白条<i></i></span><span>微粒贷<i></i></span>
                             </div>
                         </div>
@@ -205,10 +208,14 @@
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script type="text/javascript" src="plugin/zepto/touch.js"></script>
     <script>
-        /*有无选择*/
-        $('.h_r_row_radio>span').on('tap',function(){
+        /*单选*/
+        $('.radio_option>span').on('tap',function(){
             $(this).siblings().removeClass('active');
             $(this).addClass('active');
+        });
+        /*多选*/
+        $('.checkbox_option>span').on('tap',function(){
+            $(this).toggleClass('active');
         });
         /*是否同意协议*/
         $('.h_rules .h_rules_check').on('tap',function(){
@@ -220,6 +227,13 @@
                 console.log('send...');
             });
         })
+        /*工作信息*/
+        $('.career_info').on('change',function(){
+            var careerTypeCont = $('.career_type_'+this.selectedIndex);
+            careerTypeCont.addClass('active').siblings('.career_type').removeClass('active');
+
+            aScroll.refresh();
+        });
     </script>
 </body>
 </html>
