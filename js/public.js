@@ -121,4 +121,27 @@ function toggleClass(obj,cls){
     }else{  
         addClass(obj, cls);  
     }  
+} 
+//去空格
+String.prototype.trim = function(){  
+    return this.replace(/(^\s*)|(\s*$)/g, "");  
 }  
+String.prototype.Ltrim = function(){  
+    return this.replace(/(^\s*)/g, "");  
+}  
+String.prototype.Rtrim = function(){  
+    return this.replace(/(\s*$)/g, "");  
+} 
+
+//设置localStorage
+var setLocalStorage= function(key,data){
+    localStorage.setItem(key,JSON.stringify(data));
+}
+//获取localStorage
+var getLocalStorage= function(key){
+    return JSON.parse(localStorage.getItem(key));
+}
+//删除localStorage
+var removeLocalStorage = function(key){
+    localStorage.removeItem(key);
+}
