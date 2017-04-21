@@ -35,13 +35,31 @@
             <div class="h_ad"><img src="../images/precision_loan_01.png"></div>
             <div class="h_r_form">
                 <div class="common_info">
-                    <div class="h_r_row"><span class="h_r_row_txt">姓名</span><input class="h_r_row_input" type="text" name="" placeholder="请填写您的姓名"></div>
-                    <div class="h_r_row"><span class="h_r_row_txt">手机号</span><input class="h_r_row_input" type="number" name="" placeholder="请填写您的手机号"></div>
-                    <div class="h_r_row"><span class="h_r_row_txt">申请的城市</span><div id="showCityPicker3" class="city_select">请选择城市</div></div>
+                    <div class="h_r_row"><span class="h_r_row_txt">姓名</span><input id="customername" class="h_r_row_input" type="text" name="" placeholder="请填写您的姓名"></div>
+                    <div class="h_r_row"><span class="h_r_row_txt">手机号</span><input id="mobilephone" class="h_r_row_input" type="number" name="" placeholder="请填写您的手机号"></div>
+                    <div class="h_r_row"><span class="h_r_row_txt">申请的城市</span><div id="applycity" class="city_select">请选择城市</div></div>
                     <div class="h_r_row">
-                        <div class="h_r_col"><span class="h_r_col_txt">年龄</span><input class="h_r_col_input_1" type="number" name="" placeholder="请填写您的姓年龄"></div>
-                        <div class="h_r_col"><span class="h_r_col_txt">性别</span><input class="h_r_col_input_1" type="text" name="" placeholder="请填写您的性别"></div>
+                        <div class="h_r_col"><span class="h_r_col_txt">年龄</span><input id="age"  class="h_r_col_input_1" type="number" name="" placeholder="请填写您的姓年龄"></div>
+                        <div class="h_r_col"><span class="h_r_col_txt">性别</span><input id="sex"  class="h_r_col_input_1" type="text" name="" placeholder="请填写您的性别"></div>
                     </div>
+                    <div class="h_r_row">
+                            <span class="h_r_row_txt">有无信用卡</span>
+                            <div class="h_r_row_radio radio_option" id="creditcard">
+                                <span data-val="1">有<i></i></span><span data-val="0">无<i></i></span>
+                            </div>
+                        </div>
+                        <div class="h_r_row">
+                            <span class="h_r_row_txt">有无固定资产</span>
+                            <div class="h_r_row_radio radio_option" id="fixedassets">
+                                <span data-val="1">有<i></i></span><span data-val="0">无<i></i></span>
+                            </div>
+                        </div>
+                        <div class="h_r_row">
+                            <span class="h_r_row_txt">手机有无实名认证</span>
+                            <div class="h_r_row_radio radio_option" id="phonerealnameaut">
+                                <span data-val="1">有<i></i></span><span data-val="0">无<i></i></span>
+                            </div>
+                        </div>
                     <div class="h_r_row">
                         <div class="h_r_col"><span class="h_r_col_txt">贷款金额(万)</span><input class="h_r_col_input_2" type="number" name="" placeholder="如2.5"></div>
                         <div class="h_r_col"><span class="h_r_col_txt">贷款年限(年)</span><input class="h_r_col_input_2" type="number" name="" placeholder="请填写贷款年限"></div>
@@ -143,7 +161,7 @@
                     <div class="h_r_row">
                         <span class="h_r_row_txt">入学时间</span><div id="schoolTime" class="city_select" data-val="">请选择时间</div>
                     </div>
-                    <div class="h_r_row"><span class="h_r_row_txt">所在城市</span><div id="applycity" class="city_select" data-val="">请选择城市</div></div>
+                    <div class="h_r_row"><span class="h_r_row_txt">所在城市</span><div id="schoolCity" class="city_select" data-val="">请选择城市</div></div>
                     <div class="h_r_row">
                         <span class="h_r_row_txt">电商账户</span>
                         <div class="h_r_row_radio checkbox_option" id="electricityaccount">
@@ -225,7 +243,7 @@
                 });
                 cityPicker3.setData(cityData3);
                 //申请的城市
-                var showCityPicker3 = doc.getElementById('showCityPicker3');
+                var showCityPicker3 = doc.getElementById('applycity');
                 showCityPicker3.addEventListener('tap', function(event) {
                     var _that = this;
                     cityPicker3.show(function(items) {
@@ -251,7 +269,7 @@
                     });
                 }, false);
                 //学校所在地
-                var showCityPickerButton = doc.getElementById('applycity');
+                var showCityPickerButton = doc.getElementById('schoolCity');
                 showCityPickerButton.addEventListener('tap', function(event) {
                     var _that = this;
                     cityPicker3.show(function(items) {

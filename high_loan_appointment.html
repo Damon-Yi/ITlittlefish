@@ -155,7 +155,7 @@
                         <div class="h_r_row">
                             <span class="h_r_row_txt">入学时间</span><div id="schoolTime" class="city_select" data-val="">请选择时间</div>
                         </div>
-                        <div class="h_r_row"><span class="h_r_row_txt">所在城市</span><div id="applycity" class="city_select" data-val="">请选择城市</div></div>
+                        <div class="h_r_row"><span class="h_r_row_txt">所在城市</span><div id="schoolCity" class="city_select" data-val="">请选择城市</div></div>
                         <div class="h_r_row">
                             <span class="h_r_row_txt">电商账户</span>
                             <div class="h_r_row_radio checkbox_option" id="electricityaccount">
@@ -271,7 +271,7 @@
                     });
                 }, false);
                 //学校所在地
-                var showCityPickerButton = doc.getElementById('applycity');
+                var showCityPickerButton = doc.getElementById('schoolCity');
                 showCityPickerButton.addEventListener('tap', function(event) {
                     var _that = this;
                     cityPicker3.show(function(items) {
