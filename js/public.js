@@ -13,6 +13,10 @@ new function (){
     window.addEventListener("resize",function(){_self.changePage();},false);
 };
 
+var Config ={
+    url:'http://a784112865.oicp.net/zhudai_api/service'
+}
+
 /*提示，弹窗*/
 //tips('数据错误','tips_center',1500);
 //tips('数据错误','tips_left',1500);
@@ -102,7 +106,7 @@ function getCodefun(obj,time,sendCodeFun){
     }
     return me;
 }
-
+/*操作Class*/
 function hasClass(obj, cls) {  
     return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
 }  

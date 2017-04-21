@@ -34,39 +34,41 @@
             <div class="h_require">
                 <div class="h_tips"><p>为了提高贷款成功率，请如实填写信息</p></div>
                 <div class="h_r_form">
-                    <div class="h_r_row">
-                        <span class="h_r_row_txt">有无信用卡</span>
-                        <div class="h_r_row_radio radio_option" id="creditcard">
-                            <span data-val="1">有<i></i></span><span data-val="0">无<i></i></span>
+                    <div class="common_info">
+                        <div class="h_r_row">
+                            <span class="h_r_row_txt">有无信用卡</span>
+                            <div class="h_r_row_radio radio_option" id="creditcard">
+                                <span data-val="1">有<i></i></span><span data-val="0">无<i></i></span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="h_r_row">
-                        <span class="h_r_row_txt">有无固定资产</span>
-                        <div class="h_r_row_radio radio_option" id="fixedassets">
-                            <span data-val="1">有<i></i></span><span data-val="0">无<i></i></span>
+                        <div class="h_r_row">
+                            <span class="h_r_row_txt">有无固定资产</span>
+                            <div class="h_r_row_radio radio_option" id="fixedassets">
+                                <span data-val="1">有<i></i></span><span data-val="0">无<i></i></span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="h_r_row">
-                        <span class="h_r_row_txt">手机有无实名认证</span>
-                        <div class="h_r_row_radio radio_option" id="phonerealnameaut">
-                            <span data-val="1">有<i></i></span><span data-val="0">无<i></i></span>
+                        <div class="h_r_row">
+                            <span class="h_r_row_txt">手机有无实名认证</span>
+                            <div class="h_r_row_radio radio_option" id="phonerealnameaut">
+                                <span data-val="1">有<i></i></span><span data-val="0">无<i></i></span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="h_r_row">
-                        <span class="h_r_row_txt">验证码</span><div class="h_r_row_vilde_code">
-                            <input class="vilde_code" type="text" name="" placeholder="请输入"><div class="get_code_btn" id="get_code_btn">发送验证码</div>
+                        <div class="h_r_row">
+                            <span class="h_r_row_txt">验证码</span><div class="h_r_row_vilde_code">
+                                <input class="vilde_code" type="text" name="" placeholder="请输入"><div class="get_code_btn" id="get_code_btn">发送验证码</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="h_r_row">
-                        <span class="h_r_row_txt">工作信息</span>
-                        <div class="select_wrap">
-                            <select class="h_r_row_select career_info" id="profession">
-                                <option value="1">工薪族</option>
-                                <option value="2">企业主</option>
-                                <option value="3">在校学生</option>
-                                <option value="4">网店主</option>
-                                <option value="5">自由职业者</option>
-                            </select>
+                        <div class="h_r_row">
+                            <span class="h_r_row_txt">工作信息</span>
+                            <div class="select_wrap">
+                                <select class="h_r_row_select career_info" id="profession">
+                                    <option value="1">工薪族</option>
+                                    <option value="2">企业主</option>
+                                    <option value="3">在校学生</option>
+                                    <option value="4">网店主</option>
+                                    <option value="5">自由职业者</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="career_type career_type_0 active">
@@ -207,7 +209,7 @@
                     </div>
                 </div>
             </div>
-            <a href="high_loan_apply_suc.html" class="apply_btn">立即申请</a>
+            <a href="javascript:;" class="apply_btn">立即申请</a>
             <div class="h_rules">
                 <span class="h_rules_check"><i></i>同意</span><a href="javascript:;"><<小鱼儿帮帮贷贷款申请协议>></a>
             </div>
@@ -243,6 +245,10 @@
                 console.log('send...');
             });
         })*/
+        /*加载动画*/
+        var loader = new loading({'container':document.body,'hasBg':false});
+        var careerData ={};//工作信息
+
         (function($, doc) {
             $.init();
             $.ready(function() {
@@ -334,11 +340,122 @@
                 });
             });
         })(mui, document);
+        
         /*工作信息*/
         $('.career_info').on('change',function(){
             var careerTypeCont = $('.career_type_'+this.selectedIndex);
             careerTypeCont.addClass('active').siblings('.career_type').removeClass('active');
+        });
+        //提交
+        $('.apply_btn').on('click',function(){
+            var flag = true,
+                msg = '',
+                parmas=getLocalStorage('applyData');
 
+            careerData ={};//工作信息
+
+            $('.common_info .h_r_row_radio').each(function(e){
+                var spanActive = $(this).find('span.active');
+                if(spanActive.length==0){
+                    if(msg==''){
+                        flag = false;
+                        var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
+                        console.log(title);
+                        msg = '请选择'+title;
+                        tips(msg,'tips_center',1500);
+                    }
+                }else{
+                    parmas[this.id] = spanActive.eq(0).attr('data-val');
+                }
+            });
+            //验证码
+            /*var vildeCode = $('.vilde_code');
+            if(vildeCode.val().trim()==''){
+                if(msg==''){
+                    flag = false;
+                    var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
+                    console.log(title);
+                    msg = '请填写'+title;
+                    tips(msg,'tips_center',1500);
+                }
+            }else{
+                parmas[vildeCode.attr('id')] = vildeCode.val().trim();
+            }*/
+            //工作信息
+            var careerInfo = $('.career_info');
+            parmas[careerInfo.attr('id')] = careerInfo.val();
+            
+            var careerInfoWrap = $('.career_type.active');
+            careerInfoWrap.find('.h_r_row_radio').each(function(e){
+                var spanActive = $(this).find('span.active');
+                if(spanActive.length==0){
+                    if(msg==''){
+                        flag = false;
+                        var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
+                        console.log(title);
+                        msg = '请选择'+title;
+                        tips(msg,'tips_center',1500);
+                    }
+                }else{
+                    careerData[this.id] = spanActive.eq(0).attr('data-val');
+                }
+            });
+            careerInfoWrap.find('.h_r_row_input').each(function(e){
+                if(this.value.trim()==''){
+                    if(msg==''){
+                        flag = false;
+                        var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
+                        console.log(title);
+                        msg = '请填写'+title;
+                        tips(msg,'tips_center',1500);
+                    }
+                }else{
+                    careerData[this.id] = this.value.trim();
+                }
+            });
+            careerInfoWrap.find('.city_select').each(function(e){
+                if($(this).attr('data-val').trim()==''){
+                    if(msg==''){
+                        flag = false;
+                        var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
+                        console.log(title);
+                        msg = '请选择'+title;
+                        tips(msg,'tips_center',1500);
+                    }
+                }else{
+                    careerData[$(this).attr('id')] = $(this).attr('data-val').trim();
+                }
+            });
+            console.log(careerData);
+            for(var i in careerData){
+                parmas[i] = careerData[i];
+            }
+            console.log(parmas);
+            
+            if(flag){
+                setLocalStorage('applyData',parmas);
+                $.ajax({
+                    type:"post",
+                    url:Config.url+"/LoanApply/apply",
+                    contentType:"application/json",
+                    data:JSON.stringify(params),
+                    beforeSend:function(xhr, settings){
+                        loader.show();
+                    },
+                    success:function(data, status, xhr){
+                        if(data.resultCode==0){
+                            location.href="high_loan_apply_suc.html";
+                        }
+                    },
+                    error:function(xhr, errorType, error){
+                        loader.hide();
+                        tips('保存信息失败','tips_center',1500);
+                    },
+                    complete:function(xhr, status){
+                        loader.hide();
+                    }
+                });
+            }
         });
     </script>
 </body>
