@@ -9,25 +9,22 @@
     <link href="css/public.css" rel="stylesheet" type="text/css">
     <link href="css/high_loan.css" rel="stylesheet" type="text/css">
     <script src="js/public.js"></script>
-    <script type="text/javascript">
-        var aScroll;
-        function loaded () {
-            aScroll = new IScroll('#cont_wrapper',{
-                scrollbars: true,
-                mouseWheel: true,
-                interactiveScrollbars: true,
-                shrinkScrollbars: 'scale',
-                fadeScrollbars: true,click: true 
-            });
-        }
-       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-    </script>
     <style>
         .career_type{display: none;}
         .career_type.active{display: block;}
+
+        .mui-dtpicker-title{display: none;}
+        .mui-picker[data-id="picker-y"]{width: 22%;}
+        .mui-picker[data-id="picker-y"] .mui-pciker-list li{text-align: right;}
+        .mui-picker[data-id="picker-m"]{width: 18%;}
+        .mui-picker[data-id="picker-d"]{width: 12%;}
+        .mui-picker[data-id="picker-d"] .mui-pciker-list li{text-align: left;}
+        .mui-picker[data-id="picker-h"]{width: 48%;}
+        .mui-btn-block{padding:0;border:none;font-size: 0.24rem;margin: 0;text-align: left;}
+        .netDetailAddr{width:100%;border:none;padding:0.01rem 0}
     </style>
 </head>
-<body onload="loaded()">
+<body>
     <div class="page_header">
         <p>贷款申请</p>
         <div class="right_add"><i class="position"></i><span>深圳</span></div>
@@ -57,7 +54,7 @@
                     </div>
                     <div class="h_r_row">
                         <span class="h_r_row_txt">验证码</span><div class="h_r_row_vilde_code">
-                            <input class="vilde_code" type="text" name="" placeholder="请输入"><div class="get_code_btn">发送验证码</div>
+                            <input class="vilde_code" type="text" name="" placeholder="请输入"><div class="get_code_btn" id="get_code_btn">发送验证码</div>
                         </div>
                     </div>
                     <div class="h_r_row">
@@ -139,7 +136,7 @@
                         </div>
                     </div>
                     <div class="career_type career_type_2">
-                        <div class="h_r_row"><span class="h_r_row_txt">学校名称</span><input id="schoolname" class="h_r_row_input" type="text" name="" placeholder=""></div>
+                        <div class="h_r_row"><span class="h_r_row_txt">学校名称</span><input id="schoolname" class="h_r_row_input" type="text" name="" placeholder="请输入学校名称"></div>
                         <div class="h_r_row">
                             <span class="h_r_row_txt">在读学历</span>
                             <div class="select_wrap">
@@ -154,19 +151,9 @@
                             </div>
                         </div>
                         <div class="h_r_row">
-                            <span class="h_r_row_txt">经营时间(年)</span>
-                            <div class="select_wrap">
-                                <select class="h_r_row_select" id="manageyears">
-                                    <option value="">1以下</option>
-                                    <option value="1">1-2</option>
-                                    <option value="2">2-3</option>
-                                    <option value="3">3-5</option>
-                                    <option value="4">5-8</option>
-                                    <option value="5">8以上</option>
-                                </select>
-                            </div>
+                            <span class="h_r_row_txt">入学时间</span><div id="schoolTime" class="city_select" data-val="">请选择时间</div>
                         </div>
-                        <div class="h_r_row"><span class="h_r_row_txt">所在城市</span><input class="h_r_row_input" type="text" name="" placeholder=""></div>
+                        <div class="h_r_row"><span class="h_r_row_txt">所在城市</span><div id="applycity" class="city_select" data-val="">请选择城市</div></div>
                         <div class="h_r_row">
                             <span class="h_r_row_txt">电商账户</span>
                             <div class="h_r_row_radio checkbox_option" id="electricityaccount">
@@ -226,35 +213,132 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
+    <!-- <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
-    <script type="text/javascript" src="plugin/zepto/touch.js"></script>
+    <script type="text/javascript" src="plugin/zepto/touch.js"></script></body> -->
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <link href="plugin/mui//css/mui.picker.min.css" rel="stylesheet" />
+    <link href="plugin/mui//css/mui.poppicker.css" rel="stylesheet" />
+    <script src="plugin/mui//js/mui.min.js"></script>
+    <script src="plugin/mui/js/mui.picker.min.js"></script>
+    <script src="plugin/mui/js/mui.poppicker.js"></script>
+    <script src="plugin/mui/js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
     <script>
         /*单选*/
-        $('.radio_option>span').on('tap',function(){
+        /*$('.radio_option>span').on('tap',function(){
             $(this).siblings().removeClass('active');
             $(this).addClass('active');
-        });
+        });*/
         /*多选*/
-        $('.checkbox_option>span').on('tap',function(){
+        /*$('.checkbox_option>span').on('tap',function(){
             $(this).toggleClass('active');
-        });
+        });*/
         /*是否同意协议*/
-        $('.h_rules .h_rules_check').on('tap',function(){
+        /*$('.h_rules .h_rules_check').on('tap',function(){
             $(this).toggleClass('active');
-        });
+        });*/
         /*获取验证码*/
-        $('.get_code_btn').on('tap',function(){
+        /*$('.get_code_btn').on('tap',function(){
             getCodefun($('.get_code_btn'),5,function(){
                 console.log('send...');
             });
-        })
+        })*/
+        (function($, doc) {
+            $.init();
+            $.ready(function() {
+                //省市区级联
+                var cityPicker3 = new $.PopPicker({
+                    layer: 3
+                });
+                cityPicker3.setData(cityData3);
+                //企业所在地
+                var enterpriseLocatedButton = doc.getElementById('enterpriselocated');
+                enterpriseLocatedButton.addEventListener('tap', function(event) {
+                    var _that = this;
+                    cityPicker3.show(function(items) {
+                        var city = items[0].text+' '+items[1].text+' '+items[2].text;
+                        _that.innerHTML = city;
+                        _that.setAttribute('data-val',city)
+                        console.log(city);
+                        //返回 false 可以阻止选择框的关闭
+                        //return false;
+                    });
+                }, false);
+                //学校所在地
+                var showCityPickerButton = doc.getElementById('applycity');
+                showCityPickerButton.addEventListener('tap', function(event) {
+                    var _that = this;
+                    cityPicker3.show(function(items) {
+                        var city = items[0].text+' '+items[1].text+' '+items[2].text;
+                        _that.innerHTML = city;
+                        _that.setAttribute('data-val',city)
+                        console.log(city);
+                        //返回 false 可以阻止选择框的关闭
+                        //return false;
+                    });
+                }, false);
+                //入学时间
+                var showCityPickerButton = doc.getElementById('schoolTime');
+                showCityPickerButton.addEventListener('tap', function(event) {
+                    var _that = this;
+                    var options = {
+                        "type":"date",
+                        beginDate: new Date(new Date().getFullYear()-10, new Date().getMonth(), new Date().getDate()),//设置开始日期 
+                        endDate: new Date(),//设置结束日期 
+                        /*"customData":{
+                            "h":generateTimeQuantum()//时间段
+                        }*/
+                    };
+
+                    var picker = new $.DtPicker(options);
+                    picker.show(function(rs) {
+                        _that.attributes.getNamedItem('data-val').textContent = rs.text;
+                        _that.innerText = rs.text;
+                        
+                        picker.dispose();
+                    });
+                }, false);
+                /*获取验证码*/
+                var getCodeBtn = doc.getElementById('get_code_btn');
+                getCodeBtn.addEventListener('tap', function(event) {
+                    getCodefun(this,5,function(){
+                        console.log('send...');
+                    });
+                }, false);
+                //有无选择
+                var radioSelects = $('.radio_option>span');
+                radioSelects.each(function(i, obj) {
+                     obj.addEventListener('tap', function() {
+                        var spans = this.parentNode.children;
+                        for(var i =0;i<spans.length;i++) {
+                            if(hasClass(spans[i], 'active')){
+                                removeClass(spans[i], 'active');
+                            }
+                        }
+                        addClass(this, 'active');
+                     });
+                });
+                /*多选*/
+                var checkboxSelects = $('.checkbox_option>span');
+                checkboxSelects.each(function(i, obj) {
+                     obj.addEventListener('tap', function() {
+                        toggleClass(this, 'active');
+                     });
+                });
+                //是否同意协议
+                var ruleCheck = $('.h_rules .h_rules_check');
+                ruleCheck.each(function(i, obj) {
+                     obj.addEventListener('tap', function() {
+                        toggleClass(this, 'active')
+                     });
+                });
+            });
+        })(mui, document);
         /*工作信息*/
         $('.career_info').on('change',function(){
             var careerTypeCont = $('.career_type_'+this.selectedIndex);
             careerTypeCont.addClass('active').siblings('.career_type').removeClass('active');
 
-            aScroll.refresh();
         });
     </script>
 </body>
