@@ -11,6 +11,18 @@
     <script src="js/public.js"></script>
     <style>
         .page_cont{padding-bottom: 1px;}
+        .career_type{display: none;}
+        .career_type.active{display: block;}
+
+        .mui-dtpicker-title{display: none;}
+        .mui-picker[data-id="picker-y"]{width: 22%;}
+        .mui-picker[data-id="picker-y"] .mui-pciker-list li{text-align: right;}
+        .mui-picker[data-id="picker-m"]{width: 18%;}
+        .mui-picker[data-id="picker-d"]{width: 12%;}
+        .mui-picker[data-id="picker-d"] .mui-pciker-list li{text-align: left;}
+        .mui-picker[data-id="picker-h"]{width: 48%;}
+        .mui-btn-block{padding:0;border:none;font-size: 0.24rem;margin: 0;text-align: left;}
+        .netDetailAddr{width:100%;border:none;padding:0.01rem 0}
     </style>
 </head>
 <body>
@@ -22,65 +34,170 @@
         <div class="h_require">
             <div class="h_ad"><img src="../images/precision_loan_01.png"></div>
             <div class="h_r_form">
-                <div class="h_r_row"><span class="h_r_row_txt">姓名</span><input class="h_r_row_input" type="text" name="" placeholder="请填写您的姓名"></div>
-                <div class="h_r_row"><span class="h_r_row_txt">手机号</span><input class="h_r_row_input" type="number" name="" placeholder="请填写您的手机号"></div>
-                <div class="h_r_row"><span class="h_r_row_txt">申请的城市</span><div id="showCityPicker3" class="city_select">请选择城市</div></div>
-                <div class="h_r_row">
-                    <div class="h_r_col"><span class="h_r_col_txt">年龄</span><input class="h_r_col_input_1" type="number" name="" placeholder="请填写您的姓年龄"></div>
-                    <div class="h_r_col"><span class="h_r_col_txt">性别</span><input class="h_r_col_input_1" type="text" name="" placeholder="请填写您的性别"></div>
-                </div>
-                <div class="h_r_row">
-                    <div class="h_r_col"><span class="h_r_col_txt">贷款金额(万)</span><input class="h_r_col_input_2" type="number" name="" placeholder="如2.5"></div>
-                    <div class="h_r_col"><span class="h_r_col_txt">贷款年限(年)</span><input class="h_r_col_input_2" type="number" name="" placeholder="请填写贷款年限"></div>
-                </div>
-                <div class="h_r_row">
-                    <span class="h_r_row_txt">工作信息</span>
-                    <div class="select_wrap">
-                        <select class="h_r_row_select career_info">
-                            <option value="1">工薪族</option>
-                            <option value="2">企业主</option>
-                            <option value="3">在校学生</option>
-                            <option value="4">网店主</option>
-                            <option value="5">自由职业者</option>
-                        </select>
+                <div class="common_info">
+                    <div class="h_r_row"><span class="h_r_row_txt">姓名</span><input class="h_r_row_input" type="text" name="" placeholder="请填写您的姓名"></div>
+                    <div class="h_r_row"><span class="h_r_row_txt">手机号</span><input class="h_r_row_input" type="number" name="" placeholder="请填写您的手机号"></div>
+                    <div class="h_r_row"><span class="h_r_row_txt">申请的城市</span><div id="showCityPicker3" class="city_select">请选择城市</div></div>
+                    <div class="h_r_row">
+                        <div class="h_r_col"><span class="h_r_col_txt">年龄</span><input class="h_r_col_input_1" type="number" name="" placeholder="请填写您的姓年龄"></div>
+                        <div class="h_r_col"><span class="h_r_col_txt">性别</span><input class="h_r_col_input_1" type="text" name="" placeholder="请填写您的性别"></div>
+                    </div>
+                    <div class="h_r_row">
+                        <div class="h_r_col"><span class="h_r_col_txt">贷款金额(万)</span><input class="h_r_col_input_2" type="number" name="" placeholder="如2.5"></div>
+                        <div class="h_r_col"><span class="h_r_col_txt">贷款年限(年)</span><input class="h_r_col_input_2" type="number" name="" placeholder="请填写贷款年限"></div>
+                    </div>
+                    <div class="h_r_row">
+                        <span class="h_r_row_txt">工作信息</span>
+                        <div class="select_wrap">
+                            <select class="h_r_row_select career_info" id="profession">
+                                <option value="1">工薪族</option>
+                                <option value="2">企业主</option>
+                                <option value="3">在校学生</option>
+                                <option value="4">网店主</option>
+                                <option value="5">自由职业者</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <div class="h_r_row">
-                    <span class="h_r_row_txt">有无信用卡</span>
-                    <div class="h_r_row_radio">
-                        <span>有<i></i></span><span>无<i></i></span>
+                <div class="career_type career_type_0 active">
+                    <div class="h_r_row">
+                        <span class="h_r_row_txt">月收入(元)</span>
+                        <div class="select_wrap">
+                            <select class="h_r_row_select" id="monthlyincome">
+                                <option value="">2000以下</option>
+                                <option value="1">2000-3000</option>
+                                <option value="2">3000-4000</option>
+                                <option value="3">4000-5000</option>
+                                <option value="4">5000-6000</option>
+                                <option value="5">6000-10000</option>
+                                <option value="6">10000以上</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="h_r_row">
+                        <span class="h_r_row_txt">连续半年缴纳公积金</span>
+                        <div class="h_r_row_radio radio_option" id="socialinsurance">
+                            <span data-val="1">有<i></i></span><span data-val="0">无<i></i></span>
+                        </div>
+                    </div>
+                    <div class="h_r_row">
+                        <span class="h_r_row_txt">连续半年缴纳社保</span>
+                        <div class="h_r_row_radio radio_option" id="socialsecurity">
+                            <span data-val="1">有<i></i></span><span data-val="0">无<i></i></span>
+                        </div>
                     </div>
                 </div>
-                <div class="h_r_row">
-                    <span class="h_r_row_txt">手机有无实名认证</span>
-                    <div class="h_r_row_radio">
-                        <span>有<i></i></span><span>无<i></i></span>
+                <div class="career_type career_type_1">
+                    <div class="h_r_row"><span class="h_r_row_txt">企业实际经营所在地</span><div id="enterpriselocated" class="city_select" data-val="">请选择城市</div></div>
+                    <div class="h_r_row"><span class="h_r_row_txt">每月对公流水(万元)</span><input id="monthlycorporate" class="h_r_row_input" type="text" name="" placeholder="请输入"></div>
+                    <div class="h_r_row"><span class="h_r_row_txt">每月对私流水(万元)</span><input id="monthlyindividual" class="h_r_row_input" type="text" name="" placeholder="请输入"></div>
+                    <div class="h_r_row">
+                        <span class="h_r_row_txt">月收入(万元)</span>
+                        <div class="select_wrap">
+                            <select class="h_r_row_select" id="monthlyincome">
+                                <option value="">1以下</option>
+                                <option value="1">1-3</option>
+                                <option value="2">3-5</option>
+                                <option value="3">5-8</option>
+                                <option value="4">8-10</option>
+                                <option value="5">10-20</option>
+                                <option value="6">20以上</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="h_r_row">
+                        <span class="h_r_row_txt">经营时间(年)</span>
+                        <div class="select_wrap">
+                            <select class="h_r_row_select" id="manageyears">
+                                <option value="">1以下</option>
+                                <option value="1">1-2</option>
+                                <option value="2">2-3</option>
+                                <option value="3">3-5</option>
+                                <option value="4">5-8</option>
+                                <option value="5">8以上</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="h_r_row">
+                        <span class="h_r_row_txt">是否已办营业执照</span>
+                        <div class="h_r_row_radio radio_option">
+                            <span data-val="1">有<i></i></span><span data-val="0">无<i></i></span>
+                        </div>
                     </div>
                 </div>
-                <div class="h_r_row">
-                    <span class="h_r_row_txt">有无征信记录</span>
-                    <div class="h_r_row_radio">
-                        <span>有<i></i></span><span>无<i></i></span>
+                <div class="career_type career_type_2">
+                    <div class="h_r_row"><span class="h_r_row_txt">学校名称</span><input id="schoolname" class="h_r_row_input" type="text" name="" placeholder="请输入学校名称"></div>
+                    <div class="h_r_row">
+                        <span class="h_r_row_txt">在读学历</span>
+                        <div class="select_wrap">
+                            <select class="h_r_row_select" id="currentdegree">
+                                <option value="">1以下</option>
+                                <option value="1">博士</option>
+                                <option value="2">硕士</option>
+                                <option value="3">研究生</option>
+                                <option value="4">本科生</option>
+                                <option value="5">专科生</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="h_r_row">
+                        <span class="h_r_row_txt">入学时间</span><div id="schoolTime" class="city_select" data-val="">请选择时间</div>
+                    </div>
+                    <div class="h_r_row"><span class="h_r_row_txt">所在城市</span><div id="applycity" class="city_select" data-val="">请选择城市</div></div>
+                    <div class="h_r_row">
+                        <span class="h_r_row_txt">电商账户</span>
+                        <div class="h_r_row_radio checkbox_option" id="electricityaccount">
+                            <span>淘宝账户<i></i></span><span>京东账户<i></i></span>
+                        </div>
                     </div>
                 </div>
-                <div class="h_r_row">
-                    <span class="h_r_row_txt">连续半年缴纳公积金</span>
-                    <div class="h_r_row_radio">
-                        <span>有<i></i></span><span>无<i></i></span>
+                <div class="career_type career_type_3">
+                    <div class="h_r_row">
+                        <span class="h_r_row_txt">电商账户</span>
+                        <div class="h_r_row_radio checkbox_option" id="electricityaccount">
+                            <span>淘宝账户<i></i></span><span>京东账户<i></i></span>
+                        </div>
+                    </div>
+                    <div class="h_r_row">
+                        <span class="h_r_row_txt">月收入(万元)</span>
+                        <div class="select_wrap">
+                            <select class="h_r_row_select" id="monthlyincome">
+                                <option value="">1以下</option>
+                                <option value="1">1-3</option>
+                                <option value="2">3-5</option>
+                                <option value="3">5-8</option>
+                                <option value="4">8-10</option>
+                                <option value="5">10-20</option>
+                                <option value="6">20以上</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <div class="h_r_row">
-                    <span class="h_r_row_txt">连续半年缴纳社保</span>
-                    <div class="h_r_row_radio">
-                        <span>有<i></i></span><span>无<i></i></span>
+                <div class="career_type career_type_4">
+                    <div class="h_r_row">
+                        <span class="h_r_row_txt">月收入(元)</span>
+                        <div class="select_wrap">
+                            <select class="h_r_row_select" id="monthlyincome">
+                                <option value="">2000以下</option>
+                                <option value="1">2000-3000</option>
+                                <option value="2">3000-4000</option>
+                                <option value="3">4000-5000</option>
+                                <option value="4">5000-6000</option>
+                                <option value="5">6000-10000</option>
+                                <option value="6">10000以上</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="h_r_row">
-                    <span class="h_r_row_txt">月收入(元)</span><input class="h_r_row_input" type="number" name="" placeholder="请输入">
+                    <div class="h_r_row">
+                        <span class="h_r_row_txt">是否有使用</span>
+                        <div class="h_r_row_radio checkbox_option" id="creditproducts">
+                            <span>芝麻信用<i></i></span><span>京东白条<i></i></span><span>微粒贷<i></i></span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <a href="precision_push_list.html" class="apply_btn">立即申请</a>
+        <a href="javascript:;" class="apply_btn">立即申请</a>
         <div class="h_rules">
             <span class="h_rules_check"><i></i>同意</span><a href="javascript:;"><<小鱼儿帮帮贷贷款申请协议>></a>
         </div>
@@ -88,6 +205,7 @@
     <!-- <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script type="text/javascript" src="plugin/zepto/touch.js"></script> -->
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <link href="plugin/mui//css/mui.picker.min.css" rel="stylesheet" />
     <link href="plugin/mui//css/mui.poppicker.css" rel="stylesheet" />
     <script src="plugin/mui//js/mui.min.js"></script>
@@ -95,6 +213,9 @@
     <script src="plugin/mui/js/mui.poppicker.js"></script>
     <script src="plugin/mui/js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
     <script>
+        var loader = new loading({'container':document.body,'hasBg':false});
+        var careerData ={};//工作信息
+
         (function($, doc) {
             $.init();
             $.ready(function() {
@@ -103,21 +224,71 @@
                     layer: 3
                 });
                 cityPicker3.setData(cityData3);
-                var showCityPickerButton = doc.getElementById('showCityPicker3');
-                showCityPickerButton.addEventListener('tap', function(event) {
+                //申请的城市
+                var showCityPicker3 = doc.getElementById('showCityPicker3');
+                showCityPicker3.addEventListener('tap', function(event) {
                     var _that = this;
                     cityPicker3.show(function(items) {
                         var city = items[0].text+' '+items[1].text+' '+items[2].text;
                         _that.innerHTML = city;
+                        _that.setAttribute('data-val',city)
                         console.log(city);
                         //返回 false 可以阻止选择框的关闭
                         //return false;
                     });
                 }, false);
+                //企业所在地
+                var enterpriseLocatedButton = doc.getElementById('enterpriselocated');
+                enterpriseLocatedButton.addEventListener('tap', function(event) {
+                    var _that = this;
+                    cityPicker3.show(function(items) {
+                        var city = items[0].text+' '+items[1].text+' '+items[2].text;
+                        _that.innerHTML = city;
+                        _that.setAttribute('data-val',city)
+                        console.log(city);
+                        //返回 false 可以阻止选择框的关闭
+                        //return false;
+                    });
+                }, false);
+                //学校所在地
+                var showCityPickerButton = doc.getElementById('applycity');
+                showCityPickerButton.addEventListener('tap', function(event) {
+                    var _that = this;
+                    cityPicker3.show(function(items) {
+                        var city = items[0].text+' '+items[1].text+' '+items[2].text;
+                        _that.innerHTML = city;
+                        _that.setAttribute('data-val',city)
+                        console.log(city);
+                        //返回 false 可以阻止选择框的关闭
+                        //return false;
+                    });
+                }, false);
+                //入学时间
+                var showCityPickerButton = doc.getElementById('schoolTime');
+                showCityPickerButton.addEventListener('tap', function(event) {
+                    var _that = this;
+                    var options = {
+                        "type":"date",
+                        beginDate: new Date(new Date().getFullYear()-10, new Date().getMonth(), new Date().getDate()),//设置开始日期 
+                        endDate: new Date(),//设置结束日期 
+                        /*"customData":{
+                            "h":generateTimeQuantum()//时间段
+                        }*/
+                    };
+
+                    var picker = new $.DtPicker(options);
+                    picker.show(function(rs) {
+                        _that.attributes.getNamedItem('data-val').textContent = rs.text;
+                        _that.innerText = rs.text;
+                        
+                        picker.dispose();
+                    });
+                }, false);
                 //有无选择
-                var radioSelects = $('.h_r_row_radio>span');
+                var radioSelects = $('.radio_option>span');
                 radioSelects.each(function(i, obj) {
                      obj.addEventListener('tap', function() {
+                        console.log(this);
                         var spans = this.parentNode.children;
                         for(var i =0;i<spans.length;i++) {
                             if(hasClass(spans[i], 'active')){
@@ -125,6 +296,13 @@
                             }
                         }
                         addClass(this, 'active');
+                     });
+                });
+                /*多选*/
+                var checkboxSelects = $('.checkbox_option>span');
+                checkboxSelects.each(function(i, obj) {
+                     obj.addEventListener('tap', function() {
+                        toggleClass(this, 'active');
                      });
                 });
                 //是否同意协议
@@ -136,6 +314,110 @@
                 });
             });
         })(mui, document);
+        
+        /*工作信息*/
+        $('.career_info').on('change',function(){
+            var careerTypeCont = $('.career_type_'+this.selectedIndex);
+            careerTypeCont.addClass('active').siblings('.career_type').removeClass('active');
+        });
+        //提交
+        $('.apply_btn').on('click',function(){
+            var flag = true,
+                msg = '',
+                parmas={};
+
+            careerData ={};//工作信息
+
+            $('.common_info .h_r_row_radio').each(function(e){
+                var spanActive = $(this).find('span.active');
+                if(spanActive.length==0){
+                    if(msg==''){
+                        flag = false;
+                        var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
+                        console.log(title);
+                        msg = '请选择'+title;
+                        tips(msg,'tips_center',1500);
+                    }
+                }else{
+                    parmas[this.id] = spanActive.eq(0).attr('data-val');
+                }
+            });
+            //工作信息
+            var careerInfo = $('.career_info');
+            parmas[careerInfo.attr('id')] = careerInfo.val();
+            
+            var careerInfoWrap = $('.career_type.active');
+            careerInfoWrap.find('.h_r_row_radio').each(function(e){
+                var spanActive = $(this).find('span.active');
+                if(spanActive.length==0){
+                    if(msg==''){
+                        flag = false;
+                        var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
+                        console.log(title);
+                        msg = '请选择'+title;
+                        tips(msg,'tips_center',1500);
+                    }
+                }else{
+                    careerData[this.id] = spanActive.eq(0).attr('data-val');
+                }
+            });
+            careerInfoWrap.find('.h_r_row_input').each(function(e){
+                if(this.value.trim()==''){
+                    if(msg==''){
+                        flag = false;
+                        var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
+                        console.log(title);
+                        msg = '请填写'+title;
+                        tips(msg,'tips_center',1500);
+                    }
+                }else{
+                    careerData[this.id] = this.value.trim();
+                }
+            });
+            careerInfoWrap.find('.city_select').each(function(e){
+                if($(this).attr('data-val').trim()==''){
+                    if(msg==''){
+                        flag = false;
+                        var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
+                        console.log(title);
+                        msg = '请选择'+title;
+                        tips(msg,'tips_center',1500);
+                    }
+                }else{
+                    careerData[$(this).attr('id')] = $(this).attr('data-val').trim();
+                }
+            });
+            console.log(careerData);
+            for(var i in careerData){
+                parmas[i] = careerData[i];
+            }
+            console.log(parmas);
+            
+            if(flag){
+                setLocalStorage('applyData',parmas);
+                $.ajax({
+                    type:"post",
+                    url:Config.url+"/submitPrecisionPushApply",
+                    contentType:"application/json",
+                    data:JSON.stringify(params),
+                    beforeSend:function(xhr, settings){
+                        loader.show();
+                    },
+                    success:function(data, status, xhr){
+                        if(data.resultCode==0){
+                            location.href="precision_push_list.html";
+                        }
+                    },
+                    error:function(xhr, errorType, error){
+                        loader.hide();
+                        tips('保存信息失败','tips_center',1500);
+                    },
+                    complete:function(xhr, status){
+                        loader.hide();
+                    }
+                });
+            }
+        });
     </script>
 </body>
 </html>
