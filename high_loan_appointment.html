@@ -29,7 +29,7 @@
         <p>贷款申请</p>
         <div class="right_add"><i class="position"></i><span>深圳</span></div>
     </div>
-    <div id="cont_wrapper">
+    <div id="">
         <div>
             <div class="h_require">
                 <div class="h_tips"><p>为了提高贷款成功率，请如实填写信息</p></div>
@@ -457,7 +457,7 @@
                 $.ajax({
                     type:"post",
                     url:Config.url+"/LoanApply/apply",
-                    contentType:"application/json",
+                    //contentType:"application/json",
                     data:JSON.stringify(parmas),
                     beforeSend:function(xhr, settings){
                         loader.show();
