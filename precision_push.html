@@ -37,7 +37,7 @@
                 <div class="common_info">
                     <div class="h_r_row"><span class="h_r_row_txt">姓名</span><input id="customername" class="h_r_row_input" type="text" name="" placeholder="请填写您的姓名"></div>
                     <div class="h_r_row"><span class="h_r_row_txt">手机号</span><input id="mobilephone" class="h_r_row_input" type="number" name="" placeholder="请填写您的手机号"></div>
-                    <div class="h_r_row"><span class="h_r_row_txt">申请的城市</span><div id="applycity" class="city_select">请选择城市</div></div>
+                    <div class="h_r_row"><span class="h_r_row_txt">申请的城市</span><div id="applycity" class="city_select" data-val="">请选择城市</div></div>
                     <div class="h_r_row">
                         <div class="h_r_col"><span class="h_r_col_txt">年龄</span><input id="age"  class="h_r_col_input_1" type="number" name="" placeholder="请填写您的姓年龄"></div>
                         <div class="h_r_col"><span class="h_r_col_txt">性别</span><input id="sex"  class="h_r_col_input_1" type="text" name="" placeholder="请填写您的性别"></div>
@@ -61,8 +61,8 @@
                             </div>
                         </div>
                     <div class="h_r_row">
-                        <div class="h_r_col"><span class="h_r_col_txt">贷款金额(万)</span><input class="h_r_col_input_2" type="number" name="" placeholder="如2.5"></div>
-                        <div class="h_r_col"><span class="h_r_col_txt">贷款年限(年)</span><input class="h_r_col_input_2" type="number" name="" placeholder="请填写贷款年限"></div>
+                        <div class="h_r_col"><span class="h_r_col_txt">贷款金额(万)</span><input id="loanAmount" class="h_r_col_input_2" type="number" name="" placeholder="如2.5"></div>
+                        <div class="h_r_col"><span class="h_r_col_txt">贷款年限(年)</span><input id="loanPeriod" class="h_r_col_input_2" type="number" name="" placeholder="请填写贷款年限"></div>
                     </div>
                     <div class="h_r_row">
                         <span class="h_r_row_txt">工作信息</span>
@@ -82,13 +82,13 @@
                         <span class="h_r_row_txt">月收入(元)</span>
                         <div class="select_wrap">
                             <select class="h_r_row_select" id="monthlyincome">
-                                <option value="">2000以下</option>
-                                <option value="1">2000-3000</option>
-                                <option value="2">3000-4000</option>
-                                <option value="3">4000-5000</option>
-                                <option value="4">5000-6000</option>
-                                <option value="5">6000-10000</option>
-                                <option value="6">10000以上</option>
+                                <option value="2000以下">2000以下</option>
+                                <option value="2000-3000">2000-3000</option>
+                                <option value="3000-4000">3000-4000</option>
+                                <option value="4000-5000">4000-5000</option>
+                                <option value="5000-6000">5000-6000</option>
+                                <option value="6000-10000">6000-10000</option>
+                                <option value="10000以上">10000以上</option>
                             </select>
                         </div>
                     </div>
@@ -113,13 +113,13 @@
                         <span class="h_r_row_txt">月收入(万元)</span>
                         <div class="select_wrap">
                             <select class="h_r_row_select" id="monthlyincome">
-                                <option value="">1以下</option>
-                                <option value="1">1-3</option>
-                                <option value="2">3-5</option>
-                                <option value="3">5-8</option>
-                                <option value="4">8-10</option>
-                                <option value="5">10-20</option>
-                                <option value="6">20以上</option>
+                                <option value="1以下">1以下</option>
+                                <option value="1-3">1-3</option>
+                                <option value="3-5">3-5</option>
+                                <option value="5-8">5-8</option>
+                                <option value="8-10">8-10</option>
+                                <option value="10-20">10-20</option>
+                                <option value="20以上">20以上</option>
                             </select>
                         </div>
                     </div>
@@ -127,18 +127,18 @@
                         <span class="h_r_row_txt">经营时间(年)</span>
                         <div class="select_wrap">
                             <select class="h_r_row_select" id="manageyears">
-                                <option value="">1以下</option>
-                                <option value="1">1-2</option>
-                                <option value="2">2-3</option>
-                                <option value="3">3-5</option>
-                                <option value="4">5-8</option>
-                                <option value="5">8以上</option>
+                                <option value="1以下">1以下</option>
+                                <option value="1-2">1-2</option>
+                                <option value="2-3">2-3</option>
+                                <option value="3-5">3-5</option>
+                                <option value="5-8">5-8</option>
+                                <option value="8以上">8以上</option>
                             </select>
                         </div>
                     </div>
                     <div class="h_r_row">
                         <span class="h_r_row_txt">是否已办营业执照</span>
-                        <div class="h_r_row_radio radio_option">
+                        <div class="h_r_row_radio radio_option" id="yingyezhizhao">
                             <span data-val="1">有<i></i></span><span data-val="0">无<i></i></span>
                         </div>
                     </div>
@@ -149,12 +149,11 @@
                         <span class="h_r_row_txt">在读学历</span>
                         <div class="select_wrap">
                             <select class="h_r_row_select" id="currentdegree">
-                                <option value="">1以下</option>
-                                <option value="1">博士</option>
-                                <option value="2">硕士</option>
-                                <option value="3">研究生</option>
-                                <option value="4">本科生</option>
-                                <option value="5">专科生</option>
+                                <option value="博士">博士</option>
+                                <option value="硕士">硕士</option>
+                                <option value="研究生">研究生</option>
+                                <option value="本科">本科</option>
+                                <option value="专科">专科</option>
                             </select>
                         </div>
                     </div>
@@ -165,7 +164,7 @@
                     <div class="h_r_row">
                         <span class="h_r_row_txt">电商账户</span>
                         <div class="h_r_row_radio checkbox_option" id="electricityaccount">
-                            <span>淘宝账户<i></i></span><span>京东账户<i></i></span>
+                            <span data-val="淘宝账户">淘宝账户<i></i></span><span data-val="京东账户">京东账户<i></i></span>
                         </div>
                     </div>
                 </div>
@@ -173,20 +172,20 @@
                     <div class="h_r_row">
                         <span class="h_r_row_txt">电商账户</span>
                         <div class="h_r_row_radio checkbox_option" id="electricityaccount">
-                            <span>淘宝账户<i></i></span><span>京东账户<i></i></span>
+                            <span data-val="淘宝账户">淘宝账户<i></i></span><span data-val="京东账户">京东账户<i></i></span>
                         </div>
                     </div>
                     <div class="h_r_row">
                         <span class="h_r_row_txt">月收入(万元)</span>
                         <div class="select_wrap">
                             <select class="h_r_row_select" id="monthlyincome">
-                                <option value="">1以下</option>
-                                <option value="1">1-3</option>
-                                <option value="2">3-5</option>
-                                <option value="3">5-8</option>
-                                <option value="4">8-10</option>
-                                <option value="5">10-20</option>
-                                <option value="6">20以上</option>
+                                <option value="1以下">1以下</option>
+                                <option value="1-3">1-3</option>
+                                <option value="3-5">3-5</option>
+                                <option value="5-8">5-8</option>
+                                <option value="8-10">8-10</option>
+                                <option value="10-20">10-20</option>
+                                <option value="20以上">20以上</option>
                             </select>
                         </div>
                     </div>
@@ -196,20 +195,20 @@
                         <span class="h_r_row_txt">月收入(元)</span>
                         <div class="select_wrap">
                             <select class="h_r_row_select" id="monthlyincome">
-                                <option value="">2000以下</option>
-                                <option value="1">2000-3000</option>
-                                <option value="2">3000-4000</option>
-                                <option value="3">4000-5000</option>
-                                <option value="4">5000-6000</option>
-                                <option value="5">6000-10000</option>
-                                <option value="6">10000以上</option>
+                                <option value="2000以下">2000以下</option>
+                                <option value="2000-3000">2000-3000</option>
+                                <option value="3000-4000">3000-4000</option>
+                                <option value="4000-5000">4000-5000</option>
+                                <option value="5000-6000">5000-6000</option>
+                                <option value="6000-10000">6000-10000</option>
+                                <option value="10000以上">10000以上</option>
                             </select>
                         </div>
                     </div>
                     <div class="h_r_row">
                         <span class="h_r_row_txt">是否有使用</span>
                         <div class="h_r_row_radio checkbox_option" id="creditproducts">
-                            <span>芝麻信用<i></i></span><span>京东白条<i></i></span><span>微粒贷<i></i></span>
+                            <span data-val="芝麻信用">芝麻信用<i></i></span><span data-val="京东白条">京东白条<i></i></span><span data-val="微粒贷">微粒贷<i></i></span>
                         </div>
                     </div>
                 </div>
@@ -217,7 +216,7 @@
         </div>
         <a href="javascript:;" class="apply_btn">立即申请</a>
         <div class="h_rules">
-            <span class="h_rules_check"><i></i>同意</span><a href="javascript:;"><<小鱼儿帮帮贷贷款申请协议>></a>
+            <span class="h_rules_check active"><i></i>同意</span><a href="javascript:;"><<小鱼儿帮帮贷贷款申请协议>></a>
         </div>
     </div>
     <!-- <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
@@ -306,7 +305,6 @@
                 var radioSelects = $('.radio_option>span');
                 radioSelects.each(function(i, obj) {
                      obj.addEventListener('tap', function() {
-                        console.log(this);
                         var spans = this.parentNode.children;
                         for(var i =0;i<spans.length;i++) {
                             if(hasClass(spans[i], 'active')){
@@ -346,13 +344,48 @@
 
             careerData ={};//工作信息
 
+            $('.common_info .h_r_row_input').each(function(e){
+                if($(this).val()==''){
+                    if(msg==''){
+                        flag = false;
+                        var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
+                        console.log(title);
+                        msg = '请填写'+title;
+                        tips(msg,'tips_center',1500);
+                    }
+                }else{
+                    parmas[this.id] = this.value.trim();
+                }
+            });
+            var citySelect = $('#applycity');
+            if(citySelect.attr('data-val').trim()==''){
+                if(msg==''){
+                    flag = false;
+                    var title = citySelect.parents('.h_r_row').find('.h_r_row_txt').text();
+                    msg = '请选择'+title;
+                    tips(msg,'tips_center',1500);
+                }
+            }else{
+                parmas[citySelect.attr('id')] = citySelect.attr('data-val').trim();
+            }
+            $('.common_info .h_r_col_input_1,.common_info .h_r_col_input_2').each(function(e){
+                if($(this).val()==''){
+                    if(msg==''){
+                        flag = false;
+                        var title = $(this).parents('.h_r_col').find('.h_r_col_txt').text();
+                        msg = '请填写'+title;
+                        tips(msg,'tips_center',1500);
+                    }
+                }else{
+                    parmas[this.id] = this.value.trim();
+                }
+            });
             $('.common_info .h_r_row_radio').each(function(e){
                 var spanActive = $(this).find('span.active');
                 if(spanActive.length==0){
                     if(msg==''){
                         flag = false;
                         var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
-                        console.log(title);
                         msg = '请选择'+title;
                         tips(msg,'tips_center',1500);
                     }
@@ -364,19 +397,42 @@
             var careerInfo = $('.career_info');
             parmas[careerInfo.attr('id')] = careerInfo.val();
             
-            var careerInfoWrap = $('.career_type.active');
+            var careerInfoWrap = $('.career_type.active');//工作类型  详细信息
+
+            careerInfoWrap.find('.h_r_row_select').each(function(e){
+                if($(this).val()==''){
+                    if(msg==''){
+                        flag = false;
+                        var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
+                        msg = '请选择'+title;
+                        tips(msg,'tips_center',1500);
+                    }
+                }else{
+                    careerData[this.id] = $(this).val();
+                }
+            });
             careerInfoWrap.find('.h_r_row_radio').each(function(e){
                 var spanActive = $(this).find('span.active');
                 if(spanActive.length==0){
                     if(msg==''){
                         flag = false;
                         var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
-                        console.log(title);
                         msg = '请选择'+title;
                         tips(msg,'tips_center',1500);
                     }
                 }else{
-                    careerData[this.id] = spanActive.eq(0).attr('data-val');
+                    if($(this).hasClass('radio_option')){
+                        careerData[this.id] = spanActive.eq(0).attr('data-val');
+                    }else if($(this).hasClass('checkbox_option')){
+                        var ids = '';
+                        spanActive.each(function(){
+                            ids += $(this).attr('data-val')+' ';
+                        });
+                        if(ids){
+                           careerData[this.id] = ids; 
+                        }
+                    }
+                    
                 }
             });
             careerInfoWrap.find('.h_r_row_input').each(function(e){
@@ -384,7 +440,6 @@
                     if(msg==''){
                         flag = false;
                         var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
-                        console.log(title);
                         msg = '请填写'+title;
                         tips(msg,'tips_center',1500);
                     }
@@ -397,7 +452,6 @@
                     if(msg==''){
                         flag = false;
                         var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
-                        console.log(title);
                         msg = '请选择'+title;
                         tips(msg,'tips_center',1500);
                     }
@@ -405,7 +459,6 @@
                     careerData[$(this).attr('id')] = $(this).attr('data-val').trim();
                 }
             });
-            console.log(careerData);
             for(var i in careerData){
                 parmas[i] = careerData[i];
             }
@@ -417,7 +470,7 @@
                     type:"post",
                     url:Config.url+"/submitPrecisionPushApply",
                     contentType:"application/json",
-                    data:JSON.stringify(params),
+                    data:JSON.stringify(parmas),
                     beforeSend:function(xhr, settings){
                         loader.show();
                     },
