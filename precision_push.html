@@ -478,10 +478,11 @@
                     },
                     success:function(data, status, xhr){
                         console.log(data);
-                        if(data.resultCode=='0000'){
-                            setLocalStorage('precisionPushData',parmas);
+                        //if(data.resultCode=='0000'){
+                            setLocalStorage('precisionPushQueryData',parmas);
+                            setLocalStorage('precisionPushResultData',data.rows);
                             location.href="precision_push_list.html";
-                        }
+                        //}
                     },
                     error:function(xhr, errorType, error){
                         loader.hide();

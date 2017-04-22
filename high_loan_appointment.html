@@ -349,7 +349,7 @@
         $('.apply_btn').on('click',function(){
             var flag = true,
                 msg = '',
-                parmas=getLocalStorage('applyData');
+                parmas = getLocalStorage('applyQueryData')?getLocalStorage('applyQueryData'):{};
 
             careerData ={};//工作信息
 
@@ -387,7 +387,6 @@
             var careerInfoWrap = $('.career_type.active');//工作类型  详细信息
 
             careerInfoWrap.find('.h_r_row_select').each(function(e){
-                console.log($(this).val());
                 if($(this).val()==''){
                     if(msg==''){
                         flag = false;
