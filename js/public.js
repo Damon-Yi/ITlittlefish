@@ -14,7 +14,8 @@ new function (){
 };
 
 var Config ={
-    url:'http://a784112865.oicp.net/zhudai_api/service'
+    //url:'http://a784112865.oicp.net/zhudai_api/service'
+    url:'http://112.74.184.28/zhudai_api/service'
 }
 
 /*提示，弹窗*/
