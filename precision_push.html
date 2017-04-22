@@ -465,11 +465,11 @@
             console.log(parmas);
             
             if(flag){
-                setLocalStorage('applyData',parmas);
+                setLocalStorage('precisionPushData',parmas);
                 $.ajax({
                     type:"post",
                     url:Config.url+"/submitPrecisionPushApply",
-                    contentType:"application/json",
+                    //contentType:"application/json",
                     data:JSON.stringify(parmas),
                     beforeSend:function(xhr, settings){
                         loader.show();
