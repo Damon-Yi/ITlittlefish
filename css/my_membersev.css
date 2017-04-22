@@ -20,8 +20,20 @@
 	float: left;
 	text-align: center;
 	margin-top: .25rem;
-	
-	
+}
+.memberprice{
+	position: relative;
+}
+.memberprice dl span{
+	width: .2rem;
+	height: .2rem;
+	display: block;
+	background: #ff5959;
+	position: absolute;
+	left: 43%;
+	top: .2rem;
+	border-radius: .2rem;
+	display: none;
 }
 .memberarea img{
 	width: .6rem;
@@ -72,4 +84,10 @@
 .gobuyright{
 	width: 40%;
 	background: #ff5959;
+}
+.background{
+	background: #DEDEDE;
+}
+.border{
+	border: .02rem solid #ff5959;
 }

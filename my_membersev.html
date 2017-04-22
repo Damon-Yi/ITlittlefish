@@ -8,6 +8,8 @@
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <link href="css/public.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/my_membersev.css"/>
+    <script src="plugin/layer/mobile/layer.js" type="text/javascript" charset="utf-8"></script>
+    <script src="plugin/jquery/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/public.js"></script>
     <style>
         
@@ -40,6 +42,7 @@
 					<dl>
 						<dt><img src="images/hui01.png"/></dt>
 						<dd>66.8专区</dd>
+						<span class="point"></span>
 					</dl>
 				</div>
 				<div class="membercode">
@@ -65,12 +68,14 @@
 					<dl>
 						<dt><img src="images/hui01.png"/></dt>
 						<dd>166.8专区</dd>
+						<span class="point"></span>
 					</dl>
 				</div>
 				<div class="membercode">
 					<dl>
 						<dt><img src="images/erweima.png"/></dt>
 						<dd><p>挣钱二维码</p><p>(最高35%邀请佣金)</p></dd>
+						
 					</dl>
 				</div>
 				<div class="memberadd">
@@ -90,6 +95,7 @@
 					<dl>
 						<dt><img src="images/hui01.png"/></dt>
 						<dd>266.8专区</dd>
+						<span class="point"></span>
 					</dl>
 				</div>
 				<div class="membercode">
@@ -137,12 +143,56 @@
     <script>
     	var hrefurl = window.location.href;
         var levelno = hrefurl.split("=")[1];
-        if(levelno == 3){
-        	$(".memberarea").not($(".memberarea").eq(2)).css("background","#DEDEDE");
-        	$(".gobuyleft").find("span").eq(1).html("100元")
-        }else if(levelno == 2){
-        	$(".memberarea").eq(0).css("background","#DEDEDE");
-        }
+        var flag = false;
+        if(levelno == 4){
+        	$(".memberarea").eq(0).addClass("background");
+        	$(".gobuyleft").find("span").eq(1).html("100元");
+        }else if(levelno == 3){
+        	$(".memberarea").eq(0).addClass("background");;
+        	$(".memberarea").eq(1).addClass("background");
+        	$(".gobuyleft").find("span").eq(1).html("100元");
+        }else{
+        	$(".gobuyleft").find("span").eq(1).html("100元");
+        };
+        $(".memberarea").on("tap",function(){
+        	flag = true;
+        	if(!$(this).hasClass("background")){
+        		$(this).find('.point').show();
+        		$(this).siblings().find(".point").hide();
+        		var _index = $(this).index();
+        		console.log(_index)
+        		if(levelno == 4){
+        			if(_index == 2){
+        				$(".gobuyleft").find("span").eq(1).html("100元");
+        			}else{
+        				$(".gobuyleft").find("span").eq(1).html("200元");
+        			}	
+        		}else if(levelno == 3){
+        			if(_index == 3){
+        				$(".gobuyleft").find("span").eq(1).html("100元");
+        			}
+        		}else{
+        			if(_index == 1){
+        				$(".gobuyleft").find("span").eq(1).html("66.8元");
+        			}else if(_index == 2){
+        				$(".gobuyleft").find("span").eq(1).html("166.8元");
+        			}else{
+        				$(".gobuyleft").find("span").eq(1).html("266.8元");
+        			}
+        		}
+        	}
+        });
+        $(".gobuyright").on("tap",function(){
+    		if(!flag){
+    			layer.open({
+    				content:'请选择购买的等级',
+    				btn:'确定'
+    			})
+    		}else{
+    			console.log("去付款")
+    		}
+    		
+    	})
         console.log(levelno)
     </script>
 </html>
