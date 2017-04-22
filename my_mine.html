@@ -92,11 +92,11 @@
 						</a>
 					</ul>
 					<ul class="navigationUl">
-						<a href="my_membersev.html">
+						<a href="my_member.html">
 							<li class="navigation_list">
 								<dl>
 									<dt><img src="images/huiyuanfuwu.png"/></dt>
-									<dd>会员服务</dd>
+									<dd>会员功能</dd>
 								</dl>
 							</li>
 						</a>
@@ -192,10 +192,13 @@
 	})
 	//点击升级V会员时
 	$(".upgrade").on("tap",function(){
-		if(Data.levelno !=1 || Data.levelno !=2 || Data.levelno !=3 || Data.levelno !=4 ){
+		if(Data.levelno == 1){
 			layer.open({
-				
+				content:'您是最高级会员，无需升级',
+				btn:'确定'
 			})
+		}else{
+			location.href="my_membersev.html?levelno="+Data.levelno;
 		}
 	})
 </script>
