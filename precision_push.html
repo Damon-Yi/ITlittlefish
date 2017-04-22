@@ -485,6 +485,7 @@
                         }
                     },
                     error:function(xhr, errorType, error){
+                        error = error?error:'系统错误';
                         loader.hide();
                         tips(error,'tips_center',1500);
                     },

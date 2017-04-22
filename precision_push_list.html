@@ -285,6 +285,7 @@
                             me.noData(false);
                         },
                         error: function(xhr, errorType, error){
+                            error = error?error:'系统错误';
                             tips(error,'tips_center',1500);
                             // 即使加载出错，也得重置
                             me.resetload();
@@ -313,6 +314,7 @@
                             me.resetload();
                         },
                         error: function(xhr, errorType, error){
+                            error = error?error:'系统错误';
                             tips(error,'tips_center',1500);
                             // 锁定
                             me.lock();

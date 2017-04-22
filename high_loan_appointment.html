@@ -470,6 +470,7 @@
                     },
                     error:function(xhr, errorType, error){
                         loader.hide();
+                        error = error?error:'系统错误';
                         tips(error,'tips_center',1500);
                     },
                     complete:function(xhr, status){
