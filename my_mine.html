@@ -8,6 +8,11 @@
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <link rel="stylesheet" type="text/css" href="css/public.css"/>
     <link href="css/my_mine.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="plugin/layer/mobile/need/layer.css"/>
+    <script src="plugin/layer/mobile/layer.js" type="text/javascript" charset="utf-8"></script>
+    <script src="plugin/jquery/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+    <script src="plugin/jquery/ajaxfileupload.js" type="text/javascript" charset="utf-8"></script>
+    <script src="plugin/jquery/ajaxfileuploadProgress.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/public.js"></script>
     <!--<script type="text/javascript">
         var aScroll;
@@ -23,7 +28,7 @@
        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
     </script>-->
 	</head>
-	<body onload="loaded()" style="background: white;">
+	<body  style="background: white;">
 		<div class="page_header">我的</div>
 		<!--用户基本信息-->
 		<div id="cont_wrapper">
@@ -35,19 +40,22 @@
 							<div>
 								<img class="user_img" src="images/user_icon.png"/>
 							</div>
-							<input id='file1' type='file' accept=''>
+							<!--<input id='file1' type='file' accept=''>-->
 						</div>
 						<div>
-							<p><span>昵称：</span><span>小美</span></p>
-		                    <p><span>135****5622</span></p>
+							<p><span>昵称：</span><span class="nickname"></span></p>
+		                    <p><span class="mobilephone"></span></p>
 						</div>
 						<div>
 							<p>余额</p>
-		                    <p style="font-size: 0.4rem;">0.00元</p>
+		                    <p style="font-size: 0.4rem;" class="balance"><span></span>元</p>
 						</div>
 					</div>
 					<div class="member">
-						<p class="upgrade">升级V会员</p>
+						
+							<p class="upgrade">升级V会员</p>
+						
+						
 						<a href="my_recharge.html">
 							<p class="recharge">充值</p> 
 						</a>
@@ -160,7 +168,34 @@
 <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
 <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
 <script type="text/javascript">
-	$("#file1").on("tap",function(){
-		console.log(12)
+	var Data;
+	 $.ajax({
+        type:"post",
+        url:Config.url1+"/queryAccountInfo",
+        data:{openId:"obDm_wPQs9w-1wiTJ0c8pD2dsfVM"},
+        success:function(data, status, xhr){
+        	console.log(data)
+        	Data = data;
+            $(".nickname").html(data.nickname);
+            $(".grade").html(data.levelName);
+            if(data.headimgurl){
+            	$(".user_img").attr("src",data.headimgurl);
+            };
+            $(".balance").find("span").html(data.balance);
+            var mobilephone = data.mobilephone;
+           	$(".mobilephone").html(mobilephone.substr(0, 3) + '****' + mobilephone.substr(7))
+        },
+        error:function(xhr, errorType, error){
+        	console.log(000)
+          	
+        },
+	})
+	//点击升级V会员时
+	$(".upgrade").on("tap",function(){
+		if(Data.levelno !=1 || Data.levelno !=2 || Data.levelno !=3 || Data.levelno !=4 ){
+			layer.open({
+				
+			})
+		}
 	})
 </script>

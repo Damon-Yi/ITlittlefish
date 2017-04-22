@@ -8,6 +8,8 @@
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <link href="css/public.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/my_authentication.css"/>
+    <link rel="stylesheet" type="text/css" href="plugin/layer/mobile/need/layer.css"/>
+    <script src="plugin/layer/mobile/layer.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/public.js"></script>
     <style>
         
@@ -36,23 +38,25 @@
             	<div class="content">
             		<p>
             			<span>姓名</span>
-            			<span>李晓晓</span>
+            			<input type="text" name="username" id="" value="" placeholder="请填写姓名"/>
             		</p>
             		<p>
             			<span>性别</span>
-            			<span>女</span>
+            			<input type="text" name="sex" id="" value="" placeholder="例：男"/>
             		</p>
             		<p>
             			<span>手机号码</span>
-            			<span>15118057969</span>
+            			<input type="text" name="mobilephone" id="" value="" placeholder="请填写手机号码"/>
             		</p>
             		<p>
             			<span>所有城市</span>
-            			<span></span>
+            			<input type="text" name="city" id="" value="" placeholder="例：广东深圳福田"/>
             		</p>
             		<p class="bordernone">
-            			<span>出生年月</span>
-            			<span></span>
+            			出生年月
+        				<input type="text" class="birthday" name="year" id="" value="" placeholder="1991"/>年
+        				<input type="text" class="birthday" name="mouth" id="" value="" placeholder="09"/>月
+        				<input type="text" class="birthday" name="day" id="" value="" placeholder="20"/>日
             		</p>
             	</div>
             </div>
@@ -62,19 +66,19 @@
             	<div class="content">
             		<p>
             			<span>月收入</span>
-            			<span><input type="text" /></span>
+            			<span><input type="text" name="monthlyincome" placeholder="请填写月收入"/></span>
             		</p>
             		<p>
             			<span>职业身份</span>
-            			<span><input type="text" /></span>
+            			<span><input type="text" name="profession" placeholder="请填职业身份"/></span>
             		</p>
             		<p>
             			<span>本地社保</span>
-            			<span><input type="text" /></span>
+            			<span><input type="text" name="socialsecurity" placeholder="是否交本地社保"/></span>
             		</p>
             		<p class="bordernone">
             			<span>本地公积金</span>
-            			<span><input type="text" /></span>
+            			<span><input type="text" name="socialinsurance" placeholder="是否交公积金"/></span>
             		</p>
             	</div>
             </div>
@@ -89,39 +93,57 @@
     <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
     <script>
         $(".submit").on("tap",function(){
+        	var username = $("input[name = username]")[0].value;
+        	var sex = $("input[name = sex]")[0].value;
+        	var mobilephone = $("input[name = mobilephone]")[0].value;
+        	var city = $("input[name = city]")[0].value;
+        	var birthday = $("input[name = year]")[0].value+'-'+$("input[name = mouth]")[0].value+"-"+$("input[name = day]")[0].value;
+        	var monthlyincome = $("input[name = monthlyincome]")[0].value;
+        	var profession = $("input[name = profession]")[0].value;
+        	var socialsecurity = $("input[name = socialsecurity]")[0].value;
+        	var socialinsurance = $("input[name = socialinsurance]")[0].value;
+        	/*if(!username || !sex || !mobilephone || !city || !birthday 
+        		|| !monthlyincome || !profession || !socialsecurity 
+        		|| !socialinsurance){
+        			layer.open({
+        				content: '请完善资料'
+						,skin: 'msg'
+						,time: 1.5 //2秒后自动关闭
+        			})
+        		}*/
         	 $.ajax({
                 type:"post",
-                url:Config.url+"/dataUpdate",
-                contentType:"application/json",
-                data:[
-                	{"username":'张三'},
-                	{"sex":"男"},
-                	{"mobilephone":"15118057969"},
-                	{"city":"深圳"},
-                	{"birthday":"19900619"},
-                	{"monthlyincome":"300000"},
-                	{"profession":"产品经理"},
-                	{"socialsecurity":"是"},
-                	{"socialinsurance":"是"}
-                ],
-                beforeSend:function(xhr, settings){
-                    //loader.show();
+                url:Config.url1+"/dataUpdate",
+               	//contentType:"application/json",
+                data:{
+                	'openId':"111",
+	        		"username":username,
+	            	"sex":sex,
+	            	"mobilephone":mobilephone,
+	            	"city":city,
+	            	"birthday":birthday,
+	            	"monthlyincome":monthlyincome,
+	            	"profession":profession,
+	            	"socialsecurity":socialsecurity,
+	            	"socialinsurance":socialinsurance
                 },
                 success:function(data, status, xhr){
                 	console.log(data)
                     if(data.resultCode==0){
                     	console.log(data)
-                        //location.href="precision_push_list.html";
+                        location.href="my_mine.html";
+                    }else{
+                    	layer.open({
+                    		content: data.resultMessage,
+							skin: 'msg',
+							time: 2 //2秒后自动关闭
+                    	})
                     }
                 },
                 error:function(xhr, errorType, error){
                 	console.log(000)
-                    //loader.hide();
-                    tips('保存信息失败','tips_center',1500);
+                  	
                 },
-                complete:function(xhr, status){
-                   // loader.hide();
-                }
             });
         })
     </script>
