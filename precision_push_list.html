@@ -10,6 +10,9 @@
     <link href="css/precision_push.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="plugin/dropload/dropload.css">
     <script src="js/public.js"></script>
+    <style type="text/css">
+        body{background-color: #e9e9e9;}
+    </style>
 </head>
 <body>
     <div class="page_header">
@@ -19,7 +22,7 @@
     <div class="h_push_tips">根据您提交的信息，精准推送以下产品</div>
     <div class="h_push">
         <div class="h_push_list">
-            <div class="h_push_item">
+            <!-- <div class="h_push_item">
                 <div class="h_push_row_1">
                     <div class="h_push_col_1">
                         <div class="h_push_img_header"><img src="../images/precision_loan_02.png"></div>
@@ -223,16 +226,28 @@
                 <div class="h_push_row_3">
                     <span class="active">身份证</span><span>网购账号</span><span>支付宝账号</span><span>信用卡</span><span>手机认证</span>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script type="text/javascript" src="plugin/zepto/touch.js"></script>
     <script src="plugin/dropload/dropload.min.js"></script>
     <script>
+        var precisionPushQueryData = getLocalStorage('precisionPushQueryData');
+        var precisionPushResultData = getLocalStorage('precisionPushResultData');
+        //console.log(precisionPushQueryData);
+        //console.log(precisionPushResultData);
+
+        if(precisionPushResultData){
+            if(precisionPushResultData.rows){
+                var hPushList = $('.h_push_list');
+                var hPushItems = precisionPushResultData.rows;
+                appentData(hPushList,hPushItems);
+            }
+        }
         $(function(){
             // 页数
-            var page = 0;
+            var page = 1;
             // 每页展示10个
             var size = 10;
 
@@ -252,99 +267,75 @@
                     domNoData  : '<div class="dropload-noData">暂无数据</div>'
                 },
                 loadUpFn : function(me){
-                    /*$.ajax({
-                        type: 'GET',
-                        url: 'json/update.json',
-                        dataType: 'json',
+                    console.log(precisionPushQueryData);
+                    var parmas = precisionPushQueryData;
+                    $.ajax({
+                        type:"post",
+                        url:Config.url+"/submitPrecisionPushApply",
+                        data:parmas,
                         success: function(data){
-                            var result = '';
-                            for(var i = 0; i < data.lists.length; i++){
-                                result +=   '<a class="item opacity" href="'+data.lists[i].link+'">'
-                                                +'<img src="'+data.lists[i].pic+'" alt="">'
-                                                +'<h3>'+data.lists[i].title+'</h3>'
-                                                +'<span class="date">'+data.lists[i].date+'</span>'
-                                            +'</a>';
-                            }
-                            // 为了测试，延迟1秒加载
-                            setTimeout(function(){
-                                $('.lists').html(result);
-                                // 每次数据加载完，必须重置
-                                me.resetload();
-                                // 重置页数，重新获取loadDownFn的数据
-                                page = 0;
-                                // 解锁loadDownFn里锁定的情况
-                                me.unlock();
-                                me.noData(false);
-                            },1000);
+                            $('.h_push_list').empty();
+                            appentData($('.h_push_list'),rows);
+                            setLocalStorage('precisionPushQueryData',parmas);
+                        
+                            me.resetload();
+                            page = 1;
+                            // 解锁loadDownFn里锁定的情况
+                            me.unlock();
+                            me.noData(false);
                         },
-                        error: function(xhr, type){
-                            alert('Ajax error!');
+                        error: function(xhr, errorType, error){
+                            tips(error,'tips_center',1500);
                             // 即使加载出错，也得重置
                             me.resetload();
                         }
-                    });*/
-                    // 为了测试，延迟1秒加载
-                    setTimeout(function(){
-                        // 每次数据加载完，必须重置
-                        me.resetload();
-                        // 重置页数，重新获取loadDownFn的数据
-                        page = 0;
-                        // 解锁loadDownFn里锁定的情况
-                        me.unlock();
-                        me.noData(false);
-                    },1000);
+                    });
                 },
                 loadDownFn : function(me){
                     page++;
-                    // 拼接HTML
-                    var result = '';
-                    /*$.ajax({
-                        type: 'GET',
-                        url: 'http://ons.me/tools/dropload/json.php?page='+page+'&size='+size,
-                        dataType: 'json',
+                    console.log(precisionPushQueryData);
+                    var parmas = precisionPushQueryData;
+                    parmas.pageNo = page;
+                    $.ajax({
+                        type:"post",
+                        url:Config.url+"/submitPrecisionPushApply",
+                        data:parmas,
                         success: function(data){
-                            var arrLen = data.length;
-                            if(arrLen > 0){
-                                for(var i=0; i<arrLen; i++){
-                                    result +=   '<a class="item opacity" href="'+data[i].link+'">'
-                                                    +'<img src="'+data[i].pic+'" alt="">'
-                                                    +'<h3>'+data[i].title+'</h3>'
-                                                    +'<span class="date">'+data[i].date+'</span>'
-                                                +'</a>';
-                                }
-                            // 如果没有数据
+                            if(data.rows.length>0){
+                                appentData($('.h_push_list'),rows);
+                                setLocalStorage('precisionPushQueryData',parmas);
                             }else{
                                 // 锁定
                                 me.lock();
                                 // 无数据
-                                me.noData();
+                                me.noData(true);
                             }
-                            // 为了测试，延迟1秒加载
-                            setTimeout(function(){
-                                // 插入数据到页面，放到最后面
-                                $('.lists').append(result);
-                                // 每次数据插入，必须重置
-                                me.resetload();
-                            },1000);
+                            me.resetload();
                         },
-                        error: function(xhr, type){
-                            alert('Ajax error!');
-                            // 即使加载出错，也得重置
+                        error: function(xhr, errorType, error){
+                            tips(error,'tips_center',1500);
+                            // 锁定
+                            me.lock();
+                            // 无数据
+                            me.noData(true);
                             me.resetload();
                         }
-                    });*/
-                    setTimeout(function(){
-                        // 锁定
-                        me.lock();
-                        // 无数据
-                        me.noData();
-                        // 每次数据插入，必须重置
-                        me.resetload();
-                    },1000);
+                    });
                 },
                 threshold : 50
             });
         });
+        function appentData(obj,rows){
+            for(var i=0;i<rows.length;i++){
+                var tmpItem = $('<div class="h_push_item"><div class="h_push_row_1"><div class="h_push_col_1"><div class="h_push_img_header"><img src="../images/precision_loan_02.png"></div><div class="h_push_img_logo"><img src="'+rows[i].logourl+'"></div></div><div class="h_push_col_2"><p class="h_push_p_1">'+rows[i].productname+'</p><p class="h_push_p_2">适用人群：'+rows[i].fitpeople+'</p><p class="h_push_p_3">申请人数：'+rows[i].applications+'人</p></div><div class="h_push_col_3"><div class="h_push_tr"><div class="h_push_td"><p class="">成功率</p><p class="color_red">'+rows[i].successrate+'</p></div><div class="h_push_td"><p class="">日利率</p><p class="color_red">'+rows[i].dayrate+'</p></div></div><div class="h_push_tr"><div class="h_push_td"><p class="">平均额度</p><p class="color_red">'+rows[i].averageamount+'</p></div><div class="h_push_td"><p class="">平均用时</p><p class="color_red">'+rows[i].averagetime+'</p></div></div></div></div><div class="h_push_row_2"><p>最高额度：<span class="h_max_num">'+rows[i].ammout+'</span></p></div><div class="h_push_row_3"></div></div>');
+                var hPushRow3 = tmpItem.find('.h_push_row_3');
+                for(var j=0;j<rows[i].applyingdata.length;j++){
+                    var tmpSpan = $('<span class="active">'+rows[i].applyingdata[j]+'</span>');
+                    hPushRow3.append(tmpSpan);
+                }
+                obj.append(tmpItem);
+            }
+        }
     </script>
 </body>
 </html>
