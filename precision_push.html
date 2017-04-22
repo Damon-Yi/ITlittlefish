@@ -81,7 +81,7 @@
                     <div class="h_r_row">
                         <span class="h_r_row_txt">月收入(元)</span>
                         <div class="select_wrap">
-                            <select class="h_r_row_select" id="monthlyincome">
+                            <select class="h_r_row_select" id="monthlyIncome">
                                 <option value="2000以下">2000以下</option>
                                 <option value="2000-3000">2000-3000</option>
                                 <option value="3000-4000">3000-4000</option>
@@ -112,7 +112,7 @@
                     <div class="h_r_row">
                         <span class="h_r_row_txt">月收入(万元)</span>
                         <div class="select_wrap">
-                            <select class="h_r_row_select" id="monthlyincome">
+                            <select class="h_r_row_select" id="monthlyIncome">
                                 <option value="1以下">1以下</option>
                                 <option value="1-3">1-3</option>
                                 <option value="3-5">3-5</option>
@@ -178,7 +178,7 @@
                     <div class="h_r_row">
                         <span class="h_r_row_txt">月收入(万元)</span>
                         <div class="select_wrap">
-                            <select class="h_r_row_select" id="monthlyincome">
+                            <select class="h_r_row_select" id="monthlyIncome">
                                 <option value="1以下">1以下</option>
                                 <option value="1-3">1-3</option>
                                 <option value="3-5">3-5</option>
@@ -194,7 +194,7 @@
                     <div class="h_r_row">
                         <span class="h_r_row_txt">月收入(元)</span>
                         <div class="select_wrap">
-                            <select class="h_r_row_select" id="monthlyincome">
+                            <select class="h_r_row_select" id="monthlyIncome">
                                 <option value="2000以下">2000以下</option>
                                 <option value="2000-3000">2000-3000</option>
                                 <option value="3000-4000">3000-4000</option>
@@ -462,26 +462,30 @@
             for(var i in careerData){
                 parmas[i] = careerData[i];
             }
-            console.log(parmas);
             
+            parmas['pageNo'] = 1;
+            parmas['pageSize'] = 10;
+            console.log(parmas);
+            console.log(JSON.stringify(parmas));
             if(flag){
-                setLocalStorage('precisionPushData',parmas);
                 $.ajax({
                     type:"post",
                     url:Config.url+"/submitPrecisionPushApply",
                     //contentType:"application/json",
-                    data:JSON.stringify(parmas),
+                    data:parmas,
                     beforeSend:function(xhr, settings){
                         loader.show();
                     },
                     success:function(data, status, xhr){
-                        if(data.resultCode==0){
+                        console.log(data);
+                        if(data.resultCode=='0000'){
+                            setLocalStorage('precisionPushData',parmas);
                             location.href="precision_push_list.html";
                         }
                     },
                     error:function(xhr, errorType, error){
                         loader.hide();
-                        tips('保存信息失败','tips_center',1500);
+                        tips(error,'tips_center',1500);
                     },
                     complete:function(xhr, status){
                         loader.hide();

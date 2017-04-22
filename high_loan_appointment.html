@@ -463,13 +463,14 @@
                         loader.show();
                     },
                     success:function(data, status, xhr){
-                        if(data.resultCode==0){
+                        console.log(data);
+                        if(data.resultCode=='0000'){
                             location.href="high_loan_apply_suc.html";
                         }
                     },
                     error:function(xhr, errorType, error){
                         loader.hide();
-                        tips('保存信息失败','tips_center',1500);
+                        tips(error,'tips_center',1500);
                     },
                     complete:function(xhr, status){
                         loader.hide();
