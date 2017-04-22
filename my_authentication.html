@@ -88,6 +88,41 @@
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
     <script>
-        
+        $(".submit").on("tap",function(){
+        	 $.ajax({
+                type:"post",
+                url:Config.url+"/dataUpdate",
+                contentType:"application/json",
+                data:[
+                	{"username":'张三'},
+                	{"sex":"男"},
+                	{"mobilephone":"15118057969"},
+                	{"city":"深圳"},
+                	{"birthday":"19900619"},
+                	{"monthlyincome":"300000"},
+                	{"profession":"产品经理"},
+                	{"socialsecurity":"是"},
+                	{"socialinsurance":"是"}
+                ],
+                beforeSend:function(xhr, settings){
+                    //loader.show();
+                },
+                success:function(data, status, xhr){
+                	console.log(data)
+                    if(data.resultCode==0){
+                    	console.log(data)
+                        //location.href="precision_push_list.html";
+                    }
+                },
+                error:function(xhr, errorType, error){
+                	console.log(000)
+                    //loader.hide();
+                    tips('保存信息失败','tips_center',1500);
+                },
+                complete:function(xhr, status){
+                   // loader.hide();
+                }
+            });
+        })
     </script>
 </html>

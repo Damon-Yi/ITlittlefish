@@ -30,6 +30,10 @@ $(function(){
     		$(this).removeClass("bordercolor02").addClass("bordercolor01");
     		$(this).append("<img src='images/xuanzhong.png'/>");
     	}
+    });
+    //立刻充值
+    $(".goapply").on("tap",function(){
+    	
     })
 	
 })

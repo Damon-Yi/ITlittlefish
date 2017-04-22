@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/public.css"/>
     <link href="css/my_mine.css" rel="stylesheet" type="text/css">
     <script src="js/public.js"></script>
-    <script type="text/javascript">
+    <!--<script type="text/javascript">
         var aScroll;
         function loaded () {
             aScroll = new IScroll('#cont_wrapper',{
@@ -21,7 +21,7 @@
             });
         }
        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-    </script>
+    </script>-->
 	</head>
 	<body onload="loaded()" style="background: white;">
 		<div class="page_header">我的</div>
@@ -31,8 +31,11 @@
 				<div class="user_info">
 					<p class="grade">等级V1</p>
 					<div class="user_Mes">
-						<div>
-							<img class="user_img" src="images/user_icon.png"/>
+						<div class="user_Mes_img">
+							<div>
+								<img class="user_img" src="images/user_icon.png"/>
+							</div>
+							<input id='file1' type='file' accept=''>
 						</div>
 						<div>
 							<p><span>昵称：</span><span>小美</span></p>
@@ -51,7 +54,7 @@
 						
 					</div>
 				</div>
-			
+				
 			<!--基本功能导航-->
 				<div class="navigation">
 					<ul class="navigationUl">
@@ -156,3 +159,8 @@
 <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
 <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
 <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
+<script type="text/javascript">
+	$("#file1").on("tap",function(){
+		console.log(12)
+	})
+</script>
