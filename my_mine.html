@@ -169,9 +169,10 @@
 <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
 <script type="text/javascript">
 	var Data;
-	 $.ajax({
+	//用户信息
+	$.ajax({
         type:"post",
-        url:Config.url1+"/queryAccountInfo",
+        url:Config.url1+"queryAccountInfo",
         data:{openId:"obDm_wPQs9w-1wiTJ0c8pD2dsfVM"},
         success:function(data, status, xhr){
         	console.log(data)
@@ -184,6 +185,22 @@
             $(".balance").find("span").html(data.balance);
             var mobilephone = data.mobilephone;
            	$(".mobilephone").html(mobilephone.substr(0, 3) + '****' + mobilephone.substr(7))
+        },
+        error:function(xhr, errorType, error){
+        	console.log(000)
+          	
+        },
+	})
+	//用户二维码
+	$.ajax({
+        type:"post",
+        url:Config.url1+"showqrcode",
+        data:{
+        	openId:"obDm_wPQs9w-1wiTJ0c8pD2dsfVM",
+        	type:1
+        },
+        success:function(data, status, xhr){
+        	console.log(data)
         },
         error:function(xhr, errorType, error){
         	console.log(000)
