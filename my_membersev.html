@@ -130,7 +130,7 @@
         <div class="gobuy">
 			<div class="gobuyleft">
 				<span>价格：</span>
-				<span>98元</span>
+				<span>98</span>元
 			</div>
 			<div class="gobuyright">
 				<span>立即购买</span>
@@ -146,13 +146,13 @@
         var flag = false;
         if(levelno == 4){
         	$(".memberarea").eq(0).addClass("background");
-        	$(".gobuyleft").find("span").eq(1).html("100元");
+        	$(".gobuyleft").find("span").eq(1).html("100");
         }else if(levelno == 3){
         	$(".memberarea").eq(0).addClass("background");;
         	$(".memberarea").eq(1).addClass("background");
-        	$(".gobuyleft").find("span").eq(1).html("100元");
+        	$(".gobuyleft").find("span").eq(1).html("100");
         }else{
-        	$(".gobuyleft").find("span").eq(1).html("100元");
+        	$(".gobuyleft").find("span").eq(1).html("100");
         };
         $(".memberarea").on("tap",function(){
         	flag = true;
@@ -163,21 +163,21 @@
         		console.log(_index)
         		if(levelno == 4){
         			if(_index == 2){
-        				$(".gobuyleft").find("span").eq(1).html("100元");
+        				$(".gobuyleft").find("span").eq(1).html("100");
         			}else{
-        				$(".gobuyleft").find("span").eq(1).html("200元");
+        				$(".gobuyleft").find("span").eq(1).html("200");
         			}	
         		}else if(levelno == 3){
         			if(_index == 3){
-        				$(".gobuyleft").find("span").eq(1).html("100元");
+        				$(".gobuyleft").find("span").eq(1).html("100");
         			}
         		}else{
         			if(_index == 1){
-        				$(".gobuyleft").find("span").eq(1).html("66.8元");
+        				$(".gobuyleft").find("span").eq(1).html("66.8");
         			}else if(_index == 2){
-        				$(".gobuyleft").find("span").eq(1).html("166.8元");
+        				$(".gobuyleft").find("span").eq(1).html("166.8");
         			}else{
-        				$(".gobuyleft").find("span").eq(1).html("266.8元");
+        				$(".gobuyleft").find("span").eq(1).html("266.8");
         			}
         		}
         	}
@@ -189,7 +189,37 @@
     				btn:'确定'
     			})
     		}else{
-    			console.log("去付款")
+    			var prive = $(".gobuyleft").find("span").eq(1).html();
+    			console.log(prive)
+    			$.ajax({
+			        type:"post",
+			        url:Config.url1+"/purchasemember",
+			        data:{
+			        	openId:"obDm_wPQs9w-1wiTJ0c8pD2dsfVM",
+			        	memberamt:prive,
+			        	userid:'',
+			        	recommendby:'',
+			        	membername:'',
+			        	upgrade:'',
+			        	paystatus:''
+			        },
+			        success:function(data, status, xhr){
+			        	console.log(data)
+			        	Data = data;
+			            $(".nickname").html(data.nickname);
+			            $(".grade").html(data.levelName);
+			            if(data.headimgurl){
+			            	$(".user_img").attr("src",data.headimgurl);
+			            };
+			            $(".balance").find("span").html(data.balance);
+			            var mobilephone = data.mobilephone;
+			           	$(".mobilephone").html(mobilephone.substr(0, 3) + '****' + mobilephone.substr(7))
+			        },
+			        error:function(xhr, errorType, error){
+			        	console.log(000)
+			          	
+			        },
+				})
     		}
     		
     	})
