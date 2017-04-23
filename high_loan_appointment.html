@@ -62,11 +62,11 @@
                             <span class="h_r_row_txt">工作信息</span>
                             <div class="select_wrap">
                                 <select class="h_r_row_select career_info" id="profession">
-                                    <option value="1">工薪族</option>
-                                    <option value="2">企业主</option>
-                                    <option value="3">在校学生</option>
-                                    <option value="4">网店主</option>
-                                    <option value="5">自由职业者</option>
+                                    <option value="002">工薪族</option>
+                                    <option value="003">企业主</option>
+                                    <option value="001">在校学生</option>
+                                    <option value="004">网店主</option>
+                                    <option value="005">自由职业者</option>
                                 </select>
                             </div>
                         </div>
@@ -152,7 +152,7 @@
                             </div>
                         </div>
                         <div class="h_r_row">
-                            <span class="h_r_row_txt">入学时间</span><div id="schoolTime" class="city_select" data-val="">请选择时间</div>
+                            <span class="h_r_row_txt">入学时间</span><div id="entranceyear" class="city_select" data-val="">请选择时间</div>
                         </div>
                         <div class="h_r_row"><span class="h_r_row_txt">所在城市</span><div id="schoolCity" class="city_select" data-val="">请选择城市</div></div>
                         <div class="h_r_row">
@@ -283,7 +283,7 @@
                     });
                 }, false);
                 //入学时间
-                var showCityPickerButton = doc.getElementById('schoolTime');
+                var showCityPickerButton = doc.getElementById('entranceyear');
                 showCityPickerButton.addEventListener('tap', function(event) {
                     var _that = this;
                     var options = {
@@ -349,7 +349,7 @@
         $('.apply_btn').on('click',function(){
             var flag = true,
                 msg = '',
-                parmas=getLocalStorage('applyData');
+                parmas = getLocalStorage('applyQueryData')?getLocalStorage('applyQueryData'):{};
 
             careerData ={};//工作信息
 
@@ -387,7 +387,6 @@
             var careerInfoWrap = $('.career_type.active');//工作类型  详细信息
 
             careerInfoWrap.find('.h_r_row_select').each(function(e){
-                console.log($(this).val());
                 if($(this).val()==''){
                     if(msg==''){
                         flag = false;
@@ -451,6 +450,7 @@
                 parmas[i] = careerData[i];
             }
             console.log(parmas);
+            console.log(JSON.stringify(parmas));
             
             if(flag){
                 //setLocalStorage('applyData',parmas);
@@ -458,18 +458,20 @@
                     type:"post",
                     url:Config.url+"/LoanApply/apply",
                     //contentType:"application/json",
-                    data:JSON.stringify(parmas),
+                    data:parmas,
                     beforeSend:function(xhr, settings){
                         loader.show();
                     },
                     success:function(data, status, xhr){
-                        if(data.resultCode==0){
+                        console.log(data);
+                        if(data.resultCode=='0000'){
                             location.href="high_loan_apply_suc.html";
                         }
                     },
                     error:function(xhr, errorType, error){
                         loader.hide();
-                        tips('保存信息失败','tips_center',1500);
+                        error = error?error:'系统错误';
+                        tips(error,'tips_center',1500);
                     },
                     complete:function(xhr, status){
                         loader.hide();
