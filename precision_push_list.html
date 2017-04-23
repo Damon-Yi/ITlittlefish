@@ -25,8 +25,8 @@
             <!-- <div class="h_push_item">
                 <div class="h_push_row_1">
                     <div class="h_push_col_1">
-                        <div class="h_push_img_header"><img src="../images/precision_loan_02.png"></div>
-                        <div class="h_push_img_logo"><img src="../images/precision_loan_03.png"></div>
+                        <div class="h_push_img_header"><img src="images/precision_loan_02.png"></div>
+                        <div class="h_push_img_logo"><img src="images/precision_loan_03.png"></div>
                     </div>
                     <div class="h_push_col_2">
                         <p class="h_push_p_1">平安i贷-应急贷</p>
@@ -66,8 +66,8 @@
             <div class="h_push_item">
                 <div class="h_push_row_1">
                     <div class="h_push_col_1">
-                        <div class="h_push_img_header"><img src="../images/precision_loan_02.png"></div>
-                        <div class="h_push_img_logo"><img src="../images/precision_loan_04.png"></div>
+                        <div class="h_push_img_header"><img src="images/precision_loan_02.png"></div>
+                        <div class="h_push_img_logo"><img src="images/precision_loan_04.png"></div>
                     </div>
                     <div class="h_push_col_2">
                         <p class="h_push_p_1">曹操贷-极速贷款</p>
@@ -107,8 +107,8 @@
             <div class="h_push_item">
                 <div class="h_push_row_1">
                     <div class="h_push_col_1">
-                        <div class="h_push_img_header"><img src="../images/precision_loan_02.png"></div>
-                        <div class="h_push_img_logo"><img src="../images/precision_loan_05.png"></div>
+                        <div class="h_push_img_header"><img src="images/precision_loan_02.png"></div>
+                        <div class="h_push_img_logo"><img src="images/precision_loan_05.png"></div>
                     </div>
                     <div class="h_push_col_2">
                         <p class="h_push_p_1">现金侠-极速贷款</p>
@@ -148,7 +148,7 @@
             <div class="h_push_item">
                 <div class="h_push_row_1">
                     <div class="h_push_col_1">
-                        <div class="h_push_img_header"><img src="../images/precision_loan_02.png"></div>
+                        <div class="h_push_img_header"><img src="images/precision_loan_02.png"></div>
                         <div class="h_push_img_logo"></div>
                     </div>
                     <div class="h_push_col_2">
@@ -189,7 +189,7 @@
             <div class="h_push_item">
                 <div class="h_push_row_1">
                     <div class="h_push_col_1">
-                        <div class="h_push_img_header"><img src="../images/precision_loan_02.png"></div>
+                        <div class="h_push_img_header"><img src="images/precision_loan_02.png"></div>
                         <div class="h_push_img_logo"></div>
                     </div>
                     <div class="h_push_col_2">
@@ -329,7 +329,7 @@
         });
         function appentData(obj,rows){
             for(var i=0;i<rows.length;i++){
-                var tmpItem = $('<div class="h_push_item"><div class="h_push_row_1"><div class="h_push_col_1"><div class="h_push_img_header"><img src="../images/precision_loan_02.png"></div><div class="h_push_img_logo"><img src="'+rows[i].logourl+'"></div></div><div class="h_push_col_2"><p class="h_push_p_1">'+rows[i].productname+'</p><p class="h_push_p_2">适用人群：'+rows[i].fitpeople+'</p><p class="h_push_p_3">申请人数：'+rows[i].applications+'人</p></div><div class="h_push_col_3"><div class="h_push_tr"><div class="h_push_td"><p class="">成功率</p><p class="color_red">'+rows[i].successrate+'</p></div><div class="h_push_td"><p class="">日利率</p><p class="color_red">'+rows[i].dayrate+'</p></div></div><div class="h_push_tr"><div class="h_push_td"><p class="">平均额度</p><p class="color_red">'+rows[i].averageamount+'</p></div><div class="h_push_td"><p class="">平均用时</p><p class="color_red">'+rows[i].averagetime+'</p></div></div></div></div><div class="h_push_row_2"><p>最高额度：<span class="h_max_num">'+rows[i].ammout+'</span></p></div><div class="h_push_row_3"></div></div>');
+                var tmpItem = $('<div class="h_push_item"><div class="h_push_row_1"><div class="h_push_col_1"><div class="h_push_img_header"><img src="images/precision_loan_02.png"></div><div class="h_push_img_logo"><img src="'+rows[i].logourl+'"></div></div><div class="h_push_col_2"><p class="h_push_p_1">'+rows[i].productname+'</p><p class="h_push_p_2">适用人群：'+rows[i].fitpeople+'</p><p class="h_push_p_3">申请人数：'+rows[i].applications+'人</p></div><div class="h_push_col_3"><div class="h_push_tr"><div class="h_push_td"><p class="">成功率</p><p class="color_red">'+rows[i].successrate+'</p></div><div class="h_push_td"><p class="">日利率</p><p class="color_red">'+rows[i].dayrate+'</p></div></div><div class="h_push_tr"><div class="h_push_td"><p class="">平均额度</p><p class="color_red">'+rows[i].averageamount+'</p></div><div class="h_push_td"><p class="">平均用时</p><p class="color_red">'+rows[i].averagetime+'</p></div></div></div></div><div class="h_push_row_2"><p>最高额度：<span class="h_max_num">'+rows[i].ammout+'</span></p></div><div class="h_push_row_3"></div></div>');
                 var hPushRow3 = tmpItem.find('.h_push_row_3');
                 for(var j=0;j<rows[i].applyingdata.length;j++){
                     var tmpSpan = $('<span class="active">'+rows[i].applyingdata[j]+'</span>');
