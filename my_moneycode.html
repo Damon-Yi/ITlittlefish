@@ -42,7 +42,7 @@
 				<div>
 					<a href="#">
 						<dl>
-							<dt><img src="images/shareerweima.png"/></dt>
+							<dt><img class="memberurl" src=""/></dt>
 							<dd></dd>
 						</dl>
 					</a>
@@ -69,6 +69,22 @@
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
     <script>
-        
+        $.ajax({
+	        type:"post",
+	        url:Config.url1+"showqrcode",
+	        data:{
+	        	openid:"obDm_wPQs9w-1wiTJ0c8pD2dsfVM",
+	        	type:2,
+	        	scenestr:'123'
+	        },
+	        success:function(data, status, xhr){
+	        	console.log(data)
+	        	$(".memberurl").attr("src",data.memberurl)
+	        },
+	        error:function(xhr, errorType, error){
+	        	console.log(000)
+	          	
+	        },
+		})
     </script>
 </html>

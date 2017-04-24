@@ -149,7 +149,7 @@
 					<div>
 						<a href="#">
 							<dl>
-								<dt><img src="images/shareerweima.png"/></dt>
+								<dt><img class="memberurl" src=""/></dt>
 								<dd>让好友扫描您的二维码</dd>
 							</dl>
 						</a>
@@ -196,11 +196,12 @@
         type:"post",
         url:Config.url1+"showqrcode",
         data:{
-        	openId:"obDm_wPQs9w-1wiTJ0c8pD2dsfVM",
-        	type:1
+        	openid:"obDm_wPQs9w-1wiTJ0c8pD2dsfVM",
+        	type:1,
+        	scenestr:'123'
         },
         success:function(data, status, xhr){
-        	console.log(data)
+        	$(".memberurl").attr("src",data.qrcodeurl)
         },
         error:function(xhr, errorType, error){
         	console.log(000)
