@@ -14,7 +14,7 @@
     <script src="plugin/jquery/ajaxfileupload.js" type="text/javascript" charset="utf-8"></script>
     <script src="plugin/jquery/ajaxfileuploadProgress.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/public.js"></script>
-    <!--<script type="text/javascript">
+    <script type="text/javascript">
         var aScroll;
         function loaded () {
             aScroll = new IScroll('#cont_wrapper',{
@@ -26,9 +26,9 @@
             });
         }
        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-    </script>-->
+    </script>
 	</head>
-	<body  style="background: white;">
+	<body onload="loaded()" style="background: white;">
 		<div class="page_header">我的</div>
 		<!--用户基本信息-->
 		<div id="cont_wrapper">
@@ -210,7 +210,7 @@
 	})
 	//点击升级V会员时
 	$(".upgrade").on("tap",function(){
-		if(Data.levelno == 3){
+		if(Data.levelno == 2){
 			layer.open({
 				content:'您是最高级会员，无需升级',
 				btn:'确定'

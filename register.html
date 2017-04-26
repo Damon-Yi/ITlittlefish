@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <title></title>
+	    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	    <meta content="yes" name="apple-mobile-web-app-capable">
+	    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+	    <link href="css/public.css" rel="stylesheet" type="text/css">
+	    <script src="js/public.js"></script>
+	    <link rel="stylesheet" type="text/css" href="plugin/layer/mobile/need/layer.css"/>
+    	<script src="plugin/layer/mobile/layer.js" type="text/javascript" charset="utf-8"></script>
+	    <style>
+	    	.logo{text-align: center;}
+	        .logo img{width: 80%;height: auto;margin-top:.3rem;}
+	        .banner{text-align: center;}
+	        .banner img{width: 90%;height: auto;margin: 0 auto;}
+	        .contentinput{width: 90%;height: 1.9rem;background: white;margin: 0 auto;margin-top: 1rem;}
+	        .contentinput div{width: 90%;height: .95rem;margin: 0 auto;position: relative;}
+	        .contentinput input{position: absolute;top: 0;height: .92rem;width: 100%;border: none;font-size: .28rem;}
+	        .phonenumber{border-bottom: 2px solid #c4c4c4;}
+	        .sendcode{
+	        	border-radius: .3px;
+	        	font-size: .28rem;
+	        	position: absolute;
+	        	z-index: 10;display: block;
+	        	right: 0;
+	        	padding: .1rem;
+	        	color: white;
+	        	top: .2rem;
+	        	text-align: center;
+				background: -moz-linear-gradient(left, #ffa800 0%,#ff7900 100%);
+				background: -webkit-gradient(left, #ffa800 0%,#ff7900 100%);
+				background: -webkit-linear-gradient(left, #ffa800 0%,#ff7900 100%);
+				background: -o-linear-gradient(left, #ffa800 0%,#ff7900 100%);
+				background: -ms-linear-gradient(left, #ffa800 0%,#ff7900 100%);
+				background: linear-gradient(left, #ffa800 0%,#ff7900 100%);
+	        }
+	        .submit{
+	        	margin-top: .5rem;
+	        	text-align: center;
+	        	font-size: .34rem;
+	        	line-height: .7rem;
+	        	color: white;
+				background: -moz-linear-gradient(left, #ffa800 0%,#ff7900 100%);
+				background: -webkit-gradient(left, #ffa800 0%,#ff7900 100%);
+				background: -webkit-linear-gradient(left, #ffa800 0%,#ff7900 100%);
+				background: -o-linear-gradient(left, #ffa800 0%,#ff7900 100%);
+				background: -ms-linear-gradient(left, #ffa800 0%,#ff7900 100%);
+				background: linear-gradient(left, #ffa800 0%,#ff7900 100%);
+	        }
+	        .backcolorgrey{
+	        	background: #DEDEDE !important;
+	        }
+	    </style>
+	   <!-- <script type="text/javascript">
+	       var aScroll;
+	        function loaded () {
+	            aScroll = new IScroll('#cont_wrapper',{
+	                scrollbars: true,
+	                mouseWheel: true,
+	                interactiveScrollbars: true,
+	                shrinkScrollbars: 'scale',
+	                fadeScrollbars: true,click: true 
+	            });
+	        }
+	       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+	    </script>-->
+	</head>
+	<body style="background: #ffd75e">
+    <div class="page_header">
+        <p>注册</p>
+        <div class="right_add"><i class="position"></i><span>深圳</span></div>
+    </div>
+    <div>
+        <div class="logo">
+        	<img src="images/regist_login.png"/>
+        </div>
+       <div class="banner">
+        	<img src="images/regist_01.png"/>
+        	<img src="images/regist_02.png"/>
+        </div>
+        <div class="contentinput">
+        	<div class="phonenumber">
+        		<input type="text" placeholder="请输入手机号码"/>
+        	</div>
+        	<div class="code">
+        		<input type="text" placeholder="短信验证码"/>
+        		<span class="sendcode">发送验证码</span>
+        	</div>
+        </div>
+        <div class="submit">立即申请</div>
+        <div style="text-align: center;color: #fe860e;font-size: .28rem;line-height: .7rem;">注册代表你同意《 小鱼儿帮帮贷贷款申请协议 》</div>
+    </div>
+    
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <script type="text/javascript" src="plugin/zepto/touch.js"></script>
+    <script type="text/javascript">
+    	var flag = true;
+    	var phonenum = $(".phonenumber").find("input").val();
+    	var code = $(".code").find("input").val();
+    	var identifyCode;
+    	$(".sendcode").on("tap",function(){
+    		var phonenum = $(".phonenumber").find("input").val();
+    		if(!(/^1[34578]\d{9}$/.test(phonenum))){ 
+		        layer.open({
+		        	content:"请输入正确的手机号码",
+		        	btn:"确认"
+		        });
+		        return false; 
+		    };
+		   console.log(phonenum)
+		    if(flag){
+				flag = false;
+				$(".sendcode").html("剩余59s");
+				$(".sendcode").addClass("backcolorgrey")
+		    	var n = 59;
+			    var timer = setInterval(function(){
+			    	n--;
+			    	$(".sendcode").html("剩余"+n+"s");
+			    	if(n<=0){
+			    		$(".sendcode").html("发送验证码");
+			    		$(".sendcode").removeClass("backcolorgrey")
+			    		flag = true;
+			    		clearInterval(timer);
+			    	}
+			    },1000)
+		    }else{
+		    	layer.open({
+		    		content:'请稍后操作',
+		    		btn:"确定"
+		    	})
+		    };
+		    $.ajax({
+		        type:"post",
+		        url:Config.url1+"identifyCode",
+		        data:{
+		        	mobilephone:phonenum
+		        },
+		        success:function(data, status, xhr){
+		        	console.log(data)
+		        	if(data&&data.resultCode == 1111){
+		        		layer.open({
+		        			content:data.resultMessage,
+		        			btn:'确定'
+		        		})
+		        		return;
+		        	};
+		        	
+		        	identifyCode = data.identifyCode
+ 		        },
+		        error:function(xhr, errorType, error){
+		        	console.log(000)
+		          	
+		        },
+			})
+		   
+    	});
+    	$(".submit").on("tap",function(){
+    		var phonenum = $(".phonenumber").find("input").val();
+    		var code = $(".code").find("input").val();
+    		console.log(phonenum);
+    		console.log(code)
+    		if(!phonenum){
+    			layer.open({
+    				content:"请输入手机号码",
+    				btn:'确定'
+    			})
+    			return false; 
+    		};
+    		if(!code){
+    			layer.open({
+    				content:"请输入验证码",
+    				btn:'确定'
+    			})
+    			return false; 
+    		};
+    		if(!(/^1[34578]\d{9}$/.test(phonenum))){ 
+		        layer.open({
+		        	content:"请输入正确的手机号码",
+		        	btn:"确定"
+		        });
+		        return false; 
+		    };
+		    
+		    $.ajax({
+		        type:"post",
+		        url:Config.url1+"register",
+		        data:{
+		        	openId:'obDm_wOlBfPx6x-631gHz9bCF1uQ',
+		        	mobilephone:phonenum,
+		        	identifyCode:identifyCode
+		        },
+		        success:function(data, status, xhr){
+		        	if(data.resultCode == "1111"){
+		        		layer.open({
+		        			content:'注册失败',
+		        			btn:"确定"
+		        		})
+		        	}else{
+		        		layer.open({
+		        			content:'注册成功',
+		        			btn:"确定",
+		        			end:function(){
+		        				location.href = "my_mine.html"
+		        			}
+		        		})
+		        	}
+		        },
+		        error:function(xhr, errorType, error){
+		        	alert(2)
+		        	console.log(000)
+		          	
+		        },
+			})
+		    
+    	})
+    </script>
+	</body>
+</html>
