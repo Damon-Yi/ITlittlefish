@@ -14,15 +14,12 @@ new function (){
 };
 
 var Config ={
-<<<<<<< HEAD
-	//url1:"http://a784112865.oicp.net/zhudai_api/service/",
+
     //url:'http://a784112865.oicp.net/zhudai_api/service'
     //url:'http://112.74.184.28/zhudai_api/service'
-    url:'http://a784112865.oicp.net/zhudai_api/service'
-=======
+    //url:'http://a784112865.oicp.net/zhudai_api/service',
     url:'http://www.1handfish.com/fishapi'
->>>>>>> f09750bdfa90171c534b23abc5b93434ffbf89ad
-    //url:'http://112.74.184.28/zhudai_api/service'
+    
 }
 
 /*提示，弹窗*/
