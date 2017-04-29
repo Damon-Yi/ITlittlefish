@@ -477,7 +477,7 @@
                         loader.show();
                     },
                     success:function(data, status, xhr){
-                        if(data){
+                        if(data&&data.rows){
                             setLocalStorage('precisionPushQueryData',parmas);
                             setLocalStorage('precisionPushResultData',data);
                             location.href="precision_push_list.html";

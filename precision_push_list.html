@@ -245,14 +245,24 @@
                 appentData(hPushList,hPushItems);
             }
         }
-        $(function(){
+        // $(function(){
             // 页数
             var page = 1;
             // 每页展示10个
             var size = 10;
 
+            $(window).scroll(function(){
+            　　var scrollTop = $(this).scrollTop();
+            　　var scrollHeight = $(document).height();
+            　　var windowHeight = $(this).height();
+            　　if(scrollTop + windowHeight == scrollHeight){
+                    getNextPage(page+1,size)
+            　　　　console.log("已经到最底部了！");
+            　　}
+            });
+
             // dropload
-            $('.h_push').dropload({
+            /*$('.h_push').dropload({
                 scrollArea : window,
                 domUp : {
                     domClass   : 'dropload-up',
@@ -267,32 +277,6 @@
                     domNoData  : '<div class="dropload-noData">暂无数据</div>'
                 },
                 loadUpFn : function(me){
-                    console.log(precisionPushQueryData);
-                    var parmas = precisionPushQueryData;
-                    $.ajax({
-                        type:"post",
-                        url:Config.url+"/submitPrecisionPushApply",
-                        data:parmas,
-                        success: function(data){
-                            $('.h_push_list').empty();
-                            appentData($('.h_push_list'),rows);
-                            setLocalStorage('precisionPushQueryData',parmas);
-                        
-                            me.resetload();
-                            page = 1;
-                            // 解锁loadDownFn里锁定的情况
-                            me.unlock();
-                            me.noData(false);
-                        },
-                        error: function(xhr, errorType, error){
-                            error = error?error:'系统错误';
-                            tips(error,'tips_center',1500);
-                            // 即使加载出错，也得重置
-                            me.resetload();
-                        }
-                    });
-                },
-                loadDownFn : function(me){
                     page++;
                     console.log(precisionPushQueryData);
                     var parmas = precisionPushQueryData;
@@ -324,9 +308,58 @@
                         }
                     });
                 },
+                loadDownFn : function(me){
+                    console.log(precisionPushQueryData);
+                    var parmas = precisionPushQueryData;
+                    $.ajax({
+                        type:"post",
+                        url:Config.url+"/submitPrecisionPushApply",
+                        data:parmas,
+                        success: function(data){
+                            //$('.h_push_list').empty();
+                            appentData($('.h_push_list'),rows);
+                            setLocalStorage('precisionPushQueryData',parmas);
+                        
+                            me.resetload();
+                            page = 1;
+                            // 解锁loadDownFn里锁定的情况
+                            me.unlock();
+                            me.noData(false);
+                        },
+                        error: function(xhr, errorType, error){
+                            error = error?error:'系统错误';
+                            tips(error,'tips_center',1500);
+                            // 即使加载出错，也得重置
+                            me.resetload();
+                        }
+                    });
+                },
                 threshold : 50
+            });*/
+        // });
+        function getNextPage(page,size){
+            var parmas = precisionPushQueryData;
+            parmas.pageNo = page;
+            console.log(parmas);
+            $.ajax({
+                type:"post",
+                url:Config.url+"/submitPrecisionPushApply",
+                data:parmas,
+                success: function(data){
+                    if(data.rows.length>0){
+                        page++;
+                        appentData($('.h_push_list'),data.rows);
+                        setLocalStorage('precisionPushQueryData',parmas);
+                    }else{
+                        
+                    }
+                },
+                error: function(xhr, errorType, error){
+                    error = error?error:'系统错误';
+                    tips(error,'tips_center',1500);
+                }
             });
-        });
+        }
         function appentData(obj,rows){
             for(var i=0;i<rows.length;i++){
                 var tmpItem = $('<div class="h_push_item"><div class="h_push_row_1"><div class="h_push_col_1"><div class="h_push_img_header"><img src="images/precision_loan_02.png"></div><div class="h_push_img_logo"><img src="'+rows[i].logourl+'"></div></div><div class="h_push_col_2"><p class="h_push_p_1">'+rows[i].productname+'</p><p class="h_push_p_2">适用人群：'+rows[i].fitpeople+'</p><p class="h_push_p_3">申请人数：'+rows[i].applications+'人</p></div><div class="h_push_col_3"><div class="h_push_tr"><div class="h_push_td"><p class="">成功率</p><p class="color_red">'+rows[i].successrate+'</p></div><div class="h_push_td"><p class="">日利率</p><p class="color_red">'+rows[i].dayrate+'</p></div></div><div class="h_push_tr"><div class="h_push_td"><p class="">平均额度</p><p class="color_red">'+rows[i].averageamount+'</p></div><div class="h_push_td"><p class="">平均用时</p><p class="color_red">'+rows[i].averagetime+'</p></div></div></div></div><div class="h_push_row_2"><p>最高额度：<span class="h_max_num">'+rows[i].ammout+'</span></p></div><div class="h_push_row_3"></div></div>');
