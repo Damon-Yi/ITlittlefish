@@ -96,10 +96,43 @@
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script type="text/javascript" src="plugin/zepto/touch.js"></script>
     <script type="text/javascript">
+    	
     	var flag = true;
     	var phonenum = $(".phonenumber").find("input").val();
     	var code = $(".code").find("input").val();
     	var identifyCode;
+    	var URLopenid;
+    	$.ajax({
+	        type:"POST",
+	        url:"http://a784112865.oicp.net/zhudai_api/service/authorizeUrl",
+	        data:{},
+	        success:function(data, status, xhr){
+	        	URLopenid = data.url;
+	        	alert(URLopenid)
+	        	location.href = URLopenid;
+	        	/*$.ajax({
+			        type:"post",
+			        url:URLopenid,
+			        data:{},
+			        success:function(data, status, xhr){
+			        	alert(data.openId)
+			        	
+			        },
+			        error:function(xhr, errorType, error){
+			        	alert(11)
+			        	console.log(000)
+			          	
+			        },
+				})*/
+	        },
+	        error:function(xhr, errorType, error){
+	        	alert(12)
+	        	console.log(000)
+	          	
+	        },
+		});
+    	
+    	
     	$(".sendcode").on("tap",function(){
     		var phonenum = $(".phonenumber").find("input").val();
     		if(!(/^1[34578]\d{9}$/.test(phonenum))){ 
@@ -133,7 +166,7 @@
 		    };
 		    $.ajax({
 		        type:"post",
-		        url:Config.url1+"identifyCode",
+		        url:Config.url+"/identifyCode",
 		        data:{
 		        	mobilephone:phonenum
 		        },
@@ -185,7 +218,7 @@
 		    
 		    $.ajax({
 		        type:"post",
-		        url:Config.url1+"register",
+		        url:Config.url+"/register",
 		        data:{
 		        	openId:'obDm_wOlBfPx6x-631gHz9bCF1uQ',
 		        	mobilephone:phonenum,

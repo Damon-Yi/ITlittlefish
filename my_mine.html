@@ -172,7 +172,7 @@
 	//用户信息
 	$.ajax({
         type:"post",
-        url:Config.url1+"queryAccountInfo",
+        url:Config.url+"/queryAccountInfo",
         data:{openId:"obDm_wPQs9w-1wiTJ0c8pD2dsfVM"},
         success:function(data, status, xhr){
         	console.log(data)
@@ -193,8 +193,8 @@
 	})
 	//用户二维码
 	$.ajax({
-        type:"post",
-        url:Config.url1+"showqrcode",
+        type:"POST",
+        url:Config.url+"/showqrcode",
         data:{
         	openid:"obDm_wPQs9w-1wiTJ0c8pD2dsfVM",
         	type:1,
