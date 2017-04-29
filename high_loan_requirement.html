@@ -20,13 +20,23 @@
             <div class="h_require">
                 <div class="h_tips"><p>为了提高贷款成功率，请如实填写信息</p></div>
                 <div class="h_r_form">
-                    <div class="h_r_row"><span class="h_r_row_txt">姓名</span><input id="customername" class="h_r_row_input" type="text" name="" placeholder="请填写你的姓名"></div>
-                    <div class="h_r_row"><span class="h_r_row_txt">年龄</span><input id="age" class="h_r_row_input" type="number" name="" placeholder="请填写你的姓年龄"></div>
-                    <div class="h_r_row"><span class="h_r_row_txt">性别</span><input id="sex" class="h_r_row_input" type="text" name="" placeholder="请填写你的性别"></div>
-                    <div class="h_r_row"><span class="h_r_row_txt">手机号</span><input id="mobilephone" class="h_r_row_input" type="number" name="" placeholder="请填写你的手机号"></div>
+                    <div class="h_r_row"><span class="h_r_row_txt">姓名</span><input id="customername" patt="/[^\u4e00-\u9fa5]/" class="h_r_row_input" type="text" name="" placeholder="请填写你的姓名"></div>
+                    <div class="h_r_row"><span class="h_r_row_txt">年龄</span><input id="age" patt="/^(1[8-9]|[2-5]\d{1}|6[0-5])$/" class="h_r_row_input" type="number" name="" placeholder="年龄:18-65"></div>
+                    <div class="h_r_row"><span class="h_r_row_txt">性别</span><div class="select_wrap">
+                                <select class="h_r_row_select " id="sex">
+                                    <option value="男">男</option>
+                                    <option value="女">女</option>
+                                </select>
+                            </div></div>
+                    <div class="h_r_row"><span class="h_r_row_txt">手机号</span><input id="mobilephone" patt='/^1(3|4|5|7|8)[0-9]\d{8}$/' class="h_r_row_input" type="number" name="" placeholder="请填写你的手机号"></div>
                     <div class="h_r_row"><span class="h_r_row_txt">申请的城市</span><div id="applycity" class="city_select" data-val="">请选择城市</div></div>
-                    <div class="h_r_row"><span class="h_r_row_txt">贷款金额(万)</span><input id="loanamount" class="h_r_row_input" type="number" name="" placeholder="如2.5"></div>
-                    <div class="h_r_row"><span class="h_r_row_txt">贷款年限(年)</span><input id="loanperiod" class="h_r_row_input" type="number" name="" placeholder="请填写贷款年限"></div>
+                    <div class="h_r_row"><span class="h_r_row_txt">贷款金额(万)</span><input id="loanamount" patt="/^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$/" class="h_r_row_input" type="number" name="" placeholder="如2.5"></div>
+                    <div class="h_r_row"><span class="h_r_row_txt">贷款年限(年)</span><div class="select_wrap">
+                                <select class="h_r_row_select " id="loanperiod">
+                                    <option value="3个月">3个月</option>
+                                    <option value="6个月">6个月</option>
+                                </select>
+                            </div></div>
                 </div>
             </div>
             <a href="javascript:;" class="apply_btn">下一步</a>
@@ -92,16 +102,29 @@
                 parmas={};
 
             $('.h_r_row_input').each(function(e){
+                var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
                 if(this.value.trim()==''){
                     if(msg==''){
                         flag = false;
-                        var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
-                        console.log(title);
                         msg = '请填写'+title;
                         tips(msg,'tips_center',1500);
                     }
                 }else{
-                    parmas[this.id] = this.value.trim();
+                    if($(this).attr('patt')){
+                        var patten = eval($(this).attr('patt'));
+                        if(!patten.test($(this).val())){
+                            if(msg==''){
+                                flag = false;
+                                msg = title+'格式不正确';
+                                tips(msg,'tips_center',1500);
+                            }
+                        }else{
+                            parmas[this.id] = this.value.trim();
+                        }  
+                    }else{
+                        parmas[this.id] = this.value.trim();
+                    }
+                    
                 }
             });
             var citySelect = $('.city_select');
@@ -116,6 +139,20 @@
             }else{
                 parmas[citySelect.attr('id')] = citySelect.attr('data-val').trim();
             }
+            $('.h_r_row_select').each(function(e){
+                _that = $(this);
+                if(_that.val().trim()==''){
+                    if(msg==''){
+                        flag = false;
+                        var title = _that.parents('.h_r_row').find('.h_r_row_txt').text();
+                        console.log(title);
+                        msg = '请选择'+title;
+                        tips(msg,'tips_center',1500);
+                    }
+                }else{
+                    parmas[_that.attr('id')] = _that.val().trim();
+                }
+            });
             console.log(parmas);
             if(flag){
                 setLocalStorage('applyQueryData',parmas);
