@@ -92,7 +92,7 @@
         <div class="submit">立即申请</div>
         <div style="text-align: center;color: #fe860e;font-size: .28rem;line-height: .7rem;">注册代表你同意《 小鱼儿帮帮贷贷款申请协议 》</div>
     </div>
-    
+   
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script type="text/javascript" src="plugin/zepto/touch.js"></script>
     <script type="text/javascript">
@@ -102,36 +102,13 @@
     	var code = $(".code").find("input").val();
     	var identifyCode;
     	var URLopenid;
-    	$.ajax({
-	        type:"POST",
-	        url:"http://a784112865.oicp.net/zhudai_api/service/authorizeUrl",
-	        data:{},
-	        success:function(data, status, xhr){
-	        	URLopenid = data.url;
-	        	alert(URLopenid)
-	        	location.href = URLopenid;
-	        	/*$.ajax({
-			        type:"post",
-			        url:URLopenid,
-			        data:{},
-			        success:function(data, status, xhr){
-			        	alert(data.openId)
-			        	
-			        },
-			        error:function(xhr, errorType, error){
-			        	alert(11)
-			        	console.log(000)
-			          	
-			        },
-				})*/
-	        },
-	        error:function(xhr, errorType, error){
-	        	alert(12)
-	        	console.log(000)
-	          	
-	        },
-		});
-    	
+    	var xiaoyuopenId;
+    	var xiaoyuerUserMes;
+    	getOpenId();
+    	if(Cookie.get("xiaoyuerUserMes")){
+    		console.log(Cookie.get("xiaoyuerUserMes"))
+    		xiaoyuerUserMes = Cookie.get("xiaoyuerUserMes");
+    	}
     	
     	$(".sendcode").on("tap",function(){
     		var phonenum = $(".phonenumber").find("input").val();
@@ -220,9 +197,21 @@
 		        type:"post",
 		        url:Config.url+"/register",
 		        data:{
-		        	openId:'obDm_wOlBfPx6x-631gHz9bCF1uQ',
+		        	openid:JSON.parse(xiaoyuerUserMes).openid,
 		        	mobilephone:phonenum,
-		        	identifyCode:identifyCode
+		        	identifyCode:identifyCode,
+		        	subscribe:JSON.parse(xiaoyuerUserMes).subscribe,
+		        	nickname:JSON.parse(xiaoyuerUserMes).nickname,
+		        	sex:JSON.parse(xiaoyuerUserMes).sex,
+		        	country:JSON.parse(xiaoyuerUserMes).country,
+		        	province:JSON.parse(xiaoyuerUserMes).province,
+		        	language:JSON.parse(xiaoyuerUserMes).language,
+		        	headimgurl:JSON.parse(xiaoyuerUserMes).headimgurl,
+		        	subscribe_time:JSON.parse(xiaoyuerUserMes).subscribe_time,
+		        	unionid:JSON.parse(xiaoyuerUserMes).unionid,
+		        	remark:JSON.parse(xiaoyuerUserMes).remark,
+		        	groupid:JSON.parse(xiaoyuerUserMes).groupid,
+		        	city:JSON.parse(xiaoyuerUserMes).city,
 		        },
 		        success:function(data, status, xhr){
 		        	if(data.resultCode == "1111"){
@@ -231,6 +220,8 @@
 		        			btn:"确定"
 		        		})
 		        	}else{
+		        		console.log(JSON.parse(xiaoyuerUserMes).openid);
+		        		console.log(JSON.parse(xiaoyuerUserMes))
 		        		layer.open({
 		        			content:'注册成功',
 		        			btn:"确定",
