@@ -462,16 +462,11 @@
             for(var i in careerData){
                 parmas[i] = careerData[i];
             }
-<<<<<<< HEAD
-            console.log(parmas);
-            console.log(JSON.stringify(parmas))
-=======
-            
+ 
             parmas['pageNo'] = 1;
             parmas['pageSize'] = 10;
             console.log(parmas);
             console.log(JSON.stringify(parmas));
->>>>>>> 7e09c220d5d2704fe25d926930bbb31528897c76
             if(flag){
                 $.ajax({
                     type:"post",
@@ -482,15 +477,9 @@
                         loader.show();
                     },
                     success:function(data, status, xhr){
-<<<<<<< HEAD
-                    	console.log(data)
-                        if(data.resultCode==0){
-=======
-                        console.log(data);
                         if(data){
                             setLocalStorage('precisionPushQueryData',parmas);
                             setLocalStorage('precisionPushResultData',data);
->>>>>>> 7e09c220d5d2704fe25d926930bbb31528897c76
                             location.href="precision_push_list.html";
                         }
                     },
