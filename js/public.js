@@ -14,7 +14,14 @@ new function (){
 };
 
 var Config ={
+<<<<<<< HEAD
+	//url1:"http://a784112865.oicp.net/zhudai_api/service/",
+    //url:'http://a784112865.oicp.net/zhudai_api/service'
+    //url:'http://112.74.184.28/zhudai_api/service'
+    url:'http://a784112865.oicp.net/zhudai_api/service'
+=======
     url:'http://www.1handfish.com/fishapi'
+>>>>>>> f09750bdfa90171c534b23abc5b93434ffbf89ad
     //url:'http://112.74.184.28/zhudai_api/service'
 }
 
@@ -67,6 +74,66 @@ var loading = function(param){
     me.init();
     return me;
 }
+//拿openid
+
+function getOpenId(){
+	var index = window.location.href;
+	var arr = index.split("&");
+	var str1 = '';
+	var openId;
+	/*if(Cookie.get("xiaoyuerUserMes")){
+		openId = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
+	}*/
+	if(!Cookie.get("xiaoyuerUserMes")){
+		if(index.indexOf("code=")>=0){
+			for(var i = 0 ;i<arr.length;i++){
+	    		if(arr[i].indexOf("code")>=0){
+	    			if(arr[i].split("=")[1] != ""){
+	    				str1=arr[i].split("=")[1];
+	    			}
+	    		}
+	    	}
+	    	$.ajax({
+		        type:"post",
+		        url:Config.url+"/checkCode",
+		        async:false,
+		        data:{
+		        	code:str1,
+		        	
+		        },
+		        success:function(data, status, xhr){
+		        	console.log(111)
+		        	console.log(data)
+		       		Cookie.set('xiaoyuerUserMes',JSON.stringify(data));
+		        },
+		        error:function(xhr, errorType, error){
+		        	console.log(000)	
+		        }
+		    })
+		}else{
+			$.ajax({
+		        type:"POST",
+		        url:Config.url+"/authorizeUrl",
+		        data:{
+		        	redirectUrl:index
+		        },
+		        async:false,
+		        success:function(data, status, xhr){
+		        	URLopenid = data.url;
+		 			
+		        	location.href = URLopenid;	
+		        },
+		        error:function(xhr, errorType, error){
+		        	alert(12)
+		        	console.log(000)
+		          	
+		        },
+			});
+		}
+	}
+}
+	
+
 /*图片转Base64*/
 function getBase64Image(src) {
     var img = document.createElement('img');
@@ -150,3 +217,66 @@ var getLocalStorage= function(key){
 var removeLocalStorage = function(key){
     localStorage.removeItem(key);
 }
+
+
+//Cookie 操作
+var Cookie = {
+    getExpiresDate:function(days, hours, minutes) {
+        var ExpiresDate = new Date();
+        if (typeof days == "number" && typeof hours == "number" &&
+            typeof hours == "number") {
+            ExpiresDate.setDate(ExpiresDate.getDate() + parseInt(days));
+            ExpiresDate.setHours(ExpiresDate.getHours() + parseInt(hours));
+            ExpiresDate.setMinutes(ExpiresDate.getMinutes() + parseInt(minutes));
+            return ExpiresDate.toGMTString();
+        }
+    },
+    _getValue:function(offset) {
+        var endstr = document.cookie.indexOf (";", offset);
+        if (endstr == -1) {
+            endstr = document.cookie.length;
+        }
+        return unescape(document.cookie.substring(offset, endstr));
+    },
+    get:function(name) {
+        var arg = name + "=";
+        var alen = arg.length;
+        var clen = document.cookie.length;
+        var i = 0;
+        while (i < clen) {
+            var j = i + alen;
+            if (document.cookie.substring(i, j) == arg) {
+                return this._getValue(j);
+            }
+            i = document.cookie.indexOf(" ", i) + 1;
+            if (i == 0) break;
+        }
+        return "";
+    },
+    set:function(name, value, expires, path, domain, secure) {
+        document.cookie = name + "=" + escape (value) +
+            ((expires) ? ";expires=" + expires : "") +
+            ((path) ? ";path=" + path : "") +
+            ((domain) ? ";domain=" + domain : "") +
+            ((secure) ? ";secure" : "");
+    },
+    remove:function(name,path,domain) {
+        if (this.get(name)) {
+            document.cookie = name + "=" +
+                ((path) ? ";path=" + path : "") +
+                ((domain) ? ";domain=" + domain : "") +
+                ";expires=Thu, 01-Jan-70 00:00:01 GMT";
+        }
+    },
+    clear:function(){
+        var cookies = document.cookie.split(';');
+        for(var i=0; i < cookies.length; i++){
+            var cookieName = cookies[i].split('=')[0];
+            if(cookieName.trim()){
+                this.remove(cookieName.trim());
+            }
+        }
+    }
+}
+// Cookie.set('kk','45');
+// console.log(Cookie.get());

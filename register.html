@@ -92,14 +92,24 @@
         <div class="submit">立即申请</div>
         <div style="text-align: center;color: #fe860e;font-size: .28rem;line-height: .7rem;">注册代表你同意《 小鱼儿帮帮贷贷款申请协议 》</div>
     </div>
-    
+   
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script type="text/javascript" src="plugin/zepto/touch.js"></script>
     <script type="text/javascript">
+    	
     	var flag = true;
     	var phonenum = $(".phonenumber").find("input").val();
     	var code = $(".code").find("input").val();
     	var identifyCode;
+    	var URLopenid;
+    	var xiaoyuopenId;
+    	var xiaoyuerUserMes;
+    	getOpenId();
+    	if(Cookie.get("xiaoyuerUserMes")){
+    		console.log(Cookie.get("xiaoyuerUserMes"))
+    		xiaoyuerUserMes = Cookie.get("xiaoyuerUserMes");
+    	}
+    	
     	$(".sendcode").on("tap",function(){
     		var phonenum = $(".phonenumber").find("input").val();
     		if(!(/^1[34578]\d{9}$/.test(phonenum))){ 
@@ -133,7 +143,7 @@
 		    };
 		    $.ajax({
 		        type:"post",
-		        url:Config.url1+"identifyCode",
+		        url:Config.url+"/identifyCode",
 		        data:{
 		        	mobilephone:phonenum
 		        },
@@ -185,11 +195,23 @@
 		    
 		    $.ajax({
 		        type:"post",
-		        url:Config.url1+"register",
+		        url:Config.url+"/register",
 		        data:{
-		        	openId:'obDm_wOlBfPx6x-631gHz9bCF1uQ',
+		        	openid:JSON.parse(xiaoyuerUserMes).openid,
 		        	mobilephone:phonenum,
-		        	identifyCode:identifyCode
+		        	identifyCode:identifyCode,
+		        	subscribe:JSON.parse(xiaoyuerUserMes).subscribe,
+		        	nickname:JSON.parse(xiaoyuerUserMes).nickname,
+		        	sex:JSON.parse(xiaoyuerUserMes).sex,
+		        	country:JSON.parse(xiaoyuerUserMes).country,
+		        	province:JSON.parse(xiaoyuerUserMes).province,
+		        	language:JSON.parse(xiaoyuerUserMes).language,
+		        	headimgurl:JSON.parse(xiaoyuerUserMes).headimgurl,
+		        	subscribe_time:JSON.parse(xiaoyuerUserMes).subscribe_time,
+		        	unionid:JSON.parse(xiaoyuerUserMes).unionid,
+		        	remark:JSON.parse(xiaoyuerUserMes).remark,
+		        	groupid:JSON.parse(xiaoyuerUserMes).groupid,
+		        	city:JSON.parse(xiaoyuerUserMes).city,
 		        },
 		        success:function(data, status, xhr){
 		        	if(data.resultCode == "1111"){
@@ -198,6 +220,8 @@
 		        			btn:"确定"
 		        		})
 		        	}else{
+		        		console.log(JSON.parse(xiaoyuerUserMes).openid);
+		        		console.log(JSON.parse(xiaoyuerUserMes))
 		        		layer.open({
 		        			content:'注册成功',
 		        			btn:"确定",

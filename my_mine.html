@@ -27,6 +27,9 @@
         }
        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
     </script>
+    <style type="text/css">
+    	select{background: transparent;}
+    </style>
 	</head>
 	<body onload="loaded()" style="background: white;">
 		<div class="page_header">我的</div>
@@ -170,44 +173,56 @@
 <script type="text/javascript">
 	var Data;
 	//用户信息
-	$.ajax({
-        type:"post",
-        url:Config.url1+"queryAccountInfo",
-        data:{openId:"obDm_wPQs9w-1wiTJ0c8pD2dsfVM"},
-        success:function(data, status, xhr){
-        	console.log(data)
-        	Data = data;
-            $(".nickname").html(data.nickname);
-            $(".grade").html(data.levelName);
-            if(data.headimgurl){
-            	$(".user_img").attr("src",data.headimgurl);
-            };
-            $(".balance").find("span").html(data.balance);
-            var mobilephone = data.mobilephone;
-           	$(".mobilephone").html(mobilephone.substr(0, 3) + '****' + mobilephone.substr(7))
-        },
-        error:function(xhr, errorType, error){
-        	console.log(000)
-          	
-        },
-	})
-	//用户二维码
-	$.ajax({
-        type:"post",
-        url:Config.url1+"showqrcode",
-        data:{
-        	openid:"obDm_wPQs9w-1wiTJ0c8pD2dsfVM",
-        	type:1,
-        	scenestr:'123'
-        },
-        success:function(data, status, xhr){
-        	$(".memberurl").attr("src",data.qrcodeurl)
-        },
-        error:function(xhr, errorType, error){
-        	console.log(000)
-          	
-        },
-	})
+	var xiaoyuopenId;
+	if(Cookie.get("xiaoyuerUserMes")){
+		console.log(Cookie.get("xiaoyuerUserMes"))
+		xiaoyuopenId =JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
+		console.log(xiaoyuopenId)
+		$.ajax({
+	        type:"post",
+	        url:Config.url+"/queryAccountInfo",
+	        data:{openid:xiaoyuopenId},
+	        success:function(data, status, xhr){
+	        	console.log(data)
+	        	Data = data;
+	            $(".nickname").html(data.nickname);
+	            $(".grade").html(data.levelName);
+	            if(data.headimgurl){
+	            	$(".user_img").attr("src",data.headimgurl);
+	            };
+	            $(".balance").find("span").html(data.balance);
+	            var mobilephone = data.mobilephone;
+	            if(mobilephone){
+	            	$(".mobilephone").html(mobilephone.substr(0, 3) + '****' + mobilephone.substr(7))
+	            }
+	           
+	        },
+	        error:function(xhr, errorType, error){
+	        	console.log(000)
+	          	
+	        },
+		})
+		//用户二维码
+		$.ajax({
+	        type:"POST",
+	        url:Config.url+"/showqrcode",
+	        data:{
+	        	openid:xiaoyuopenId,
+	        	type:1,
+	        	scenestr:'123'
+	        },
+	        success:function(data, status, xhr){
+	        	$(".memberurl").attr("src",data.qrcodeurl)
+	        },
+	        error:function(xhr, errorType, error){
+	        	console.log(000)
+	          	
+	        },
+		})
+	
+	}else{
+		//Cookie.get("xiaoyuerUserMes")
+	}
 	//点击升级V会员时
 	$(".upgrade").on("tap",function(){
 		if(Data.levelno == 2){

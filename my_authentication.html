@@ -12,9 +12,36 @@
     <script src="plugin/layer/mobile/layer.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/public.js"></script>
     <style>
-        
+        .mui-dtpicker-title{display: none;}
+        .mui-picker[data-id="picker-y"]{width: 22%;}
+        .mui-picker[data-id="picker-y"] .mui-pciker-list li{text-align: right;}
+        .mui-picker[data-id="picker-m"]{width: 18%;}
+        .mui-picker[data-id="picker-d"]{width: 12%;}
+        .mui-picker[data-id="picker-d"] .mui-pciker-list li{text-align: left;}
+        .mui-picker[data-id="picker-h"]{width: 48%;}
+        .mui-btn-block{padding:0;border:none;font-size: 0.24rem;margin: 0;text-align: left;}
+        .netDetailAddr{width:100%;border:none;padding:0.01rem 0}
+        .content span i{width: .22rem;height: .22rem;display: inline-block;background: #bfbfbf;border-radius: 1rem;margin-left: .1rem;position: relative;top: 2px;}
+   		select{background: transparent;border: none;width: 50%;}
+   		.content p{position: relative;}
+   		.selectnext{
+		    content: " ";
+		    display: inline-block;
+		    -webkit-transform: rotate(45deg);
+		    transform: rotate(45deg);
+		    height: 8px;
+		    width: 8px;
+		    border-width: 1px 1px 0 0;
+		    border-color: #c8c8cd;
+		    border-style: solid;
+		    position: absolute;
+		    top: 60%;
+		    right: 0;
+		    background: black;
+		    margin-top: -5px
+   		}
     </style>
-    <script type="text/javascript">
+   <!-- <script type="text/javascript">
         var aScroll;
         function loaded () {
             aScroll = new IScroll('#cont_wrapper',{
@@ -26,9 +53,9 @@
             });
         }
        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-    </script>
+    </script>-->
 </head>
-<body onload="loaded()" style="background: #ebebeb;">
+<body style="background: #ebebeb;">
     <div class="page_header">资料认证</div>
     <div id="cont_wrapper">
         <div style="background: white;">
@@ -50,13 +77,11 @@
             		</p>
             		<p>
             			<span>所有城市</span>
-            			<input type="text" name="city" id="" value="" placeholder="例：广东深圳福田"/>
+            			<span style="text-indent: .1rem;" id="schoolCity" class="city_select" data-val="">请选择城市</span>
             		</p>
             		<p class="bordernone">
-            			出生年月
-        				<input type="text" class="birthday" name="year" id="" value="" placeholder="1991"/>年
-        				<input type="text" class="birthday" name="mouth" id="" value="" placeholder="09"/>月
-        				<input type="text" class="birthday" name="day" id="" value="" placeholder="20"/>日
+            			<span>出生年月</span>
+        				<span style="text-indent: .1rem;" id="schoolTime" class="city_select" data-val="">请选择时间</span>
             		</p>
             	</div>
             </div>
@@ -70,15 +95,26 @@
             		</p>
             		<p>
             			<span>职业身份</span>
-            			<span><input type="text" name="profession" placeholder="请填职业身份"/></span>
+            			<select name="">
+            				<option value="">工薪族</option>
+            				<option value="">企业主</option>
+            				<option value="">在校学生</option>
+            				<option value="">网店主</option>
+            				<option value="">自由职业者</option>
+            			</select>
+            			<span class="selectnext"></span>
             		</p>
             		<p>
             			<span>本地社保</span>
-            			<span><input type="text" name="socialsecurity" placeholder="是否交本地社保"/></span>
+            			<span style="text-indent: .1rem;">
+            				<span data-val="1">有<i></i></span><span data-val="0">无<i></i></span>
+            			</span>
             		</p>
             		<p class="bordernone">
             			<span>本地公积金</span>
-            			<span><input type="text" name="socialinsurance" placeholder="是否交公积金"/></span>
+            			<span style="text-indent: .1rem;">
+            				<span data-val="1">有<i></i></span><span data-val="0">无<i></i></span>
+            			</span>
             		</p>
             	</div>
             </div>
@@ -88,10 +124,102 @@
         	提交资料认证申请
         </div>
     </div>
-    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
+    <!--<script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
+    <script type="text/javascript" src="plugin/date/datePicker.js"></script></body>-->
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <link href="plugin/mui//css/mui.picker.min.css" rel="stylesheet" />
+    <link href="plugin/mui//css/mui.poppicker.css" rel="stylesheet" />
+    <script src="plugin/mui//js/mui.min.js"></script>
+    <script src="plugin/mui/js/mui.picker.min.js"></script>
+    <script src="plugin/mui/js/mui.poppicker.js"></script>
+    <script src="plugin/mui/js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
     <script>
+    	 (function($, doc) {
+            $.init();
+            $.ready(function() {
+                //省市区级联
+                var cityPicker3 = new $.PopPicker({
+                    layer: 3
+                });
+                cityPicker3.setData(cityData3);
+                //申请的城市
+                /*var showCityPicker3 = doc.getElementById('applycity');
+                showCityPicker3.addEventListener('tap', function(event) {
+                    var _that = this;
+                    cityPicker3.show(function(items) {
+                        var city = items[0].text+' '+items[1].text+' '+items[2].text;
+                        _that.innerHTML = city;
+                        _that.setAttribute('data-val',city)
+                        console.log(city);
+                        //返回 false 可以阻止选择框的关闭
+                        //return false;
+                    });
+                }, false);
+                //企业所在地
+                var enterpriseLocatedButton = doc.getElementById('enterpriselocated');
+                enterpriseLocatedButton.addEventListener('tap', function(event) {
+                    var _that = this;
+                    cityPicker3.show(function(items) {
+                        var city = items[0].text+' '+items[1].text+' '+items[2].text;
+                        _that.innerHTML = city;
+                        _that.setAttribute('data-val',city)
+                        console.log(city);
+                        //返回 false 可以阻止选择框的关闭
+                        //return false;
+                    });
+                }, false);
+                //学校所在地
+                */
+                var showCityPickerButton = doc.getElementById('schoolCity');
+                showCityPickerButton.addEventListener('tap', function(event) {
+                    var _that = this;
+                    cityPicker3.show(function(items) {
+                        var city = items[0].text+' '+items[1].text+' '+items[2].text;
+                        _that.innerHTML = city;
+                        _that.setAttribute('data-val',city)
+                        console.log(city);
+                        //返回 false 可以阻止选择框的关闭
+                        //return false;
+                    });
+                }, false);
+                //入学时间
+                var showCityPickerButton = doc.getElementById('schoolTime');
+                showCityPickerButton.addEventListener('tap', function(event) {
+                    var _that = this;
+                    var options = {
+                        "type":"date",
+                        beginDate: new Date(new Date().getFullYear()-10, new Date().getMonth(), new Date().getDate()),//设置开始日期 
+                        endDate: new Date(),//设置结束日期 
+                        /*"customData":{
+                            "h":generateTimeQuantum()//时间段
+                        }*/
+                    };
+
+                    var picker = new $.DtPicker(options);
+                    picker.show(function(rs) {
+                        _that.attributes.getNamedItem('data-val').textContent = rs.text;
+                        _that.innerText = rs.text;
+                        
+                        picker.dispose();
+                    });
+                }, false);
+                //有无选择
+                var radioSelects = $('.radio_option>span');
+                radioSelects.each(function(i, obj) {
+                     obj.addEventListener('tap', function() {
+                        var spans = this.parentNode.children;
+                        for(var i =0;i<spans.length;i++) {
+                            if(hasClass(spans[i], 'active')){
+                                removeClass(spans[i], 'active');
+                            }
+                        }
+                        addClass(this, 'active');
+                     });
+                });
+            });
+        })(mui, document);
         $(".submit").on("tap",function(){
         	var username = $("input[name = username]")[0].value;
         	var sex = $("input[name = sex]")[0].value;
@@ -113,7 +241,7 @@
         		}*/
         	 $.ajax({
                 type:"post",
-                url:Config.url1+"/dataUpdate",
+                url:Config.url+"/dataUpdate",
                	//contentType:"application/json",
                 data:{
                 	'openId':"111",
