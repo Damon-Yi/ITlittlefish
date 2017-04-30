@@ -296,8 +296,9 @@
                             data:{mobilephone:lastStepData.mobilephone},
                             success:function(data, status, xhr){
                                 console.log(data)
-                                if(data&&data.resultCode == 1111){
-                                    $('.vilde_code').attr('data-code',data.identifyCode);
+                                if(data&&data.identifyCode){
+                                    //$('.vilde_code').attr('data-code',data.identifyCode);
+                                    doc.getElementById('identifyCode').setAttribute('data-code',data.identifyCode);
                                 };
                             },
                             error:function(xhr, errorType, error){
