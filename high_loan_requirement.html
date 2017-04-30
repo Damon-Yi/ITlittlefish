@@ -20,7 +20,7 @@
             <div class="h_require">
                 <div class="h_tips"><p>为了提高贷款成功率，请如实填写信息</p></div>
                 <div class="h_r_form">
-                    <div class="h_r_row"><span class="h_r_row_txt">姓名</span><input id="customername" patt="/[^x00-xff]/" class="h_r_row_input" type="text" name="" placeholder="请填写你的姓名"></div>
+                    <div class="h_r_row"><span class="h_r_row_txt">姓名</span><input id="customername" patt="/[^x00-xff]/" class="h_r_row_input" type="text" name="" placeholder="请填写中文"></div>
                     <div class="h_r_row"><span class="h_r_row_txt">年龄</span><input id="age" patt="/^(1[8-9]|[2-5]\d{1}|6[0-5])$/" class="h_r_row_input" type="number" name="" placeholder="年龄:18-65"></div>
                     <div class="h_r_row"><span class="h_r_row_txt">性别</span><div class="select_wrap">
                                 <select class="h_r_row_select " id="sex">
@@ -31,11 +31,8 @@
                     <div class="h_r_row"><span class="h_r_row_txt">手机号</span><input id="mobilephone" patt='/^1(3|4|5|7|8)[0-9]\d{8}$/' class="h_r_row_input" type="number" name="" placeholder="请填写你的手机号"></div>
                     <div class="h_r_row"><span class="h_r_row_txt">申请的城市</span><div id="applycity" class="city_select" data-val="">请选择城市</div></div>
                     <div class="h_r_row"><span class="h_r_row_txt">贷款金额(万)</span><input id="loanamount" patt="/^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$/" class="h_r_row_input" type="number" name="" placeholder="如2.5"></div>
-                    <div class="h_r_row"><span class="h_r_row_txt">贷款期限(月)</span><div class="select_wrap">
-                                <select class="h_r_row_select " id="loanperiod">
-                                    <option value="3个月">3个月</option>
-                                    <option value="6个月">6个月</option>
-                                </select>
+                    <div class="h_r_row"><span class="h_r_row_txt">贷款期限</span><div class="select_wrap">
+                                <select class="h_r_row_select " id="loanperiod"></select>
                             </div></div>
                 </div>
             </div>
@@ -95,6 +92,29 @@
                 });
             });
         })(mui, document);
+        //贷款期限
+        $.ajax({
+            type:"post",
+            url:Config.url+"/sys/config?subtype=loanperiod",
+            beforeSend:function(xhr, settings){
+            },
+            success:function(data, status, xhr){
+                console.log(data);
+                if(data&&data.length>0){
+                    var selectWrap = $('#loanperiod');
+                    for(var i=data.length-1;i>0;i--){
+                        var tmpOption = $('<option value="'+data[i].itemvalue+'">'+data[i].iteminfo+'</option>');
+                        selectWrap.append(tmpOption);
+                    }
+                }
+            },
+            error:function(xhr, errorType, error){
+                error = error?error:'系统错误';
+                tips(error,'tips_center',1500);
+            },
+            complete:function(xhr, status){
+            }
+        });
         //下一步
         $('.apply_btn').on('click',function(){
             var flag = true,
