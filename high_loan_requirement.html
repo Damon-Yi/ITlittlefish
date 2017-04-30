@@ -99,7 +99,6 @@
             beforeSend:function(xhr, settings){
             },
             success:function(data, status, xhr){
-                console.log(data);
                 if(data&&data.length>0){
                     var selectWrap = $('#loanperiod');
                     for(var i=data.length-1;i>0;i--){
