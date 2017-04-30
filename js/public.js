@@ -21,7 +21,6 @@ var Config ={
     url:'http://www.1handfish.com/fishapi'
     
 }
-
 /*提示，弹窗*/
 //tips('数据错误','tips_center',1500);
 //tips('数据错误','tips_left',1500);
@@ -71,8 +70,7 @@ var loading = function(param){
     me.init();
     return me;
 }
-//拿openid
-
+//获取openid
 function getOpenId(){
 	var index = window.location.href;
 	var arr = index.split("&");
@@ -94,45 +92,34 @@ function getOpenId(){
 		        type:"post",
 		        url:Config.url+"/checkCode",
 		        async:false,
-		        data:{
-		        	code:str1,
-		        	
-		        },
+		        data:{code:str1,},
 		        success:function(data, status, xhr){
-		        	console.log(111)
 		        	console.log(data)
 		        	if(data){
 		        		Cookie.set('xiaoyuerUserMes',JSON.stringify(data));
 		        	}
-		       		
 		        },
 		        error:function(xhr, errorType, error){
-		        	console.log(000)	
+		        	console.log(error)	
 		        }
 		    })
 		}else{
 			$.ajax({
 		        type:"POST",
 		        url:Config.url+"/authorizeUrl",
-		        data:{
-		        	redirectUrl:index
-		        },
+		        data:{redirectUrl:index},
 		        async:false,
 		        success:function(data, status, xhr){
 		        	URLopenid = data.url;
-		 			
 		        	location.href = URLopenid;	
 		        },
 		        error:function(xhr, errorType, error){
-		        	alert(12)
 		        	console.log(000)
-		          	
 		        },
 			});
 		}
 	}
 }
-	
 
 /*图片转Base64*/
 function getBase64Image(src) {
@@ -218,7 +205,6 @@ var removeLocalStorage = function(key){
     localStorage.removeItem(key);
 }
 
-
 //Cookie 操作
 var Cookie = {
     getExpiresDate:function(days, hours, minutes) {
@@ -280,3 +266,23 @@ var Cookie = {
 }
 // Cookie.set('kk','45');
 // console.log(Cookie.get());
+
+//获取上一页地址
+function getReferrer(){
+    var referrer = '';
+    try {
+        referrer = window.top.document.referrer;
+    } catch(e) {
+        if(window.parent) {
+            try {
+                referrer = window.parent.document.referrer;
+            } catch(e2) {
+                referrer = '';
+            }
+        }
+    }
+    if(referrer === '') {
+        referrer = document.referrer;
+    }
+    return referrer;
+}
