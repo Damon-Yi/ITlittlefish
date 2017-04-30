@@ -243,6 +243,21 @@
         var loader = new loading({'container':document.body,'hasBg':false});
         var careerData ={};//工作信息
 
+        loader.show();
+        //用户信息
+        //getOpenId();//获取openId
+        Cookie.set("xiaoyuerUserMes",JSON.stringify({msecode:1}));//测试
+
+        if(Cookie.get("xiaoyuerUserMes")){
+            console.log(Cookie.get("xiaoyuerUserMes"))
+            xiaoYuInfo =JSON.parse(Cookie.get("xiaoyuerUserMes"));
+            if(xiaoYuInfo.msecode==0){//msecode 1 注册，0 未注册
+                location.href = 'register.html';
+            }else{
+                loader.hide();
+            }
+        }
+
         (function($, doc) {
             $.init();
             $.ready(function() {

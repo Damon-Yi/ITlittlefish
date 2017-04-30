@@ -70,7 +70,7 @@ var loading = function(param){
     me.init();
     return me;
 }
-//获取openid
+//获取openid,存储cookie
 function getOpenId(){
 	var index = window.location.href;
 	var arr = index.split("&");
