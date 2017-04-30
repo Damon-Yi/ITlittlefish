@@ -242,13 +242,12 @@
     <script>
         var loader = new loading({'container':document.body,'hasBg':false});
         var careerData ={};//工作信息
-        //var openId;
-        var openId = 'obDm_wPQs9w-1wiTJ0c8pD2dsfVM';//测试
+        var openId;
 
         loader.show();
         //用户信息
-        //getOpenId();//获取openId
-        Cookie.set("xiaoyuerUserMes",JSON.stringify({msecode:1}));//测试
+        getOpenId();//获取openId
+        //Cookie.set("xiaoyuerUserMes",JSON.stringify({msecode:1,openid:'obDm_wPQs9w-1wiTJ0c8pD2dsfVM'}));//测试
         if(Cookie.get("xiaoyuerUserMes")){
             console.log(Cookie.get("xiaoyuerUserMes"))
             xiaoYuInfo =JSON.parse(Cookie.get("xiaoyuerUserMes"));
@@ -565,6 +564,7 @@
             parmas['pageNo'] = 1;
             parmas['pageSize'] = 10;
             parmas['memberId'] = 1113001;
+            console.log(openId);
             if(openId){
                 parmas['openId'] = openId;
             }
