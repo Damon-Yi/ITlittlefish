@@ -50,6 +50,24 @@
     <script src="plugin/mui/js/mui.poppicker.js"></script>
     <script src="plugin/mui/js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
     <script>
+        var loader = new loading({'container':document.body,'hasBg':false});
+        loader.show();
+        //用户信息
+        getOpenId();//获取openId
+        //Cookie.set("xiaoyuerUserMes",JSON.stringify({msecode:0}));//测试
+        if(Cookie.get("xiaoyuerUserMes")){
+            console.log(Cookie.get("xiaoyuerUserMes"))
+            xiaoYuInfo =JSON.parse(Cookie.get("xiaoyuerUserMes"));
+            if(xiaoYuInfo.msecode==0){//msecode 1 注册，0 未注册
+                tips('您还未注册，即将前往注册页面','tips_center',1500);
+                setTimeout(function(){
+                    location.href = 'register.html';
+                },1500);
+            }else{
+                loader.hide();
+            }
+        }
+
         (function($, doc) {
             $.init();
             $.ready(function() {
