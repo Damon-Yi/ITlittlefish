@@ -55,7 +55,7 @@
                         </div>
                         <div class="h_r_row">
                             <span class="h_r_row_txt">验证码</span><div class="h_r_row_vilde_code">
-                                <input class="vilde_code" id="identifyCode" type="text" data-code="1" name="" placeholder="请输入"><div class="get_code_btn" id="get_code_btn">发送验证码</div>
+                                <input class="vilde_code" id="identifyCode" type="text" data-code="" name="" placeholder="请输入"><div class="get_code_btn" id="get_code_btn">发送验证码</div>
                             </div>
                         </div>
                         <div class="h_r_row">
@@ -297,7 +297,7 @@
                             success:function(data, status, xhr){
                                 console.log(data)
                                 if(data&&data.resultCode == 1111){
-                                    
+                                    $('.vilde_code').attr('data-code',data.identifyCode);
                                 };
                             },
                             error:function(xhr, errorType, error){
