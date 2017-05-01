@@ -267,12 +267,12 @@
             }
         }*/
         if (!Cookie.get("xiaoyuerUserMes")) {
-            //getOpenId();
+            getOpenId();
         } else {
             var xiaoyuerUserMes = Cookie.get("xiaoyuerUserMes");
             openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
             if (openid == undefined) {
-                //getOpenId();
+                getOpenId();
             }
         }
 
