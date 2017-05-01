@@ -203,35 +203,6 @@ function getOpenId() {
 	var index = window.location.href;
 	var arr = index.split("&");
 	var openId;
-	/*if(Cookie.get("xiaoyuerUserMes")){
-		openId = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
-	}*/
-	if(!Cookie.get("xiaoyuerUserMes")){
-		if(index.indexOf("code=")>=0){
-			for(var i = 0 ;i<arr.length;i++){
-	    		if(arr[i].indexOf("code")>=0){
-	    			if(arr[i].split("=")[1] != ""){
-	    				str1=arr[i].split("=")[1];
-	    			}
-	    		}
-	    	}
-			console.log(str1);
-	    	$.ajax({
-		        type:"post",
-		        url:Config.url+"/checkCode",
-		        async:false,
-		        data:{code:str1},
-		        success:function(data, status, xhr){
-		        	console.log(data)
-		        	if(data){
-		        		Cookie.set('xiaoyuerUserMes',JSON.stringify(data));
-		        	}
-		        },
-		        error:function(xhr, errorType, error){
-		        	console.log(error)	
-		        }
-		    })
-		}else{
 
 	if (!Cookie.get("xiaoyuerUserMes")) {
 		var vcode = getQueryString('code');
