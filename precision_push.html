@@ -637,7 +637,8 @@
             }
             parmas['pageNo'] = 1;
             parmas['pageSize'] = 10;
-            parmas['memberId'] = 1113001;
+            //parmas['memberId'] = 1113001;
+            parmas['userId'] = Cookie.get('userId');
             console.log(openid);
             if(openid){
                 parmas['openId'] = openid;
