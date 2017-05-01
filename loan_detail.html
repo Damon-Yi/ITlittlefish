@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-ch">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-title" content="小鱼儿贷款平台">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-title" content="小鱼儿贷款平台">
+    <title>小鱼儿贷款平台</title>
+    <meta name="keywords" content="小鱼儿贷款平台">
+    <meta name="description" content="小鱼儿贷款平台">
+    <!--<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />-->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/loan/detail.css">
+    <script src="js/public.js"></script>
+</head>
+
+<body>
+    <header id="header">
+        <span class="f38">贷款详情</span>
+    </header>
+    <div class="product-detail">
+        <div class="login-tips fn-hide">
+            登录后获得推荐产品 <span>立即登陆</span>
+        </div>
+        <div class="product-info">
+            <div class="product-desc clearfix " id="productDescript">
+
+            </div>
+        </div>
+        <div class="product-condition  product-paragraph">
+            <div class="paragraph-title">
+                <i class="icon"></i>
+                <h4>贷款条件</h4>
+            </div>
+            <ul>
+                <li id="loansconditions">
+                </li>
+            </ul>
+        </div>
+
+        <div class="product-apply  product-paragraph">
+            <div class="paragraph-title">
+                <i class="icon"></i>
+                <h4>申请资料</h4>
+            </div>
+            <ul id="applyDatas">
+
+            </ul>
+        </div>
+        <div class="product-other  product-paragraph">
+            <div class="paragraph-title">
+                <i class="icon"></i>
+                <h4>其他</h4>
+            </div>
+            <ul id="others">
+            </ul>
+        </div>
+        <div class="fixed-btn">
+            <a href="javascript:;" class="applyBtn"> <strong>申请贷款</strong></a>
+        </div>
+    </div>
+    <footer id="footer">
+
+    </footer>
+    <script type="text/javascript" src="plugin/swiper/swiper.3.1.7.min.js"></script>
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <script>
+        var applyUrl = '';
+
+        function getUrlVar(name) { //获取url参数
+            var getUrlVars = function() {
+                var vars = [],
+                    hash;
+                var hashes = location.search.slice(1).split('&');
+                for (var i = 0; i < hashes.length; i++) {
+                    hash = hashes[i].split('=');
+                    vars.push(hash[0]);
+                    vars[hash[0]] = hash[1];
+                }
+                return vars;
+            };
+            return getUrlVars()[name] || '';
+        }
+
+        var productId = getUrlVar('productId');
+        //活动产品
+        $.ajax({
+            type: "post",
+            data: {
+                loanserialno: productId
+            },
+            url: Config.url + "/loanproducts",
+            beforeSend: function(xhr, settings) {},
+            success: function(data, status, xhr) {
+                if (data && data.length > 0) {
+                    var productInfo = '';
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].loanserialno === productId) {
+                            productInfo = data[i];
+                        }
+                    }
+                    if (productInfo) {
+                        applyUrl = productInfo.producturl;
+                        var descriptionWarp = $('#productDescript');
+                        var tempDes = '<div class="clearfix">' +
+                            '<div class="product-logo"><img src="' + productInfo.logourl + '"></div>' +
+                            '<div class="product-person">' +
+                            '<h2 class="product-name"><b>' + productInfo.productname + '</b></h2>' +
+                            '<div class="pt15">适用人群：' +
+                            ' +data.fitpeople' +
+                            '</div>' +
+                            '<div class="pt15">申请人数：<b>' + productInfo.applications + '人</b></div>' +
+                            '</div>' +
+                            '</div>' +
+                            '<div class="clearfix">' +
+                            '<ul class="product-datas">' +
+                            '<li class="data-item br1 bb1"><strong>成功率</strong><br/><span>' + productInfo.successrate + '</span></li>' +
+                            '<li class="data-item br1 bb1"><strong>日利率</strong><br/><span>' + productInfo.dayrate + '</span></li>' +
+                            '<li class="data-item br1 bb1"><strong>平均用时</strong><br/><span>' + productInfo.averagetime + '</span></li>' +
+                            '<li class="data-item bb1"><strong> 平均额度</strong><br/><span>' + productInfo.averageamount + '</span></li>' +
+                            '<li class="data-item br1"><strong> 贷款期限</strong><br/><span>' + productInfo.loanperiod + '</span></li>' +
+                            '<li class="data-item br1"><strong> 还款方式</strong><br/><span>' + productInfo.repaymentway + '</span></li>' +
+                            '<li class="data-item br1"><strong> 额度范围</strong><br/><span>' + productInfo.ammout + '</span></li>' +
+                            '<li class="data-item"><strong>最快用时</strong><br/><span>' + productInfo.fastesttime + '</span></li>' +
+                            '</ul>' +
+                            '</div>' +
+                            '<div class="product-summary">' +
+                            '<strong>' + productInfo.productdes + '</strong>' +
+                            '</div>';
+                        descriptionWarp.append(tempDes);
+
+                        $('#loansconditions').text(productInfo.loansconditions)
+
+                        if (productInfo.applyingdata) {
+                            productInfo.applyingdata.forEach(function(item, index) {
+                                $('#applyDatas').append('<li>' + (index + 1) + '、' + item + '</li>');
+                            });
+                        }
+                        if (productInfo.other) {
+                            productInfo.other.forEach(function(item, index) {
+                                $('#others').append('<li>' + (index + 1) + '、' + item + '</li>');
+                            });
+                        }
+                    }
+                }
+            },
+            error: function(xhr, errorType, error) {
+                error = error ? error : '系统错误';
+                tips(error, 'tips_center', 1500);
+            },
+            complete: function(xhr, status) {}
+        });
+
+        $('.applyBtn').on('click', function() {
+            //用户信息
+            getOpenId(); //获取openId
+            //Cookie.set("xiaoyuerUserMes",JSON.stringify({msecode:0}));//测试
+            if (Cookie.get("xiaoyuerUserMes")) {
+                console.log(Cookie.get("xiaoyuerUserMes"))
+                xiaoYuInfo = JSON.parse(Cookie.get("xiaoyuerUserMes"));
+                if (xiaoYuInfo.msecode == 0) { //msecode 1 注册，0 未注册
+                    tips('您还未注册，即将前往注册页面', 'tips_center', 1500);
+                    setTimeout(function() {
+                        location.href = 'register.html';
+                    }, 1500);
+                } else {
+                    location.href = applyUrl;
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>

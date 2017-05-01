@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-ch">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-title" content="小鱼儿贷款平台">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-title" content="小鱼儿贷款平台">
+    <title>小鱼儿贷款平台</title>
+    <meta name="keywords" content="小鱼儿贷款平台">
+    <meta name="description" content="小鱼儿贷款平台">
+    <!--<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />-->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/loan/list.css">
+    <script src="js/public.js"></script>
+</head>
+
+<body>
+    <header id="header">
+        <span class="f38">云速贷</span>
+    </header>
+    <div class="product-list-content">
+        <ul class="filter-tab clearfix fn-hide">
+            <li class="filter-item fl f38">金额 <i class="arror-down"></i> </li>
+            <li class="filter-item fl f38 active">期限 <i class="arror-down"></i> </li>
+            <li class="filter-item fl f38">筛选 <i class="arror-down"></i> </li>
+            <li class="filter-item fl f38">排序 <i class="arror-down"></i> </li>
+        </ul>
+
+        <div class="list-container">
+            <div class="login-tips fn-hide">
+                登录后获得推荐产品 <span>立即登陆</span>
+            </div>
+            <ul class="product-list pb20 pt20" id="products">
+            </ul>
+        </div>
+    </div>
+    <footer id="footer">
+
+    </footer>
+    <script type="text/javascript" src="plugin/swiper/swiper.3.1.7.min.js"></script>
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <script>
+        function getUrlVar(name) { //获取url参数
+            var getUrlVars = function() {
+                var vars = [],
+                    hash;
+                var hashes = location.search.slice(1).split('&');
+                for (var i = 0; i < hashes.length; i++) {
+                    hash = hashes[i].split('=');
+                    vars.push(hash[0]);
+                    vars[hash[0]] = hash[1];
+                }
+                return vars;
+            };
+            return getUrlVars()[name] || '';
+        }
+
+        var loantype = getUrlVar('loantype');
+        //活动产品
+        $.ajax({
+            type: "post",
+            data: {
+                loantype: loantype,
+            },
+            url: Config.url + "/loanproducts",
+            beforeSend: function(xhr, settings) {},
+            success: function(data, status, xhr) {
+                if (data && data.length > 0) {
+                    var productsWrap = $('#products');
+                    for (var i = 0; i < data.length; i++) {
+                        var item = data[i];
+                        var temTags = [];
+                        if (item.applyingdata) {
+                            item.applyingdata.forEach(function(applyItem) {
+                                temTags.push('<li class="tag-item"><span class="mr10">' + applyItem + '</span></li>');
+                            });
+                        }
+                        var tmpProduct = '<li class="product-item">' +
+                            '<a href="loan_detail.html?productId=' + item.loanserialno + '">' +
+                            '<div class="product-desc clearfix">' +
+                            '<div class="product-logo"><img src="' + item.logourl + '"></div>' +
+                            '<div class="product-person">' +
+                            '<h2 class="product-name"><b>' + item.productname + '</b></h2>' +
+                            '<div class="pt15">' +
+                            '' + item.fitpeople + '' +
+                            '</div>' +
+                            '<div class="pt15">申请人数：<b>' + item.applications + '人</b></div>' +
+                            '</div>' +
+                            '<ul class="product-datas">' +
+                            '<li class="data-item br1 ">成功率 <br><span>' + item.successrate + '</span></li>' +
+                            '<li class="data-item ">月利率<br><span>' + item.dayrate + '</span></li>' +
+                            '<li class="data-item br1 bt1">平均额度<br><span>' + item.averageamount + '</span></li>' +
+                            '<li class="data-item bt1">平均用时<br><span>' + item.averagetime + '</span></li>' +
+                            '</ul>' +
+
+                            '</div>' +
+                            '<div class="product-ration">额度：<span>' + item.ammout + '</span></div>' +
+                            '<ul class="tags clearfix">' +
+                            temTags.join('');
+                        '</ul>' +
+                        '</a>' +
+                        '</li>'
+                        productsWrap.append(tmpProduct);
+                    }
+                }
+            },
+            error: function(xhr, errorType, error) {
+                error = error ? error : '系统错误';
+                tips(error, 'tips_center', 1500);
+            },
+            complete: function(xhr, status) {}
+        });
+    </script>
+
+</body>
+
+</html>

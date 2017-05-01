@@ -75,6 +75,11 @@
                             </div></div>
                     </div>
                     <div class="h_r_row">
+                        <span class="h_r_row_txt">验证码</span><div class="h_r_row_vilde_code">
+                            <input class="vilde_code" id="identifyCode" type="text" data-code="" name="" placeholder="请输入"><div class="get_code_btn" id="get_code_btn">发送验证码</div>
+                        </div>
+                    </div>
+                    <div class="h_r_row">
                         <span class="h_r_row_txt">工作信息</span>
                         <div class="select_wrap">
                             <select class="h_r_row_select career_info" id="profession">
@@ -242,9 +247,9 @@
     <script>
         var loader = new loading({'container':document.body,'hasBg':false});
         var careerData ={};//工作信息
-        var openId;
+        var openid;
 
-        loader.show();
+        /*loader.show();
         //用户信息
         getOpenId();//获取openId
         //Cookie.set("xiaoyuerUserMes",JSON.stringify({msecode:1,openid:'obDm_wPQs9w-1wiTJ0c8pD2dsfVM'}));//测试
@@ -257,8 +262,17 @@
                     location.href = 'register.html';
                 },1500);
             }else{
-                openId = xiaoYuInfo.openid;
+                openid = xiaoYuInfo.openid;
                 loader.hide();
+            }
+        }*/
+        if (!Cookie.get("xiaoyuerUserMes")) {
+            getOpenId();
+        } else {
+            var xiaoyuerUserMes = Cookie.get("xiaoyuerUserMes");
+            openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
+            if (openid == undefined) {
+                getOpenId();
             }
         }
 
@@ -357,6 +371,45 @@
                         toggleClass(this, 'active')
                      });
                 });
+                /*获取验证码*/
+                var getCodeBtn = doc.getElementById('get_code_btn');
+                getCodeBtn.addEventListener('tap', function(event) {
+                    getCodefun(this,4,function(){
+                        var mobilephone1 = doc.getElementById('mobilephone');
+                        var flag = true;
+                        var msg = '';
+                        
+                        if(mobilephone1.value==''){
+                            flag = false;
+                            tips('请填写手机号','tips_center',1500);
+                        }else{
+                            var patt = mobilephone1.attributes.getNamedItem('patt').textContent;
+                            if(patt){
+                                var patten = eval(patt);
+                                if(!patten.test(mobilephone1.value)){
+                                    flag = false;
+                                    tips('手机号格式不正确','tips_center',1500);
+                                } 
+                            }
+                        }
+                        if(flag){
+                            $.ajax({
+                                type:"post",
+                                url:Config.url+"/identifyCode",
+                                data:{mobilephone:mobilephone1.value},
+                                success:function(data, status, xhr){
+                                    if(data&&data.identifyCode){
+                                        //$('.vilde_code').attr('data-code',data.identifyCode);
+                                        doc.getElementById('identifyCode').setAttribute('data-code',data.identifyCode);
+                                    };
+                                },
+                                error:function(xhr, errorType, error){
+                                    console.log(error)
+                                },
+                            });
+                        }
+                    });
+                }, false);
             });
         })(mui, document);
         //贷款期限
@@ -480,6 +533,27 @@
                     careerData[this.id] = $(this).val();
                 }
             });
+            //验证码
+            var vildeCode = $('.vilde_code');
+            if(vildeCode.val().trim()==''){
+                if(msg==''){
+                    flag = false;
+                    msg = '请填写验证码';
+                    tips(msg,'tips_center',1500);
+                }
+            }else{
+                console.log(vildeCode.val().trim())
+                console.log(vildeCode.attr('data-code'))
+                if(vildeCode.val().trim()!=vildeCode.attr('data-code')){
+                    if(msg==''){
+                        flag = false;
+                        msg = '验证码错误';
+                        tips(msg,'tips_center',1500);
+                    }
+                }else{
+                    parmas[vildeCode.attr('id')] = vildeCode.val().trim();
+                }
+            }
             //工作信息
             var careerInfo = $('.career_info');
             parmas[careerInfo.attr('id')] = careerInfo.val();
@@ -563,10 +637,11 @@
             }
             parmas['pageNo'] = 1;
             parmas['pageSize'] = 10;
-            parmas['memberId'] = 1113001;
-            console.log(openId);
-            if(openId){
-                parmas['openId'] = openId;
+            //parmas['memberId'] = 1113001;
+            parmas['userId'] = Cookie.get('userId');
+            console.log(openid);
+            if(openid){
+                parmas['openId'] = openid;
             }
             console.log(JSON.stringify(parmas));
             if(flag){
