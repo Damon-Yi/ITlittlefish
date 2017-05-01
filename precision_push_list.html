@@ -233,24 +233,36 @@
     <script type="text/javascript" src="plugin/zepto/touch.js"></script>
     <script src="plugin/dropload/dropload.min.js"></script>
     <script>
-        var precisionPushQueryData = getLocalStorage('precisionPushQueryData');
-        var precisionPushResultData = getLocalStorage('precisionPushResultData');
+        /*var precisionPushQueryData = getLocalStorage('precisionPushQueryData');
+        var precisionPushResultData = getLocalStorage('precisionPushResultData');*/
         //console.log(precisionPushQueryData);
         //console.log(precisionPushResultData);
+        var path = window.location.href;
+        var intelligentid;
+        if(path.indexOf("intelligentid=")>=0){
+            var arr = path.split("&");
+            for(var i = 0 ;i<arr.length;i++){
+                if(arr[i].indexOf("intelligentid")>=0){
+                    var index = arr[i].indexOf("=");
+                    intelligentid = arr[i].substring(index+1,arr[i].length);
+                    console.log(intelligentid);
+                }
+            }
+        }
 
-        if(precisionPushResultData){
+        /*if(precisionPushResultData){
             if(precisionPushResultData.rows){
                 var hPushList = $('.h_push_list');
                 var hPushItems = precisionPushResultData.rows;
                 appentData(hPushList,hPushItems);
             }
-        }
+        }*/
         // $(function(){
             // 页数
             var page = 1;
             // 每页展示10个
             var size = 10;
-
+            getNextPage(page,size);
             $(window).scroll(function(){
             　　var scrollTop = $(this).scrollTop();
             　　var scrollHeight = $(document).height();
@@ -338,27 +350,29 @@
             });*/
         // });
         function getNextPage(page,size){
-            var parmas = precisionPushQueryData;
-            parmas.pageNo = page;
-            console.log(parmas);
-            $.ajax({
-                type:"post",
-                url:Config.url+"/submitPrecisionPushApply",
-                data:parmas,
-                success: function(data){
-                    if(data.rows.length>0){
-                        page++;
-                        appentData($('.h_push_list'),data.rows);
-                        setLocalStorage('precisionPushQueryData',parmas);
-                    }else{
-                        
+            //var parmas = precisionPushQueryData;
+            if(intelligentid){
+                parmas = {intelligentid:intelligentid,pageNo:page,pageSize:size};
+                console.log(parmas);
+                $.ajax({
+                    type:"post",
+                    url:Config.url+"/getSubmitPrecisionPushApply",
+                    data:parmas,
+                    success: function(data){
+                        if(data.rows.length>0){
+                            page++;
+                            appentData($('.h_push_list'),data.rows);
+                            //setLocalStorage('precisionPushQueryData',parmas);
+                        }else{
+                            
+                        }
+                    },
+                    error: function(xhr, errorType, error){
+                        error = error?error:'系统错误';
+                        tips(error,'tips_center',1500);
                     }
-                },
-                error: function(xhr, errorType, error){
-                    error = error?error:'系统错误';
-                    tips(error,'tips_center',1500);
-                }
-            });
+                });
+            }
         }
         function appentData(obj,rows){
             for(var i=0;i<rows.length;i++){
