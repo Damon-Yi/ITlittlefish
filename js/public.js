@@ -18,8 +18,10 @@ var Config ={
     //url:'http://a784112865.oicp.net/zhudai_api/service'
     //url:'http://112.74.184.28/zhudai_api/service'
     //url:'http://a784112865.oicp.net/zhudai_api/service',
+
     url:'http://a784112865.oicp.net/fishapi/',
     //url:'http://www.1handfish.com/fishapi'
+
     
 }
 /*提示，弹窗*/
