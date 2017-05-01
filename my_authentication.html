@@ -25,16 +25,20 @@
    		select{background: transparent;border: none;width: 50%;}
    		.content p{position: relative;}
    		.selectnext{
-		   width: 0.18rem !important;
-		   height: 0.18rem;
-		   display: block;
-		   background: transparent;
-		   position: absolute;
-		   right: 4%;
-		   top: 0.15rem;
-		   border-left: .18rem solid transparent;
-		   border-bottom: .18rem solid black;
-		   transform: rotate(45deg);
+		    content: " ";
+		    display: inline-block;
+		    -webkit-transform: rotate(45deg);
+		    transform: rotate(45deg);
+		    height: 8px;
+		    width: 8px;
+		    border-width: 1px 1px 0 0;
+		    border-color: #c8c8cd;
+		    border-style: solid;
+		    position: absolute;
+		    top: 60%;
+		    right: 0;
+		    background: black;
+		    margin-top: -5px
    		}
     </style>
    <!-- <script type="text/javascript">
@@ -65,11 +69,7 @@
             		</p>
             		<p>
             			<span>性别</span>
-            			<select class="sex" name="">
-            				<option value="">男</option>
-            				<option value="">女</option>
-            			</select>
-            			<span class="selectnext"></span>
+            			<input type="text" name="sex" id="" value="" placeholder="例：男"/>
             		</p>
             		<p>
             			<span>手机号码</span>
@@ -95,7 +95,7 @@
             		</p>
             		<p>
             			<span>职业身份</span>
-            			<select class="occupational" name="">
+            			<select name="">
             				<option value="">工薪族</option>
             				<option value="">企业主</option>
             				<option value="">在校学生</option>
@@ -107,15 +107,13 @@
             		<p>
             			<span>本地社保</span>
             			<span style="text-indent: .1rem;">
-            				<span class="choisesocial" data-val="1">有<i></i></span>
-            				<span class="choisesocial" data-val="0">无<i></i></span>
+            				<span data-val="1">有<i></i></span><span data-val="0">无<i></i></span>
             			</span>
             		</p>
             		<p class="bordernone">
             			<span>本地公积金</span>
             			<span style="text-indent: .1rem;">
-            				<span class="choiseaccumulation" data-val="1">有<i></i></span>
-            				<span class="choiseaccumulation" data-val="0">无<i></i></span>
+            				<span data-val="1">有<i></i></span><span data-val="0">无<i></i></span>
             			</span>
             		</p>
             	</div>
@@ -222,25 +220,17 @@
                 });
             });
         })(mui, document);
-        $(function(){
-        	
-        })
-        
-        var socialsecurity;
-        var socialinsurance;
         $(".submit").on("tap",function(){
-        	console.log()
-        	var username = $("input[name = username]")[0].value; //姓名
-        	var sex = $(".sex option:checked").text();   	//性别
-        	var mobilephone = $("input[name = mobilephone]")[0].value;  //手机号码
-        	var city = $("#schoolCity").text(); //所有城市
-        	var birthday = $("#schoolTime").text(); // 生日
-        	var monthlyincome = $("input[name = monthlyincome]")[0].value; //月收入
-        	var profession = $(".occupational option:checked").text(); //职业
-        	console.log(socialsecurity);//社保
-        	console.log(socialinsurance);//公积金
-        	
-       	if(!username || !sex || !mobilephone || city == "请选择城市" || birthday == "请选择时间"
+        	var username = $("input[name = username]")[0].value;
+        	var sex = $("input[name = sex]")[0].value;
+        	var mobilephone = $("input[name = mobilephone]")[0].value;
+        	var city = $("input[name = city]")[0].value;
+        	var birthday = $("input[name = year]")[0].value+'-'+$("input[name = mouth]")[0].value+"-"+$("input[name = day]")[0].value;
+        	var monthlyincome = $("input[name = monthlyincome]")[0].value;
+        	var profession = $("input[name = profession]")[0].value;
+        	var socialsecurity = $("input[name = socialsecurity]")[0].value;
+        	var socialinsurance = $("input[name = socialinsurance]")[0].value;
+        	/*if(!username || !sex || !mobilephone || !city || !birthday 
         		|| !monthlyincome || !profession || !socialsecurity 
         		|| !socialinsurance){
         			layer.open({
@@ -248,8 +238,8 @@
 						,skin: 'msg'
 						,time: 1.5 //2秒后自动关闭
         			})
-        		}
-        	$.ajax({
+        		}*/
+        	 $.ajax({
                 type:"post",
                 url:Config.url+"/dataUpdate",
                	//contentType:"application/json",
@@ -284,30 +274,5 @@
                 },
             });
         })
-        
-        
-        $(".choisesocial").on("tap",function(){
-        	console.log($(this).index())
-        	$(this).find("i").css("background","#ff9000").siblings();
-        	$(this).siblings(".choisesocial").find("i").css("background","#bfbfbf");
-        	if($(this).index() == 0){
-        		socialsecurity = 1;
-        	}else{
-        		socialsecurity = 0;
-        	}
-        })
-        
-        $(".choiseaccumulation").on("tap",function(){
-        	console.log($(this).index())
-        	$(this).find("i").css("background","#ff9000").siblings();
-        	$(this).siblings(".choiseaccumulation").find("i").css("background","#bfbfbf");
-        	if($(this).index() == 0){
-        		socialinsurance = 1;
-        	}else{
-        		socialinsurance = 0;
-        	}
-        })
-        
-        
     </script>
 </html>
