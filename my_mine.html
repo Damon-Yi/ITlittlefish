@@ -1,237 +1,332 @@
 <!DOCTYPE html>
 <html>
-	<head>
-	<meta charset="utf-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-    <meta content="yes" name="apple-mobile-web-app-capable">
-    <meta content="black" name="apple-mobile-web-app-status-bar-style">
-    <link rel="stylesheet" type="text/css" href="css/public.css"/>
-    <link href="css/my_mine.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="plugin/layer/mobile/need/layer.css"/>
-    <script src="plugin/layer/mobile/layer.js" type="text/javascript" charset="utf-8"></script>
-    <script src="plugin/jquery/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
-    <script src="plugin/jquery/ajaxfileupload.js" type="text/javascript" charset="utf-8"></script>
-    <script src="plugin/jquery/ajaxfileuploadProgress.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/public.js"></script>
-    <script type="text/javascript">
-        var aScroll;
-        function loaded () {
-            aScroll = new IScroll('#cont_wrapper',{
-                scrollbars: true,
-                mouseWheel: true,
-                interactiveScrollbars: true,
-                shrinkScrollbars: 'scale',
-                fadeScrollbars: true,click: true 
-            });
-        }
-       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-    </script>
-    <style type="text/css">
-    	select{background: transparent;}
-    </style>
-	</head>
-	<body onload="loaded()" style="background: white;">
-		<div class="page_header">我的</div>
-		<!--用户基本信息-->
-		<div id="cont_wrapper">
-			<div>
-				<div class="user_info">
-					<p class="grade">等级V1</p>
-					<div class="user_Mes">
-						<div class="user_Mes_img">
-							<div>
-								<img class="user_img" src="images/user_icon.png"/>
-							</div>
-							<!--<input id='file1' type='file' accept=''>-->
-						</div>
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<link rel="stylesheet" type="text/css" href="css/public.css" />
+<link href="css/my_mine.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css"
+	href="plugin/layer/mobile/need/layer.css" />
+<script src="plugin/layer/mobile/layer.js" type="text/javascript"
+	charset="utf-8"></script>
+<script src="plugin/jquery/jquery-1.11.0.js" type="text/javascript"
+	charset="utf-8"></script>
+<script src="plugin/jquery/ajaxfileupload.js" type="text/javascript"
+	charset="utf-8"></script>
+<script src="plugin/jquery/ajaxfileuploadProgress.js"
+	type="text/javascript" charset="utf-8"></script>
+<script src="js/public.js"></script>
+<script type="text/javascript">
+	var aScroll;
+	function loaded() {
+		aScroll = new IScroll('#cont_wrapper', {
+			scrollbars : true,
+			mouseWheel : true,
+			interactiveScrollbars : true,
+			shrinkScrollbars : 'scale',
+			fadeScrollbars : true,
+			click : true
+		});
+	}
+	document.addEventListener('touchmove', function(e) {
+		e.preventDefault();
+	}, false);
+
+	if (Cookie.get("xiaoyuerUserMes")) {
+		var xiaoyuerUserMes = Cookie.get("xiaoyuerUserMes");
+		var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
+		if (openid == undefined) {
+			getOpenId();
+		}
+	}
+
+	var flag = checkRegisterUser();
+	
+	
+	
+</script>
+<style type="text/css">
+select {
+	background: transparent;
+}
+</style>
+</head>
+<body onload="loaded()" style="background: white;">
+	<div class="page_header">我的</div>
+	<!--用户基本信息-->
+	<div id="cont_wrapper">
+		<div>
+			<div class="user_info">
+				<p class="grade">等级V1</p>
+				<div class="user_Mes">
+					<div class="user_Mes_img">
 						<div>
-							<p><span>昵称：</span><span class="nickname"></span></p>
-		                    <p><span class="mobilephone"></span></p>
+							<img class="user_img" src="images/user_icon.png" style="border-radius: 5rem;"/>
 						</div>
-						<div>
-							<p>余额</p>
-		                    <p style="font-size: 0.4rem;" class="balance"><span></span>元</p>
-						</div>
+						<!--<input id='file1' type='file' accept=''>-->
 					</div>
-					<div class="member">
-						
-							<p class="upgrade">升级V会员</p>
-						
-						
-						<a href="my_recharge.html">
-							<p class="recharge">充值</p> 
-						</a>
-						
+					<div>
+						<p>
+							<span>昵称：</span><span class="nickname"></span>
+						</p>
+						<p>
+							<span class="mobilephone"></span>
+						</p>
+					</div>
+					<div>
+						<p>余额</p>
+						<p style="font-size: 0.4rem;" class="balance">
+							<span></span>元
+						</p>
 					</div>
 				</div>
-				
+				<div class="member">
+
+					<p class="upgrade">升级V会员</p>
+
+
+					<a href="my_recharge.html">
+						<p class="recharge">充值</p>
+					</a>
+
+				</div>
+			</div>
+
 			<!--基本功能导航-->
-				<div class="navigation">
-					<ul class="navigationUl">
-						<a href="my_moneycode.html">
-							<li class="navigation_list">
-								<dl>
-									<dt><img src="images/erweima.png"/></dt>
-									<dd>挣钱二维码</dd>
-								</dl>
-							</li>
-						</a>
-						<a href="my_authentication.html">
-							<li class="navigation_list border_left_right">
-								<dl>
-									<dt><img src="images/ziliaorenzheng.png"/></dt>
-									<dd>资料认证</dd>
-								</dl>
-							</li>
-						</a>
-						<a href="my_performance.html">
-							<li class="navigation_list">
-								<dl>
-									<dt><img src="images/yejiguanli.png"/></dt>
-									<dd>业绩管理</dd>
-								</dl>
-							</li>
-						</a>
-					</ul>
-					<ul class="navigationUl">
-						<a href="my_member.html">
-							<li class="navigation_list">
-								<dl>
-									<dt><img src="images/huiyuanfuwu.png"/></dt>
-									<dd>会员功能</dd>
-								</dl>
-							</li>
-						</a>
-						<a href="my_documentation.html">
-							<li class="navigation_list border_left_right">
-								<dl>
-									<dt><img src="images/daikuanjilu.png"/></dt>
-									<dd>贷款记录</dd>
-								</dl>
-							</li>
-						</a>
-						<a href="my_singlerecord.html">
-							<li class="navigation_list">
-								<dl>
-									<dt><img src="images/qiangdan.png"/></dt>
-									<dd>抢单/甩单记录</dd>
-								</dl>
-							</li>
-						</a>
-					</ul>
-					<ul class="navigationUl">
-						<a href="my_purse.html">
-							<li class="navigation_list">
-								<dl>
-									<dt><img src="images/qianbao.png"/></dt>
-									<dd>钱包</dd>
-								</dl>
-							</li>
-						</a>
-						<a href="#">
-							<li class="navigation_list border_left_right">
-								<dl>
-									<dt><img src="images/jifenguanli.png"/></dt>
-									<dd>积分管理</dd>
-								</dl>
-							</li>
-						</a>
-						<a href="#">
-							<li class="navigation_list">
-								<dl>
-									<dt><img src="images/guanyuwomen.png"/></dt>
-									<dd>关于我们</dd>
-								</dl>
-							</li>
-						</a>
-					</ul>
-				</div>
-			<!--扫描二维码分享给好友-->	
-				<div class="sharefriend">
-					<div>
-						<a href="#">
+			<div class="navigation">
+				<ul class="navigationUl">
+					<a class="my_moneycode">
+						<li class="navigation_list">
 							<dl>
-								<dt><img class="memberurl" src=""/></dt>
-								<dd>让好友扫描您的二维码</dd>
+								<dt>
+									<img src="images/erweima.png" />
+								</dt>
+								<dd>挣钱二维码</dd>
 							</dl>
-						</a>
-						
-					</div>
-					<div>
-						<a href="#"><span>分享链接给好友</span></a>
-					</div>
+					</li>
+					</a>
+					<a href="my_authentication.html">
+						<li class="navigation_list border_left_right">
+							<dl>
+								<dt>
+									<img src="images/ziliaorenzheng.png" />
+								</dt>
+								<dd>资料认证</dd>
+							</dl>
+					</li>
+					</a>
+					<a href="my_performance.html">
+						<li class="navigation_list">
+							<dl>
+								<dt>
+									<img src="images/yejiguanli.png" />
+								</dt>
+								<dd>业绩管理</dd>
+							</dl>
+					</li>
+					</a>
+				</ul>
+				<ul class="navigationUl">
+					<a href="my_member.html">
+						<li class="navigation_list">
+							<dl>
+								<dt>
+									<img src="images/huiyuanfuwu.png" />
+								</dt>
+								<dd>会员功能</dd>
+							</dl>
+					</li>
+					</a>
+					<a href="my_documentation.html">
+						<li class="navigation_list border_left_right">
+							<dl>
+								<dt>
+									<img src="images/daikuanjilu.png" />
+								</dt>
+								<dd>贷款记录</dd>
+							</dl>
+					</li>
+					</a>
+					<a href="my_singlerecord.html">
+						<li class="navigation_list">
+							<dl>
+								<dt>
+									<img src="images/qiangdan.png" />
+								</dt>
+								<dd>抢单/甩单记录</dd>
+							</dl>
+					</li>
+					</a>
+				</ul>
+				<ul class="navigationUl">
+					<a href="my_purse.html">
+						<li class="navigation_list">
+							<dl>
+								<dt>
+									<img src="images/qianbao.png" />
+								</dt>
+								<dd>钱包</dd>
+							</dl>
+					</li>
+					</a>
+					<a href="#">
+						<li class="navigation_list border_left_right">
+							<dl>
+								<dt>
+									<img src="images/jifenguanli.png" />
+								</dt>
+								<dd>积分管理</dd>
+							</dl>
+					</li>
+					</a>
+					<a href="#">
+						<li class="navigation_list">
+							<dl>
+								<dt>
+									<img src="images/guanyuwomen.png" />
+								</dt>
+								<dd>关于我们</dd>
+							</dl>
+					</li>
+					</a>
+				</ul>
+			</div>
+			<!--扫描二维码分享给好友-->
+			<div class="sharefriend">
+				<div>
+					<a href="#">
+						<dl>
+							<dt>
+								<img class="memberurl" src="" />
+							</dt>
+							<dd>让好友扫描您的二维码</dd>
+						</dl>
+					</a>
+
 				</div>
-				<div class="empty"></div>		
-			</div>		
+				<div>
+					<a href="#"><span>分享链接给好友</span></a>
+				</div>
+			</div>
+			<div class="empty"></div>
 		</div>
-	</body>
+	</div>
+</body>
 </html>
 <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
 <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
-<script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
+<script type="text/javascript" src="plugin/zepto/touch.js"></script>
+</body>
 <script type="text/javascript">
 	var Data;
 	//用户信息
-	var xiaoyuopenId;
-	if(Cookie.get("xiaoyuerUserMes")){
+	var xiaoyuuserId;
+	if (Cookie.get("userId")) {
 		console.log(Cookie.get("xiaoyuerUserMes"))
-		xiaoyuopenId =JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
-		console.log(xiaoyuopenId)
+		xiaoyuuserId = Cookie.get("userId");
 		$.ajax({
-	        type:"post",
-	        url:Config.url+"/queryAccountInfo",
-	        data:{openid:xiaoyuopenId},
-	        success:function(data, status, xhr){
-	        	console.log(data)
-	        	Data = data;
-	            $(".nickname").html(data.nickname);
-	            $(".grade").html(data.levelName);
-	            if(data.headimgurl){
-	            	$(".user_img").attr("src",data.headimgurl);
-	            };
-	            $(".balance").find("span").html(data.balance);
-	            var mobilephone = data.mobilephone;
-	            if(mobilephone){
-	            	$(".mobilephone").html(mobilephone.substr(0, 3) + '****' + mobilephone.substr(7))
-	            }
-	           
-	        },
-	        error:function(xhr, errorType, error){
-	        	console.log(000)
-	          	
-	        },
+			type : "post",
+			url : Config.url + "/queryAccountInfo",//查询账户信息
+			data : {
+				userId : xiaoyuuserId
+			},
+			success : function(data, status, xhr) {
+				console.log(data.levelno)
+				Data = data;
+				$(".nickname").html(data.nickname);
+				if(data.levelName == null){
+					$(".grade").html("非会员");
+				}else{
+					$(".grade").html(data.levelName)
+				}
+				
+				if (data.headimgurl) {
+					$(".user_img").attr("src", data.headimgurl);
+				}
+				;
+				$(".balance").find("span").html(data.balance);
+				var mobilephone = data.mobilephone;
+				if (mobilephone) {
+					$(".mobilephone").html(
+							mobilephone.substr(0, 3) + '****'
+									+ mobilephone.substr(7))
+				}
+
+			},
+			error : function(xhr, errorType, error) {
+				console.log(000)
+			},
 		})
 		//用户二维码
 		$.ajax({
-	        type:"POST",
-	        url:Config.url+"/showqrcode",
-	        data:{
-	        	openid:xiaoyuopenId,
-	        	type:1,
-	        	scenestr:'123'
-	        },
-	        success:function(data, status, xhr){
-	        	$(".memberurl").attr("src",data.qrcodeurl)
-	        },
-	        error:function(xhr, errorType, error){
-	        	console.log(000)
-	          	
-	        },
+			type : "POST",
+			url : Config.url + "/showqrcode",
+			data : {
+				'userId':xiaoyuuserId,
+				type : 1,
+				scenestr : '123'
+			},
+			success : function(data, status, xhr) {
+				$(".memberurl").attr("src", data.qrcodeurl)
+			},
+			error : function(xhr, errorType, error) {
+				console.log(000)
+
+			},
 		})
-	
-	}else{
+
+	} else {
 		//Cookie.get("xiaoyuerUserMes")
-	}
-	//点击升级V会员时
-	$(".upgrade").on("tap",function(){
-		if(Data.levelno == 2){
+	};
+	console.log(Cookie.get("userId"))
+	
+	var contractflag = null;
+	$.ajax({
+		type : "POST",
+		url : Config.url + "/checkMemberInfo",
+		data : {
+			userId : Cookie.get("userId"),
+		},
+		success : function(data, status, xhr) {
+			console.log(data)
+			if(data.resultCode == "1111"){
+				contractflag = true;
+			}else{
+				contractflag = false;
+			}
+		},
+		error : function(xhr, errorType, error) {
+			console.log(000)
+
+		},
+	})
+	$(".my_moneycode").on("tap",function(){
+		if(contractflag){
 			layer.open({
-				content:'您是最高级会员，无需升级',
-				btn:'确定'
+				content:'您还不是会员,前往购买？',
+				btn:["确定","取消"],
+				yes:function(){
+					location.href = "my_membersev.html"
+				}
 			})
 		}else{
-			location.href="my_membersev.html?levelno="+Data.levelno;
+			location.href = "my_moneycode.html"
+		}
+	})
+	
+	//点击升级V会员时
+	$(".upgrade").on("tap", function() {
+		if (Data.levelno == 2) {
+			layer.open({
+				content : '您是最高级会员，无需升级',
+				btn : '确定'
+			})
+		} else {
+			location.href = "my_membersev.html?levelno=" + Data.levelno;
 		}
 	})
 </script>

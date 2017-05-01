@@ -8,23 +8,55 @@
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <link href="css/public.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/my_documentation.css"/>
+    <script src="plugin/jquery/jquery-1.11.0.js" type="text/javascript"
+	charset="utf-8"></script>
     <script src="js/public.js"></script>
     <style>
-        
+    	select{background: transparent;border: none;width: 100%;color: #ff811b;text-indent: 40%;}
+    	select option{text-align: center;}
+   		.dotlist li{position: relative;}
+        .selectnext{
+		   width: 0.15rem !important;
+		   height: 0.15rem;
+		   display: block;
+		   background: transparent;
+		   position: absolute;
+		   right: 8%;
+		   top: 0.1rem;
+		   border-left: .15rem solid transparent;
+		   border-bottom: .15rem solid #ff811b;
+		   transform: rotate(45deg);
+   		}
     </style>
-    <script type="text/javascript">
-        var aScroll;
-        function loaded () {
-            aScroll = new IScroll('#cont_wrapper',{
-                scrollbars: true,
-                mouseWheel: true,
-                interactiveScrollbars: true,
-                shrinkScrollbars: 'scale',
-                fadeScrollbars: true,click: true 
-            });
-        }
-       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-    </script>
+   <script type="text/javascript">
+	var aScroll;
+	function loaded() {
+		aScroll = new IScroll('#cont_wrapper', {
+			scrollbars : true,
+			mouseWheel : true,
+			interactiveScrollbars : true,
+			shrinkScrollbars : 'scale',
+			fadeScrollbars : true,
+			click : true
+		});
+	}
+	document.addEventListener('touchmove', function(e) {
+		e.preventDefault();
+	}, false);
+
+	if (Cookie.get("xiaoyuerUserMes")) {
+		var xiaoyuerUserMes = Cookie.get("xiaoyuerUserMes");
+		var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
+		if (openid == undefined) {
+			getOpenId();
+		}
+	}
+
+	var flag = checkRegisterUser();
+	
+	
+	
+</script>
 </head>
 <body onload="loaded()">
     <div class="page_header">贷款记录</div>
@@ -32,18 +64,27 @@
         <div>
        		<!--用户信息-->
             <div class="user_info">
-				<p class="grade">等级V1</p>
+            	<p class="grade"></p>
 				<div class="user_Mes">
-					<div>
-						<img class="user_img" src="images/user_icon.png"/>
+					<div class="user_Mes_img">
+						<div>
+							<img class="user_img" src="images/user_icon.png" style="border-radius: 5rem;"/>
+						</div>
+						<!--<input id='file1' type='file' accept=''>-->
 					</div>
 					<div>
-						<p><span>昵称：</span><span>小美</span></p>
-	                    <p><span>135****5622</span></p>
+						<p>
+							<span>昵称：</span><span class="nickname"></span>
+						</p>
+						<p>
+							<span class="mobilephone"></span>
+						</p>
 					</div>
 					<div>
 						<p>余额</p>
-	                    <p style="font-size: 0.4rem;">0.00元</p>
+						<p style="font-size: 0.4rem;" class="balance">
+							<span></span>元
+						</p>
 					</div>
 				</div>
 			</div>
@@ -61,22 +102,50 @@
             	<ul>
             		<li>壹财宝</li>
             		<li>2017-03-03</li>
-            		<li>-请选择-</li>
+            		<li>
+            			<select name="">
+            				<option value="">-请选择-</option>
+            				<option value="">是</option>
+            				<option value="">否</option>
+            			</select>
+            			<span class="selectnext"></span>
+            		</li>
             	</ul>
             	<ul>
             		<li>壹财宝</li>
             		<li>2017-03-03</li>
-            		<li>-请选择-</li>
+            		<li>
+            			<select name="">
+            				<option value="">-请选择-</option>
+            				<option value="">是</option>
+            				<option value="">否</option>
+            			</select>
+            			<span class="selectnext"></span>
+            		</li>
             	</ul>
             	<ul>
             		<li>壹财宝</li>
             		<li>2017-03-03</li>
-            		<li>-请选择-</li>
+            		<li>
+            			<select name="">
+            				<option value="">-请选择-</option>
+            				<option value="">是</option>
+            				<option value="">否</option>
+            			</select>
+            			<span class="selectnext"></span>
+            		</li>
             	</ul>
             	<ul>
             		<li>壹财宝</li>
             		<li>2017-03-03</li>
-            		<li>-请选择-</li>
+            		<li>
+            			<select name="">
+            				<option value="">-请选择-</option>
+            				<option value="">是</option>
+            				<option value="">否</option>
+            			</select>
+            			<span class="selectnext"></span>
+            		</li>
             	</ul>
             </div>
         </div>
@@ -85,6 +154,65 @@
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
     <script>
-        
+        var Data;
+	//用户信息
+	
+	var xiaoyuuserId;
+    
+	if (Cookie.get("userId")) {
+		console.log(Cookie.get("xiaoyuerUserMes"))
+		xiaoyuuserId = Cookie.get("userId");
+		
+		$.ajax({
+			type : "post",
+			url : Config.url + "/queryAccountInfo",//查询账户信息
+			data : {
+				userId : xiaoyuuserId
+			},
+			success : function(data, status, xhr) {
+				console.log(data)
+				Data = data;
+				$(".nickname").html(data.nickname);
+				$(".grade").html(data.levelName);
+				if (data.headimgurl) {
+					$(".user_img").attr("src", data.headimgurl);
+				}
+				;
+				$(".balance").find("span").html(data.balance);
+				var mobilephone = data.mobilephone;
+				if (mobilephone) {
+					$(".mobilephone").html(
+							mobilephone.substr(0, 3) + '****'
+									+ mobilephone.substr(7))
+				}
+
+			},
+			error : function(xhr, errorType, error) {
+				console.log(000)
+			},
+		})
+		//用户二维码
+
+	} else {
+		//Cookie.get("xiaoyuerUserMes")
+	};
+	
+	
+	
+	$.ajax({
+		type : "POST",
+		url : Config.url + "/queryApplyLedger",
+		data : {
+			userId : xiaoyuuserId
+			
+		},
+		success : function(data, status, xhr) {
+			console.log(data)
+		},
+		error : function(xhr, errorType, error) {
+			console.log(000)
+
+		},
+	})
     </script>
 </html>
