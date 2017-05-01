@@ -1,0 +1,95 @@
+#header {
+    background-color: #ff9000;
+    height: 0.7rem;
+    line-height: 0.7rem;
+    text-align: center;
+    color: #fff;
+}
+
+.banner img {
+    width: 100%;
+}
+
+.hot-bank-content {
+    margin: 0.2rem;
+}
+
+.hot-bank-content h3,
+.hot-bank-content span {
+    color: #000000;
+    font-size: 0.3rem;
+}
+
+.hot-bank-content h3 {
+    text-align: left;
+    font-weight: 600;
+    display: block;
+    width: 30%;
+    border-bottom: 2px solid #ffdbad;
+    float: left;
+}
+
+.hot-bank-content .more-bank {
+    display: block;
+    width: 69%;
+    text-align: right;
+    border-bottom: 2px solid #ededed;
+    float: left;
+}
+
+.hot-bank-list {
+    padding: 0.2rem 0.15rem;
+    border-bottom: 2px solid #ededed;
+}
+
+.hot-bank-list .hot-bank-item {
+    width: 50%;
+    float: left;
+    border-bottom: 2px solid #ededed;
+    padding: 0.1rem 0rem;
+}
+
+.hot-bank-list .hot-bank-item:nth-child(2n) {
+    border-left: 2px solid #ededed;
+    padding-left: 0.2rem;
+}
+
+.hot-bank-list .hot-bank-item:nth-last-child(2),
+.hot-bank-list .hot-bank-item:nth-last-child(1) {
+    border-bottom: none;
+}
+
+.hot-bank-list .hot-bank-item img {
+    width: 1.38rem;
+    height: 1.38rem;
+    float: left;
+}
+
+.hot-bank-list .hot-bank-item .bank-profit {
+    float: left;
+    height: 1.38rem;
+    /* line-height: 1.38rem; */
+    font-weight: 600;
+    max-width: 1.2rem;
+    display: table
+}
+
+.hot-bank-list .hot-bank-item .bank-profit span {
+    display: table-cell;
+    color: #ff8900;
+    font-size: 0.3rem;
+    vertical-align: middle;
+}
+
+.card-list {
+    padding: 0.2rem 0rem;
+}
+
+.card-list .card-item {
+    width: 33.3%;
+    float: left;
+}
+
+.card-list .card-item img {
+    width: 95%
+}

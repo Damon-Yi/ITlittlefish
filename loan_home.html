@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-ch">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-title" content="小鱼儿贷款平台">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-title" content="小鱼儿贷款平台">
+    <title>小鱼儿贷款平台</title>
+    <meta name="keywords" content="小鱼儿贷款平台">
+    <meta name="description" content="小鱼儿贷款平台">
+    <!--<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />-->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/loan/home.css">
+    <link href="plugin/swiper/swiper.3.1.7.min.css" rel="stylesheet" type="text/css">
+    <script src="js/public.js"></script>
+</head>
+
+<body>
+    <header id="header">
+
+    </header>
+    <div class="home-content">
+        <div class="banner">
+            <div class="cchannel-swiper swiper-container">
+                <ul class="clearfix swiper-wrapper">
+
+                </ul>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <div class="products">
+            <h2>贷款产品大全</h2>
+            <ul class="clearfix" id="categorys">
+            </ul>
+        </div>
+        <div class="calculate clearfix">
+            <a href="http://www.1handfish.com/ITlittlefish/precision_push.html">
+                <div class="logo-content">
+                    <img src="images/loan/home/logo.png" alt="logo">
+                </div>
+                <div class="calculate-helper">
+                    <p>鱼帮帮：</p>
+                    <p>小主，让我来帮您精准选择 符合您的产品吧~</p>
+                </div>
+                <div class="rigth-icon-content">
+                    <i class="rigth-more-icon"></i>
+                </div>
+            </a>
+        </div>
+        <div class="hot-recommend">
+            <div class="hot-title clearfix">
+                <span>热门推荐</span>
+                <span class="hot-change clearfix fn-hide">换一批</span>
+            </div>
+            <ul class="recommend-products" id="recommends">
+            </ul>
+        </div>
+    </div>
+    <footer id="footer">
+
+    </footer>
+    <script type="text/javascript" src="plugin/swiper/swiper.3.1.7.min.js"></script>
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <script>
+        //活动产品
+        $.ajax({
+            type: "post",
+            data: {
+                producttype: 1,
+            },
+            url: Config.url + "/productactivities",
+            beforeSend: function(xhr, settings) {},
+            success: function(data, status, xhr) {
+                if (data && data.length > 0) {
+                    var slideWrap = $('.swiper-wrapper');
+                    for (var i = 0; i < data.length; i++) {
+                        var tmpSilde = '<li class="swiper-slide"><a href="' + data[i].activitiurl + '"><img src="' + data[i].productpic + '" width="100%" /></a></li>'
+                        slideWrap.append(tmpSilde);
+                    }
+                    var msgSwiper = new Swiper('.swiper-container', {
+                        autoplay: 3000, //可选选项，自动滑动
+                        pagination: '.swiper-pagination',
+                    });
+                }
+            },
+            error: function(xhr, errorType, error) {
+                error = error ? error : '系统错误';
+                tips(error, 'tips_center', 1500);
+            },
+            complete: function(xhr, status) {}
+        });
+        $.ajax({
+            type: "post",
+            data: {
+                producttype: 1,
+            },
+            url: Config.url + "/producttypes",
+            beforeSend: function(xhr, settings) {},
+            success: function(data, status, xhr) {
+                if (data && data.length > 0) {
+                    var categoryWrap = $('#categorys');
+                    for (var i = 0; i < data.length; i++) {
+                        var item = data[i];
+                        var tmpCategory = '<li><a href="loan_list.html?loantype=' + item.productypeno + '"><div class="product-category"><h3 class="category1">' +
+                            item.productypename + '</h3><div class="category-descript">' + item.productdes + '</div><div class="category-icon"><img src="' + item.logourl +
+                            '" ></div></div></a></li>'
+                        categoryWrap.append(tmpCategory);
+                    }
+                }
+            },
+            error: function(xhr, errorType, error) {
+                error = error ? error : '系统错误';
+                tips(error, 'tips_center', 1500);
+            },
+            complete: function(xhr, status) {}
+        });
+        $.ajax({
+            type: "post",
+            data: {
+                hot: 1
+            },
+            url: Config.url + "/loanproducts",
+            beforeSend: function(xhr, settings) {},
+            success: function(data, status, xhr) {
+                if (data && data.length > 0) {
+                    var recommendWrap = $('#recommends');
+                    for (var i = 0; i < data.length; i++) {
+                        var item = data[i];
+                        var tmpRecommend = '<li><a href="/loan/detail/' + item.loanserialno + '"><div class="clearfix"><div class="product-logo fl"><img src="' + item.logourl +
+                            '"></div><div class="product-info fl"><h4>' + item.productname + '</h4><p>可贷额度：' + item.ammout + '</p><p>参考日利率：' + item.dayrate +
+                            '</p></div><div class="rigth-icon-content fl"><i class="rigth-more-icon"></i></div></div><div class="product-tags">' + item.productdes +
+                            '</div></a></li>'
+                        recommendWrap.append(tmpRecommend);
+                    }
+                }
+            },
+            error: function(xhr, errorType, error) {
+                error = error ? error : '系统错误';
+                tips(error, 'tips_center', 1500);
+            },
+            complete: function(xhr, status) {}
+        });
+    </script>
+
+</body>
+
+</html>

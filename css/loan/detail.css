@@ -1,0 +1,166 @@
+body {
+    background-color: #e9e9e9;
+}
+
+#header {
+    background-color: #ff9000;
+    height: 0.7rem;
+    line-height: 0.7rem;
+    text-align: center;
+    color: #fff;
+}
+
+.product-detail {
+    background-color: #e9e9e9;
+    text-align: center;
+}
+
+.login-tips {
+    color: #a7a7a7;
+    font-size: 0.3rem;
+    padding: 0.2rem 0rem;
+}
+
+.login-tips span {
+    color: #f0d1ba;
+    font-size: 0.4rem;
+}
+
+.product-info {
+    background-color: #fff;
+    margin: 0rem 0.15rem 0.25rem 0.15rem;
+    border-radius: 0.05rem;
+    padding: 0.4rem 0.2rem 0.1rem 0.2rem;
+}
+
+.product-info .product-desc {
+    width: 100%;
+}
+
+.product-info .product-desc .product-logo {
+    width: 20%;
+    float: left;
+}
+
+.product-info .product-desc .product-logo img {
+    max-width: 1.2rem;
+}
+
+.product-info .product-person {
+    width: 70%;
+    float: left;
+    text-align: left;
+    padding-left: 0.2rem;
+}
+
+.product-info .product-datas {
+    width: 100%;
+    float: left;
+    padding-top: 0.2rem;
+}
+
+.product-info .product-datas .data-item {
+    width: 25%;
+    float: left;
+    color: #000000;
+    font-size: 0.2rem;
+}
+
+.product-info .product-datas .bt1 {
+    border-top: solid 1px #d1d1d1;
+}
+
+.product-info .product-datas .bb1 {
+    border-bottom: solid 1px #d1d1d1;
+}
+
+.product-info .product-datas .br1 {
+    border-right: solid 1px #d1d1d1;
+}
+
+.product-info .product-datas .bl1 {
+    border-left: solid 1px #d1d1d1;
+}
+
+.product-info .product-datas .data-item span {
+    color: #ff3301;
+    display: inline-block;
+}
+
+.product-info .product-ration {
+    font-size: 0.35rem;
+    text-align: left;
+}
+
+.product-info .product-ration span {
+    font-size: 0.45rem;
+    color: #ff9000;
+}
+
+.product-summary {
+    padding: 0.2rem 0 0.2rem 0.2rem;
+    text-align: left;
+}
+
+.product-paragraph {
+    text-align: left;
+    background-color: #fff;
+    margin: 0rem 0.15rem 0.25rem 0.15rem;
+    border-radius: 0.05rem;
+    padding: 0.2rem 0.2rem 0.1rem 0.2rem;
+}
+
+.product-paragraph .paragraph-title {
+    border-bottom: 1px solid #d1d1d1;
+    color: #ff9000;
+    font-size: 0.3rem;
+}
+
+.product-paragraph ul {
+    padding: 0.2rem 0.2rem 0.2rem 0;
+}
+
+.product-paragraph .icon {
+    width: 0.4rem;
+    height: 0.4rem;
+    background-image: url(../../images/loan/sprite.png);
+    background-repeat: no-repeat;
+    background-position: -14px -142px;
+    float: left;
+    background-size: 375px 540px;
+}
+
+.product-condition.product-paragraph .icon {
+    background-position: -14px -142px;
+}
+
+.product-apply.product-paragraph .icon {
+    background-position: -14px -184px;
+}
+
+.product-other.product-paragraph .icon {
+    background-position: -14px -227px;
+}
+
+.fixed-btn {
+    padding: 0 0.1rem 0 0.1rem;
+    bottom: 0.1rem;
+    width: 100%;
+    margin-bottom: 0.1rem;
+}
+
+.fixed-btn a {
+    border-radius: 0.05rem;
+    color: #fff;
+    background-color: #ff9300;
+    width: 100%;
+    display: inline-block;
+    font-size: 0.32rem;
+    padding: 0.1rem 0;
+}
+
+
+/*#footer{
+    height: 0.8rem;
+    border-top:  solid 2px #000000;
+}*/

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-ch">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-title" content="小鱼儿贷款平台">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-title" content="小鱼儿贷款平台">
+    <title>小鱼儿贷款平台</title>
+    <meta name="keywords" content="小鱼儿贷款平台">
+    <meta name="description" content="小鱼儿贷款平台">
+    <!--<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />-->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/credit-card/home.css">
+    <link href="plugin/swiper/swiper.3.1.7.min.css" rel="stylesheet" type="text/css">
+    <script src="js/public.js"></script>
+</head>
+
+<body>
+
+    <header id="header">
+        <span class="f38">信用卡</span>
+    </header>
+    <div class="home-content">
+        <div class="banner">
+            <div class="cchannel-swiper swiper-container">
+                <ul class="clearfix swiper-wrapper">
+
+                </ul>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <div class="hot-bank-content">
+            <div class="clearfix">
+                <h3>
+                    热门银行
+                </h3>
+                <span class="more-bank ">
+               &nbsp;
+            </span>
+            </div>
+            <ul class="hot-bank-list clearfix " id="banks">
+            </ul>
+        </div>
+        <div class="hot-bank-content pt20">
+            <div class="clearfix">
+                <h3>
+                    本周热门卡
+                </h3>
+                <span>
+                    &nbsp;
+                </span>
+            </div>
+            <div class="hot-card">
+                <ul class="card-list clearfix" id="hotCards">
+                    <!--<li class="card-item">
+                        <img src="/static/images/credit-card/card1.png" alt="">
+                        <strong>浦发青春信用卡</strong>
+                        <p>全年免费双人观影</p>
+                    </li>
+                    <li class="card-item">
+                        <img src="/static/images/credit-card/card2.png" alt="">
+                        <strong>浦发青春信用卡</strong>
+                        <p>全年免费双人观影</p>
+                    </li>
+                    <li class="card-item">
+                        <img src="/static/images/credit-card/card3.png" alt="">
+                        <strong>浦发青春信用卡</strong>
+                        <p>全年免费双人观影</p>
+                    </li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="plugin/swiper/swiper.3.1.7.min.js"></script>
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <script>
+        //活动产品
+        $.ajax({
+            type: "post",
+            data: {
+                producttype: 2,
+            },
+            url: Config.url + "/productactivities",
+            beforeSend: function(xhr, settings) {},
+            success: function(data, status, xhr) {
+                if (data && data.length > 0) {
+                    var slideWrap = $('.swiper-wrapper');
+                    for (var i = 0; i < data.length; i++) {
+                        var tmpSilde = '<li class="swiper-slide"><a href="' + data[i].activitiurl + '"><img src="' + data[i].productpic + '" width="100%" /></a></li>'
+                        slideWrap.append(tmpSilde);
+                    }
+                    var msgSwiper = new Swiper('.swiper-container', {
+                        autoplay: 3000, //可选选项，自动滑动
+                        pagination: '.swiper-pagination',
+                    });
+                }
+            },
+            error: function(xhr, errorType, error) {
+                error = error ? error : '系统错误';
+                tips(error, 'tips_center', 1500);
+            },
+            complete: function(xhr, status) {}
+        });
+        $.ajax({
+            type: "post",
+            data: {
+                producttype: 2,
+            },
+            url: Config.url + "/producttypes",
+            beforeSend: function(xhr, settings) {},
+            success: function(data, status, xhr) {
+                if (data && data.length > 0) {
+                    var banksWrap = $('#banks');
+                    for (var i = 0; i < data.length; i++) {
+                        var item = data[i];
+                        var tmpBank = ' <li class="hot-bank-item"><a href="javascript:;">' +
+                            '<img src="' + item.logourl + '" alt="' + item.productname + '">' +
+                            '<div class="bank-profit">' +
+                            ' <span>' + item.productypename + '</span>' +
+                            '</div>' +
+                            ' </a>' +
+                            '</li>'
+                        banksWrap.append(tmpBank);
+                    }
+                }
+            },
+            error: function(xhr, errorType, error) {
+                error = error ? error : '系统错误';
+                tips(error, 'tips_center', 1500);
+            },
+            complete: function(xhr, status) {}
+        });
+        $.ajax({
+            type: "post",
+            data: {
+                hot: 1,
+            },
+            url: Config.url + "/cardproducts",
+            beforeSend: function(xhr, settings) {},
+            success: function(data, status, xhr) {
+                if (data && data.length > 0) {
+                    var cardsWrap = $('#hotCards');
+                    for (var i = 0; i < data.length; i++) {
+                        var item = data[i];
+                        var tmpCard = ' <li class="card-item"> <a href="' + item.cardurl + '">' +
+                            ' <img src="' + item.logourl + '" alt="">' +
+                            ' <strong style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;width: 100%;display: block;">' + item.cardname + '</strong>' +
+                            ' <p style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;width: 100%;display: block;">' + item.integralconstitution1 + '</p>' +
+                            ' </a> </li>'
+                        cardsWrap.append(tmpCard);
+                    }
+                }
+            },
+            error: function(xhr, errorType, error) {
+                error = error ? error : '系统错误';
+                tips(error, 'tips_center', 1500);
+            },
+            complete: function(xhr, status) {}
+        });
+    </script>
+
+</body>
+
+</html>
