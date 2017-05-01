@@ -96,7 +96,7 @@ function getOpenId(){
 		        type:"post",
 		        url:Config.url+"/checkCode",
 		        async:false,
-		        data:{code:str1,},
+		        data:{code:str1},
 		        success:function(data, status, xhr){
 		        	console.log(data)
 		        	if(data){
