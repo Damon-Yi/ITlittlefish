@@ -18,7 +18,8 @@ var Config ={
     //url:'http://a784112865.oicp.net/zhudai_api/service'
     //url:'http://112.74.184.28/zhudai_api/service'
     //url:'http://a784112865.oicp.net/zhudai_api/service',
-    url:'http://www.1handfish.com/fishapi'
+    url:'http://a784112865.oicp.net/fishapi/',
+    //url:'http://www.1handfish.com/fishapi'
     
 }
 /*提示，弹窗*/
@@ -88,6 +89,7 @@ function getOpenId(){
 	    			}
 	    		}
 	    	}
+			console.log(str1);
 	    	$.ajax({
 		        type:"post",
 		        url:Config.url+"/checkCode",
@@ -111,6 +113,7 @@ function getOpenId(){
 		        async:false,
 		        success:function(data, status, xhr){
 		        	URLopenid = data.url;
+		        	console.log(URLopenid)
 		        	location.href = URLopenid;	
 		        },
 		        error:function(xhr, errorType, error){
