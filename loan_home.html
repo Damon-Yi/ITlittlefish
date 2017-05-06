@@ -26,7 +26,7 @@
     <header id="header">
         <img src="images/loan/home/top.png" alt="">
         <h1>小鱼儿助花帮平台</h1>
-        <span class="distion">深圳</span>
+        <span class="distion"></span>
     </header>
     <div class="home-content">
         <div class="banner">
@@ -75,6 +75,49 @@
     <script type="text/javascript" src="plugin/swiper/swiper.3.1.7.min.js"></script>
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script>
+        getLocation();
+
+        function getLocation() {
+            var c = this;
+            if (navigator.geolocation) {
+                var d = {
+                    timeout: 20000,
+                    enableHighAccuracy: !0
+                };
+                navigator.geolocation.getCurrentPosition(function(a) {
+                    defyPosiSuccess(a, function(a) {
+                        var locatedCityName = a.result.addressComponent.city;
+                        $('.distion').text(locatedCityName);
+                    })
+                }, function(error) {
+                    tips(error, 'tips_center', 1500);
+                }, d)
+            } else {
+                tips("定位失败", 'tips_center', 1500);
+            }
+        };
+
+        function defyPosiSuccess(b, c) {
+            var d = b.coords.latitude,
+                e = b.coords.longitude;
+            $.ajax({
+                url: "https://api.map.baidu.com/geocoder/v2/",
+                type: "get",
+                dataType: "jsonp",
+                data: {
+                    ak: "BrkFliQU5tuDxYiZEHYfD2Gi",
+                    output: "json",
+                    pois: "1",
+                    location: d + "," + e
+                },
+                success: function(a) {
+                    c(a)
+                },
+                error: function(b) {
+                    tips("定位失败", 'tips_center', 1500);
+                }
+            })
+        };
         //活动产品
         $.ajax({
             type: "post",
