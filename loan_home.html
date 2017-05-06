@@ -23,8 +23,10 @@
 </head>
 
 <body>
-    <header id="header" class="fn-hide">
-
+    <header id="header">
+        <img src="images/loan/home/top.png" alt="">
+        <h1>小鱼儿助花帮平台</h1>
+        <span class="distion">深圳</span>
     </header>
     <div class="home-content">
         <div class="banner">
@@ -40,27 +42,31 @@
             <ul class="clearfix" id="categorys">
             </ul>
         </div>
-        <div class="calculate clearfix">
-            <a href="http://www.1handfish.com/ITlittlefish/precision_push.html">
-                <div class="logo-content">
-                    <img src="images/loan/home/logo.png" alt="logo">
-                </div>
-                <div class="calculate-helper">
-                    <p>鱼帮帮：</p>
-                    <p>小主，让我来帮您精准选择 符合您的产品吧~</p>
-                </div>
-                <div class="rigth-icon-content">
-                    <i class="rigth-more-icon"></i>
-                </div>
-            </a>
-        </div>
-        <div class="hot-recommend">
-            <div class="hot-title clearfix">
-                <span>热门推荐</span>
-                <span class="hot-change clearfix fn-hide">换一批</span>
+        <div style="background-color: #f6f6f6;  padding-top: 0.2rem;">
+            <div class="calculate clearfix">
+                <a href="http://www.1handfish.com/ITlittlefish/precision_push.html">
+                    <div class="logo-content">
+                        <img src="images/loan/home/logo.png" alt="logo">
+                    </div>
+                    <div class="calculate-helper">
+                        <p class="f28" style="color:#d3d3d3">鱼帮帮：</p>
+                        <p>小主，让我来帮您精准选择<br>符合您的产品吧~ <i class="calculate-helper-icon">>>></i> </p>
+                    </div>
+                    <div class="rigth-icon-content">
+                        <i class="rigth-more-icon"></i>
+                    </div>
+                </a>
             </div>
-            <ul class="recommend-products" id="recommends">
-            </ul>
+        </div>
+        <div style="background-color: #f6f6f6;  padding-top: 0.2rem;">
+            <div class="hot-recommend">
+                <div class="hot-title clearfix">
+                    <span>热门推荐</span>
+                    <span class="hot-change clearfix ">换一批</span>
+                </div>
+                <ul class="recommend-products" id="recommends">
+                </ul>
+            </div>
         </div>
     </div>
     <footer id="footer">
@@ -108,9 +114,22 @@
                     var categoryWrap = $('#categorys');
                     for (var i = 0; i < data.length; i++) {
                         var item = data[i];
-                        var tmpCategory = '<li><a href="loan_list.html?loantype=' + item.productypeno + '"><div class="product-category"><h3 class="category1">' +
-                            item.productypename + '</h3><div class="category-descript">' + item.productdes + '</div><div class="category-icon"><img src="' + item.logourl +
-                            '" ></div></div></a></li>'
+                        var tmpCategory = '<li>' +
+                            '<a href="loan_list.html?loantype=' + item.productypeno + '">' +
+                            '<div class="product-category">' +
+                            '<div class="category-name  clearfix  ' + (i % 3 === 2 ? 'no-bdr' : '') + '">' +
+                            '<h3>' + item.productypename + '</h3>' +
+                            '<div class="category-icon"><img src="' + item.logourl + '"></div>' +
+                            '</div>' +
+                            '<div class="clearfix pt20">' +
+                            '<div class="category-descript">' + item.productdes + '</div>' +
+                            '</div>' +
+                            '</div>' +
+                            '</a>' +
+                            '</li>'
+                            // var tmpCategory = '<li><a href="loan_list.html?loantype=' + item.productypeno + '"><div class="product-category"><h3 class="category1">' +
+                            //     item.productypename + '</h3><div class="category-descript">' + item.productdes + '</div><div class="category-icon"><img src="' + item.logourl +
+                            //     '" ></div></div></a></li>'
                         categoryWrap.append(tmpCategory);
                     }
                 }
@@ -133,10 +152,25 @@
                     var recommendWrap = $('#recommends');
                     for (var i = 0; i < data.length; i++) {
                         var item = data[i];
-                        var tmpRecommend = '<li><a href="/loan/detail/' + item.loanserialno + '"><div class="clearfix"><div class="product-logo fl"><img src="' + item.logourl +
-                            '"></div><div class="product-info fl"><h4>' + item.productname + '</h4><p>可贷额度：' + item.ammout + '</p><p>参考日利率：' + item.dayrate +
-                            '</p></div><div class="rigth-icon-content fl"><i class="rigth-more-icon"></i></div></div><div class="product-tags">' + item.productdes +
-                            '</div></a></li>'
+                        var tmpRecommend =
+                            '<li class="product-item"><a href="/loan/detail/' + item.loanserialno + '">' +
+                            '<div class="clearfix">' +
+                            '<div class="product-logo fl"><img src="' + item.logourl + '">' +
+                            '</div>' +
+                            '<div class="product-info fl">' +
+                            '<h4>' + item.productname + '</h4><p>适用人群：' + item.fitpeople + '</p><p>申请人数：' + item.applications + '</p>' +
+                            '</div>' +
+                            '<div class="rigth-icon-content fl"><i class="rigth-more-icon"></i>' +
+                            '</div>' +
+                            '</div>' +
+                            '<div class="product-tags">' +
+                            '<ul> ' +
+                            '<li class="tag-item"><span style="color:#ff3301">' + item.successrate + '</span><br><span>成功率</span></li>' +
+                            '<li class="tag-item"><span style="color:#ff3301">' + item.dayrate + '</span><br><span>日利率</span> </li> ' +
+                            '<li class="tag-item"><span style="color:#ff3301">' + item.averageamount + '</span><br><span>平均额度</span></li>' +
+                            '<li class="tag-item"><span style="color:#ff3301">' + item.averagetime + '</span><br><span>平均用时</span></li></ul>'
+                        '</div>' +
+                        '</a></li>'
                         recommendWrap.append(tmpRecommend);
                     }
                 }
