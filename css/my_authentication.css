@@ -23,6 +23,23 @@
 	float: left;
 	font-size: .24rem;
 }
+
+.content p input{
+	font-size: .24rem;
+	width: 75%;
+}
+
+.content p select{
+	font-size: .24rem;
+	width: 75%;
+}
+
+.content p .choise{
+	width: 75%;
+	float: left;
+	font-size: .24rem;
+}
+
 .content input{
 	width: 50%;
 	border: none;
