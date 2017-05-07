@@ -120,10 +120,10 @@
                     var banksWrap = $('#banks');
                     for (var i = 0; i < data.length; i++) {
                         var item = data[i];
-                        var tmpBank = ' <li class="hot-bank-item"><a href="javascript:;">' +
-                            '<img src="' + item.logourl + '" alt="' + item.productname + '">' +
-                            '<div class="bank-profit">' +
-                            ' <span>' + item.productypename + '</span>' +
+                        var tmpBank = ' <li class="hot-bank-item"><a href="' + item.producturl + '">' + 
+                            '<img style="width:0.6rem;height:0.6rem;margin-right:0.1rem" src="' + item.logourl + '" alt="' + item.productname + '">' +
+                            '<div class="bank-profit" style="height:auto;" >' +
+                            ' <span style="height:0.6rem;font-size:16px">' + item.productypename + '</span>' +
                             '</div>' +
                             ' </a>' +
                             '</li>'
