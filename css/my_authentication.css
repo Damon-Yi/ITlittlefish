@@ -41,6 +41,7 @@
 }
 
 .content input{
+	width: 50%;
 	border: none;
 	outline: none;
 }
