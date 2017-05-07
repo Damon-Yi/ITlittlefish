@@ -412,7 +412,7 @@ function getReferrer(){
 //
 function reorientate(){
 	if (!Cookie.get("xiaoyuerUserMes")) {
-	getOpenId();
+		getOpenId();
 	} else {
 		var xiaoyuerUserMes = Cookie.get("xiaoyuerUserMes");
 		var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;

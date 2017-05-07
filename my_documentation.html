@@ -91,18 +91,18 @@
             		<li>操作</li>
             	</ul>
             	<ul>
-            		<li>2017-03-03</li>
+            		<!--<li>2017-03-03</li>
             		<li>3000元</li>
             		<li>
-            			<!--<select name="">
+            			<select name="">
             				<option value="">-请选择-</option>
             				<option value="">是</option>
             				<option value="">否</option>
             			</select>
-            			<span class="selectnext"></span>-->
+            			<span class="selectnext"></span>
             			是
             		</li>
-            		<li>保存</li>
+            		<li>保存</li>-->
             	</ul>
             	
             </div>
@@ -248,6 +248,7 @@
         }
     }
     function conservation(loanserialno,el){
+    	console.log(el)
     	var loanstatushtml = $(el).prev("li").find('select').val();
     	if(loanstatushtml == "是"){
     		loanstatus = 1
