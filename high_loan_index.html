@@ -106,7 +106,7 @@
     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script>
 
-    	if (!Cookie.get("xiaoyuerUserMes")) {
+    	/*if (!Cookie.get("xiaoyuerUserMes")) {
 			getOpenId();
 		} else {
 			var xiaoyuerUserMes = Cookie.get("xiaoyuerUserMes");
@@ -114,7 +114,7 @@
 			if (openid == undefined) {
 				getOpenId();
 			}
-		}
+		}*/
 		//checkRegisterUser();
         
 		var url = location.href.split('#')[0];
@@ -144,15 +144,16 @@
                     wx.getLocation({
                         success: function (res) {
                             alert("经纬度为：（" + res.latitude + "，" + res.longitude + "）" );
-                            var getAddressUrl = "http://api.map.baidu.com/geocoder?output=json&location="+res.latitude+", "+res.longitude+"&key=UxwdI8Lyn8KcgOLhPxLyr97q679ZtIYZ";
+                            
+                            var getAddressUrl = "http://api.map.baidu.com/geocoder/v2/?callback=renderReverse&location="+res.latitude+","+res.longitude+"&output=json&pois=1&ak=UxwdI8Lyn8KcgOLhPxLyr97q679ZtIYZ";
                             alert(getAddressUrl);
                             $.ajax({
                                 type:"get",
                                 url:getAddressUrl,
+                                dataType:'jsonp',
                                 beforeSend:function(xhr, settings){
                                 },
                                 success:function(data, status, xhr){
-                                    alert('status000'+data.status+data.result);
                                 },
                                 error:function(xhr, errorType, error){
                                 },
@@ -173,7 +174,10 @@
             complete:function(xhr, status){
             }
         });
-
+        
+        function renderReverse(data){
+            alert("data-status:"+data.status);
+        }
         //活动产品
         $.ajax({
             type:"post",
