@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>抢单/甩单</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/grab_drop_order.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="plugin/dropload/dropload.css">
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color: #e9e9e9;}
+    </style>
+</head>
+<body>
+    <div class="gd_order">
+        <div class="gd_top_cont">
+            <div class="or_type_wrap">
+                <div class="or_type">
+                    <a href="javascript:;" class="active">抢单</a><a href="javascript:;">甩单</a>
+                </div>
+            </div>
+            <ul class="or_filter">
+                <li class="or_city"><span>城市</span></li>
+                <li class="or_order_type"><span>订单分类</span></li>
+                <!-- <li><span>筛选</span></li> -->
+            </ul>
+            <div class="gd_tips"><img src="images/grab_order_01.png" alt=""><span>VIP会员，每天都有一次免费抢单哦！</span></div>
+        </div>
+        <div class="city_wrap filter_cont">
+            <ul class="filter_l1" id="gradew">
+                <li>哈尔滨</li>
+                <li>全国</li>
+                <li>北京</li>
+                <li>天津</li>
+                <li>河北</li>
+                <li>山西</li>
+                <li>内蒙古</li>
+                <li>辽宁</li>
+                <li>吉林</li>
+                <li>黑龙江</li>
+                <li>上海</li>
+                <li>江苏</li>
+                <li>山东</li>
+                <li>河南</li>
+                <li>湖北</li>
+                <li>湖南</li>
+                <li>广东</li>
+                <li>广西</li>
+                <li>海南</li>
+            </ul>
+            <ul class="filter_l2" id="gradet">
+                <li>全河北</li>
+                <li>石家庄</li>
+                <li>唐山</li>
+                <li>秦皇岛</li>
+                <li>邢台</li>
+                <li>保定</li>
+                <li>张家口</li>
+                <li>承德</li>
+                <li>沧州</li>
+                <li>廊坊</li>
+                <li>衡水</li>
+            </ul>
+        </div>
+        <div class="order_type_wrap filter_cont">
+            <ul class="filter_l1">
+                <li>全部订单</li>
+                <li>可抢订单</li>
+                <li>免费订单</li>
+            </ul>
+        </div>
+        <div class="gd_order_cont">
+            <div class="gd_order_list">
+                <div class="gd_order_item">
+                    <div class="gd_o_row">
+                        <div class="gd_o_col gd_o_col1">
+                            <div class="gd_o_info1">
+                                <span class="gd_o_name">罗先生0</span><span class="gd_o_edu"><i>2</i>万元</span><span>北京市</span><span>月收入6000</span>
+                            </div>
+                            <div class="gd_o_info2">
+                                <img class="gd_o_flag" src="images/grab_order_04.png" alt=""><span>工薪族</span><span>无房产</span><span>有车</span><span>有社保</span><span>有公积金</span><span>有信用卡</span>
+                            </div>
+                        </div>
+                        <div class="gd_o_col gd_o_col2">
+                            <img class="gd_o_fish" src="images/grab_order_02.png" alt="">
+                            <p><span>66</span>鱼币</p>
+                        </div>
+                    </div>
+                    <div class="gd_o_row">
+                        <a class="gd_grab_btn" href="grab_order_details.html">立即抢单</a>
+                    </div>
+                </div>
+                <div class="gd_order_item">
+                    <div class="gd_o_row">
+                        <div class="gd_o_col gd_o_col1">
+                            <div class="gd_o_info1">
+                                <span class="gd_o_name">罗先生0</span><span class="gd_o_edu"><i>2</i>万元</span><span>北京市</span><span>月收入6000</span>
+                            </div>
+                            <div class="gd_o_info2">
+                                <img class="gd_o_flag" src="images/grab_order_04.png" alt=""><span>工薪族</span><span>无房产</span><span>有车</span><span>有社保</span><span>有公积金</span><span>有信用卡</span>
+                            </div>
+                        </div>
+                        <div class="gd_o_col gd_o_col2">
+                            <img class="gd_o_fish" src="images/grab_order_02.png" alt="">
+                            <p><span>66</span>鱼币</p>
+                        </div>
+                    </div>
+                    <div class="gd_o_row">
+                        <a class="gd_grab_btn" href="grab_order_details.html">立即抢单</a>
+                    </div>
+                </div>
+                <div class="gd_order_item">
+                    <div class="gd_o_row">
+                        <div class="gd_o_col gd_o_col1">
+                            <div class="gd_o_info1">
+                                <span class="gd_o_name">罗先生0</span><span class="gd_o_edu"><i>2</i>万元</span><span>北京市</span><span>月收入6000</span>
+                            </div>
+                            <div class="gd_o_info2">
+                                <img class="gd_o_flag" src="images/grab_order_04.png" alt=""><span>工薪族</span><span>无房产</span><span>有车</span><span>有社保</span><span>有公积金</span><span>有信用卡</span>
+                            </div>
+                        </div>
+                        <div class="gd_o_col gd_o_col2">
+                            <img class="gd_o_fish" src="images/grab_order_02.png" alt="">
+                            <p><span>66</span>鱼币</p>
+                        </div>
+                    </div>
+                    <div class="gd_o_row">
+                        <a class="gd_grab_btn" href="grab_order_details.html">立即抢单</a>
+                    </div>
+                </div>
+                <div class="gd_order_item">
+                    <div class="gd_o_row">
+                        <div class="gd_o_col gd_o_col1">
+                            <div class="gd_o_info1">
+                                <span class="gd_o_name">罗先生0</span><span class="gd_o_edu"><i>2</i>万元</span><span>北京市</span><span>月收入6000</span>
+                            </div>
+                            <div class="gd_o_info2">
+                                <img class="gd_o_flag" src="images/grab_order_04.png" alt=""><span>工薪族</span><span>无房产</span><span>有车</span><span>有社保</span><span>有公积金</span><span>有信用卡</span>
+                            </div>
+                        </div>
+                        <div class="gd_o_col gd_o_col2">
+                            <img class="gd_o_fish" src="images/grab_order_02.png" alt="">
+                            <p><span>66</span>鱼币</p>
+                        </div>
+                    </div>
+                    <div class="gd_o_row">
+                        <a class="gd_grab_btn" href="grab_order_details.html">立即抢单</a>
+                    </div>
+                </div>
+            </div>
+            <div class="gd_order_list">
+                <div class="gd_order_item">
+                    <div class="gd_o_row">
+                        <div class="gd_o_col gd_o_col1">
+                            <div class="gd_o_info1">
+                                <span class="gd_o_name">罗先生</span><span class="gd_o_edu"><i>2</i>万元</span><span>北京市</span><span>月收入6000</span>
+                            </div>
+                            <div class="gd_o_info2">
+                                <img class="gd_o_flag" src="images/grab_order_04.png" alt=""><span>工薪族</span><span>无房产</span><span>有车</span><span>有社保</span><span>有公积金</span><span>有信用卡</span>
+                            </div>
+                        </div>
+                        <div class="gd_o_col gd_o_col2">
+                            <img class="gd_o_fish" src="images/grab_order_02.png" alt="">
+                            <p><span>66</span>鱼币</p>
+                        </div>
+                    </div>
+                    <div class="gd_o_row">
+                        <a class="gd_grab_btn" href="grab_order_details.html">立即抢单</a>
+                    </div>
+                </div>
+                <div class="gd_order_item">
+                    <div class="gd_o_row">
+                        <div class="gd_o_col gd_o_col1">
+                            <div class="gd_o_info1">
+                                <span class="gd_o_name">罗先生</span><span class="gd_o_edu"><i>2</i>万元</span><span>北京市</span><span>月收入6000</span>
+                            </div>
+                            <div class="gd_o_info2">
+                                <img class="gd_o_flag" src="images/grab_order_04.png" alt=""><span>工薪族</span><span>无房产</span><span>有车</span><span>有社保</span><span>有公积金</span><span>有信用卡</span>
+                            </div>
+                        </div>
+                        <div class="gd_o_col gd_o_col2">
+                            <img class="gd_o_fish" src="images/grab_order_02.png" alt="">
+                            <p><span>66</span>鱼币</p>
+                        </div>
+                    </div>
+                    <div class="gd_o_row">
+                        <a class="gd_grab_btn" href="grab_order_details.html">立即抢单</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <script type="text/javascript" src="plugin/zepto/touch.js"></script>
+    <script src="plugin/dropload/dropload.min.js"></script>
+    <script>
+        $('.or_type>a').on('click',function(){
+            $(this).siblings().removeClass('active');
+            $(this).addClass('active');
+        });
+        /*选择省市*/
+        $(".or_city").on('click',function(){
+            $('.order_type_wrap').removeClass('filter_cont_show');
+            if ($('.city_wrap').hasClass('filter_cont_show')) {
+                $('.city_wrap').removeClass('filter_cont_show');
+            } else {
+                $('.city_wrap').addClass('filter_cont_show');
+            }
+        });
+        $(".city_wrap .filter_l1>li").click(function(){
+            $(".city_wrap .filter_l2").css("left","50%");
+        });
+        $(".city_wrap .filter_l2>li").click(function(){
+            $('.or_city>span').text($(this).text());
+            $('.city_wrap').removeClass('filter_cont_show');
+        });
+        /*选择订单类型*/
+        $(".or_order_type").on('click',function(){
+            $('.city_wrap').removeClass('filter_cont_show');
+            if ($('.order_type_wrap').hasClass('filter_cont_show')) {
+                $('.order_type_wrap').removeClass('filter_cont_show');
+            } else {
+                $('.order_type_wrap').addClass('filter_cont_show');
+            }
+        });
+        $(".order_type_wrap .filter_l1>li").click(function(){
+            $('.or_order_type>span').text($(this).text());
+            $('.order_type_wrap').removeClass('filter_cont_show');
+        });
+        $(function(){
+
+            var itemIndex = 0;
+            var tab1LoadEnd = false;
+            var tab2LoadEnd = false;
+            // tab
+            $('.or_type>a').on('click',function(){
+                var $this = $(this);
+                itemIndex = $this.index();
+                $this.addClass('active').siblings('.item').removeClass('active');
+                $('.gd_order_list').eq(itemIndex).show().siblings('.gd_order_list').hide();
+
+                // 如果选中菜单一
+                if(itemIndex == '0'){
+                    // 如果数据没有加载完
+                    if(!tab1LoadEnd){
+                        // 解锁
+                        dropload.unlock();
+                        dropload.noData(false);
+                    }else{
+                        // 锁定
+                        dropload.lock('down');
+                        dropload.noData();
+                    }
+                // 如果选中菜单二
+                }else if(itemIndex == '1'){
+                    if(!tab2LoadEnd){
+                        // 解锁
+                        dropload.unlock();
+                        dropload.noData(false);
+                    }else{
+                        // 锁定
+                        dropload.lock('down');
+                        dropload.noData();
+                    }
+                }
+                // 重置
+                dropload.resetload();
+            });
+
+            var counter = 0;
+            // 每页展示4个
+            var num = 4;
+            var pageStart = 0,pageEnd = 0;
+
+            // dropload
+            var dropload = $('.gd_order_cont').dropload({
+                scrollArea : window,
+                domUp : {
+                    domClass   : 'dropload-up',
+                    domRefresh : '<div class="dropload-refresh">↓下拉刷新</div>',
+                    domUpdate  : '<div class="dropload-update">↑释放更新</div>',
+                    domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中...</div>'
+                },
+                domDown : {
+                    domClass   : 'dropload-down',
+                    domRefresh : '<div class="dropload-refresh">↑上拉加载更多</div>',
+                    domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中...</div>',
+                    domNoData  : '<div class="dropload-noData">暂无数据</div>'
+                },
+                loadUpFn : function(me){
+                    // 加载菜单一的数据
+                    if(itemIndex == '0'){
+                        console.log('加载菜单一的数据');
+                        
+                        setTimeout(function(){
+                            // 数据加载完
+                            tab1LoadEnd = true;
+                            // 每次数据加载完，必须重置
+                            me.resetload();
+                            // 重置页数，重新获取loadDownFn的数据
+                            page = 0;
+                            // 解锁loadDownFn里锁定的情况
+                            me.unlock();
+                            me.noData(false);
+                        },1000);
+                    // 加载菜单二的数据
+                    }else if(itemIndex == '1'){
+                        console.log('加载菜单二的数据');
+                        
+                        setTimeout(function(){
+                            // 数据加载完
+                            tab2LoadEnd = true;
+                            // 每次数据加载完，必须重置
+                            me.resetload();
+                            // 重置页数，重新获取loadDownFn的数据
+                            page = 0;
+                            // 解锁loadDownFn里锁定的情况
+                            me.unlock();
+                            me.noData(false);
+                        },1000);
+                    }
+                },
+                loadDownFn : function(me){
+                    // 加载菜单一的数据
+                    if(itemIndex == '0'){
+                        console.log('加载菜单一的数据');
+                        
+                        setTimeout(function(){
+                            // 数据加载完
+                            tab1LoadEnd = true;
+                            // 锁定
+                            me.lock();
+                            // 无数据
+                            me.noData();
+                                            
+                            // 每次数据加载完，必须重置
+                            me.resetload();
+                        },2000);
+                    // 加载菜单二的数据
+                    }else if(itemIndex == '1'){
+                        console.log('加载菜单二的数据');
+                        
+                        setTimeout(function(){
+                            // 数据加载完
+                            tab2LoadEnd = true;
+                            // 锁定
+                            me.lock();
+                            // 无数据
+                            me.noData();       
+                            // 每次数据加载完，必须重置
+                            me.resetload();
+                        },2000);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
