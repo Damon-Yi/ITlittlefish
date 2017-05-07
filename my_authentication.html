@@ -22,7 +22,7 @@
         .mui-btn-block{padding:0;border:none;font-size: 0.24rem;margin: 0;text-align: left;}
         .netDetailAddr{width:100%;border:none;padding:0.01rem 0}
         .content span i{width: .22rem;height: .22rem;display: inline-block;background: #bfbfbf;border-radius: 1rem;margin-left: .1rem;position: relative;top: 2px;}
-   		select{background: transparent;border: none;width: 50%;}
+   		select{background: transparent;border: none;width: 75%;}
    		.content p{position: relative;}
    		.selectnext{
 		   width: 0.18rem !important;
@@ -61,7 +61,7 @@
             	<div class="content">
             		<p>
             			<span>姓名</span>
-            			<input type="text" style="font-size: .24rem;width: 50%;" name="username" id="" value="" placeholder="请填写姓名"/>
+            			<input type="text" style="font-size: .24rem;width: 75%;" name="username" id="" value="" placeholder="请填写姓名"/>
             		</p>
             		<p>
             			<span>性别</span>
@@ -73,15 +73,15 @@
             		</p>
             		<p>
             			<span>手机号码</span>
-            			<input type="text" style="font-size: .24rem;width: 50%;" name="mobilephone" id="" value="" placeholder="请填写手机号码"/>
+            			<input type="text" style="font-size: .24rem;width: 75%;" class="mobilephone" name="mobilephone" id="" value="" placeholder="请填写手机号码"/>
             		</p>
             		<p>
             			<span>所有城市</span>
-            			<span style="text-indent: .1rem;" id="schoolCity" class="city_select" data-val="">请选择城市</span>
+            			<span style="text-indent: .1rem;width: 75%" id="schoolCity" class="city_select" data-val="">请选择城市</span>
             		</p>
             		<p class="bordernone">
             			<span>出生年月</span>
-        				<span style="text-indent: .1rem;" id="schoolTime" class="city_select" data-val="">请选择时间</span>
+        				<span style="text-indent: .1rem;width: 75%" id="schoolTime" class="city_select" data-val="">请选择时间</span>
             		</p>
             	</div>
             </div>
@@ -91,7 +91,7 @@
             	<div class="content">
             		<p>
             			<span>月收入</span>
-            			<span><input style="font-size: .24rem;width: 50%;" type="text" name="monthlyincome" placeholder="请填写月收入"/></span>
+            			<span style="width: 75%;"><input style="font-size: .24rem;" type="text" name="monthlyincome" placeholder="请填写月收入"/></span>
             		</p>
             		<p>
             			<span>职业身份</span>
@@ -106,14 +106,14 @@
             		</p>
             		<p>
             			<span>本地社保</span>
-            			<span style="text-indent: .1rem;">
+            			<span style="text-indent: .1rem;width: 75%;">
             				<span class="choisesocial" data-val="1">有<i></i></span>
             				<span class="choisesocial" data-val="0">无<i></i></span>
             			</span>
             		</p>
             		<p class="bordernone">
             			<span>本地公积金</span>
-            			<span style="text-indent: .1rem;">
+            			<span style="text-indent: .1rem;width: 50%;">
             				<span class="choiseaccumulation" data-val="1">有<i></i></span>
             				<span class="choiseaccumulation" data-val="0">无<i></i></span>
             			</span>
@@ -233,6 +233,7 @@
         
         var socialsecurity;
         var socialinsurance;
+        $(".mobilephone").val(JSON.parse(Cookie.get("xiaoyuerUserMes")).openid)
         $(".submit").on("tap",function(){
         	console.log()
         	var username = $("input[name = username]")[0].value; //姓名

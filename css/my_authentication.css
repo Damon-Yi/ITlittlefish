@@ -19,11 +19,12 @@
 	border: none !important;
 }
 .content p span{
-	width: 50%;
+	width: 25%;
 	float: left;
 	font-size: .24rem;
 }
 .content input{
+	width: 50%;
 	border: none;
 	outline: none;
 }
