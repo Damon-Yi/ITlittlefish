@@ -213,11 +213,8 @@ function getOpenId() {
 					code : vcode,
 				},
 				success : function(data, status, xhr) {
-				
-					if (data) {
-						if(data.resultCode == '0000'){
-							Cookie.set('xiaoyuerUserMes', JSON.stringify(data));
-						}
+					if (data&&data.openid) {
+						Cookie.set('xiaoyuerUserMes', JSON.stringify(data));
 					}
 				},
 				error : function(xhr, errorType, error) {
