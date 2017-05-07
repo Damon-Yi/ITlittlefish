@@ -64,7 +64,7 @@
 			<!--功能导航-->
 			<div class="memberbar">
 				<ul>
-					<a href="#">
+					<a href="#" class="jingping">
 						<li>
 							<dl>
 								<dt><img src="images/jingping.png"/></dt>
@@ -72,7 +72,7 @@
 							</dl>
 						</li>
 					</a>
-					<a href="#">
+					<a href="#" class="xiaoshou">
 						<li>
 							<dl>
 								<dt><img src="images/miji.png"/></dt>
@@ -82,7 +82,7 @@
 					</a>
 				</ul>
 				<ul>
-					<a href="#"  class="bordernone">
+					<a href="#"  class="bordernone jingzhun">
 						<li>
 							<dl>
 								<dt><img src="images/tuisong.png"/></dt>
@@ -100,7 +100,7 @@
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
     <script>
-        reorientate();
+    reorientate();
 	checkRegisterUser();
 	var Data;
 	//用户信息
@@ -123,7 +123,19 @@
 				}else{
 					$(".grade").html(data.levelName)
 				}
-				
+				if(data.levelno == 4){
+					$(".jingping").css("background","white");
+					$(".xiaoshou").css("background","grey");
+					$(".jingzhun").css("background","grey")
+				}else if(data.levelno == 3){
+					$(".jingping").css("background","white");
+					$(".xiaoshou").css("background","white");
+					$(".jingzhun").css("background","grey")
+				}else if(data.levelno == 2){
+					$(".jingping").css("background","grey");
+					$(".xiaoshou").css("background","grey");
+					$(".jingzhun").css("background","grey")
+				}
 				if (data.headimgurl) {
 					$(".user_img").attr("src", data.headimgurl);
 				}
@@ -144,5 +156,10 @@
 		
 		var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
 	};
+	
+	
+	$(".upgrade").on("click",function(){
+		location.href = 'my_membersev.html?levelno'+Data.levelno;
+	})
     </script>
 </html>
