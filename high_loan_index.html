@@ -143,10 +143,7 @@
                     });
                     wx.getLocation({
                         success: function (res) {
-                            alert("经纬度为：（" + res.latitude + "，" + res.longitude + "）" );
-                            
                             var getAddressUrl = "http://api.map.baidu.com/geocoder/v2/?callback=renderReverse&location="+res.latitude+","+res.longitude+"&output=json&pois=1&ak=UxwdI8Lyn8KcgOLhPxLyr97q679ZtIYZ";
-                            alert(getAddressUrl);
                             $.ajax({
                                 type:"get",
                                 url:getAddressUrl,
@@ -155,7 +152,6 @@
                                 },
                                 success:function(data, status, xhr){
                                     console.log(data);
-                                    alert(data.status);
                                     alert(data.result.addressComponent.city);
                                     if(data.result.addressComponent.city){
                                         $('.addCity').text(data.result.addressComponent.city);
