@@ -38,7 +38,7 @@
 <body onload="loaded()">
     <div class="page_header">
         <p></p>
-        <div class="right_add"><i class="position"></i><span>深圳</span></div>
+        <div class="right_add"><i class="position"></i><span class="addCity">深圳</span></div>
     </div>
     <div id="cont_wrapper">
         <div>
@@ -156,6 +156,10 @@
                                 success:function(data, status, xhr){
                                     console.log(data);
                                     alert(data.status);
+                                    alert(data.result.addressComponent.city);
+                                    if(data.result.addressComponent.city){
+                                        $('.addCity').text(data.result.addressComponent.city);
+                                    }
                                 },
                                 error:function(xhr, errorType, error){
                                     console.log(errorType);
@@ -194,7 +198,7 @@
             complete:function(xhr, status){
             }
         });*/
-        function renderReverse(data){
+        function renderReverse(data){//反地址编码回调
         }
         //活动产品
         $.ajax({
