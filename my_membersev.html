@@ -184,6 +184,7 @@
     <script>
     	var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
     	var hrefurl = window.location.href;
+    	var upgrade = 2;
     	reorientate();
 		checkRegisterUser();
         var levelno = hrefurl.split("=")[1];
@@ -253,9 +254,9 @@
     			console.log(JSON.parse(Cookie.get("xiaoyuerUserMes")).nickname)
     			console.log(Cookie.get("userlevelName"))
     			if(Cookie.get("userlevelName") == "普通会员"){
-    				var upgrade = 2;
+    				upgrade = 2;
     			}else{
-    				var upgrade = 1;
+    				upgrade = 1;
     			}
     			$.ajax({
 			        type:"post",
