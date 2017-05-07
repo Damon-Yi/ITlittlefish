@@ -392,6 +392,7 @@
                             fail: function(error) {
                                 //AlertUtil.error("获取地理位置失败，请确保开启GPS且允许微信获取您的地理位置！");
                                 $('.addCity').text('深圳');
+                                alert('fail');
                             }
                         });
                     });
@@ -399,9 +400,11 @@
                     });
                 }else{
                     $('.addCity').text('深圳');
+                    alert('vvv');
                 }
             },
             error:function(xhr, errorType, error){
+                alert('xxx'+error);
                 $('.addCity').text('深圳');
             },
             complete:function(xhr, status){
