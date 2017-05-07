@@ -158,10 +158,11 @@ function checkRegisterUser(url) {
 				success : function(data, status, xhr) {
 					if (data) {
 						//console.log(data.object.userid)
-						
+						console.log(data)
 						if (data.resultCode == '0000') {
 							Cookie.set('usermobilephone', data.object.mobilephone);
 							Cookie.set('usersex', data.object.sex);
+							Cookie.set('userlevelName', data.object.levelName);
 							Cookie.set('userId', data.object.userid);
 							if (url != null && url != undefined) {
 								location.href = url;

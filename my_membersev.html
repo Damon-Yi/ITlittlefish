@@ -251,6 +251,12 @@
     			console.log(Cookie.get("xiaoyuerUserMes"))
     			console.log(JSON.parse(Cookie.get("xiaoyuerUserMes")).openid)
     			console.log(JSON.parse(Cookie.get("xiaoyuerUserMes")).nickname)
+    			console.log(Cookie.get("userlevelName"))
+    			if(Cookie.get("userlevelName") == 0){
+    				var upgrade = 2;
+    			}else{
+    				var upgrade = 1;
+    			}
     			$.ajax({
 			        type:"post",
 			        url:Config.url+"/purchasemember",
@@ -260,7 +266,7 @@
 			        	userid:Cookie.get("userId"),
 			        	recommendby:'',
 			        	membername:JSON.parse(Cookie.get("xiaoyuerUserMes")).nickname,
-			        	upgrade:'1',
+			        	upgrade:upgrade,
 			        	paystatus:'4'
 			        },
 			        success:function(data, status, xhr){
@@ -273,6 +279,11 @@
 			        	}else if(data.resultCode == '0000'){
 			        		Data = data;
 			            	location.href = "my_mine.html";
+			        	}else{
+			        		layer.open({
+			        			content:data.resultMessage,
+			        			btn:'确认'
+			        		})
 			        	}
 			        	
 			            
