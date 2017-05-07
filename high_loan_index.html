@@ -144,9 +144,11 @@
                     wx.getLocation({
                         success: function (res) {
                             alert("经纬度为：（" + res.latitude + "，" + res.longitude + "）" );
+                            var getAddressUrl = "http://api.map.baidu.com/geocoder?output=json&location="+res.latitude+", "+res.longitude+"&key=UxwdI8Lyn8KcgOLhPxLyr97q679ZtIYZ";
+                            alert(getAddressUrl);
                             $.ajax({
                                 type:"get",
-                                url:"http://api.map.baidu.com/geocoder?location="+res.latitude+","+res.longitude+"&output=json&key=UxwdI8Lyn8KcgOLhPxLyr97q679ZtIYZ",
+                                url:getAddressUrl,
                                 beforeSend:function(xhr, settings){
                                 },
                                 success:function(data, status, xhr){
