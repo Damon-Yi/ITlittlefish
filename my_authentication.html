@@ -229,7 +229,7 @@
         if(Cookie.get("userId")){
         	xiaoyuuserId = Cookie.get("userId");
         }
-        console.log(Cookie.get("userMessss"))
+        console.log(JSON.parse(Cookie.get("userMessss")))
         $(".sex").val(JSON.parse(Cookie.get("userMessss")).sex);
         $(".mobilephone").val(JSON.parse(Cookie.get("userMessss")).mobilephone)
         var socialsecurity;
