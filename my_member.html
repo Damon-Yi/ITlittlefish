@@ -34,21 +34,31 @@
             <div class="user_info">
 				<p class="grade">等级V1</p>
 				<div class="user_Mes">
-					<div>
-						<img class="user_img" src="images/user_icon.png"/>
+					<div class="user_Mes_img">
+						<div>
+							<img class="user_img" src="images/user_icon.png" style="border-radius: 5rem;"/>
+						</div>
+						<!--<input id='file1' type='file' accept=''>-->
 					</div>
 					<div>
-						<p><span>昵称：</span><span>小美</span></p>
-	                    <p><span>135****5622</span></p>
+						<p>
+							<span>昵称：</span><span class="nickname"></span>
+						</p>
+						<p>
+							<span class="mobilephone"></span>
+						</p>
 					</div>
 					<div>
 						<p>余额</p>
-	                    <p style="font-size: 0.4rem;">0.00元</p>
+						<p style="font-size: 0.4rem;" class="balance">
+							<span></span>元
+						</p>
 					</div>
 				</div>
 				<div class="member">
-					
-					<p class="recharge">我要升级V权限</p> 
+
+					<p class="upgrade">我要升级V权限</p>
+
 				</div>
 			</div>
 			<!--功能导航-->
@@ -90,6 +100,49 @@
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
     <script>
-        
+        reorientate();
+	checkRegisterUser();
+	var Data;
+	//用户信息
+	var xiaoyuuserId;
+	if (Cookie.get("userId")) {
+		console.log(Cookie.get("xiaoyuerUserMes"))
+		xiaoyuuserId = Cookie.get("userId");
+		$.ajax({
+			type : "post",
+			url : Config.url + "/queryAccountInfo",//查询账户信息
+			data : {
+				userId : xiaoyuuserId
+			},
+			success : function(data, status, xhr) {
+				console.log(data.levelno)
+				Data = data;
+				$(".nickname").html(data.nickname);
+				if(data.levelName == null){
+					$(".grade").html("非会员");
+				}else{
+					$(".grade").html(data.levelName)
+				}
+				
+				if (data.headimgurl) {
+					$(".user_img").attr("src", data.headimgurl);
+				}
+				;
+				$(".balance").find("span").html(data.balance);
+				var mobilephone = data.mobilephone;
+				if (mobilephone) {
+					$(".mobilephone").html(
+							mobilephone.substr(0, 3) + '****'
+									+ mobilephone.substr(7))
+				}
+
+			},
+			error : function(xhr, errorType, error) {
+				console.log(000)
+			},
+		})
+		
+		var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
+	};
     </script>
 </html>
