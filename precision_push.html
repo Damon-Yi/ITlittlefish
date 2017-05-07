@@ -308,6 +308,7 @@
     <script src="plugin/mui/js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
     <script src="plugin/layer_mobile/layer.js"></script>
     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="js/getcurrCity.js"></script>
     <script>
         var loader = new loading({'container':document.body,'hasBg':false});
         var careerData ={};//工作信息
@@ -341,7 +342,7 @@
         }
         checkRegisterUser();
 
-        //获取当前城市
+        /*//获取当前城市
         var url = location.href.split('#')[0];
         $.ajax({
             type:"post",
@@ -406,7 +407,7 @@
             }
         });
         function renderReverse(data){//反地址编码回调
-        }
+        }*/
 
         (function($, doc) {
             $.init();
