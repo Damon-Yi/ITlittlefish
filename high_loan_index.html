@@ -38,7 +38,7 @@
 <body onload="loaded()">
     <div class="page_header">
         <p></p>
-        <div class="right_add"><i class="position"></i><span class="addCity">深圳</span></div>
+        <div class="right_add"><i class="position"></i><span class="addCity"></span></div>
     </div>
     <div id="cont_wrapper">
         <div>
@@ -117,17 +117,17 @@
 		}
 		//checkRegisterUser();
         
+        //获取当前城市
 		var url = location.href.split('#')[0];
         $.ajax({
             type:"post",
-            url:"http://a784112865.oicp.net/fishapi/getJsApiInfo",
+            url:Config.url+"/getJsApiInfo",
             data:{
                 url:url
             },
             beforeSend:function(xhr, settings){
             },
             success:function(data, status, xhr){
-                console.log(data);
                 if(data.resultCode=='0000'){
                     wx.config({
                         debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
@@ -138,68 +138,53 @@
                         jsApiList: ['getLocation'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
                     });
                     wx.ready(function(){
+                        //alert('ready');
+                        wx.getLocation({
+                            success: function (res) {
+                                var getAddressUrl = "http://api.map.baidu.com/geocoder/v2/?callback=renderReverse&location="+res.latitude+","+res.longitude+"&output=json&pois=1&ak="+Config.baiduAk;
+                                //alert(res.latitude+","+res.longitude);
+                                $.ajax({
+                                    type:"get",
+                                    url:getAddressUrl,
+                                    dataType:'jsonp',
+                                    beforeSend:function(xhr, settings){
+                                    },
+                                    success:function(data, status, xhr){
+                                        console.log(data);
+                                        //alert(data.result.addressComponent.city);
+                                        if(data.result.addressComponent.city&&$('.addCity')[0]){
+                                            $('.addCity').text(data.result.addressComponent.city);
+                                        }
+                                    },
+                                    error:function(xhr, errorType, error){
+                                        console.log(errorType);
+                                        $('.addCity').text('深圳');
+                                    },
+                                    complete:function(xhr, status){
+                                    }
+                                });
+                            },
+                            fail: function(error) {
+                                //AlertUtil.error("获取地理位置失败，请确保开启GPS且允许微信获取您的地理位置！");
+                                $('.addCity').text('深圳');
+                            }
+                        });
                     });
                     wx.error(function(res){
                     });
-                    wx.getLocation({
-                        success: function (res) {
-                            alert("经纬度为：（" + res.latitude + "，" + res.longitude + "）" );
-                            
-                            var getAddressUrl = "http://api.map.baidu.com/geocoder/v2/?callback=renderReverse&location="+res.latitude+","+res.longitude+"&output=json&pois=1&ak=UxwdI8Lyn8KcgOLhPxLyr97q679ZtIYZ";
-                            alert(getAddressUrl);
-                            $.ajax({
-                                type:"get",
-                                url:getAddressUrl,
-                                dataType:'jsonp',
-                                beforeSend:function(xhr, settings){
-                                },
-                                success:function(data, status, xhr){
-                                    console.log(data);
-                                    alert(data.status);
-                                    alert(data.result.addressComponent.city);
-                                    if(data.result.addressComponent.city){
-                                        $('.addCity').text(data.result.addressComponent.city);
-                                    }
-                                },
-                                error:function(xhr, errorType, error){
-                                    console.log(errorType);
-                                },
-                                complete:function(xhr, status){
-                                }
-                            });
-                        },
-                        fail: function(error) {
-                            //AlertUtil.error("获取地理位置失败，请确保开启GPS且允许微信获取您的地理位置！");
-                        }
-                    });
+                }else{
+                    $('.addCity').text('深圳');
                 }
             },
             error:function(xhr, errorType, error){
-                error = error?error:'系统错误';
-                tips(error,'tips_center',1500);
+                $('.addCity').text('深圳');
             },
             complete:function(xhr, status){
             }
         });
-        /*var getAddressUrl = "http://api.map.baidu.com/geocoder/v2/?callback=renderReverse&location=22.60148,114.1308&output=json&pois=1&ak=UxwdI8Lyn8KcgOLhPxLyr97q679ZtIYZ";
-        $.ajax({
-            type:"get",
-            url:getAddressUrl,
-            dataType:'jsonp',
-            beforeSend:function(xhr, settings){
-            },
-            success:function(data, status, xhr){
-                console.log(data);
-                alert(data.status);
-            },
-            error:function(xhr, errorType, error){
-                console.log(errorType);
-            },
-            complete:function(xhr, status){
-            }
-        });*/
         function renderReverse(data){//反地址编码回调
         }
+
         //活动产品
         $.ajax({
             type:"post",
