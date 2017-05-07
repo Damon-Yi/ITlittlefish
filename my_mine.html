@@ -36,18 +36,6 @@
 		e.preventDefault();
 	}, false);
 
-	if (Cookie.get("xiaoyuerUserMes")) {
-		var xiaoyuerUserMes = Cookie.get("xiaoyuerUserMes");
-		var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
-		if (openid == undefined) {
-			getOpenId();
-		}
-	}
-
-	var flag = checkRegisterUser();
-	
-	
-	
 </script>
 <style type="text/css">
 select {
@@ -222,6 +210,9 @@ select {
 <script type="text/javascript" src="plugin/zepto/touch.js"></script>
 </body>
 <script type="text/javascript">
+	
+	reorientate();
+	checkRegisterUser();
 	var Data;
 	//用户信息
 	var xiaoyuuserId;
@@ -261,12 +252,15 @@ select {
 				console.log(000)
 			},
 		})
+		
+		var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
+		
 		//用户二维码
 		$.ajax({
 			type : "POST",
 			url : Config.url + "/showqrcode",
 			data : {
-				'userId':xiaoyuuserId,
+				'openid':openid,
 				type : 1,
 				scenestr : '123'
 			},
@@ -283,7 +277,7 @@ select {
 		//Cookie.get("xiaoyuerUserMes")
 	};
 	console.log(Cookie.get("userId"))
-	
+
 	var contractflag = null;
 	$.ajax({
 		type : "POST",
@@ -320,6 +314,7 @@ select {
 	
 	//点击升级V会员时
 	$(".upgrade").on("tap", function() {
+		
 		if (Data.levelno == 2) {
 			layer.open({
 				content : '您是最高级会员，无需升级',

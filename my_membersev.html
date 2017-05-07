@@ -141,18 +141,21 @@
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
     <script>
+    	var openid;
     	var hrefurl = window.location.href;
+    	reorientate();
+		checkRegisterUser();
         var levelno = hrefurl.split("=")[1];
         var flag = false;
         if(levelno == 4){
         	$(".memberarea").eq(0).addClass("background");
-        	$(".gobuyleft").find("span").eq(1).html("100");
+        	$(".gobuyleft").find("span").eq(1).html("0");
         }else if(levelno == 3){
         	$(".memberarea").eq(0).addClass("background");;
         	$(".memberarea").eq(1).addClass("background");
-        	$(".gobuyleft").find("span").eq(1).html("100");
+        	$(".gobuyleft").find("span").eq(1).html("0");
         }else{
-        	$(".gobuyleft").find("span").eq(1).html("100");
+        	$(".gobuyleft").find("span").eq(1).html("0");
         };
         $(".memberarea").on("tap",function(){
         	flag = true;
@@ -195,7 +198,7 @@
 			        type:"post",
 			        url:Config.url+"/purchasemember",
 			        data:{
-			        	openId:"obDm_wPQs9w-1wiTJ0c8pD2dsfVM",
+			        	openId:openid,
 			        	memberamt:prive,
 			        	userid:'',
 			        	recommendby:'',

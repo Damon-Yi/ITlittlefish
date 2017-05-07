@@ -8,9 +8,18 @@
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <link href="css/public.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/my_recharge.css"/>
+     <link rel="stylesheet" type="text/css" href="plugin/layer/mobile/need/layer.css"/>
+    	<script src="plugin/layer/mobile/layer.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/public.js"></script>
     <style>
-        
+        .layui-m-layer1 .layui-m-layerchild{overflow-y: auto;}
+        .rule_txt_wrap{display: none;}
+        .rule_txt{font-size:0.2rem;line-height: 1.6;padding:0.2rem 0.12rem;color: #333;}
+        .rule_txt .p_title{text-align: center;font-size: 0.28rem;font-weight: bold;margin-bottom:0.2rem; }
+        .rule_txt .p_title_1{margin: 0.1rem 0 0.06rem;font-weight: bold;font-size: 0.24rem;color: #266273;}
+        .rule_txt .p_txt{text-indent: 0.2rem;text-align: justify;margin: 0.04rem auto;}
+        .rule_txt .p_txt_1{text-indent: 0.4rem;text-align: justify;}
+        .rule_txt_close{position: absolute;right: 5px;top: 5px;width: 30px;height: 30px;margin-left: 0;background-position: -149px -31px;background-image: url(images/icon.png);background-repeat:no-repeat;}
     </style>
     <script type="text/javascript">
         var aScroll;
@@ -24,6 +33,7 @@
             });
         }
        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+       
     </script>
 </head>
 <body onload="loaded()" style="background: #e2e2e2;">
@@ -84,7 +94,7 @@
             <div class="applylist">
             	<span class="choise bordercolor02"><img src="images/xuanzhong.png"/></span>
             	<em style="position: relative;top: -0.1rem;">同意</em>
-            	<a href="#" style="font-size: .2rem;position: relative;top: -0.13rem;color: #FFA835;"><< <em>小鱼儿帮帮贷协议</em> >></a>
+            	<a href="#" class="h_rules" style="font-size: .2rem;position: relative;top: -0.13rem;color: #FFA835;"><< <em>小鱼儿帮帮贷协议</em> >></a>
             </div>
             <div class="goapply">立刻充值</div>
             <div class="Tips">
@@ -93,10 +103,56 @@
             	<p>融币仅限于注册用户购买平台服务功能使用</p>
             </div>
         </div>
-        
+        <div class="rule_txt_wrap">
+        <div class="rule_txt">
+            <a class="rule_txt_close" href="javascript:;"></a>
+            <p class="p_title">“小鱼儿助花帮”充值协议</p>
+           
+            <p class="p_txt">小鱼儿平台旗下《小鱼儿助花帮》微信公众号”由深圳市佰汇信息技术有限公司（以下简称“小鱼儿助花帮”）运营。请您使用小鱼儿助花帮会员充值前仔细阅读本协议条款。</p>
+            <p class="p_txt">一、会员充值说明</p>
+            <p class="p_txt">1.1 信贷经理通过实名认证和工作认证后方可享受抢单权益/精准推送等多项会员专享服务，如您尚示通过实名或工作认证，请先提交相应资料。</p>
+            <p class="p_txt">1.2 会员功能通过实名认证的信贷经理本人使用，若发现转让他人或以他人身份使用接待客户，小鱼儿助花帮有权终止会员权力，并追究相应责任。</p>
+            <p class="p_txt">1.3 充值金额不能提现，仅限于会员专享服务或在平台享受其他付费服务使用。</p>
+            <p class="p_txt">二、会员提现规则</p>
+            <p class="p_txt">2.1 当您在我司进行申请提现时，为节省我司财务人员的大量工作，按100元的整数倍进行提取，所以您的提现金额必须至少达到100元才可申请提现，提现所涉及的手续费及相关税费由客户本人承担。</p>
+            <p class="p_txt">2.2 单笔最多提现金额为30000元，并在当月总提现次数不得超过3次为前提。</p>
+            <p class="p_txt">2.3 目前可以用来接收提现的银行仅限借记卡，不接受信用卡，以页面显示为准。为保证资金安全，建议您进行账户实名认证，认证后后续提现只能提至该实名信息下的银行卡内。</p>
+            <p class="p_txt">2.4会员在每月规定日10号或25号前（如遇工作日顺延）申请提现，并将于T+3日内结算转入您的银行账户。（具体以银行实际到账时间为准）</p>
+            <p class="p_txt">2.5请确保您提供的本人借记卡信息准确，由于本人误提供的信息导致无法转账，产生的手续费由本人承担。</p>
+            <p class="p_txt">2.6 由于本人信息填写错误，导致提现失败，提现金额将于次日反馈结果，并返额回到您的账户余额。</p>
+            <p class="p_txt">二、服务变更、中断或终止</p>
+            <p class="p_txt">2.1如因升级的需要而需暂停网络服务、或调整服务内容，我们将尽可能在网站上进行通告。由于用户未能及时浏览通告而造成的损失，我们不承担任何责任。</p>
+            <p class="p_txt">2.2您明确同意，我们保留根据实际情况随时调整小鱼儿助花帮提供的服务内容、种类和形式，或自行决定授权第三方向您提供原本我们提供的服务。因业务调整给您或其他用户造成的损失，我们不承担任何责任。同时，我们保留随时变更、中断或终止小鱼儿助花帮全部或部分服务的权利。</p>
+            <p class="p_txt">2.3发生下列任何一种情形，我们有权单方面中断或终止向您提供服务而无需通知您，且无需对您或第三方承担任何责任：</p>
+            <p class="p_txt">(1)您提供的个人资料不真实；</p>
+            <p class="p_txt">(2)您违反本服务条款；</p>
+            <p class="p_txt">(3)未经我们书面同意，将小鱼儿助花帮平台用于商业目的。</p>
+            <p class="p_txt">2.4您可随时通知我们终止向您提供服务或直接取消小鱼儿助花帮服务。自您终止或取消服务之日起，我们不再向您承担任何形式的责任。</p>
+            <p class="p_txt">三、特别约定</p>
+            <p class="p_txt">3.1 您使用本服务的行为若有任何违反国家法律法规或侵犯任何第三方的合法权益的情形时，我们有权直接删除该等违反规定之信息，并可以暂停或终止向您提供服务。</p>
+            <p class="p_txt">3.2 若您利用小鱼儿助花帮服务从事任何违法或侵权行为，由您自行承担全部责任，因此给我们或任何第三方造成任何损失，您应负责全额赔偿，并使我们免受由此产生的任何损害。</p>
+            <p class="p_txt">3.3 您同意我们通过重要页面的公告、通告、电子邮件以及常规信件的形式向您传送与小鱼儿助花帮服务有关的任何通知和通告。</p>
+            <p class="p_txt">3.4 本服务条款之效力、解释、执行均适用中华人民共和国法律。</p>
+            <p class="p_txt">3.5 如就本协议内容或其执行发生任何争议，应尽量友好协商解决；协商不成时，任何一方均可向小鱼儿助花帮所在地的人民法院提起诉讼。</p>
+            <p class="p_txt">3.6 本服务条款中的标题仅为方便而设，不影响对于条款本身的解释。本服务条款最终解释权归小鱼儿助花帮所有。</p>
+           
+        </div>
     </div>
     <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
     <script type="text/javascript" src="js/my_recharge.js"></script>
+    <script type="text/javascript">
+    	 $('.h_rules').on('click',function(){
+            var pageii = layer.open({
+              type: 1,
+              content: $('.rule_txt_wrap').html(),
+              anim: 'up',
+              style: 'position:fixed; left:0; top:0; width:100%; height:100%; border: none; -webkit-animation-duration: .5s; animation-duration: .5s;'
+            });
+            $('.rule_txt_close').on('click',function(){
+                layer.closeAll();
+            });
+        });
+    </script>
 </html>

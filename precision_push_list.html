@@ -16,6 +16,8 @@
 	        .mui-content{background-color: #e9e9e9;}
 	        .mui-pull{font-size: 0;}
 	        .mui-scroll-wrapper{top: 1.12rem;}
+	        .mui-table-view-chevron .mui-table-view-cell{padding-right: 0;}
+	        .mui-table-view-cell{padding:0;}
 	    </style>
 	</head>
 	<body>
@@ -109,6 +111,8 @@
 			function pulldownRefresh() {
 				setTimeout(function() {
 					getNextPage(1,size,function(data){
+						var table = $('.mui-table-view');
+						table.empty();
 						page = 1;
 						appentData(data);
 					});
