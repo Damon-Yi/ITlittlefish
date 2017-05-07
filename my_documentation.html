@@ -157,7 +157,9 @@
 	
 	//申请记录
 	var pageNo = 1;
-	applyhistory();
+	applyhistory(pageNo,function(){
+		appentData(data)
+	});
 	console.log(1111)
 	console.log(xiaoyuuserId)
 	
@@ -168,15 +170,18 @@
 			data : {
 				userId : xiaoyuuserId,
 				pageNo : pageNo,
-				pageSize : 10
+				pageSize : 2
 			},
 			success : function(data, status, xhr) {
 				console.log(data)
-				if(data.rows.length>0){
-                    callback(data.rows);
-                }else{
-                    
-                }
+				if(data.rows){
+					if(data.rows.length>0){
+                    	callback(data.rows);
+	                }else{
+	                    
+	                }
+				}
+				
 			},
 			error: function(xhr, errorType, error){
                 error = error?error:'系统错误';
@@ -186,7 +191,7 @@
 	}
 	mui.init({
 		pullRefresh: {
-			container: '#pullrefresh',
+			container: '#cont_wrapper',
 			up: {
 				contentrefresh: '正在加载...',
 				callback: pullupRefresh
@@ -196,7 +201,7 @@
 	
 	function pullupRefresh() {
 		setTimeout(function() {
-			mui('#pullrefresh').pullRefresh().endPullupToRefresh();
+			mui('#cont_wrapper').pullRefresh().endPullupToRefresh();
 			applyhistory(pageNo+1,function(data){
 				pageNo++;
 				appentData(data);
