@@ -146,7 +146,7 @@ function checkRegisterUser(url) {
 	if (Cookie.get("xiaoyuerUserMes")) {
 		var xiaoyuerUserMes = Cookie.get("xiaoyuerUserMes");
 		var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
-		if (openid != undefined) {
+		if (openid) {
 			$.ajax({
 				type : "post",
 				url : Config.url + "/checkRegisterUser",
@@ -156,7 +156,7 @@ function checkRegisterUser(url) {
 				},
 				success : function(data, status, xhr) {
 					if (data) {
-						console.log(data.object.userid)
+						//console.log(data.object.userid)
 						if (data.resultCode == '0000') {
 							Cookie.set('userId', data.object.userid);
 							if (url != null && url != undefined) {
