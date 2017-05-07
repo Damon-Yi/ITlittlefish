@@ -111,6 +111,8 @@
 			function pulldownRefresh() {
 				setTimeout(function() {
 					getNextPage(1,size,function(data){
+						var table = $('.mui-table-view');
+						table.empty();
 						page = 1;
 						appentData(data);
 					});
