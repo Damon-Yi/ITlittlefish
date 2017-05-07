@@ -158,7 +158,7 @@ function checkRegisterUser(url) {
 				success : function(data, status, xhr) {
 					if (data) {
 						//console.log(data.object.userid)
-						console.log(data)
+						Cookie.set('userMessss', data.object);
 						if (data.resultCode == '0000') {
 							Cookie.set('userId', data.object.userid);
 							if (url != null && url != undefined) {
