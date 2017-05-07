@@ -230,7 +230,8 @@
         	xiaoyuuserId = Cookie.get("userId");
         }
         console.log(Cookie.get("userMessss"))
-        
+        $(".sex").val(JSON.parse(Cookie.get("xiaoyuerUserMes")).sex);
+        $(".mobilephone").val(JSON.parse(Cookie.get("xiaoyuerUserMes")).mobilephone)
         var socialsecurity;
         var socialinsurance;
         
