@@ -154,8 +154,11 @@
                                 beforeSend:function(xhr, settings){
                                 },
                                 success:function(data, status, xhr){
+                                    console.log(data);
+                                    alert(data.status);
                                 },
                                 error:function(xhr, errorType, error){
+                                    console.log(errorType);
                                 },
                                 complete:function(xhr, status){
                                 }
@@ -174,9 +177,24 @@
             complete:function(xhr, status){
             }
         });
-        
+        /*var getAddressUrl = "http://api.map.baidu.com/geocoder/v2/?callback=renderReverse&location=22.60148,114.1308&output=json&pois=1&ak=UxwdI8Lyn8KcgOLhPxLyr97q679ZtIYZ";
+        $.ajax({
+            type:"get",
+            url:getAddressUrl,
+            dataType:'jsonp',
+            beforeSend:function(xhr, settings){
+            },
+            success:function(data, status, xhr){
+                console.log(data);
+                alert(data.status);
+            },
+            error:function(xhr, errorType, error){
+                console.log(errorType);
+            },
+            complete:function(xhr, status){
+            }
+        });*/
         function renderReverse(data){
-            alert("data-status:"+data.status);
         }
         //活动产品
         $.ajax({
