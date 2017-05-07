@@ -21,6 +21,7 @@
 .content p span{
 	width: 50%;
 	float: left;
+	font-size: .24rem;
 }
 .content input{
 	border: none;

@@ -439,9 +439,9 @@
                         var title = vildeCode.parents('.h_r_row').find('.h_r_row_txt').text();
                         msg = '验证码错误';
                         tips(msg,'tips_center',1500);
-                    }else{
-                        parmas[vildeCode.attr('id')] = vildeCode.val().trim();
                     }
+                }else{
+                    parmas[vildeCode.attr('id')] = vildeCode.val().trim();
                 }
             }
 
