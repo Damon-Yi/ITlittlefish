@@ -121,7 +121,7 @@
 		var url = location.href.split('#')[0];
         $.ajax({
             type:"post",
-            url:"http://a784112865.oicp.net/fishapi/getJsApiInfo",
+            url:Config.url+"/getJsApiInfo",
             data:{
                 url:url
             },
@@ -141,7 +141,7 @@
                         //alert('ready');
                         wx.getLocation({
                             success: function (res) {
-                                var getAddressUrl = "http://api.map.baidu.com/geocoder/v2/?callback=renderReverse&location="+res.latitude+","+res.longitude+"&output=json&pois=1&ak=UxwdI8Lyn8KcgOLhPxLyr97q679ZtIYZ";
+                                var getAddressUrl = "http://api.map.baidu.com/geocoder/v2/?callback=renderReverse&location="+res.latitude+","+res.longitude+"&output=json&pois=1&ak="+Config.baiduAk;
                                 //alert(res.latitude+","+res.longitude);
                                 $.ajax({
                                     type:"get",
@@ -151,7 +151,7 @@
                                     },
                                     success:function(data, status, xhr){
                                         console.log(data);
-                                        alert(data.result.addressComponent.city);
+                                        //alert(data.result.addressComponent.city);
                                         if(data.result.addressComponent.city&&$('.addCity')[0]){
                                             $('.addCity').text(data.result.addressComponent.city);
                                         }
