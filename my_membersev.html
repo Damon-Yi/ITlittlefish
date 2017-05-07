@@ -213,8 +213,16 @@
 			        },
 			        success:function(data, status, xhr){
 			        	console.log(data)
-			        	Data = data;
-			            $(".nickname").html(data.nickname);
+			        	if(data.resultCode == '9003'){
+			        		layer.open({
+			        			content:data.resultMessage,
+			        			btn:'确认'
+			        		})
+			        	}else if(data.resultCode == '0000'){
+			        		Data = data;
+			            	location.href = "my_mine.html";
+			        	}
+			        	
 			            
 			        },
 			        error:function(xhr, errorType, error){
