@@ -66,8 +66,8 @@
             		<p>
             			<span>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</span>
             			<select class="sex" name="">
-            				<option value="">男</option>
-            				<option value="">女</option>
+            				<option value="1">男</option>
+            				<option value="2">女</option>
             			</select>
             			<span class="selectnext"></span>
             		</p>
@@ -238,7 +238,7 @@
         $(".submit").on("tap",function(){
         	console.log()
         	var username = $("input[name = username]")[0].value; //姓名
-        	var sex = $(".sex option:checked").text();   	//性别
+        	var sex = $(".sex option:checked").val();   	//性别
         	var mobilephone = $("input[name = mobilephone]")[0].value;  //手机号码
         	var city = $("#schoolCity").text(); //所有城市
         	var birthday = $("#schoolTime").text(); // 生日
