@@ -228,6 +228,7 @@ select {
 			success : function(data, status, xhr) {
 				console.log(data.levelno)
 				Data = data;
+				Cookie.set('userlevelName', data.levelName);
 				$(".nickname").html(data.nickname);
 				if(data.levelName == null){
 					$(".grade").html("非会员");
@@ -239,7 +240,7 @@ select {
 					$(".user_img").attr("src", data.headimgurl);
 				}
 				;
-				$(".balance").find("span").html(data.fishbalance);
+				$(".balance").find("span").html(data.balance);
 				var mobilephone = data.mobilephone;
 				if (mobilephone) {
 					$(".mobilephone").html(
