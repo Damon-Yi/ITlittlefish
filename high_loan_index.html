@@ -127,7 +127,7 @@
             beforeSend:function(xhr, settings){
             },
             success:function(data, status, xhr){
-                console.log(data);
+                alert(data.resultCode);
                 if(data.resultCode=='0000'){
                     wx.config({
                         debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
@@ -144,6 +144,7 @@
                     wx.getLocation({
                         success: function (res) {
                             var getAddressUrl = "http://api.map.baidu.com/geocoder/v2/?callback=renderReverse&location="+res.latitude+","+res.longitude+"&output=json&pois=1&ak=UxwdI8Lyn8KcgOLhPxLyr97q679ZtIYZ";
+                            alert(res.latitude+","+res.longitude);
                             $.ajax({
                                 type:"get",
                                 url:getAddressUrl,
