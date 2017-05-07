@@ -251,8 +251,8 @@
     			console.log(Cookie.get("xiaoyuerUserMes"))
     			console.log(JSON.parse(Cookie.get("xiaoyuerUserMes")).openid)
     			console.log(JSON.parse(Cookie.get("xiaoyuerUserMes")).nickname)
-    			//console.log(Cookie.get("userlevelName"))
-    			if(Cookie.get("userlevelName") == 0){
+    			console.log(Cookie.get("userlevelName"))
+    			if(Cookie.get("userlevelName") == "普通会员"){
     				var upgrade = 2;
     			}else{
     				var upgrade = 1;
