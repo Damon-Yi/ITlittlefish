@@ -410,3 +410,15 @@ function getReferrer(){
     }
     return referrer;
 }
+//
+function reorientate(){
+	if (!Cookie.get("xiaoyuerUserMes")) {
+	getOpenId();
+	} else {
+		var xiaoyuerUserMes = Cookie.get("xiaoyuerUserMes");
+		var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
+		if (openid == undefined) {
+			getOpenId();
+		}
+	}
+}

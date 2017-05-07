@@ -70,16 +70,19 @@
     <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
     <script>
     	var xiaoyuuserId;
-    
+    	var hrefurl = window.location.href;
+    	reorientate();
+		checkRegisterUser(window.location.href);
 		if (Cookie.get("userId")) {
 			console.log(Cookie.get("xiaoyuerUserMes"))
 			xiaoyuuserId = Cookie.get("userId");
+			var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
 		}
         $.ajax({
 	        type:"post",
 	        url:Config.url1+"/showqrcode",
 	        data:{
-	        	'userId':xiaoyuuserId,
+	        	'openid':openid,
 	        	type:2,
 	        	scenestr:'123'
 	        },

@@ -211,18 +211,8 @@ select {
 </body>
 <script type="text/javascript">
 	
-	if (!Cookie.get("xiaoyuerUserMes")) {
-		getOpenId();
-	} else {
-		var xiaoyuerUserMes = Cookie.get("xiaoyuerUserMes");
-		var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
-		if (openid == undefined) {
-			getOpenId();
-		}
-	}
-
+	reorientate();
 	checkRegisterUser();
-	
 	var Data;
 	//用户信息
 	var xiaoyuuserId;
@@ -324,6 +314,7 @@ select {
 	
 	//点击升级V会员时
 	$(".upgrade").on("tap", function() {
+		
 		if (Data.levelno == 2) {
 			layer.open({
 				content : '您是最高级会员，无需升级',
