@@ -23,7 +23,8 @@ var Config = {
 	// url:'http://a784112865.oicp.net/zhudai_api/service'
 	// url : 'http://ifish.iok.la/fishapi/service',
 	//url : 'http://a784112865.oicp.net/fishapi',
-	url : 'http://www.1handfish.com/fishapi'
+	url : 'http://www.1handfish.com/fishapi',
+	baiduAk:'UxwdI8Lyn8KcgOLhPxLyr97q679ZtIYZ'
 }
 
 /* 提示，弹窗 */
@@ -157,6 +158,7 @@ function checkRegisterUser(url) {
 				success : function(data, status, xhr) {
 					if (data) {
 						//console.log(data.object.userid)
+						console.log(data)
 						if (data.resultCode == '0000') {
 							Cookie.set('userId', data.object.userid);
 							if (url != null && url != undefined) {
