@@ -23,7 +23,8 @@ var Config = {
 	// url:'http://a784112865.oicp.net/zhudai_api/service'
 	// url : 'http://ifish.iok.la/fishapi/service',
 	//url : 'http://a784112865.oicp.net/fishapi',
-	url : 'http://www.1handfish.com/fishapi'
+	url : 'http://www.1handfish.com/fishapi',
+	baiduAk:'UxwdI8Lyn8KcgOLhPxLyr97q679ZtIYZ'
 }
 
 /* 提示，弹窗 */
@@ -412,7 +413,7 @@ function getReferrer(){
 //
 function reorientate(){
 	if (!Cookie.get("xiaoyuerUserMes")) {
-	getOpenId();
+		getOpenId();
 	} else {
 		var xiaoyuerUserMes = Cookie.get("xiaoyuerUserMes");
 		var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;

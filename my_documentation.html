@@ -91,7 +91,7 @@
             		<li>操作</li>
             	</ul>
             	<ul>
-            		<li>2017-03-03</li>
+            		<!--<li>2017-03-03</li>
             		<li>3000元</li>
             		<li>
             			<select name="">
@@ -100,11 +100,13 @@
             				<option value="">否</option>
             			</select>
             			<span class="selectnext"></span>
+            			是
             		</li>
-            		<li>保存</li>
+            		<li>保存</li>-->
             	</ul>
             	
             </div>
+            
         </div>
     </div>
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
@@ -158,10 +160,11 @@
 	
 	//申请记录
 	var pageNo = 1;
+	var applySerialNo;
 	applyhistory(pageNo,function(data){
 		appentData(data)
 	});
-	console.log(1111)
+	
 	console.log(xiaoyuuserId)
 	
 	function applyhistory(pageNo,callback){
@@ -213,26 +216,63 @@
 		var Div = $('.dotlist');
         for(var i=0;i<rows.length;i++){
             var Ul = $("<ul></ul>");
-            var Li01 = $("<li>"+rows.applydate+"</li>");
-            var Li02 = $("<li>"+rows.loanserialno+"</li>");
+            var Li01 = $("<li>"+rows[i].applydate+"</li>");
+            var Li02 = $("<li>"+rows[i].loanamt+"</li>");
             var Li03 = $("<li></li>");
-            var select01 = $("<select></select>");
-            var option01 = $("<option>-请选择-</option>") 
-            var option02 = $("<option>-是-</option>") 
-            var option03 = $("<option>-否-</option>") 
-            var span01 = $("<span class='selectnext'></span>")
-            var Li04 = $("<li>保存</li>");
-            select01.append(option01);
-            select01.append(option02);
-            select01.append(option03);
-            Li03.append(select01);
-            Li03.append(span01);
+            if(rows[i].loanstatus == 1){
+            	var span0 = $("<span>是</span>");
+            	Li03.append(span0);
+            }else if(rows[i].loanstatus == 2){
+            	var span0 = $("<span>否</span>");
+            	Li03.append(span0);
+            }
+            else{
+            	var select01 = $("<select></select>");
+	            var option01 = $("<option>-请选择-</option>") 
+	            var option02 = $("<option>-是-</option>") 
+	            var option03 = $("<option>-否-</option>") 
+	            var span01 = $("<span class='selectnext'></span>")
+	            select01.append(option01);
+	            select01.append(option02);
+	            select01.append(option03);
+	            Li03.append(select01);
+	            Li03.append(span01);
+            }
+            
+            var Li04 = $("<li onclick=conservation("+rows.loanserialno+","+this+")>保存</li>"); 
             Ul.append(Li01);
             Ul.append(Li02);
             Ul.append(Li03);
             Ul.append(Li04);
             Div.append(Ul);
         }
+    }
+    function conservation(loanserialno,el){
+    	console.log(el)
+    	var loanstatushtml = $(el).prev("li").find('select').val();
+    	if(loanstatushtml == "是"){
+    		loanstatus = 1
+    	}else{
+    		loanstatus = 2
+    	}
+    	console.log(loanstatus)
+    	$.ajax({
+			type : "POST",
+			url : Config.url + "/updateLoanApply",
+			data : {
+				loanserialno:loanserialno,
+				status:loanstatus
+			},
+			success : function(data, status, xhr) {
+				console.log(data)
+				
+				
+			},
+			error: function(xhr, errorType, error){
+                error = error?error:'系统错误';
+                tips(error,'tips_center',1500);
+            }
+		})
     }
     </script>
 </html>

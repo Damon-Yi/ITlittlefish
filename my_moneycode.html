@@ -72,7 +72,8 @@
     	var xiaoyuuserId;
     	var hrefurl = window.location.href;
     	reorientate();
-		checkRegisterUser(window.location.href);
+		checkRegisterUser();
+		var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
 		if (Cookie.get("userId")) {
 			console.log(Cookie.get("xiaoyuerUserMes"))
 			xiaoyuuserId = Cookie.get("userId");
@@ -80,7 +81,7 @@
 		}
         $.ajax({
 	        type:"post",
-	        url:Config.url1+"/showqrcode",
+	        url:Config.url+"/showqrcode",
 	        data:{
 	        	'openid':openid,
 	        	type:2,

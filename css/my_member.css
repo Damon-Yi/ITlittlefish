@@ -67,7 +67,7 @@
 	
 }
 .memberbar ul{
-	margin-top:.23rem;
+	
 	content: "";
 	overflow: hidden;
 	clear: both;
@@ -81,6 +81,7 @@
 	display: inline-block;
 	float: left;
 	border-bottom: 1px solid #d1d1d1;
+	padding-top:.23rem;
 }
 .memberbar dd{
 	color: #010101;
