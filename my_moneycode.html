@@ -79,6 +79,7 @@
 			xiaoyuuserId = Cookie.get("userId");
 			var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
 		}
+		console.log(openid)
         $.ajax({
 	        type:"post",
 	        url:Config.url+"/showqrcode",
