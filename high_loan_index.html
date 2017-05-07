@@ -21,7 +21,7 @@
                 fadeScrollbars: true,click: true 
             });
         }
-       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false); 
     </script>
     <style type="text/css">
         .h_ad{position: relative;}
@@ -103,9 +103,10 @@
     <script type="text/javascript" src="plugin/swiper/swiper.3.1.7.min.js"></script>
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script>
 
-    	/*if (!Cookie.get("xiaoyuerUserMes")) {
+    	if (!Cookie.get("xiaoyuerUserMes")) {
 			getOpenId();
 		} else {
 			var xiaoyuerUserMes = Cookie.get("xiaoyuerUserMes");
@@ -113,9 +114,9 @@
 			if (openid == undefined) {
 				getOpenId();
 			}
-		}*/
-
+		}
 		//checkRegisterUser();
+        
 		
 
         //活动产品
