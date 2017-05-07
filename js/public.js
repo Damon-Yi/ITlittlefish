@@ -215,7 +215,9 @@ function getOpenId() {
 				success : function(data, status, xhr) {
 				
 					if (data) {
-						Cookie.set('xiaoyuerUserMes', JSON.stringify(data));
+						if(data.resultCode == '0000'){
+							Cookie.set('xiaoyuerUserMes', JSON.stringify(data));
+						}
 					}
 				},
 				error : function(xhr, errorType, error) {
