@@ -141,7 +141,7 @@
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
     <script>
-    	var openid;
+    	var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
     	var hrefurl = window.location.href;
     	reorientate();
 		checkRegisterUser();
@@ -185,6 +185,8 @@
         		}
         	}
         });
+        console.log(Cookie.get("xiaoyuerUserMes"))
+        console.log(openid)
         $(".gobuyright").on("tap",function(){
     		if(!flag){
     			layer.open({
@@ -194,29 +196,26 @@
     		}else{
     			var prive = $(".gobuyleft").find("span").eq(1).html();
     			console.log(prive)
+    			console.log(Cookie.get("xiaoyuerUserMes"))
+    			console.log(JSON.parse(Cookie.get("xiaoyuerUserMes")).openid)
+    			console.log(JSON.parse(Cookie.get("xiaoyuerUserMes")).nickname)
     			$.ajax({
 			        type:"post",
 			        url:Config.url+"/purchasemember",
 			        data:{
-			        	openId:openid,
+			        	openid:JSON.parse(Cookie.get("xiaoyuerUserMes")).openid,
 			        	memberamt:prive,
-			        	userid:'',
+			        	userid:Cookie.get("userId"),
 			        	recommendby:'',
-			        	membername:'',
-			        	upgrade:'',
-			        	paystatus:''
+			        	membername:JSON.parse(Cookie.get("xiaoyuerUserMes")).nickname,
+			        	upgrade:'2',
+			        	paystatus:'4'
 			        },
 			        success:function(data, status, xhr){
 			        	console.log(data)
 			        	Data = data;
 			            $(".nickname").html(data.nickname);
-			            $(".grade").html(data.levelName);
-			            if(data.headimgurl){
-			            	$(".user_img").attr("src",data.headimgurl);
-			            };
-			            $(".balance").find("span").html(data.balance);
-			            var mobilephone = data.mobilephone;
-			           	$(".mobilephone").html(mobilephone.substr(0, 3) + '****' + mobilephone.substr(7))
+			            
 			        },
 			        error:function(xhr, errorType, error){
 			        	console.log(000)
