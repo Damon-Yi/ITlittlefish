@@ -106,7 +106,6 @@
             		</p>
             		<p>
             			<span>本地社保</span>
-
             			<span class="choise" style="text-indent: .1rem;">
             				<span class="choisesocial" data-val="1">有<i></i></span>
             				<span class="choisesocial" data-val="0">无<i></i></span>
@@ -230,11 +229,12 @@
         if(Cookie.get("userId")){
         	xiaoyuuserId = Cookie.get("userId");
         }
-        console.log(xiaoyuuserId)
-        
+        console.log(Cookie.get("userMessss"))
+        $(".sex").val(JSON.parse(Cookie.get("userMessss")).sex);
+        $(".mobilephone").val(JSON.parse(Cookie.get("userMessss")).mobilephone)
         var socialsecurity;
         var socialinsurance;
-        $(".mobilephone").val(JSON.parse(Cookie.get("xiaoyuerUserMes")).openid)
+        
         $(".submit").on("tap",function(){
         	console.log()
         	var username = $("input[name = username]")[0].value; //姓名
