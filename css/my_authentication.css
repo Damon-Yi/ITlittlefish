@@ -19,10 +19,27 @@
 	border: none !important;
 }
 .content p span{
-	width: 50%;
+	width: 25%;
 	float: left;
 	font-size: .24rem;
 }
+
+.content p input{
+	font-size: .24rem;
+	width: 75%;
+}
+
+.content p select{
+	font-size: .24rem;
+	width: 75%;
+}
+
+.content p .choise{
+	width: 75%;
+	float: left;
+	font-size: .24rem;
+}
+
 .content input{
 	border: none;
 	outline: none;
