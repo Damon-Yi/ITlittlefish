@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>小鱼儿助花帮平台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <script src="js/public.js"></script>
+    <style>
+    	html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td {border: 0 none;font-size: 100%;font-style: inherit;font-weight: inherit;margin: 0;outline: 0 none;padding: 0;vertical-align: baseline;}
+		html{height: 100%;}
+		body {background: #fff none repeat scroll 0 0;color: #000;font-family:"STXihei","Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;min-height: 100%;margin: 0 auto;position: relative;}
+		ol,ul {list-style: outside none none;}
+		table {border-collapse: collapse;border-spacing: 0;vertical-align: middle;}
+		caption,th,td {font-weight: normal;text-align: center;vertical-align: middle;}
+		a {text-decoration: none;}
+		a:hover{text-decoration: none;}
+		a img {border: medium none;}
+		* {-webkit-tap-highlight-color:transparent;box-sizing: border-box;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
+		*:before,*:after{-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;-ms-box-sizing: border-box;}
+		input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset; } 
+		input{-webkit-appearance: none;outline: none;}
+		input[type="button"]{padding:0;}
+        .nav_total{background:#fff;width:100%;}
+        .nav_total .nav_total_all:after{content: '';display: block; clear: both;}
+        .nav_total .nav_total_all{margin:0 auto;zoom: 1;padding:0.2rem 0 0.12rem;}
+        .nav_total .nav_total_all .total_l,.nav_total .nav_total_all .total_r{float: left;width:50%;text-align: center;line-height:0.6rem;font-size:0;}
+        .nav_total .total_l .total_l_logo{font-size:22px;color:#ffb23e;display: inline-block;font-weight: bold;}
+        .nav_total .total_l .total_l_city{display: inline-block;margin-left:0.5rem; font-size: 0.22rem;}
+        .nav_total .total_l .total_l_city .q_g{font-size: 0.22rem;margin-right:0.1rem;color:#ffb23e;}
+        .nav_total .total_l .total_l_city .loca_tion{display: inline-block;color:#ffb23e;margin-left:0.3rem;}
+        .nav_total .total_l .total_l_city .loca_tion .loca_tion_j{background:#ffb23e;color:#fff;margin-left:0.1rem;font-size:0.1rem;padding:0.03rem;}
+        .nav_total .nav_total_all .total_r a{font-size:0.22rem;color:#999999;display:inline-block;width:1.2rem;text-align: center;}
+        .nav_total .nav_total_all .total_r a.on{color:#ffb23e;}
+        .navtab{background:#ffb23e;width:100%;margin:0 auto;height:0.35rem;line-height:0.35rem}
+        .navtab:after{content: '';display: block; clear: both;}
+        .navtab .navtab_li{margin:0 auto;text-align: center;float:right;    margin-right: 10%;}
+        .navtab .navtab_li>li{float:left;font-size:0.2rem;width:1.5rem;color:#997642}
+        .navtab .navtab_li>li.lion{color:#fff;background:#ff7e00;}
+        .voucher{width:100%;margin:0 auto;padding-bottom: 20px;padding-top: 20px;border-bottom: 1px solid #e9e9e9;}
+        .voucher:after{content: '';display: block; clear: both;}
+        .voucher .voucher_img {width:33.3%;float: left;text-align: center;}
+        .voucher .voucher_img>img{width:153px;display: block;margin: 0 auto;}
+        .recom{color: #ffae2f;font-size: 44px;text-align: center;margin: 24px 0 35px;}
+
+        .h_push_list{font-size: 0.18rem;color: #000;padding-bottom: 20px;}
+        .h_push_list .h_push_item{background-color: #eeeef1;border-radius: 3px;margin: 0 0.66% 0.36rem;width: 32%;float: left;}
+        .h_push_list .h_push_item .h_push_row_1{overflow: auto;padding:0.15rem 0.04rem 0.04rem 0.15rem;text-align: center;}
+        .h_push_list .h_push_item .h_push_row_1>div{float: left;}
+
+        .h_push_list .h_push_item .h_push_col_1{font-size: 0;width: 17.5%;padding-top: 0.14rem;}
+        .h_push_list .h_push_item .h_push_img_header{width: 1.05rem;height: 0.24rem;}
+        .h_push_list .h_push_item .h_push_img_header>img{width:100%;height: 100%;}
+        .h_push_list .h_push_item .h_push_img_logo{width: 1.05rem;height: 1.02rem;background-color: #5d5d5d;}
+        .h_push_list .h_push_item .h_push_img_logo>img{width:100%;height: 100%;}
+
+        .h_push_list .h_push_item .h_push_col_2{width: 37%;}
+        .h_push_list .h_push_item .h_push_col_2>p{padding:0 0.08rem;}
+        .h_push_list .h_push_item .h_push_p_1{font-size: 0.22rem;margin: 0.1rem auto 0.08rem;}
+        .h_push_list .h_push_item .h_push_p_2{font-size: 0.18rem;color: #585858;}
+        .h_push_list .h_push_item .h_push_p_3{font-size: 0.18rem;margin-top: 0.12rem;}
+
+        .h_push_list .h_push_item .h_push_col_3{width:45.5%;}
+        .h_push_list .h_push_item .h_push_tr{border-bottom: 1px solid #d1d1d1;}
+        .h_push_list .h_push_item .h_push_tr:last-child{border-bottom:none;}
+        .h_push_list .h_push_item .h_push_td{display: inline-block;vertical-align: middle;width: 48%;border-right: 1px solid #d1d1d1;padding:0.08rem 0;}
+        .h_push_list .h_push_item .h_push_td:last-child{border-right:none;}
+
+        .h_push_list .h_push_item .h_push_row_2{font-size: 0.24rem;padding:0 0.18rem;}
+        .h_push_list .h_push_item .h_push_row_2 .h_max_num{font-size: 0.32rem;color: #ff9000;}
+        .h_push_list .h_push_item .h_push_row_3{overflow: auto;padding:0 0.16rem 0.15rem;}
+        .h_push_list .h_push_item .h_push_row_3>span{float: left;display: block;/*width: 1.04rem;*/border:2px solid #dbdbdb;border-radius: 0.1rem;text-align: center;padding:0.06rem 0.12rem;margin: 0.12rem 0.12rem 0 0;font-size: 0.18rem;color: #dbdbdb;}
+        .h_push_list .h_push_item .h_push_row_3>span:last-child{margin-right:0; }
+        .h_push_list .h_push_item .h_push_row_3>span.active{border-color:#ff9000;color: #ff9000;}
+        
+        .banner{background: url(images/banner.png) no-repeat center center;background-size: cover;min-height: 448px;color: #ff9c0d;font-size: 16px;}
+        .banner .banner_cont{height: 100%;width:942px;margin: 0 auto;position: relative;min-height: 448px;}
+        .banner .banner_cont .top_bg{position: absolute;top:44px;left: -40px;width: 648px;height: 296px;background-color:rgba(255,255,255,.8);}
+        .banner .banner_cont .bottom_bg{position: absolute;bottom:48px;right: -30px;width: 296px;height: 296px;background-color:rgba(254,164,68,.6);}
+        .banner .banner_cont .b_mid{width:942px;margin: 0 auto;position: absolute;top: 50%;margin-top:-148px; }
+        .banner .banner_cont .b_mid .b_form{width: 394px;float: left;background-color:#fff;height: 296px;padding:10px 4%;}
+        .banner .banner_cont .b_mid .b_form .b_form_row{margin:12px 0;}
+        .banner .banner_cont .b_mid .b_form .b_form_row span{display: inline-block;vertical-align: middle;min-width: 80px; }
+        .banner .banner_cont .b_mid .b_form .b_form_row input{display: inline-block;vertical-align: middle;width: 228px;border:1px solid #ddd;height: 24px;padding: 0 4px;}
+        .banner .banner_cont .b_mid .b_form .b_form_row select{display: inline-block;vertical-align: middle;width: 228px;border:1px solid #ddd;height: 24px;}
+        .banner .banner_cont .b_mid .b_form .b_form_btn{color: #fff;width: 70%;display: block;height: 36px;line-height: 36px;text-align: center;margin: 20px auto 0;background-color:#fea444; }
+        .banner .banner_cont .b_mid .b_mid_img_wrap{float: left;width: 546px;}
+        .banner .banner_cont .b_mid .b_mid_img_1{width: 256px;height: 296px;display: inline-block;text-align: center;background-color:#fff; }
+        .banner .banner_cont .b_mid .b_mid_img_1>img{width: 100%;height: 100%;max-width: 256px;}
+        .banner .banner_cont .b_mid .b_mid_img_2{width: 290px;height: 296px;display: inline-block;}
+        .banner .banner_cont .b_mid .b_mid_img_2>img{width: 100%;height: 100%;}
+        @media screen and (max-width:768px){
+            .nav_total .nav_total_all .total_l, .nav_total .nav_total_all .total_r{width: 100%;}
+            .navtab .navtab_li{margin-right: 2%;}
+            .voucher .voucher_img>img{width:1.8rem;}
+            .recom{font-size: 0.48rem;}
+            .h_push_list .h_push_item{margin: 0 1% 0.36rem;width: 98%;}
+            .banner{padding-bottom:40px;padding-top: 40px;}
+            .banner .banner_cont{width: 100%;}
+            .banner .banner_cont .b_mid{width: 100%;position: relative;margin-top:0; }
+            .banner .banner_cont .b_mid .b_form{width: 60%;margin: 0 auto;float: none;margin-bottom:40px; }
+            .banner .banner_cont .top_bg{display: none;}
+            .banner .banner_cont .bottom_bg{display: none;}
+            .banner .banner_cont .b_mid .b_mid_img_wrap{float: none;margin: 0 auto;width: 580px;}
+            .banner .banner_cont .b_mid .b_mid_img_1{width: 290px;}
+        }
+        @media screen and (max-width:600px){
+            .banner .banner_cont .b_mid .b_form{height: auto;}
+            .banner .banner_cont .b_mid .b_form .b_form_row input{margin-top:4px;width: 90%;}
+            .banner .banner_cont .b_mid .b_form .b_form_row select{margin-top:4px; width: 90%;}
+            .banner .banner_cont .b_mid .b_mid_img_wrap{width: 100%;}
+            .banner .banner_cont .b_mid .b_form{height: auto;width: 90%;}
+            .banner .banner_cont .b_mid .b_mid_img_1{width: 90%;margin: 0 auto 30px;display: block;}
+            .banner .banner_cont .b_mid .b_mid_img_2{width: 90%;margin: 0 auto;display: block;}
+        }
+        
+    </style>
+</head>
+<body>
+	<article>
+    	<!--nav-->
+        <div class="nav_total">
+        	<div class="nav_total_all">
+        		<div class="total_l">
+        	    	<a class="total_l_logo">小鱼儿助花帮</a>
+        	    	<div class="total_l_city">
+        	    		<span class="q_g">全国</span>
+        	    		<select>
+        	    			<option value="">切换城市</option>
+        	    		</select>
+        	    		<div class="loca_tion">
+        	    			系统定位:
+        	    			<span>全国</span>
+        	    			<span class="loca_tion_j">直接进入</span>
+        	    		</div>
+        	    	</div>
+        	    </div>
+        	    <div class="total_r">
+        	    	<a href="#" class="on">首页</a>
+        	    	<a href="#">关于我们</a>
+        	    	<a href="#">客服中心</a>
+        	    </div>
+        	</div>
+        </div>
+        <!--navtab-->
+        <div class="navtab">
+        	<ul class="navtab_li">
+        		<li class="lion">云速帮</li>
+        		<li>高额帮</li>
+        		<li>信用卡</li>
+        	</ul>
+        </div>
+        <!--banner-->
+        <div class="banner">
+            <div class="banner_cont">
+                <div class="top_bg"></div>
+                <div class="bottom_bg"></div>
+                <div class="b_mid">
+                    <form action="#" class="b_form">
+                        <div class="b_form_row"><span>产品需求</span><input type="text" placeholder="请输入产品需求"></div>
+                        <div class="b_form_row"><span>产品额度</span><input type="text" placeholder="请输入产品额度"></div>
+                        <div class="b_form_row"><span>期&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;限</span><select name="" id="">
+                            <option value="">3期</option>
+                            <option value="">6期</option>
+                            <option value="">9期</option>
+                            <option value="">12期</option>
+                            <option value="">15期</option>
+                            <option value="">18期</option>
+                            <option value="">21期</option>
+                            <option value="">24期</option>
+                            <option value="">27期</option>
+                            <option value="">30期</option>
+                        </select></div>
+                        <div class="b_form_row"><span>手&nbsp;&nbsp;机&nbsp;&nbsp;号</span><input type="text" placeholder="请输入手机号"></div>
+                        <div class="b_form_row"><span>验&nbsp;&nbsp;证&nbsp;&nbsp;码</span><input type="text" placeholder="请输入验证码"></div>
+                        <a class="b_form_btn" href="javascript:;">提交申请</a>
+                    </form>
+                    <div class="b_mid_img_wrap">
+                        <div class="b_mid_img_1"><img src="images/bnkljk.png" alt=""></div><div class="b_mid_img_2"><img src="images/yioo.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--voucher-->
+        <div class="voucher">
+            <div class="voucher_img voucher_xyk"><img src="images/voucher_ybd.png"></div>
+            <div class="voucher_img voucher_geb"><img src="images/voucher_xyk.png"></div>
+        	<div class="voucher_img voucher_ybd"><img src="images/voucher_geb.png"></div>
+        </div>
+        <p class="recom">优质推荐</p>
+        <div class="h_push_list">
+            <div class="h_push_item">
+                <div class="h_push_row_1">
+                    <div class="h_push_col_1">
+                        <!-- <div class="h_push_img_header"><img src="images/precision_loan_02.png"></div> -->
+                        <div class="h_push_img_logo"><img src="images/precision_loan_03.png"></div>
+                    </div>
+                    <div class="h_push_col_2">
+                        <p class="h_push_p_1">平安i贷-应急贷</p>
+                        <p class="h_push_p_2">适用人群：所有人群</p>
+                        <p class="h_push_p_3">申请人数：1135248人</p>
+                    </div>
+                    <div class="h_push_col_3">
+                        <div class="h_push_tr">
+                            <div class="h_push_td">
+                                <p class="">成功率</p>
+                                <p class="color_red">45.00%</p>
+                            </div>
+                            <div class="h_push_td">
+                                <p class="">日利率</p>
+                                <p class="color_red">1%</p>
+                            </div>
+                        </div>
+                        <div class="h_push_tr">
+                            <div class="h_push_td">
+                                <p class="">平均额度</p>
+                                <p class="color_red"> 0.50万</p>
+                            </div>
+                            <div class="h_push_td">
+                                <p class="">平均用时</p>
+                                <p class="color_red"> 当日放款</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="h_push_row_3">
+                    <span class="active">身份证</span><span>网购账号</span><span>支付宝账号</span><span>信用卡</span><span>手机认证</span>
+                </div>
+            </div>
+            <div class="h_push_item">
+                <div class="h_push_row_1">
+                    <div class="h_push_col_1">
+                        <!-- <div class="h_push_img_header"><img src="images/precision_loan_02.png"></div> -->
+                        <div class="h_push_img_logo"><img src="images/precision_loan_03.png"></div>
+                    </div>
+                    <div class="h_push_col_2">
+                        <p class="h_push_p_1">曹操贷-极速贷款</p>
+                        <p class="h_push_p_2">适用人群：上班族、 个体户、大学生</p>
+                        <p class="h_push_p_3">申请人数：337290人</p>
+                    </div>
+                    <div class="h_push_col_3">
+                        <div class="h_push_tr">
+                            <div class="h_push_td">
+                                <p class="">成功率</p>
+                                <p class="color_red">25.00%</p>
+                            </div>
+                            <div class="h_push_td">
+                                <p class="">日利率</p>
+                                <p class="color_red">0.3%</p>
+                            </div>
+                        </div>
+                        <div class="h_push_tr">
+                            <div class="h_push_td">
+                                <p class="">平均额度</p>
+                                <p class="color_red">0.10万</p>
+                            </div>
+                            <div class="h_push_td">
+                                <p class="">平均用时</p>
+                                <p class="color_red">2小时</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="h_push_row_2">
+                    <p>最高额度：<span class="h_max_num">xxxx万</span></p>
+                </div> -->
+                <div class="h_push_row_3">
+                    <span class="active">身份证</span><span>网购账号</span><span>支付宝账号</span><span>信用卡</span><span>手机认证</span>
+                </div>
+            </div>
+            <div class="h_push_item">
+                <div class="h_push_row_1">
+                    <div class="h_push_col_1">
+                        <!-- <div class="h_push_img_header"><img src="images/precision_loan_02.png"></div> -->
+                        <div class="h_push_img_logo"><img src="images/precision_loan_04.png"></div>
+                    </div>
+                    <div class="h_push_col_2">
+                        <p class="h_push_p_1">现金侠-极速贷款</p>
+                        <p class="h_push_p_2">适用人群：所有人群</p>
+                        <p class="h_push_p_3">申请人数：313176人</p>
+                    </div>
+                    <div class="h_push_col_3">
+                        <div class="h_push_tr">
+                            <div class="h_push_td">
+                                <p class="">成功率</p>
+                                <p class="color_red">20.00%</p>
+                            </div>
+                            <div class="h_push_td">
+                                <p class="">日利率</p>
+                                <p class="color_red">0.9%</p>
+                            </div>
+                        </div>
+                        <div class="h_push_tr">
+                            <div class="h_push_td">
+                                <p class="">平均额度</p>
+                                <p class="color_red">0.05万</p>
+                            </div>
+                            <div class="h_push_td">
+                                <p class="">平均用时</p>
+                                <p class="color_red">1小时</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="h_push_row_2">
+                    <p>最高额度：<span class="h_max_num">xxxx万</span></p>
+                </div> -->
+                <div class="h_push_row_3">
+                    <span class="active">身份证</span><span>网购账号</span><span>支付宝账号</span><span>信用卡</span><span>手机认证</span>
+                </div>
+            </div>
+        </div>
+    </article>    
+</body>
+</html>
