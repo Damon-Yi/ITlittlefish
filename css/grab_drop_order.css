@@ -1,6 +1,6 @@
 /*抢单甩单列表*/
 .gd_order{color: #000;font-size: 0.18rem;}
-.gd_order .gd_top_cont{position: absolute;top: 0.62rem;left: 0;width: 100%;z-index: 2;}
+.gd_order .gd_top_cont{position: absolute;top: 0;left: 0;width: 100%;z-index: 2;}
 #sliderSegmentedControl .or_type_wrap{background-color: #fff;}
 #sliderSegmentedControl .or_type{width: 2.86rem;margin: 0 auto;overflow: auto;left: 25%;}
 #sliderSegmentedControl .or_type>a{width: 50%;float: left;display: block;height: 100%;font-size: 0.31rem;color: #000;border:1px solid #ff9000;text-align: center;height: 0.62rem;line-height: 0.62rem;margin-left:-1px;padding-left: 0;padding-right: 0;}
@@ -14,6 +14,7 @@
 .gd_tips>span{line-height: 1;vertical-align: middle;display: inline-block;}
 .gd_order .gd_order_list{font-size: 0.22rem;}
 .gd_order .gd_order_item{background-color: #fff;margin-bottom:0.2rem;padding: 0.22rem 0 0.02rem;}
+.gd_order .gd_order_item a{color: #000;}
 .gd_order .gd_order_item .gd_o_row{overflow: auto;margin-bottom:0.1rem; }
 .gd_order .gd_order_item .gd_o_col{display: inline-block;vertical-align: middle;}
 .gd_order .gd_order_item .gd_o_col1{width: 81%;padding-left:0.3rem; padding-right:0.2rem;}
@@ -40,7 +41,7 @@
 .filter_cont>ul.filter_l2{background: #eee;position: absolute;z-index: 2;left: 100%;}
 .filter_cont>ul.filter_l2>li{border-bottom: solid 1px #e5e5e5;}
 .filter_cont>ul.filter_l2>li:last-child{border-bottom:none;}
-.filter_cont_show{top: 1.58rem;}
+.filter_cont_show{top: 0.98rem;}
 .order_type_wrap.filter_cont{height:1.8rem;}
 /*订单详情*/
 .or_details{font-size:0.2rem;color: #000;}
