@@ -515,35 +515,63 @@
 	        function grabOrder(event,ordreNum,orderPreice){
 	        	console.log(event);
 	        	event.preventDefault();
-	        	var parmas = {
-					userId:'',
-					contractNo:ordreNum,
-					snatchAmt:orderPreice
-	        	};
-				$.ajax({
+	        	if(isSaler()){
+	        		var parmas = {
+						userId:'',
+						contractNo:ordreNum,
+						snatchAmt:orderPreice
+		        	};
+					$.ajax({
+	                    type:"post",
+	                    url:Config.url+"/snatchContractLoan",
+	                    data:parmas,
+	                    beforeSend:function(xhr, settings){
+	                        loader.show();
+	                    },
+	                    success:function(data, status, xhr){
+	                        console.log(data);
+	                        if(data.resultCode=='0000'){
+	                            callback(data);
+	                        }else if(data.resultCode=='9003'){
+								tips('鱼币余额不足','tips_center',1500);
+	                        }
+	                    },
+	                    error:function(xhr, errorType, error){
+	                        loader.hide();
+	                        error = error?error:'系统错误';
+	                        tips(error,'tips_center',1500);
+	                    },
+	                    complete:function(xhr, status){
+	                        loader.hide();
+	                    }
+	                });
+	        	}else{
+	        		location.href = 'grab_order_sales_certification.html';
+	        	}
+	        	
+	        }
+	        //判断是否是销售
+	        function isSaler(){
+	        	var flag = false;
+	        	$.ajax({
                     type:"post",
                     url:Config.url+"/snatchContractLoan",
-                    data:parmas,
+                    data:{userId:''},
+                    async:false,
                     beforeSend:function(xhr, settings){
-                        loader.show();
                     },
                     success:function(data, status, xhr){
                         console.log(data);
                         if(data.resultCode=='0000'){
-                            callback(data);
-                        }else if(data.resultCode=='9003'){
-							tips('鱼币余额不足','tips_center',1500);
+                            flag = true;
                         }
                     },
                     error:function(xhr, errorType, error){
-                        loader.hide();
-                        error = error?error:'系统错误';
-                        tips(error,'tips_center',1500);
                     },
                     complete:function(xhr, status){
-                        loader.hide();
                     }
                 });
+                return flag;
 	        }
 		</script>
 	</body>

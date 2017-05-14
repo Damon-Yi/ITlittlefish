@@ -77,7 +77,7 @@
                     <p class="or_u_txt"><span>是否有信用卡</span><span class="creditcard">有</span></p>
                 </div>
                 <div class="or_oper">
-                    <a href="grab_order_sales_certification.html" class="apply_btn">抢单</a>
+                    <a href="javascript:;" class="apply_btn">抢单</a>
                     <a href="javascript:;" class="rule_btn">请遵守抢单规则</a>
                 </div>
             </div>
@@ -141,7 +141,7 @@
         /*加载动画*/
         var loader = new loading({'container':document.body,'hasBg':false});
         var path = window.location.href;
-        var contractNo;
+        var contractNo,orderPreice;
         if(path.indexOf("contractNo=")>=0){
             var arr = path.split("&");
             for(var i = 0 ;i<arr.length;i++){
@@ -167,16 +167,17 @@
                 console.log(data);
                 if(data.resultCode=='0000'){
                     callback(data);
+                    orderPreice = data.snatchamt;
                     $('.u_name').text(data.customername);//
                     $('.u_pbone').text(data.customername);//手机号
                     $('.u_time').text(data.customername);//更新时间
+                    $('.u_num').text(data.snatchamt);//抢单价格
                     $('.or_num').text(data.loanamount);//贷款金额
                     $('.applydate').text(data.applydate);//申请时间
                     $('.age').text(data.age);//年龄
                     $('.applycity').text(data.applycity);//申请城市
                     $('.profession').text(data.profession);//职业
                     $('.monthlyincome').text(data.monthlyincome);//月收入
-                    $('.u_num').text(data.snatchamt);//抢单价格
                     $('.fixedassets_house').text(data.fixedassets==1?'有房产':'无房产');//固定资产，1，房，2车
                     $('.fixedassets_car').text(data.fixedassets==2?'有车':'无车产');//固定资产，1，房，2车
                     $('.socialinsurance_1').text(data.fixedassets==1?'有':'无');//社保公积金，1有，2无
@@ -206,6 +207,49 @@
                 layer.closeAll();
             });
         });
+        //抢单按钮
+        $('.apply_btn').on('tap',function(){
+            grabOrder(contractNo,orderPreice);
+        });
+        //抢单
+        function grabOrder(ordreNum,orderPreice){
+            console.log(event);
+            event.preventDefault();
+            if(isSaler()){
+                var parmas = {
+                    userId:'',
+                    contractNo:ordreNum,
+                    snatchAmt:orderPreice
+                };
+                $.ajax({
+                    type:"post",
+                    url:Config.url+"/snatchContractLoan",
+                    data:parmas,
+                    beforeSend:function(xhr, settings){
+                        loader.show();
+                    },
+                    success:function(data, status, xhr){
+                        console.log(data);
+                        if(data.resultCode=='0000'){
+                            callback(data);
+                        }else if(data.resultCode=='9003'){
+                            tips('鱼币余额不足','tips_center',1500);
+                        }
+                    },
+                    error:function(xhr, errorType, error){
+                        loader.hide();
+                        error = error?error:'系统错误';
+                        tips(error,'tips_center',1500);
+                    },
+                    complete:function(xhr, status){
+                        loader.hide();
+                    }
+                });
+            }else{
+                location.href = 'grab_order_sales_certification.html';
+            }
+            
+        }
     </script>
     </body>
 </html>
