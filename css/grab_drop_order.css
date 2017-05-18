@@ -33,8 +33,8 @@
 .gd_order_cont{position: absolute;top: 1.58rem;bottom:0;width: 100%;left: 0;overflow-y: scroll;}
 
 /*选择省市*/
-.filter_cont{position:absolute;top: -65%;width: 100%;height: 50%;z-index: 1;-webkit-transition-duration: 0.4s;border-bottom: solid 1px #e5e5e5;overflow-x:hidden; }
-.filter_cont>ul{margin: 0;padding: 0;overflow: auto;/* height: 100%; */width: 100%;-webkit-transition-duration: 0.4s;}
+.filter_cont{position:absolute;top: -65%;width: 100%;height:4rem;z-index: 1;-webkit-transition-duration: 0.4s;border-bottom: solid 1px #e5e5e5;overflow-x:hidden; }
+.filter_cont>ul{margin: 0;padding: 0;overflow: auto;height: 100%;width: 100%;-webkit-transition-duration: 0.4s;}
 .filter_cont>ul>li{font-size: 0.24rem;padding:0.1rem 0 0.1rem 0.4rem;border-bottom: solid 1px #eee;}
 .filter_cont>ul>li:last-child{border-bottom:none;}
 .filter_cont>ul.filter_l1{background: #fafafa;position: absolute;z-index: 1;}

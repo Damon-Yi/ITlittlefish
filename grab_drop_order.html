@@ -55,45 +55,15 @@
 		        </div>
 		        <div class="city_wrap filter_cont">
 		            <ul class="filter_l1" id="gradew">
-		                <li>哈尔滨</li>
-		                <li>全国</li>
-		                <li>北京</li>
-		                <li>天津</li>
-		                <li>河北</li>
-		                <li>山西</li>
-		                <li>内蒙古</li>
-		                <li>辽宁</li>
-		                <li>吉林</li>
-		                <li>黑龙江</li>
-		                <li>上海</li>
-		                <li>江苏</li>
-		                <li>山东</li>
-		                <li>河南</li>
-		                <li>湖北</li>
-		                <li>湖南</li>
-		                <li>广东</li>
-		                <li>广西</li>
-		                <li>海南</li>
 		            </ul>
 		            <ul class="filter_l2" id="gradet">
-		                <li>全河北</li>
-		                <li>石家庄</li>
-		                <li>唐山</li>
-		                <li>秦皇岛</li>
-		                <li>邢台</li>
-		                <li>保定</li>
-		                <li>张家口</li>
-		                <li>承德</li>
-		                <li>沧州</li>
-		                <li>廊坊</li>
-		                <li>衡水</li>
 		            </ul>
 		        </div>
 		        <div class="order_type_wrap filter_cont">
 		            <ul class="filter_l1">
-		                <li>全部订单</li>
-		                <li>可抢订单</li>
-		                <li>免费订单</li>
+		                <li data-value="0">全部订单</li>
+		                <li data-value="1">可抢订单</li>
+		                <li data-value="2">免费订单</li>
 		            </ul>
 		        </div>
 				<div class="mui-slider-group">
@@ -382,9 +352,11 @@
 		<script src="plugin/mui/js/mui.min.js"></script>
 		<script src="plugin/mui/js/mui.pullToRefresh.js"></script>
 		<script src="plugin/mui/js/mui.pullToRefresh.material.js"></script>
+		<script src="plugin/mui/js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
 		<script>
 			/*加载动画*/
 	        var loader = new loading({'container':document.body,'hasBg':false});
+	        var page = 1,pageSize = 5;
 			mui.init();
 			(function($) {
 				//阻尼系数
@@ -396,13 +368,12 @@
 				});
 				$.ready(function() {
 					//循环初始化所有下拉刷新，上拉加载。
-					var page = 1,pageSize = 5;
 					$.each(document.querySelectorAll('.mui-slider-group .mui-scroll'), function(index, pullRefreshEl) {
 						$(pullRefreshEl).pullToRefresh({
 							down: {
 								callback: function() {
 									var self = this;
-									getData(1,pageSize,function(data){
+									getData(1,pageSize,$('.or_city>span').attr('data-id'),$('.or_order_type>span').attr('data-id'),function(data){
 										setTimeout(function() {
 											page = 1;
 											var ul = self.element.querySelector('.mui-table-view');
@@ -416,7 +387,7 @@
 								callback: function() {
 									var self = this;
 									
-									getData(page+1,pageSize,function(data){
+									getData(page+1,pageSize,$('.or_city>span').attr('data-id'),$('.or_order_type>span').attr('data-id'),function(data){
 										setTimeout(function() {
 											page++;
 											var ul = self.element.querySelector('.mui-table-view');
@@ -436,6 +407,31 @@
 	            $(this).siblings().removeClass('active');
 	            $(this).addClass('active');
 	        });
+	        for(var i=0;i<cityData3.length;i++){
+	        	var tmpLi = $('<li data-value="'+cityData3[i].value+'">'+cityData3[i].text+'</li>');
+	        	tmpLi.on('click',cityData3[i].children,function(e){
+	        		var children = e.data;
+	        		$('#gradet').empty();
+	        		for(var i=0;i<children.length;i++){
+	        			var tmpSubLi = $('<li data-value="'+children[i].value+'">'+children[i].text+'</li>');
+	        			tmpSubLi.on('click',function(e){
+				            $('.or_city>span').attr('data-id',$(this).attr('data-value')).text($(this).text());
+				            $('.city_wrap').removeClass('filter_cont_show');
+				            //筛选数据
+				            getData(1,pageSize,$('.or_city>span').attr('data-id'),$('.or_order_type>span').attr('data-id'),function(data){
+								setTimeout(function() {
+									page = 1;
+									var ul = self.element.querySelector('.mui-table-view');
+									ul.insertBefore(createFragment(ul, index, data, true), ul.firstChild);
+								}, 500);
+							});
+				        });
+	        			$('#gradet').append(tmpSubLi);
+	        		}
+		            $(".city_wrap .filter_l2").css("left","50%");
+		        });
+	        	$('#gradew').append(tmpLi);
+	        }
 	        /*选择省市*/
 	        $(".or_city").on('click',function(){
 	            $('.order_type_wrap').removeClass('filter_cont_show');
@@ -445,13 +441,7 @@
 	                $('.city_wrap').addClass('filter_cont_show');
 	            }
 	        });
-	        $(".city_wrap .filter_l1>li").click(function(){
-	            $(".city_wrap .filter_l2").css("left","50%");
-	        });
-	        $(".city_wrap .filter_l2>li").click(function(){
-	            $('.or_city>span').text($(this).text());
-	            $('.city_wrap').removeClass('filter_cont_show');
-	        });
+	        
 	        /*选择订单类型*/
 	        $(".or_order_type").on('click',function(){
 	            $('.city_wrap').removeClass('filter_cont_show');
@@ -462,11 +452,19 @@
 	            }
 	        });
 	        $(".order_type_wrap .filter_l1>li").click(function(){
-	            $('.or_order_type>span').text($(this).text());
+	            $('.or_order_type>span').attr('data-id',$(this).attr('data-value')).text($(this).text());
 	            $('.order_type_wrap').removeClass('filter_cont_show');
+	            //筛选数据
+	            getData(1,pageSize,$('.or_city>span').attr('data-id'),$('.or_order_type>span').attr('data-id'),function(data){
+					setTimeout(function() {
+						page = 1;
+						var ul = self.element.querySelector('.mui-table-view');
+						ul.insertBefore(createFragment(ul, index, data, true), ul.firstChild);
+					}, 500);
+				});
 	        });
 	        //获取单页数据
-	        function getData(pageNum,pageSize,callback){
+	        function getData(pageNum,pageSize,applyCity,isSnatch,callback){
 				var parmas = {
 					userId:'',
 					pageSize:pageSize,
