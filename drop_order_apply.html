@@ -32,7 +32,7 @@
 <body>
     <div class="page_header">
         <p>甩单申请</p>
-        <div class="right_add"><i class="position"></i><span>深圳</span></div>
+        <div class="right_add"><i class="position"></i><span class="addCity"></span></div>
     </div>
     <div class="page_cont">
         <div class="h_require">
@@ -251,29 +251,13 @@
     <script src="plugin/mui/js/mui.picker.min.js"></script>
     <script src="plugin/mui/js/mui.poppicker.js"></script>
     <script src="plugin/mui/js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/getcurrCity.js"></script>
     <script>
         var loader = new loading({'container':document.body,'hasBg':false});
         var careerData ={};//工作信息
         var openid;
 
-        /*loader.show();
-        //用户信息
-        getOpenId();//获取openId
-        //Cookie.set("xiaoyuerUserMes",JSON.stringify({msecode:1,openid:'obDm_wPQs9w-1wiTJ0c8pD2dsfVM'}));//测试
-        if(Cookie.get("xiaoyuerUserMes")){
-            console.log(Cookie.get("xiaoyuerUserMes"))
-            xiaoYuInfo =JSON.parse(Cookie.get("xiaoyuerUserMes"));
-            if(xiaoYuInfo.msecode==0){//msecode 1 注册，0 未注册
-                tips('您还未注册，即将前往注册页面','tips_center',1500);
-                setTimeout(function(){
-                    location.href = 'register.html';
-                },1500);
-            }else{
-                openid = xiaoYuInfo.openid;
-                loader.hide();
-            }
-        }*/
-        /*if (!Cookie.get("xiaoyuerUserMes")) {
+        if (!Cookie.get("xiaoyuerUserMes")) {
             getOpenId();
         } else {
             var xiaoyuerUserMes = Cookie.get("xiaoyuerUserMes");
@@ -281,7 +265,7 @@
             if (openid == undefined) {
                 getOpenId();
             }
-        }*/
+        }
 
         (function($, doc) {
             $.init();

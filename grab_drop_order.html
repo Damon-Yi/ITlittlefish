@@ -47,8 +47,8 @@
 		                </div>
 		            </div> -->
 		            <ul class="or_filter">
-		                <li class="or_city"><span>城市</span></li>
-		                <li class="or_order_type"><span>订单分类</span></li>
+		                <li class="or_city" data-id=""><span>城市</span></li>
+		                <li class="or_order_type" data-id=""><span>订单分类</span></li>
 		                <!-- <li><span>筛选</span></li> -->
 		            </ul>
 		            <div class="gd_tips"><img src="images/grab_order_01.png" alt=""><span>VIP会员，每天都有一次免费抢单哦！</span></div>
@@ -357,6 +357,26 @@
 			/*加载动画*/
 	        var loader = new loading({'container':document.body,'hasBg':false});
 	        var page = 1,pageSize = 5;
+	        var openid;
+	        /*if (!Cookie.get("xiaoyuerUserMes")) {
+	            getOpenId();
+	        } else {
+	            var xiaoyuerUserMes = Cookie.get("xiaoyuerUserMes");
+	            openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
+	            if (openid == undefined) {
+	                getOpenId();
+	            }
+	        }
+	        checkRegisterUser();*/
+
+	        //筛选数据
+            getData(1,pageSize,$('.or_city').attr('data-id'),$('.or_order_type').attr('data-id'),function(data){
+				setTimeout(function() {
+					page = 1;
+					var ul = self.element.querySelector('.mui-table-view');
+					ul.insertBefore(createFragment(ul, index, data, true), ul.firstChild);
+				}, 500);
+			});
 			mui.init();
 			(function($) {
 				//阻尼系数
@@ -373,7 +393,9 @@
 							down: {
 								callback: function() {
 									var self = this;
-									getData(1,pageSize,$('.or_city>span').attr('data-id'),$('.or_order_type>span').attr('data-id'),function(data){
+									var city = document.getElementsByClassName('or_city')[0].getAttribute('data-id');
+									var orderType = document.getElementsByClassName('or_order_type')[0].getAttribute('data-id');
+									getData(1,pageSize,city,orderType,function(data){
 										setTimeout(function() {
 											page = 1;
 											var ul = self.element.querySelector('.mui-table-view');
@@ -386,8 +408,9 @@
 							up: {
 								callback: function() {
 									var self = this;
-									
-									getData(page+1,pageSize,$('.or_city>span').attr('data-id'),$('.or_order_type>span').attr('data-id'),function(data){
+									var city = document.getElementsByClassName('or_city')[0].getAttribute('data-id');
+									var orderType = document.getElementsByClassName('or_order_type')[0].getAttribute('data-id');
+									getData(1,pageSize,city,orderType,function(data){
 										setTimeout(function() {
 											page++;
 											var ul = self.element.querySelector('.mui-table-view');
@@ -415,10 +438,11 @@
 	        		for(var i=0;i<children.length;i++){
 	        			var tmpSubLi = $('<li data-value="'+children[i].value+'">'+children[i].text+'</li>');
 	        			tmpSubLi.on('click',function(e){
-				            $('.or_city>span').attr('data-id',$(this).attr('data-value')).text($(this).text());
+				            $('.or_city').attr('data-id',$(this).attr('data-value'));
+				            $('.or_city>span').text($(this).text())
 				            $('.city_wrap').removeClass('filter_cont_show');
 				            //筛选数据
-				            getData(1,pageSize,$('.or_city>span').attr('data-id'),$('.or_order_type>span').attr('data-id'),function(data){
+				            getData(1,pageSize,$('.or_city').attr('data-id'),$('.or_order_type').attr('data-id'),function(data){
 								setTimeout(function() {
 									page = 1;
 									var ul = self.element.querySelector('.mui-table-view');
@@ -452,10 +476,11 @@
 	            }
 	        });
 	        $(".order_type_wrap .filter_l1>li").click(function(){
-	            $('.or_order_type>span').attr('data-id',$(this).attr('data-value')).text($(this).text());
+	            $('.or_order_type').attr('data-id',$(this).attr('data-value'));
+	            $('.or_order_type>span').text($(this).text())
 	            $('.order_type_wrap').removeClass('filter_cont_show');
 	            //筛选数据
-	            getData(1,pageSize,$('.or_city>span').attr('data-id'),$('.or_order_type>span').attr('data-id'),function(data){
+	            getData(1,pageSize,$('.or_city').attr('data-id'),$('.or_order_type').attr('data-id'),function(data){
 					setTimeout(function() {
 						page = 1;
 						var ul = self.element.querySelector('.mui-table-view');
@@ -466,7 +491,7 @@
 	        //获取单页数据
 	        function getData(pageNum,pageSize,applyCity,isSnatch,callback){
 				var parmas = {
-					userId:'',
+					userId:Cookie.get('userId'),
 					pageSize:pageSize,
 					pageNo:pageNum,
 					applyCity:'',
@@ -515,7 +540,7 @@
 	        	event.preventDefault();
 	        	if(isSaler()){
 	        		var parmas = {
-						userId:'',
+						userId:Cookie.get('userId'),
 						contractNo:ordreNum,
 						snatchAmt:orderPreice
 		        	};
@@ -554,7 +579,7 @@
 	        	$.ajax({
                     type:"post",
                     url:Config.url+"/snatchContractLoan",
-                    data:{userId:''},
+                    data:{userId:Cookie.get('userId')},
                     async:false,
                     beforeSend:function(xhr, settings){
                     },
