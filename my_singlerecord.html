@@ -84,23 +84,23 @@
     	reorientate();
 		checkRegisterUser();
 		//切换抢单与甩单的状态
-		record('querySnatchRecord');
+		querySnatchRecord();
 		$(".singlerstyle").find("p").on("tap",function(){
 			$(this).css("background","#f18a09").siblings("p").css("background","#ff9408");
 			var _index = $(this).index();
 			if(_index == 0){
 				$(".dottitle").find("span").eq(0).html("抢单");
-				record('querySnatchRecord');
+				querySnatchRecord()
 			}else{
 				$(".dottitle").find("span").eq(0).html("甩单");
-				record('queryTossRecord');
+				queryTossRecord()
 			}
 		});
 		//抢单记录
-		function record(url){
+		function querySnatchRecord(){
 			$.ajax({
 		        type:"post",
-		        url:Config.url/+url,
+		        url:Config.url+"/querySnatchRecord",
 		        data:{
 		        	/*'userId':xiaoyuuserId,*/
 		        	'userId':"17050609270GD2SVzXPGNYRqD1B2x",
@@ -117,6 +117,26 @@
 		        },
 			})
 		}
-		
+		//甩单记录
+		function queryTossRecord(){
+			$.ajax({
+		        type:"post",
+		        url:Config.url+"/queryTossRecord",
+		        data:{
+		        	/*'userId':xiaoyuuserId,*/
+		        	'userId':"17050609270GD2SVzXPGNYRqD1B2x",
+		        	pageNo:1,
+		        	pageSize:10
+		        },
+		        success:function(data, status, xhr){
+		        	console.log(data)
+		        	
+		        },
+		        error:function(xhr, errorType, error){
+		        	console.log(000)
+		          	
+		        },
+			})
+		}
     </script>
 </html>
