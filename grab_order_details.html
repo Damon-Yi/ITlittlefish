@@ -259,7 +259,9 @@
                     success:function(data, status, xhr){
                         console.log(data);
                         if(data.resultCode=='0000'){
-                            location.href = 'grab_drop_order_apply_suc.html';
+                            location.href = 'grab_order_apply_suc.html';
+                        }else{
+                            tips(data.resultMessage,'tips_center',1500);
                         }
                     },
                     error:function(xhr, errorType, error){
