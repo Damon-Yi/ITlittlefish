@@ -141,7 +141,7 @@
 	        var loader = new loading({'container':document.body,'hasBg':false});
 	        var page = 1,pageSize = 5;
 	        var openid;
-	        /*if (!Cookie.get("xiaoyuerUserMes")) {
+	        if (!Cookie.get("xiaoyuerUserMes")) {
 	            getOpenId();
 	        } else {
 	            var xiaoyuerUserMes = Cookie.get("xiaoyuerUserMes");
@@ -150,7 +150,7 @@
 	                getOpenId();
 	            }
 	        }
-	        checkRegisterUser();*/
+	        checkRegisterUser();
 
 	        //筛选数据
             getData(1,pageSize,$('.or_city').attr('data-id'),$('.or_order_type').attr('data-id'),function(data){
