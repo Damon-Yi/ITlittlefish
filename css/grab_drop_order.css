@@ -15,7 +15,7 @@
 .gd_order .gd_order_list{font-size: 0.22rem;}
 .gd_order .gd_order_item{background-color: #fff;margin-bottom:0.2rem;padding: 0.22rem 0 0.02rem;}
 .gd_order .gd_order_item a{color: #000;}
-.gd_order .gd_order_item .gd_o_row{overflow: auto;margin-bottom:0.1rem; }
+.gd_order .gd_order_item .gd_o_row{margin-bottom:0.1rem;min-height: 0.65rem;}
 .gd_order .gd_order_item .gd_o_col{display: inline-block;vertical-align: middle;}
 .gd_order .gd_order_item .gd_o_col1{width: 81%;padding-left:0.3rem; padding-right:0.2rem;}
 .gd_order .gd_order_item .gd_o_col1 .gd_o_info1{padding-bottom: 0.14rem;border-bottom:1px solid #ddd;}
