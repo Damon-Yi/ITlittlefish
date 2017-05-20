@@ -135,10 +135,9 @@
 		};
         $.ajax({
 	        type:"post",
-	        url:Config.url+"/queryApplyLedger",
+	        url:Config.url+"/showSalesPerformance",
 	        data:{
 	        	'userId':xiaoyuuserId,
-	        	pageNo:1,
 	        },
 	        success:function(data, status, xhr){
 	        	console.log(data)
