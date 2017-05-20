@@ -12,7 +12,7 @@
     <style>
         
     </style>
-    <script type="text/javascript">
+    <!--<script type="text/javascript">
         var aScroll;
         function loaded () {
             aScroll = new IScroll('#cont_wrapper',{
@@ -24,12 +24,12 @@
             });
         }
        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-    </script>
+    </script>-->
 </head>
-<body onload="loaded()">
+<body >
     <div class="page_header">业绩管理</div>
-    <div id="cont_wrapper">
-        <div>
+    <div id="cont_wrapper" style="overflow: scroll;">
+        <div >
             <!--业绩管理头部信息-->
             <div class="performance_Mes">
             	<p>本月业绩达成率</p>
@@ -78,13 +78,8 @@
             		<span>业绩</span>
             		<span>达成率</span>
             		<span>获佣</span>
-            	</div>
-            	<div class="resultscontent">
-        			<span>东区</span>
-            		<span>200万</span>
-            		<span>99%</span>
-            		<span>50000</span>
             	</div>-->
+            	
             </div>
             <div class="resultslist">
             	<p>
@@ -100,23 +95,18 @@
             		<span>达成率</span>
             		<span>获佣</span>
             	</div>
-            	<div class="resultscontent">
-            		<span>东区</span>
-            		<span>200万</span>
-            		<span>99%</span>
-            		<span>50000</span>
-            	</div>-->
+            	-->
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
+    <!--<script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>-->
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
     <script>
         var xiaoyuuserId;
     	var hrefurl = window.location.href;
-    	//reorientate();
-		//checkRegisterUser();
+    	reorientate();
+		checkRegisterUser();
 		if (Cookie.get("userId")) {
 			
 			xiaoyuuserId = Cookie.get("userId");
