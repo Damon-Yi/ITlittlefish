@@ -372,7 +372,7 @@
 					if(data[i].isRobbed==0){
 						grabBtn = '<a href="grab_order_details.html?contractNo='+data[i].applyserialno+'" class="gd_grab_btn">立即抢单</a>';
 					}
-					li.innerHTML = '<div class="gd_order_item"><div class="gd_o_row"><a href="grab_order_details.html?contractNo='+data[i].applyserialno+'"><div class="gd_o_col gd_o_col1"><div class="gd_o_info1"><span class="gd_o_name">'+data[i].customername+'</span><span class="gd_o_edu"><i>'+data[i].loanamount+'</i>万元</span><span>'+data[i].applycity+'</span><span>月收入'+data[i].monthlyincome+'</span></div><div class="gd_o_info2"><img class="gd_o_flag" src="images/grab_order_04.png" alt="">'+tmpHtml+'</div></div><div class="gd_o_col gd_o_col2"><img class="gd_o_fish" src="images/grab_order_02.png" alt=""><p><span>'+data[i].snatchamt+'</span>鱼币</p></div></a></div><div class="gd_o_row">'+grabBtn+'</div></div>';
+					li.innerHTML = '<div class="gd_order_item"><div class="gd_o_row"><a href="grab_order_details.html?contractNo='+data[i].applyserialno+'"><div class="gd_o_col gd_o_col1"><div class="gd_o_info1"><span class="gd_o_name">'+data[i].customername+'</span><span class="gd_o_edu"><i>'+data[i].loanamount+'</i>万元</span><span>'+data[i].applycity+'</span><span>月收入'+data[i].monthlyincome+'</span></div><div class="gd_o_info2"><img class="gd_o_flag" src="images/grab_order_04.png" alt="">'+tmpHtml+'</div></div><div class="gd_o_col gd_o_col2"><img class="gd_o_fish" src="images/grab_order_02.png" alt=""><p><span>'+data[i].tossforamt+'</span>鱼币</p></div></a></div><div class="gd_o_row">'+grabBtn+'</div></div>';
 					
 					$(ul).append(li);
 				}
