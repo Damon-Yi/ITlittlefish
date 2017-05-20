@@ -34,7 +34,7 @@
             	<p>余额</p>
             	<p>
             		<img src="images/yue.png"/>
-            		<span>0.00元</span>
+            		<span class="yue">0.00元</span>
             	</p>
             	<p>收入计入余额，可消费可提现</p>
             	<div class="member">
@@ -50,7 +50,7 @@
             			<span> 鱼币余额 </span>
             		</p>
             		<p class="results">
-            			<span>0.00</span>
+            			<span class="resultsyubi">0.00</span>
             		</p>
             	</div>
             	<div class="monthly bordernone">
@@ -140,7 +140,11 @@
 			},
 			success : function(data, status, xhr) {
 				console.log(data)
-
+				if(data.length == 1){
+					$(".yue").html(data.balance);
+					$(".resultsyubi").html(data.fishbalance)
+				}
+				
 			},
 			error : function(xhr, errorType, error) {
 				console.log(000)
