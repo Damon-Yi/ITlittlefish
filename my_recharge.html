@@ -21,7 +21,7 @@
         .rule_txt .p_txt_1{text-indent: 0.4rem;text-align: justify;}
         .rule_txt_close{position: absolute;right: 5px;top: 5px;width: 30px;height: 30px;margin-left: 0;background-position: -149px -31px;background-image: url(images/icon.png);background-repeat:no-repeat;}
     </style>
-    <script type="text/javascript">
+   <script type="text/javascript">
         var aScroll;
         function loaded () {
             aScroll = new IScroll('#cont_wrapper',{
@@ -67,10 +67,14 @@
             		<span>5000鱼币</span>
             		<span>(送1480鱼币)</span>
             	</p>
+            	<p class="rechargeprice Otheramount " style="line-height: .6rem;">
+            		其他金额
+            	</p>
             </div>
             <div class="rechargenum" style="background: white;">
             	<span>充值金额</span>
             	<span class="pricemoney">100元</span>
+            	<input type="number" class="pricemoneynumber" placeholder="输入金额" style="display: none;"/>
             </div>
             <div class="rechargeapply">
             	<span>选择支付方式</span>

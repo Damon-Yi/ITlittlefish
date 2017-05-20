@@ -10,7 +10,20 @@
     <link rel="stylesheet" type="text/css" href="css/my_singlerecord.css"/>
     <script src="js/public.js"></script>
     <style>
-        
+        select{background: transparent;border: none;width: 100%;color: #ff811b;text-indent: 20%;}
+       select option{text-align: center;}
+        .selectnext{
+		   width: 0.15rem !important;
+		   height: 0.15rem;
+		   display: block;
+		   background: transparent;
+		   position: absolute;
+		   right: 8%;
+		   top: 0.1rem;
+		   border-left: .15rem solid transparent;
+		   border-bottom: .15rem solid #ff811b;
+		   transform: rotate(45deg);
+   		}
     </style>
     <script type="text/javascript">
         var aScroll;
@@ -50,28 +63,26 @@
             	<ul>
             		<li class="dotproduct bordernone">姓名</li>
             		<li class="dotdate bordernone">手机号</li>
-            		<li class="dotstyle bordernone">抢单日期</li>
+            		<li style='width: 22%;' class="dotstyle bordernone">抢单日期</li>
             		<li class="dotproduct bordernone">订单详情</li>
-            		<li class="dotdate bordernone">申请日期</li>
-            		<li class="dotstyle bordernone">是否申请</li>
+            		<li class="dotdate bordernone">是否申请</li>
+            		<li style='width: 10%;' class="dotstyle bordernone">操作</li>
             	</ul>
             	<div class="singlefirst">
-	            	<ul>
+	            	<!--<ul>
 	            		<li>张三</li>
 	            		<li>15118057969</li>
 	            		<li>2017/3/28</li>
 	            		<li>订单详情</li>
-	            		<li>-请选择-</li>
-	            		<li class="bordernone">-请选择-</li>
-	            	</ul>
-	            	<ul>
-	            		<li>张三</li>
-	            		<li>15118057969</li>
-	            		<li>2017/3/28</li>
-	            		<li>订单详情</li>
-	            		<li>-请选择-</li>
-	            		<li class="bordernone">-请选择-</li>
-	            	</ul>
+	            		<li>
+	            			<select name="">
+	            				<option value="">-请选择-</option>
+	            				<option value="">是</option>
+	            				<option value="">否</option>
+            				</select>
+	            		</li>
+	            		<li class="bordernone">保存</li>
+	            	</ul>-->
             	</div>
             </div>
         </div>
@@ -79,10 +90,167 @@
     <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
-    <script src="js/singlerecord.js" type="text/javascript" charset="utf-8"></script>
     <script>
         var hrefurl = window.location.href;
     	reorientate();
-		checkRegisterUser(window.location.href);
+		checkRegisterUser();
+		//抢单甩单次数
+		$.ajax({
+			type : "POST",
+			url : Config.url + "/querySnatchTossNum",
+			data : {
+				'userId':"17050609270GD2SVzXPGNYRqD1B2x",
+			},
+			success : function(data, status, xhr) {
+				console.log(data)
+				if(data.resultCode == '0000'){
+					$('.singlerall').find('p').eq(0).find("span").html(data.object.snatchNum)
+					$('.singlerall').find('p').eq(1).find("span").html(data.object.tossNum)
+				}else{
+					layer.open({
+						content:data.resultMessage,
+						btn:'确认'
+					})
+				}
+			},
+			error: function(xhr, errorType, error){
+                error = error?error:'系统错误';
+                tips(error,'tips_center',1500);
+            }
+		})
+		//切换抢单与甩单的状态
+		
+		
+		querySnatchRecord();
+		$(".singlerstyle").find("p").on("tap",function(){
+			$(".singlefirst").children().remove()
+			$(this).css("background","#f18a09").siblings("p").css("background","#ff9408");
+			var _index = $(this).index();
+			if(_index == 0){
+				$(".dottitle").find("span").eq(0).html("抢单");
+				querySnatchRecord()
+			}else{
+				$(".dottitle").find("span").eq(0).html("甩单");
+				queryTossRecord()
+			}
+		});
+		//抢单记录
+		function querySnatchRecord(){
+			$.ajax({
+		        type:"post",
+		        url:Config.url+"/querySnatchRecord",
+		        data:{
+		        	/*'userId':xiaoyuuserId,*/
+		        	'userId':"17050609270GD2SVzXPGNYRqD1B2x",
+		        	pageNo:1,
+		        	pageSize:10
+		        },
+		        success:function(data, status, xhr){
+		        	console.log(data)
+		        	var items = data.object.rows
+		        	for(var i = 0 ;i < items.length;i ++){
+		        		var Ul = $("<ul></ul>");
+		        		var Li01 = $("<li>"+items[i].customerName+"</li>");
+            			var Li02 = $("<li>"+items[i].mobilePhone+"</li>");
+            			var Li03 = $("<li style='width: 22%;'>"+items[i].snatchDate+"</li>");
+            			var Li04 = $("<li>订单详情</li>");
+            			var Li05 = $("<li></li>");
+            			var select01 = $("<select></select>");
+			            var option01 = $("<option>-请选择-</option>") 
+			            var option02 = $("<option>-是-</option>") 
+	            		var option03 = $("<option>-否-</option>")
+	            		select01.append(option01);
+			            select01.append(option02);
+			            select01.append(option03);
+			            Li05.append(select01);
+        				var Li06 = $("<li style='width:10%' onclick=conservation1("+items[i].contractNo+","+this+")>保存</li>");
+		        		Ul.append(Li01);
+			            Ul.append(Li02);
+			            Ul.append(Li03);
+			            Ul.append(Li04);
+			            Ul.append(Li05);
+			            Ul.append(Li06);
+			            $('.singlefirst').append(Ul)
+		        	}	
+		        },
+		        error:function(xhr, errorType, error){
+		        	console.log(000)
+		          	
+		        },
+			})
+		};
+		//更新抢单
+		function conservation1(contractNo,el){
+			var loanstatushtml = $(el).prev("li").find('select').val();
+	    	if(loanstatushtml == "是"){
+	    		loanstatus = 0
+	    	}else{
+	    		loanstatus = 1
+	    	}
+	    	console.log(loanstatus)
+			$.ajax({
+			type : "POST",
+			url : Config.url + "/updateSnatchRecordStatus",
+			data : {
+				'userId':"17050609270GD2SVzXPGNYRqD1B2x",
+				applyStatus:loanstatus,
+				contractNo:contractNo
+			},
+			success : function(data, status, xhr) {
+				console.log(data)	
+			},
+			error: function(xhr, errorType, error){
+                error = error?error:'系统错误';
+                tips(error,'tips_center',1500);
+            }
+		})
+		}
+		//甩单记录
+		function queryTossRecord(){
+			$.ajax({
+		        type:"post",
+		        url:Config.url+"/queryTossRecord",
+		        data:{
+		        	/*'userId':xiaoyuuserId,*/
+		        	'userId':"17050609270GD2SVzXPGNYRqD1B2x",
+		        	pageNo:1,
+		        	pageSize:10
+		        },
+		        success:function(data, status, xhr){
+		        	console.log(data)
+		        	var items = data.object.rows
+		        	for(var i = 0 ;i < items.length;i ++){
+		        		var Ul = $("<ul></ul>");
+		        		var Li01 = $("<li>"+items[i].customerName+"</li>");
+            			var Li02 = $("<li>"+items[i].mobilePhone+"</li>");
+            			var Li03 = $("<li style='width: 22%;'>"+items[i].snatchDate+"</li>");
+            			var Li04 = $("<li>订单详情</li>");
+            			var Li05 = $("<li></li>");
+            			var select01 = $("<select></select>");
+			            var option01 = $("<option>-请选择-</option>") 
+			            var option02 = $("<option>-是-</option>") 
+	            		var option03 = $("<option>-否-</option>")
+	            		select01.append(option01);
+			            select01.append(option02);
+			            select01.append(option03);
+			            Li05.append(select01);
+        				var Li06 = $("<li onclick=conservation1("+this+") style='width:10%'>保存</li>");
+		        		Ul.append(Li01);
+			            Ul.append(Li02);
+			            Ul.append(Li03);
+			            Ul.append(Li04);
+			            Ul.append(Li05);
+			            Ul.append(Li06);
+			            $('.singlefirst').append(Ul)
+		        	}		
+		        },
+		        error:function(xhr, errorType, error){
+		        	console.log(000)
+		          	
+		        },
+			})
+		}
+		
+		
     </script>
 </html>
