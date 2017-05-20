@@ -39,7 +39,7 @@
             	</p>
             	<p>申请成功，日获顾客户总额</p>
             	<div class="member">
-					<p class="upgrade">销售总监(<span>0066</span>)</p> 
+					<p class="upgrade">(<span></span>)</p> 
 					<p class="recharge">全国</p> 
 				</div>
             </div>
@@ -68,38 +68,33 @@
             <div class="resultslist">
             	<p>
             		<span>本月业绩</span>
-            		<a href="#">
+            		<!--<a href="#">
             			<span>更多</span>
             			<img class="next" src="images/next.png"/>
-            		</a>
+            		</a>-->
             	</p>
-            	<div class="resultscontent">
+            	<!--<div class="resultscontent">
             		<span>区域</span>
             		<span>业绩</span>
             		<span>达成率</span>
             		<span>获佣</span>
             	</div>
             	<div class="resultscontent">
-            		<span>东区</span>
+        			<span>东区</span>
             		<span>200万</span>
             		<span>99%</span>
             		<span>50000</span>
-            	</div>
-            	<div class="resultscontent">
-            		<span>东区</span>
-            		<span>200万</span>
-            		<span>99%</span>
-            		<span>50000</span>
-            	</div>
-            	
+            	</div>-->
+            </div>
+            <div class="resultslist">
             	<p>
             		<span>二月业绩</span>
-            		<a href="#">
+            		<!--<a href="#">
             			<span>更多</span>
             			<img class="next" src="images/next.png"/>
-            		</a>
+            		</a>-->
             	</p>
-            	<div class="resultscontent">
+            	<!--<div class="resultscontent">
             		<span>区域</span>
             		<span>业绩</span>
             		<span>达成率</span>
@@ -110,14 +105,7 @@
             		<span>200万</span>
             		<span>99%</span>
             		<span>50000</span>
-            	</div>
-            	<div class="resultscontent">
-            		<span>东区</span>
-            		<span>200万</span>
-            		<span>99%</span>
-            		<span>50000</span>
-            	</div>
-            	
+            	</div>-->
             </div>
         </div>
     </div>
@@ -127,8 +115,8 @@
     <script>
         var xiaoyuuserId;
     	var hrefurl = window.location.href;
-    	reorientate();
-		checkRegisterUser();
+    	//reorientate();
+		//checkRegisterUser();
 		if (Cookie.get("userId")) {
 			
 			xiaoyuuserId = Cookie.get("userId");
@@ -156,6 +144,8 @@
         histroy();
         function histroy(){
         	var myDate = new Date();
+        	var lastmouth=[];
+        	var thismouth=[];
         	console.log(myDate.getMonth()+1)
 	        $.ajax({
 		        type:"post",
@@ -168,10 +158,40 @@
 		        },
 		        success:function(data, status, xhr){
 		        	console.log(data)
-		        	$(".upgrade").html(data.reolename);
-		        	$(".yieldrate").html(data.reachrate);
-		        	$('.allachievement').html(data.mothlyloanamt);
-		        	$('.allpackages').html(data.monthlyloans)
+		        	for(var i = 0;i<data.length;i++){
+		        		if(data[i].settlemonth == myDate.getMonth()){
+		        			lastmouth = lastmouth.concat(data[i])
+		     
+		        		}else{
+		        			thismouth = thismouth.concat(data[i]);
+		        			
+		        		}
+		        	};
+		        	for(var i = 0;i<lastmouth.length;i++){
+		        		var Div = $("<div class='resultscontent'></div>");
+		        		var span0 = $("<span>"+lastmouth[i].areaName+"</span>");
+		        		var span1 = $("<span>"+lastmouth[i].currentperformance+'万'+"</span>");
+		        		var span2 = $("<span>"+lastmouth[i].achieverate+"%"+"</span>");
+		        		var span3 = $("<span>"+lastmouth[i].earnings+"</span>");
+		        		Div.append(span0)
+		        		Div.append(span1)
+		        		Div.append(span2)
+		        		Div.append(span3)
+		        		$(".resultslist").eq(1).append(Div)
+		        	};
+		        	for(var i = 0;i<thismouth.length;i++){
+		        		var Div = $("<div class='resultscontent'></div>");
+		        		var span0 = $("<span>"+thismouth[i].areaName+"</span>");
+		        		var span1 = $("<span>"+thismouth[i].currentperformance+'万'+"</span>");
+		        		var span2 = $("<span>"+thismouth[i].achieverate+"%"+"</span>");
+		        		var span3 = $("<span>"+thismouth[i].earnings+"</span>");
+		        		Div.append(span0)
+		        		Div.append(span1)
+		        		Div.append(span2)
+		        		Div.append(span3)
+		        		$(".resultslist").eq(0).append(Div)
+		        	}
+		        	
 		        },
 		        error:function(xhr, errorType, error){
 		        	console.log(000)
