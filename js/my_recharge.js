@@ -3,10 +3,18 @@ $(function(){
 	$(".rechargeprice").on("tap",function(){
 		$(this).toggleClass("backcolor");
 		$(this).siblings().removeClass("backcolor");
-		var text = $(this).find("span").eq(0).html();
-		var price = text.slice(0,text.length-2);
-		$(".rechargenum").find("span").eq(1).html(price + "元")
+		if($(this).index() !=6){
+			$(".pricemoney").show();
+			$(".pricemoneynumber").hide();
+			var text = $(this).find("span").eq(0).html();
+			var price = text.slice(0,text.length-2);
+			$(".rechargenum").find("span").eq(1).html(price + "元");
+		}else{
+			$(".pricemoney").hide();
+			$(".pricemoneynumber").show();
+		}
 	});
+	
 	//选择支付方式
     $(".checked").on("tap",function(){
     	if($(this).children().length){
@@ -31,11 +39,21 @@ $(function(){
     
     //立刻充值
     $(".goapply").on("tap",function(){
-		
     	if (Cookie.get("xiaoyuerUserMes")) {
     		var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
     		var userid = Cookie.get("userId");
-    		var paymoney = $(".rechargenum").find("span").eq(1).html();
+    		if($(".pricemoneynumber").css("display") == 'none'){
+    			var paymoney = $(".rechargenum").find("span").eq(1).html();
+    		}else{
+    			var paymoney = $(".pricemoneynumber").val()+"元";
+    			if(paymoney.length == 1){
+    				layer.open({
+    					content:'请输入金额',
+    					btn:'确认'
+    				});
+    				return;
+    			}
+    		}   		
     		paymoney = paymoney.substring(0,paymoney.length-1);
     		var paystatus = 'SUCCESS';
     		if (openid) {

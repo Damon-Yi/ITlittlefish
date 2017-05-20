@@ -162,3 +162,15 @@
 	line-height: .26rem;
 	margin-bottom: 1rem;
 }
+.pricemoneynumber{
+	width: 30%;
+	outline: none;
+	height: .7rem;
+	line-height: .7rem;
+	font-size: .3rem;
+	text-align: center;
+	border: 3px solid #FFA835;
+	border-radius: .2rem;
+	float: right;
+	margin-top: .32rem;
+}
