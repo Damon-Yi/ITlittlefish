@@ -251,9 +251,7 @@
                     success:function(data, status, xhr){
                         console.log(data);
                         if(data.resultCode=='0000'){
-                            callback(data);
-                        }else if(data.resultCode=='9003'){
-                            tips('鱼币余额不足','tips_center',1500);
+                            location.href = 'grab_drop_order_apply_suc.html';
                         }
                     },
                     error:function(xhr, errorType, error){
