@@ -35,7 +35,7 @@
             	<p>本月业绩达成率</p>
             	<p>
             		<img src="images/upgradea.png"/>
-            		<span>99%</span>
+            		<span class="yieldrate">99%</span>
             	</p>
             	<p>申请成功，日获顾客户总额</p>
             	<div class="member">
@@ -51,16 +51,16 @@
             			<span> 本月总业绩  ( 万 ) </span>
             		</p>
             		<p class="results">
-            			<span>0.00</span>
+            			<span class="allachievement">0.00</span>
             		</p>
             	</div>
             	<div class="monthly bordernone">
             		<p>
             			<img src="images/mounthtly.png"/> 
-            			<span> 本月总业绩  ( 万 ) </span>
+            			<span> 本月总件数</span>
             		</p>
             		<p class="results">
-            			<span>0.00</span>
+            			<span class="allpackages">0.00</span>
             		</p>
             	</div>
             </div>
@@ -142,7 +142,10 @@
 	        },
 	        success:function(data, status, xhr){
 	        	console.log(data)
-	        	
+	        	$(".upgrade").html(data.reolename);
+	        	$(".yieldrate").html(data.reachrate);
+	        	$('.allachievement').html(data.mothlyloanamt);
+	        	$('.allpackages').html(data.monthlyloans)
 	        },
 	        error:function(xhr, errorType, error){
 	        	console.log(000)
