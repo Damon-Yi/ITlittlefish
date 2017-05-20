@@ -228,7 +228,7 @@
 				            getData(1,pageSize,$('.or_city').attr('data-id'),$('.or_order_type').attr('data-id'),function(data){
 								setTimeout(function() {
 									page = 1;
-									var ul = self.element.querySelector('.mui-table-view');
+									var ul = document.getElementsByClassName('mui-table-view')[0];
 									ul.insertBefore(createFragment(ul, index, data, true), ul.firstChild);
 								}, 500);
 							});
@@ -266,7 +266,7 @@
 	            getData(1,pageSize,$('.or_city').attr('data-id'),$('.or_order_type').attr('data-id'),function(data){
 					setTimeout(function() {
 						page = 1;
-						var ul = self.element.querySelector('.mui-table-view');
+						var ul = document.getElementsByClassName('mui-table-view')[0];
 						ul.insertBefore(createFragment(ul, index, data, true), ul.firstChild);
 					}, 500);
 				});
