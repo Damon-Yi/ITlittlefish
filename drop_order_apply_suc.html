@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>小鱼儿助花帮平台</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/high_loan.css" rel="stylesheet" type="text/css">
+    <script src="js/public.js"></script>
+    <script type="text/javascript">
+        var aScroll;
+        function loaded () {
+            aScroll = new IScroll('#cont_wrapper',{
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true,click: true 
+            });
+        }
+       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+    <style>
+        .h_suc_p1{font-size: 0.27rem;color: #000;}
+        .h_suc_p1>a{color: #ffaf66;font-weight: bold;}
+        .h_suc_p2{font-size: 0.25rem;color: #000;margin: 0.32rem auto;}
+        .h_suc_p3{font-size: 0.25rem;color: #000;}
+        .h_suc_p3>a{color: #ffaf66;font-weight: bold;}
+    </style>
+</head>
+<body onload="loaded()">
+    <div class="page_header">
+        <p>已提交</p>
+        <div class="right_add"></div>
+    </div>
+    <div id="cont_wrapper">
+        <div>
+            <div class="h_suc">
+                <div class="h_suc_img1"><img src="images/high_loan_13.png"></div>
+                <div class="h_suc_txt">
+                    <p class="h_suc_p1">甩单申请正在审核过程中，预计1个工作日后在<a href="javascript:;">“我的-抢单/甩单”</a>查看甩单申请结果</p>
+                    <p class="h_suc_p2">加入会员，尊享优惠、实现平台利润共享</p>
+                    <p class="h_suc_p3">点击进入<a href="javascript:;">”会员专享”</a></p>
+                </div>
+                <div class="h_suc_img2"><img src="images/high_loan_14.png"></div>
+            </div>
+            <a href="drop_order_apply.html" class="apply_btn">确定</a>
+        </div>
+    </div>
+    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <script>
+    </script>
+</html>
