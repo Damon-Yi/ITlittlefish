@@ -136,7 +136,7 @@
 			            select01.append(option02);
 			            select01.append(option03);
 			            Li05.append(select01);
-        				var Li06 = $("<li onclick=conservation("+rows.loanserialno+","+this+")>保存</li>"); ;
+        				var Li06 = $("<li onclick=conservation1("+this+")>保存</li>"); ;
 		        		Ul.append(Li01);
 			            Ul.append(Li02);
 			            Ul.append(Li03);
@@ -152,7 +152,7 @@
 		        },
 			})
 		}
-		function conservation(el){
+		function conservation1(el){
 	    	console.log(el)
 	    	
 	    }
@@ -169,8 +169,31 @@
 		        },
 		        success:function(data, status, xhr){
 		        	console.log(data)
-		        	
-		        	
+		        	var items = data.object.rows
+		        	for(var i = 0 ;i < items.length;i ++){
+		        		var Ul = $("<ul></ul>");
+		        		var Li01 = $("<li>"+items[i].customerName+"</li>");
+            			var Li02 = $("<li>"+items[i].mobilePhone+"</li>");
+            			var Li03 = $("<li>"+items[i].snatchDate+"</li>");
+            			var Li04 = $("<li>订单详情</li>");
+            			var Li05 = $("<li></li>");
+            			var select01 = $("<select></select>");
+			            var option01 = $("<option>-请选择-</option>") 
+			            var option02 = $("<option>-是-</option>") 
+	            		var option03 = $("<option>-否-</option>")
+	            		select01.append(option01);
+			            select01.append(option02);
+			            select01.append(option03);
+			            Li05.append(select01);
+        				var Li06 = $("<li onclick=conservation2("+this+")>保存</li>"); ;
+		        		Ul.append(Li01);
+			            Ul.append(Li02);
+			            Ul.append(Li03);
+			            Ul.append(Li04);
+			            Ul.append(Li05);
+			            Ul.append(Li04);
+			            $('.singlefirst').append(Ul)
+		        	}	
 		        },
 		        error:function(xhr, errorType, error){
 		        	console.log(000)
@@ -178,5 +201,10 @@
 		        },
 			})
 		}
+		
+		function conservation2(el){
+	    	console.log(el)
+	    	
+	    }
     </script>
 </html>
