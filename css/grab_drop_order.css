@@ -42,7 +42,7 @@
 .filter_cont>ul.filter_l2>li{border-bottom: solid 1px #e5e5e5;}
 .filter_cont>ul.filter_l2>li:last-child{border-bottom:none;}
 .filter_cont_show{top: 0.98rem;}
-.order_type_wrap.filter_cont{height:1.8rem;}
+.order_type_wrap.filter_cont{height:1.2rem;}
 /*订单详情*/
 .or_details{font-size:0.2rem;color: #000;}
 .or_details .or_header{background: url(../images/grab_order_05.png) no-repeat center center;background-size:100% 100%;color: #fff;}

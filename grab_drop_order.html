@@ -29,6 +29,7 @@
 			.mui-fullscreen .mui-slider-group {top:0.98rem !important;}
 			.mui-segmented-control.mui-scroll-wrapper{height: 0.62rem;}
 			.mui-table-view-cell{padding:0;}
+			.mui-table-view-cell a{color: #000;}
 		</style>
 	</head>
 	<body>
@@ -48,7 +49,7 @@
 		            </div> -->
 		            <ul class="or_filter">
 		                <li class="or_city" data-id=""><span>城市</span></li>
-		                <li class="or_order_type" data-id=""><span>订单分类</span></li>
+		                <li class="or_order_type" data-id="1"><span>订单分类</span></li>
 		                <!-- <li><span>筛选</span></li> -->
 		            </ul>
 		            <div class="gd_tips"><img src="images/grab_order_01.png" alt=""><span>VIP会员，每天都有一次免费抢单哦！</span></div>
@@ -61,9 +62,9 @@
 		        </div>
 		        <div class="order_type_wrap filter_cont">
 		            <ul class="filter_l1">
-		                <li data-value="0">全部订单</li>
-		                <li data-value="1">可抢订单</li>
-		                <li data-value="2">免费订单</li>
+		                <li data-value="1">全部订单</li>
+		                <li data-value="0">可抢订单</li>
+		                <!-- <li data-value="2">免费订单</li> -->
 		            </ul>
 		        </div>
 				<div class="mui-slider-group">
@@ -71,7 +72,7 @@
 						<div id="scroll1" class="mui-scroll-wrapper">
 							<div class="mui-scroll">
 								<ul class="mui-table-view">
-									<li class="mui-table-view-cell">
+									<!-- <li class="mui-table-view-cell">
 										<div class="gd_order_item">
 											<a href="grab_order_details.html?contractNo=''">
 							                    <div class="gd_o_row">
@@ -93,99 +94,7 @@
 							                    </div>
 						                    </a>
 						                </div>
-									</li>
-									<li class="mui-table-view-cell">
-										<div class="gd_order_item">
-											<a href="grab_order_details.html?contractNo=''">
-							                    <div class="gd_o_row">
-							                        <div class="gd_o_col gd_o_col1">
-							                            <div class="gd_o_info1">
-							                                <span class="gd_o_name">罗先生0</span><span class="gd_o_edu"><i>2</i>万元</span><span>北京市</span><span>月收入6000</span>
-							                            </div>
-							                            <div class="gd_o_info2">
-							                                <img class="gd_o_flag" src="images/grab_order_04.png" alt=""><span>工薪族</span><span>无房产</span><span>有车</span><span>有社保</span><span>有公积金</span><span>有信用卡</span>
-							                            </div>
-							                        </div>
-							                        <div class="gd_o_col gd_o_col2">
-							                            <img class="gd_o_fish" src="images/grab_order_02.png" alt="">
-							                            <p><span>66</span>鱼币</p>
-							                        </div>
-							                    </div>
-							                    <div class="gd_o_row">
-							                        <div class="gd_grab_btn">立即抢单</div>
-							                    </div>
-						                    </a>
-						                </div>
-									</li>
-									<li class="mui-table-view-cell">
-										<div class="gd_order_item">
-											<a href="grab_order_details.html?contractNo=''">
-							                    <div class="gd_o_row">
-							                        <div class="gd_o_col gd_o_col1">
-							                            <div class="gd_o_info1">
-							                                <span class="gd_o_name">罗先生0</span><span class="gd_o_edu"><i>2</i>万元</span><span>北京市</span><span>月收入6000</span>
-							                            </div>
-							                            <div class="gd_o_info2">
-							                                <img class="gd_o_flag" src="images/grab_order_04.png" alt=""><span>工薪族</span><span>无房产</span><span>有车</span><span>有社保</span><span>有公积金</span><span>有信用卡</span>
-							                            </div>
-							                        </div>
-							                        <div class="gd_o_col gd_o_col2">
-							                            <img class="gd_o_fish" src="images/grab_order_02.png" alt="">
-							                            <p><span>66</span>鱼币</p>
-							                        </div>
-							                    </div>
-							                    <div class="gd_o_row">
-							                        <div class="gd_grab_btn">立即抢单</div>
-							                    </div>
-						                    </a>
-						                </div>
-									</li>
-									<li class="mui-table-view-cell">
-										<div class="gd_order_item">
-											<a href="grab_order_details.html?contractNo=''">
-							                    <div class="gd_o_row">
-							                        <div class="gd_o_col gd_o_col1">
-							                            <div class="gd_o_info1">
-							                                <span class="gd_o_name">罗先生0</span><span class="gd_o_edu"><i>2</i>万元</span><span>北京市</span><span>月收入6000</span>
-							                            </div>
-							                            <div class="gd_o_info2">
-							                                <img class="gd_o_flag" src="images/grab_order_04.png" alt=""><span>工薪族</span><span>无房产</span><span>有车</span><span>有社保</span><span>有公积金</span><span>有信用卡</span>
-							                            </div>
-							                        </div>
-							                        <div class="gd_o_col gd_o_col2">
-							                            <img class="gd_o_fish" src="images/grab_order_02.png" alt="">
-							                            <p><span>66</span>鱼币</p>
-							                        </div>
-							                    </div>
-							                    <div class="gd_o_row">
-							                        <div class="gd_grab_btn">立即抢单</div>
-							                    </div>
-						                    </a>
-						                </div>
-									</li>
-									<li class="mui-table-view-cell">
-										<div class="gd_order_item">
-											<a href="grab_order_details.html?contractNo=''">
-							                    <div class="gd_o_row">
-							                        <div class="gd_o_col gd_o_col1">
-							                            <div class="gd_o_info1">
-							                                <span class="gd_o_name">罗先生0</span><span class="gd_o_edu"><i>2</i>万元</span><span>北京市</span><span>月收入6000</span>
-							                            </div>
-							                            <div class="gd_o_info2">
-							                                <img class="gd_o_flag" src="images/grab_order_04.png" alt=""><span>工薪族</span><span>无房产</span><span>有车</span><span>有社保</span><span>有公积金</span><span>有信用卡</span>
-							                            </div>
-							                        </div>
-							                        <div class="gd_o_col gd_o_col2">
-							                            <img class="gd_o_fish" src="images/grab_order_02.png" alt="">
-							                            <p><span>66</span>鱼币</p>
-							                        </div>
-							                    </div>
-							                    <div class="gd_o_row">
-							                        <div class="gd_grab_btn">立即抢单</div>
-							                    </div>
-						                    </a>
-						                </div>
-									</li>
+									</li>-->
 								</ul>
 							</div>
 						</div>
@@ -194,132 +103,6 @@
 						<div class="mui-scroll-wrapper">
 							<div class="mui-scroll">
 								<ul class="mui-table-view">
-									<li class="mui-table-view-cell">
-										<div class="gd_order_item">
-						                    <div class="gd_o_row">
-						                        <div class="gd_o_col gd_o_col1">
-						                            <div class="gd_o_info1">
-						                                <span class="gd_o_name">罗先生0</span><span class="gd_o_edu"><i>2</i>万元</span><span>北京市</span><span>月收入6000</span>
-						                            </div>
-						                            <div class="gd_o_info2">
-						                                <img class="gd_o_flag" src="images/grab_order_04.png" alt=""><span>工薪族</span><span>无房产</span><span>有车</span><span>有社保</span><span>有公积金</span><span>有信用卡</span>
-						                            </div>
-						                        </div>
-						                        <div class="gd_o_col gd_o_col2">
-						                            <img class="gd_o_fish" src="images/grab_order_02.png" alt="">
-						                            <p><span>66</span>鱼币</p>
-						                        </div>
-						                    </div>
-						                    <div class="gd_o_row">
-						                        <a class="gd_grab_btn" href="grab_order_details.html">立即抢单</a>
-						                    </div>
-						                </div>
-									</li>
-									<li class="mui-table-view-cell">
-										<div class="gd_order_item">
-						                    <div class="gd_o_row">
-						                        <div class="gd_o_col gd_o_col1">
-						                            <div class="gd_o_info1">
-						                                <span class="gd_o_name">罗先生0</span><span class="gd_o_edu"><i>2</i>万元</span><span>北京市</span><span>月收入6000</span>
-						                            </div>
-						                            <div class="gd_o_info2">
-						                                <img class="gd_o_flag" src="images/grab_order_04.png" alt=""><span>工薪族</span><span>无房产</span><span>有车</span><span>有社保</span><span>有公积金</span><span>有信用卡</span>
-						                            </div>
-						                        </div>
-						                        <div class="gd_o_col gd_o_col2">
-						                            <img class="gd_o_fish" src="images/grab_order_02.png" alt="">
-						                            <p><span>66</span>鱼币</p>
-						                        </div>
-						                    </div>
-						                    <div class="gd_o_row">
-						                        <a class="gd_grab_btn" href="grab_order_details.html">立即抢单</a>
-						                    </div>
-						                </div>
-									</li>
-									<li class="mui-table-view-cell">
-										<div class="gd_order_item">
-						                    <div class="gd_o_row">
-						                        <div class="gd_o_col gd_o_col1">
-						                            <div class="gd_o_info1">
-						                                <span class="gd_o_name">罗先生0</span><span class="gd_o_edu"><i>2</i>万元</span><span>北京市</span><span>月收入6000</span>
-						                            </div>
-						                            <div class="gd_o_info2">
-						                                <img class="gd_o_flag" src="images/grab_order_04.png" alt=""><span>工薪族</span><span>无房产</span><span>有车</span><span>有社保</span><span>有公积金</span><span>有信用卡</span>
-						                            </div>
-						                        </div>
-						                        <div class="gd_o_col gd_o_col2">
-						                            <img class="gd_o_fish" src="images/grab_order_02.png" alt="">
-						                            <p><span>66</span>鱼币</p>
-						                        </div>
-						                    </div>
-						                    <div class="gd_o_row">
-						                        <a class="gd_grab_btn" href="grab_order_details.html">立即抢单</a>
-						                    </div>
-						                </div>
-									</li>
-									<li class="mui-table-view-cell">
-										<div class="gd_order_item">
-						                    <div class="gd_o_row">
-						                        <div class="gd_o_col gd_o_col1">
-						                            <div class="gd_o_info1">
-						                                <span class="gd_o_name">罗先生0</span><span class="gd_o_edu"><i>2</i>万元</span><span>北京市</span><span>月收入6000</span>
-						                            </div>
-						                            <div class="gd_o_info2">
-						                                <img class="gd_o_flag" src="images/grab_order_04.png" alt=""><span>工薪族</span><span>无房产</span><span>有车</span><span>有社保</span><span>有公积金</span><span>有信用卡</span>
-						                            </div>
-						                        </div>
-						                        <div class="gd_o_col gd_o_col2">
-						                            <img class="gd_o_fish" src="images/grab_order_02.png" alt="">
-						                            <p><span>66</span>鱼币</p>
-						                        </div>
-						                    </div>
-						                    <div class="gd_o_row">
-						                        <a class="gd_grab_btn" href="grab_order_details.html">立即抢单</a>
-						                    </div>
-						                </div>
-									</li>
-									<li class="mui-table-view-cell">
-										<div class="gd_order_item">
-						                    <div class="gd_o_row">
-						                        <div class="gd_o_col gd_o_col1">
-						                            <div class="gd_o_info1">
-						                                <span class="gd_o_name">罗先生0</span><span class="gd_o_edu"><i>2</i>万元</span><span>北京市</span><span>月收入6000</span>
-						                            </div>
-						                            <div class="gd_o_info2">
-						                                <img class="gd_o_flag" src="images/grab_order_04.png" alt=""><span>工薪族</span><span>无房产</span><span>有车</span><span>有社保</span><span>有公积金</span><span>有信用卡</span>
-						                            </div>
-						                        </div>
-						                        <div class="gd_o_col gd_o_col2">
-						                            <img class="gd_o_fish" src="images/grab_order_02.png" alt="">
-						                            <p><span>66</span>鱼币</p>
-						                        </div>
-						                    </div>
-						                    <div class="gd_o_row">
-						                        <a class="gd_grab_btn" href="grab_order_details.html">立即抢单</a>
-						                    </div>
-						                </div>
-									</li>
-									<li class="mui-table-view-cell">
-										<div class="gd_order_item">
-						                    <div class="gd_o_row">
-						                        <div class="gd_o_col gd_o_col1">
-						                            <div class="gd_o_info1">
-						                                <span class="gd_o_name">罗先生0</span><span class="gd_o_edu"><i>2</i>万元</span><span>北京市</span><span>月收入6000</span>
-						                            </div>
-						                            <div class="gd_o_info2">
-						                                <img class="gd_o_flag" src="images/grab_order_04.png" alt=""><span>工薪族</span><span>无房产</span><span>有车</span><span>有社保</span><span>有公积金</span><span>有信用卡</span>
-						                            </div>
-						                        </div>
-						                        <div class="gd_o_col gd_o_col2">
-						                            <img class="gd_o_fish" src="images/grab_order_02.png" alt="">
-						                            <p><span>66</span>鱼币</p>
-						                        </div>
-						                    </div>
-						                    <div class="gd_o_row">
-						                        <a class="gd_grab_btn" href="grab_order_details.html">立即抢单</a>
-						                    </div>
-						                </div>
-									</li>
 									<li class="mui-table-view-cell">
 										<div class="gd_order_item">
 						                    <div class="gd_o_row">
@@ -358,7 +141,7 @@
 	        var loader = new loading({'container':document.body,'hasBg':false});
 	        var page = 1,pageSize = 5;
 	        var openid;
-	        /*if (!Cookie.get("xiaoyuerUserMes")) {
+	        if (!Cookie.get("xiaoyuerUserMes")) {
 	            getOpenId();
 	        } else {
 	            var xiaoyuerUserMes = Cookie.get("xiaoyuerUserMes");
@@ -367,14 +150,14 @@
 	                getOpenId();
 	            }
 	        }
-	        checkRegisterUser();*/
+	        checkRegisterUser();
 
 	        //筛选数据
             getData(1,pageSize,$('.or_city').attr('data-id'),$('.or_order_type').attr('data-id'),function(data){
 				setTimeout(function() {
 					page = 1;
-					var ul = self.element.querySelector('.mui-table-view');
-					ul.insertBefore(createFragment(ul, index, data, true), ul.firstChild);
+					var ul = document.getElementsByClassName('mui-table-view')[0];
+					createFragment(ul,data,true);
 				}, 500);
 			});
 			mui.init();
@@ -398,8 +181,8 @@
 									getData(1,pageSize,city,orderType,function(data){
 										setTimeout(function() {
 											page = 1;
-											var ul = self.element.querySelector('.mui-table-view');
-											ul.insertBefore(createFragment(ul, index, data, true), ul.firstChild);
+											var ul = document.getElementsByClassName('mui-table-view')[0];
+											createFragment(ul,data,true);
 											self.endPullDownToRefresh();
 										}, 500);
 									});
@@ -410,11 +193,11 @@
 									var self = this;
 									var city = document.getElementsByClassName('or_city')[0].getAttribute('data-id');
 									var orderType = document.getElementsByClassName('or_order_type')[0].getAttribute('data-id');
-									getData(1,pageSize,city,orderType,function(data){
+									getData(page+1,pageSize,city,orderType,function(data){
 										setTimeout(function() {
 											page++;
-											var ul = self.element.querySelector('.mui-table-view');
-											ul.appendChild(createFragment(ul, index, data));
+											var ul = document.getElementsByClassName('mui-table-view')[0];
+											createFragment(ul,data,false);
 											self.endPullUpToRefresh();
 										}, 500);
 									});
@@ -445,8 +228,8 @@
 				            getData(1,pageSize,$('.or_city').attr('data-id'),$('.or_order_type').attr('data-id'),function(data){
 								setTimeout(function() {
 									page = 1;
-									var ul = self.element.querySelector('.mui-table-view');
-									ul.insertBefore(createFragment(ul, index, data, true), ul.firstChild);
+									var ul = document.getElementsByClassName('mui-table-view')[0];
+									createFragment(ul,data,true);
 								}, 500);
 							});
 				        });
@@ -483,8 +266,8 @@
 	            getData(1,pageSize,$('.or_city').attr('data-id'),$('.or_order_type').attr('data-id'),function(data){
 					setTimeout(function() {
 						page = 1;
-						var ul = self.element.querySelector('.mui-table-view');
-						ul.insertBefore(createFragment(ul, index, data, true), ul.firstChild);
+						var ul = document.getElementsByClassName('mui-table-view')[0];
+						createFragment(ul,data,true);
 					}, 500);
 				});
 	        });
@@ -492,10 +275,11 @@
 	        function getData(pageNum,pageSize,applyCity,isSnatch,callback){
 				var parmas = {
 					userId:Cookie.get('userId'),
+					//userId:'1705071237LOHDBGOCmoiswqShfqI',
 					pageSize:pageSize,
 					pageNo:pageNum,
-					applyCity:'',
-					isSnatch:''
+					applyCity:applyCity,
+					isSnatch:isSnatch
 				}
 				$.ajax({
                     type:"post",
@@ -507,7 +291,7 @@
                     success:function(data, status, xhr){
                         console.log(data);
                         if(data.resultCode=='0000'){
-                            callback(data);
+                            callback(data.object.rows);
                         }
                     },
                     error:function(xhr, errorType, error){
@@ -521,22 +305,60 @@
                 });
 			}
 			//生成数据
-			function createFragment(ul, index, data, reverse) {
-				var length = ul.querySelectorAll('li').length;
-				var fragment = document.createDocumentFragment();
+			function createFragment(ul,data,clearFlag) {
 				var li;
+				if(clearFlag){
+					$(ul).empty();
+				}
 				for (var i = 0; i < data.length; i++) {
 					li = document.createElement('li');
 					li.className = 'mui-table-view-cell';
-					//li.innerHTML = '第' + (index + 1) + '个选项卡子项-' + (length + (reverse ? (count - i) : (i + 1)));
-					li.innerHTML = '<div class="gd_order_item"><div class="gd_o_row"><div class="gd_o_col gd_o_col1"><div class="gd_o_info1"><span class="gd_o_name">'+data[i].customername+'</span><span class="gd_o_edu"><i>'+data[i].loanamount+'</i>万元</span><span>'+data[i].applycity+'</span><span>月收入'+data[i].monthlyincome+'</span></div><div class="gd_o_info2"><img class="gd_o_flag" src="images/grab_order_04.png" alt=""><span>工薪族</span><span>无房产</span><span>有车</span><span>有社保</span><span>有公积金</span><span>有信用卡</span></div></div><div class="gd_o_col gd_o_col2"><img class="gd_o_fish" src="images/grab_order_02.png" alt=""><p><span>'+data[i].snatchamt+'</span>鱼币</p></div></div><div class="gd_o_row"><a class="gd_grab_btn" href="javascript:;" onclick="grabOrder('+data[i].applyserialno+','+data[i].snatchamt+');">立即抢单</a></div></div>'
-					fragment.appendChild(li);
+					var tmpHtml = '';
+					switch(data[i].profession){
+					    case '001':
+					        tmpHtml = '<span>在校学生</span>';
+					        break;
+					    case '002':
+					        tmpHtml = '<span>工薪族</span>';
+					        break;
+					    case '003':
+					        tmpHtml = '<span>企业主</span>';
+					        break;
+			            case '004':
+					        tmpHtml = '<span>网店主</span>';
+					        break;
+					    case '005':
+					        tmpHtml = '<span>自由职业者</span>';
+					        break;
+					    default:
+					        tmpHtml = '';
+					}
+					if(data[i].fixedassets=='1'){//房
+						tmpHtml += '<span>有房产</span><span>无车产</span>';
+					}else if(data[i].fixedassets=='2'){//车
+						tmpHtml += '<span>无房产</span><span>有车产</span>';
+					}
+					if(data[i].socialsecurity=='1'){//社保
+						tmpHtml += '<span>有社保</span>';
+					}
+					if(data[i].socialinsurance=='1'){//公积金
+						tmpHtml += '<span>有公积金</span>';
+					}
+					if(data[i].creditcard=='1'){//信用卡 
+						tmpHtml += '<span>有信用卡</span>';
+					}
+					var grabBtn = '<a href="grab_order_details.html?contractNo='+data[i].applyserialno+'" class="gd_grab_btn">立即抢单</a>';
+					li.innerHTML = '<div class="gd_order_item"><div class="gd_o_row"><div class="gd_o_col gd_o_col1"><div class="gd_o_info1"><span class="gd_o_name">'+data[i].customername+'</span><span class="gd_o_edu"><i>'+data[i].loanamount+'</i>万元</span><span>'+data[i].applycity+'</span><span>月收入'+data[i].monthlyincome+'</span></div><div class="gd_o_info2"><img class="gd_o_flag" src="images/grab_order_04.png" alt="">'+tmpHtml+'</div></div><div class="gd_o_col gd_o_col2"><img class="gd_o_fish" src="images/grab_order_02.png" alt=""><p><span>'+data[i].snatchamt+'</span>鱼币</p></div></div><div class="gd_o_row">'+grabBtn+'</div></div>';
+					$(grabBtn).on('click',function(){
+						console.log('233');
+					});
+					$(ul).append(li);
 				}
-				return fragment;
+				return ul;
 			};
 	        //抢单
-	        function grabOrder(event,ordreNum,orderPreice){
-	        	console.log(event);
+	        function grabOrder(ordreNum,orderPreice){
+	        	console.log(ordreNum);
 	        	event.preventDefault();
 	        	if(isSaler()){
 	        		var parmas = {
@@ -571,14 +393,13 @@
 	        	}else{
 	        		location.href = 'grab_order_sales_certification.html';
 	        	}
-	        	
 	        }
 	        //判断是否是销售
 	        function isSaler(){
 	        	var flag = false;
 	        	$.ajax({
                     type:"post",
-                    url:Config.url+"/snatchContractLoan",
+                    url:Config.url+"/checkSalesInfo",
                     data:{userId:Cookie.get('userId')},
                     async:false,
                     beforeSend:function(xhr, settings){
