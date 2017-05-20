@@ -229,7 +229,7 @@
 								setTimeout(function() {
 									page = 1;
 									var ul = document.getElementsByClassName('mui-table-view')[0];
-									ul.insertBefore(createFragment(ul, index, data, true), ul.firstChild);
+									createFragment(ul,data,true);
 								}, 500);
 							});
 				        });
@@ -267,7 +267,7 @@
 					setTimeout(function() {
 						page = 1;
 						var ul = document.getElementsByClassName('mui-table-view')[0];
-						ul.insertBefore(createFragment(ul, index, data, true), ul.firstChild);
+						createFragment(ul,data,true);
 					}, 500);
 				});
 	        });
