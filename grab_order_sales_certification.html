@@ -41,11 +41,11 @@
                 <div class="h_r_row"><span class="h_r_row_txt">出生年月</span><div id="birthday" class="date_select" data-val="">请选择</div></div>
                 <div class="h_r_title">基本资料</div>
                 <div class="h_r_row"><span class="h_r_row_txt">身份证号码</span><input id="identityCard" patt="/^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/" class="h_r_row_input" type="text" name="identityCard" placeholder="请填写身份证号码"></div>
-                <div class="h_r_row"><span class="h_r_row_txt">手持身份证照片</span><input id="idCardWithPhoto" class="h_r_row_input" type="file" name="idCardWithPhoto" placeholder=""></div>
+                <div class="h_r_row"><span class="h_r_row_txt">手持身份证照片</span><input id="idCardWithPhoto" class="h_r_row_input" type="file" name="file" placeholder=""></div>
                 <div class="h_r_row"><span class="h_r_row_txt">工作地址</span><input id="workAddress" class="h_r_row_input" type="text" name="workAddress" placeholder="请填写您的工作地址"></div>
                 <div class="h_r_row"><span class="h_r_row_txt">从业年限</span><input id="workYears" class="h_r_row_input" type="tel" name="workYears" placeholder="请填写您的从业年限"></div>
                 <div class="h_r_row"><span class="h_r_row_txt">工作单位名称</span><input id="company" class="h_r_row_input" type="text" name="company" placeholder="请填写您的单位名称"></div>
-                <div class="h_r_row"><span class="h_r_row_txt">工作证明照片</span><input id="workCertificatePhotos" class="h_r_row_input" type="file" name="workCertificatePhotos" placeholder=""></div>
+                <div class="h_r_row"><span class="h_r_row_txt">工作证明照片</span><input id="workCertificatePhotos" class="h_r_row_input" type="file" name="file" placeholder=""></div>
                 <div class="h_r_row"><span class="h_r_row_txt">个人介绍</span><input id="personalProfile" class="h_r_row_input" type="text" name="personalProfile" placeholder="不少于10个字符"></div>
             </div>
         </div>
@@ -64,8 +64,20 @@
     <script src="plugin/mui/js/mui.picker.min.js"></script>
     <script src="plugin/mui/js/mui.poppicker.js"></script>
     <script src="plugin/mui/js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script src="js/getcurrCity.js"></script>
     <script>
+        var contractNo,backPath;
+        var path = window.location.href;
+        if(path.indexOf("path=")>=0){
+            var arr = path.split("&");
+            for(var i = 0 ;i<arr.length;i++){
+                if(arr[i].indexOf("path")>=0){
+                    backPath = arr[i].split("path=")[1];
+                    console.log(backPath);
+                }
+            }
+        }
         (function($) {
             $.init();
             var result = $('#result')[0];
@@ -115,6 +127,8 @@
                 msg = '',
                 parmas={};
             var $form = $('<form action="'+Config.url+'/salesAuthentication" enctype="multipart/form-data" method="post"></form>');
+            $form.append('<input id="userId" name="userId" value="'+Cookie.get('userId')+'"/>');
+            $form.append('<input id="path" name="path" value="'+backPath+'"/>');
             $('.h_r_row_input').each(function(e){
                 var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
                 if(this.value.trim()==''){

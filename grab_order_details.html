@@ -45,36 +45,36 @@
             <div class="or_details">
                 <div class="or_header">
                     <div class="or_col1">
-                        <p class="or_p1"><span class="u_name"></span><span class="u_pbone">13575612233</span></p>
-                        <p class="or_p2"><span class="u_time">5分钟之前更新</span><span class="applydate">2017-03-09申请</span></p>
+                        <p class="or_p1"><span class="u_name"></span><!-- <span class="u_pbone">13575612233</span> --></p>
+                        <p class="or_p2"><span class="u_time"></span><span class="applydate"></span></p>
                     </div>
                     <div class="or_col2">
                         <img class="u_fish" src="images/grab_order_002.png" alt="">
-                        <p class="or_p3"><span  class="u_num">79</span>鱼币</p>
+                        <p class="or_p3"><span  class="u_num"></span>鱼币</p>
                     </div>
                 </div>
                 <div class="or_bord">
                     <div class="or_col">
-                        <p class="or_num">1</p>
+                        <p class="or_num or_num_1"></p>
                         <p>申请贷款金额（万）</p>
                     </div>
                     <div class="or_col">
-                        <p class="or_num">12</p>
+                        <p class="or_num or_num_2"></p>
                         <p>贷款期限（个月）</p>
                     </div>
                 </div>
                 <div class="or_u_info">
                     <p class="or_u_title">身份信息</p>
-                    <p class="or_u_txt"><span>年龄</span><span class="age">24岁</span></p>
-                    <p class="or_u_txt"><span>所在城市</span><span class="applycity">深圳</span></p>
-                    <p class="or_u_txt"><span>置业身份</span><span class="profession">工薪族</span></p>
-                    <p class="or_u_txt"><span>月收入(元)</span><span class="monthlyincome">4500</span></p>
+                    <p class="or_u_txt"><span>年龄</span><span class="age"></span></p>
+                    <p class="or_u_txt"><span>所在城市</span><span class="applycity"></span></p>
+                    <p class="or_u_txt"><span>置业身份</span><span class="profession"></span></p>
+                    <p class="or_u_txt"><span>月收入(元)</span><span class="monthlyincome"></span></p>
                     <p class="or_u_title">资产信息</p>
-                    <p class="or_u_txt"><span>名下房产</span><span class="fixedassets_house">无房产</span></p>
-                    <p class="or_u_txt"><span>名下车产</span><span class="fixedassets_car">无车产</span></p>
-                    <p class="or_u_txt"><span>有无连续六个月以上缴纳公积金</span><span class="socialinsurance_1">有</span></p>
-                    <p class="or_u_txt"><span>有无连续六个月以上缴纳社保</span><span class="socialinsurance_2">有</span></p>
-                    <p class="or_u_txt"><span>是否有信用卡</span><span class="creditcard">有</span></p>
+                    <p class="or_u_txt"><span>名下房产</span><span class="fixedassets_house"></span></p>
+                    <p class="or_u_txt"><span>名下车产</span><span class="fixedassets_car"></span></p>
+                    <p class="or_u_txt"><span>有无连续六个月以上缴纳公积金</span><span class="socialinsurance_1"></span></p>
+                    <p class="or_u_txt"><span>有无连续六个月以上缴纳社保</span><span class="socialinsurance_2"></span></p>
+                    <p class="or_u_txt"><span>是否有信用卡</span><span class="creditcard"></span></p>
                 </div>
                 <div class="or_oper">
                     <a href="javascript:;" class="apply_btn">抢单</a>
@@ -137,6 +137,7 @@
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script type="text/javascript" src="plugin/zepto/touch.js"></script>
     <script src="plugin/layer_mobile/layer.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script src="js/getcurrCity.js"></script>
     <script>
         /*加载动画*/
@@ -149,7 +150,6 @@
                 if(arr[i].indexOf("contractNo")>=0){
                     var index = arr[i].indexOf("=");
                     contractNo = arr[i].substring(index+1,arr[i].length);
-                    console.log(contractNo);
                 }
             }
         }
@@ -165,25 +165,44 @@
                 loader.show();
             },
             success:function(data, status, xhr){
-                console.log(data);
                 if(data.resultCode=='0000'){
-                    callback(data);
-                    orderPreice = data.snatchamt;
-                    $('.u_name').text(data.customername);//
-                    $('.u_pbone').text(data.customername);//手机号
-                    $('.u_time').text(data.customername);//更新时间
-                    $('.u_num').text(data.snatchamt);//抢单价格
-                    $('.or_num').text(data.loanamount);//贷款金额
-                    $('.applydate').text(data.applydate);//申请时间
-                    $('.age').text(data.age);//年龄
-                    $('.applycity').text(data.applycity);//申请城市
-                    $('.profession').text(data.profession);//职业
-                    $('.monthlyincome').text(data.monthlyincome);//月收入
-                    $('.fixedassets_house').text(data.fixedassets==1?'有房产':'无房产');//固定资产，1，房，2车
-                    $('.fixedassets_car').text(data.fixedassets==2?'有车':'无车产');//固定资产，1，房，2车
-                    $('.socialinsurance_1').text(data.fixedassets==1?'有':'无');//社保公积金，1有，2无
-                    $('.socialinsurance_2').text(data.fixedassets==1?'有':'无');//社保公积金，1有，2无
-                    $('.creditcard').text(data.creditcard==1?'有':'无');//信用卡，1有，2无
+                    orderPreice = data.object.snatchamt;
+                    var profession = '';
+                    switch(data.object.profession){
+                        case '001':
+                            profession = '在校学生';
+                            break;
+                        case '002':
+                            profession = '工薪族';
+                            break;
+                        case '003':
+                            profession = '企业主';
+                            break;
+                        case '004':
+                            profession = '网店主';
+                            break;
+                        case '005':
+                            profession = '自由职业者';
+                            break;
+                        default:
+                            profession = '';
+                    }
+                    $('.u_name').text(data.object.customername);//
+                    //$('.u_pbone').text(data.object.customername);//手机号
+                    $('.u_time').text(data.object.updatetime+'前更新');//更新时间
+                    $('.u_num').text(data.object.tossforamt);//抢单价格
+                    $('.or_num_1').text(data.object.loanamount);//贷款金额
+                    $('.or_num_2').text(data.object.loanperiod);//贷款期数
+                    $('.applydate').text(data.object.applydate+'申请');//申请时间
+                    $('.age').text(data.object.age);//年龄
+                    $('.applycity').text(data.object.applycity);//申请城市
+                    $('.profession').text(profession);//职业
+                    $('.monthlyincome').text(data.object.monthlyincome);//月收入
+                    $('.fixedassets_house').text(data.object.fixedassets==1?'有房产':'无房产');//固定资产，1，房，2车
+                    $('.fixedassets_car').text(data.object.fixedassets==2?'有车':'无车产');//固定资产，1，房，2车
+                    $('.socialinsurance_1').text(data.object.fixedassets==1?'有':'无');//社保公积金，1有，2无
+                    $('.socialinsurance_2').text(data.object.fixedassets==1?'有':'无');//社保公积金，1有，2无
+                    $('.creditcard').text(data.object.creditcard==1?'有':'无');//信用卡，1有，2无
                 }
             },
             error:function(xhr, errorType, error){
@@ -196,8 +215,7 @@
             }
         });
         //协议
-        $('.or_oper .rule_btn,.right_add').on('tap',function(){
-            console.log(layer);
+        $('.or_oper .rule_btn,.right_add').on('click',function(){
             var pageii = layer.open({
               type: 1,
               content: $('.rule_txt_wrap').html(),
@@ -209,14 +227,15 @@
             });
         });
         //抢单按钮
-        $('.apply_btn').on('tap',function(){
+        $('.apply_btn').on('click',function(){
             grabOrder(contractNo,orderPreice);
         });
         //抢单
         function grabOrder(ordreNum,orderPreice){
-            console.log(event);
-            event.preventDefault();
-            if(isSaler()){
+            console.log(ordreNum);
+            console.log(orderPreice);
+            var path = 'grab_order_sales_certification.html?path=grab_order_details.html?contractNo='+contractNo;
+            if(isSaler(path)){
                 var parmas = {
                     userId:Cookie.get('userId'),
                     contractNo:ordreNum,
@@ -247,9 +266,33 @@
                     }
                 });
             }else{
-                location.href = 'grab_order_sales_certification.html';
+                //location.href = 'grab_order_sales_certification.html?contractNo='+contractNo;
             }
-            
+        }
+        //判断是否是销售
+        function isSaler(url){
+            var flag = false;
+            $.ajax({
+                type:"post",
+                url:Config.url+"/checkSalesInfo",
+                data:{userId:Cookie.get('userId')},
+                async:false,
+                beforeSend:function(xhr, settings){
+                },
+                success:function(data, status, xhr){
+                    console.log(data);
+                    if(data.resultCode=='0000'){
+                        flag = true;
+                    }else{
+                        location.href = url;
+                    }
+                },
+                error:function(xhr, errorType, error){
+                },
+                complete:function(xhr, status){
+                }
+            });
+            return flag;
         }
     </script>
     </body>
