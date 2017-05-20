@@ -84,23 +84,23 @@
     	reorientate();
 		checkRegisterUser();
 		//切换抢单与甩单的状态
-		record(querySnatchRecord);
+		record('querySnatchRecord');
 		$(".singlerstyle").find("p").on("tap",function(){
 			$(this).css("background","#f18a09").siblings("p").css("background","#ff9408");
 			var _index = $(this).index();
 			if(_index == 0){
 				$(".dottitle").find("span").eq(0).html("抢单");
-				record(querySnatchRecord);
+				record('querySnatchRecord');
 			}else{
 				$(".dottitle").find("span").eq(0).html("甩单");
-				record(queryTossRecord);
+				record('queryTossRecord');
 			}
 		});
 		//抢单记录
 		function record(url){
 			$.ajax({
 		        type:"post",
-		        url:Config.url+"/querySnatchRecord",
+		        url:Config.url/+url,
 		        data:{
 		        	/*'userId':xiaoyuuserId,*/
 		        	'userId':"17050609270GD2SVzXPGNYRqD1B2x",
