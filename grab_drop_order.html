@@ -141,7 +141,7 @@
 	        var loader = new loading({'container':document.body,'hasBg':false});
 	        var page = 1,pageSize = 5;
 	        var openid;
-	        if (!Cookie.get("xiaoyuerUserMes")) {
+	        /*if (!Cookie.get("xiaoyuerUserMes")) {
 	            getOpenId();
 	        } else {
 	            var xiaoyuerUserMes = Cookie.get("xiaoyuerUserMes");
@@ -150,7 +150,7 @@
 	                getOpenId();
 	            }
 	        }
-	        checkRegisterUser();
+	        checkRegisterUser();*/
 
 	        //筛选数据
             getData(1,pageSize,$('.or_city').attr('data-id'),$('.or_order_type').attr('data-id'),function(data){
@@ -213,29 +213,50 @@
 	            $(this).siblings().removeClass('active');
 	            $(this).addClass('active');
 	        });
+	        //省市
+	        var allCityLi = $('<li data-value="">全部城市</li>');
+	        allCityLi.on('click',function(e){
+				$('.or_city').attr('data-id',$(this).attr('data-value'));
+			    $('.or_city>span').text($(this).text());
+			    $('.city_wrap').removeClass('filter_cont_show');
+			    //筛选数据
+	            getData(1,pageSize,$('.or_city').attr('data-id'),$('.or_order_type').attr('data-id'),function(data){
+					setTimeout(function() {
+						page = 1;
+						var ul = document.getElementsByClassName('mui-table-view')[0];
+						createFragment(ul,data,true);
+					}, 500);
+				});
+	        });
+	        $('#gradew').append(allCityLi);
 	        for(var i=0;i<cityData3.length;i++){
 	        	var tmpLi = $('<li data-value="'+cityData3[i].value+'">'+cityData3[i].text+'</li>');
 	        	tmpLi.on('click',cityData3[i].children,function(e){
-	        		var children = e.data;
-	        		$('#gradet').empty();
-	        		for(var i=0;i<children.length;i++){
-	        			var tmpSubLi = $('<li data-value="'+children[i].value+'">'+children[i].text+'</li>');
-	        			tmpSubLi.on('click',function(e){
-				            $('.or_city').attr('data-id',$(this).attr('data-value'));
-				            $('.or_city>span').text($(this).text())
-				            $('.city_wrap').removeClass('filter_cont_show');
-				            //筛选数据
-				            getData(1,pageSize,$('.or_city').attr('data-id'),$('.or_order_type').attr('data-id'),function(data){
-								setTimeout(function() {
-									page = 1;
-									var ul = document.getElementsByClassName('mui-table-view')[0];
-									createFragment(ul,data,true);
-								}, 500);
-							});
-				        });
-	        			$('#gradet').append(tmpSubLi);
+	        		if($(this).attr("data-value")){
+	        			var children = e.data;
+		        		$('#gradet').empty();
+		        		for(var i=0;i<children.length;i++){
+		        			var tmpSubLi = $('<li data-value="'+children[i].value+'">'+children[i].text+'</li>');
+		        			tmpSubLi.on('click',function(e){
+					            $('.or_city').attr('data-id',$(this).attr('data-value'));
+					            $('.or_city>span').text($(this).text());
+					            $('.city_wrap').removeClass('filter_cont_show');
+					            //筛选数据
+					            getData(1,pageSize,$('.or_city').attr('data-id'),$('.or_order_type').attr('data-id'),function(data){
+									setTimeout(function() {
+										page = 1;
+										var ul = document.getElementsByClassName('mui-table-view')[0];
+										createFragment(ul,data,true);
+									}, 500);
+								});
+					        });
+		        			$('#gradet').append(tmpSubLi);
+		        		}
+			            $(".city_wrap .filter_l2").css("left","50%");
+	        		}else{
+						$('.or_city').attr('data-id',$(this).attr('data-value'));
+					    $('.or_city>span').text($(this).text());
 	        		}
-		            $(".city_wrap .filter_l2").css("left","50%");
 		        });
 	        	$('#gradew').append(tmpLi);
 	        }
@@ -347,11 +368,12 @@
 					if(data[i].creditcard=='1'){//信用卡 
 						tmpHtml += '<span>有信用卡</span>';
 					}
-					var grabBtn = '<a href="grab_order_details.html?contractNo='+data[i].applyserialno+'" class="gd_grab_btn">立即抢单</a>';
-					li.innerHTML = '<div class="gd_order_item"><div class="gd_o_row"><div class="gd_o_col gd_o_col1"><div class="gd_o_info1"><span class="gd_o_name">'+data[i].customername+'</span><span class="gd_o_edu"><i>'+data[i].loanamount+'</i>万元</span><span>'+data[i].applycity+'</span><span>月收入'+data[i].monthlyincome+'</span></div><div class="gd_o_info2"><img class="gd_o_flag" src="images/grab_order_04.png" alt="">'+tmpHtml+'</div></div><div class="gd_o_col gd_o_col2"><img class="gd_o_fish" src="images/grab_order_02.png" alt=""><p><span>'+data[i].snatchamt+'</span>鱼币</p></div></div><div class="gd_o_row">'+grabBtn+'</div></div>';
-					$(grabBtn).on('click',function(){
-						console.log('233');
-					});
+					var grabBtn = '';
+					if(data[i].isRobbed==0){
+						grabBtn = '<a href="grab_order_details.html?contractNo='+data[i].applyserialno+'" class="gd_grab_btn">立即抢单</a>';
+					}
+					li.innerHTML = '<div class="gd_order_item"><div class="gd_o_row"><a href="grab_order_details.html?contractNo='+data[i].applyserialno+'"><div class="gd_o_col gd_o_col1"><div class="gd_o_info1"><span class="gd_o_name">'+data[i].customername+'</span><span class="gd_o_edu"><i>'+data[i].loanamount+'</i>万元</span><span>'+data[i].applycity+'</span><span>月收入'+data[i].monthlyincome+'</span></div><div class="gd_o_info2"><img class="gd_o_flag" src="images/grab_order_04.png" alt="">'+tmpHtml+'</div></div><div class="gd_o_col gd_o_col2"><img class="gd_o_fish" src="images/grab_order_02.png" alt=""><p><span>'+data[i].snatchamt+'</span>鱼币</p></div></a></div><div class="gd_o_row">'+grabBtn+'</div></div>';
+					
 					$(ul).append(li);
 				}
 				return ul;
