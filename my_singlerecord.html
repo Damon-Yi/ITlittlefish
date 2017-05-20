@@ -114,8 +114,13 @@
     <script>
         var hrefurl = window.location.href;
         var pageNo = 1;
+        var xiaoyuuserId;
+		if (Cookie.get("userId")) {
+			
+			xiaoyuuserId = Cookie.get("userId");
+		};
 		querySnatchRecord(pageNo);
-		var flag ;
+		var flag = 0 ;
     	reorientate();
 		checkRegisterUser();
 		//抢单甩单次数
@@ -123,7 +128,7 @@
 			type : "POST",
 			url : Config.url + "/querySnatchTossNum",
 			data : {
-				'userId':"17050609270GD2SVzXPGNYRqD1B2x",
+				'userId':xiaoyuuserId,
 			},
 			success : function(data, status, xhr) {
 				console.log(data)
@@ -330,6 +335,7 @@
 			setTimeout(function() {
 				pageNo++;
 				mui('#cont_wrapper').pullRefresh().endPullupToRefresh();
+				console.log()
 				if(flag == 0){
 					querySnatchRecord(pageNo);
 				}else{
