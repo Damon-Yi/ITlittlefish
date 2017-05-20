@@ -79,10 +79,43 @@
     <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
-    <script src="js/singlerecord.js" type="text/javascript" charset="utf-8"></script>
     <script>
         var hrefurl = window.location.href;
     	reorientate();
 		checkRegisterUser();
+		//切换抢单与甩单的状态
+		$(".singlerstyle").find("p").on("tap",function(){
+			$(this).css("background","#f18a09").siblings("p").css("background","#ff9408");
+			var _index = $(this).index();
+			if(_index == 0){
+				$(".dottitle").find("span").eq(0).html("抢单");
+				record(querySnatchRecord)
+			}else{
+				$(".dottitle").find("span").eq(0).html("甩单");
+				record(queryTossRecord)
+			}
+		});
+		//抢单记录
+		function record(url){
+			$.ajax({
+		        type:"post",
+		        url:Config.url+"/querySnatchRecord",
+		        data:{
+		        	/*'userId':xiaoyuuserId,*/
+		        	'userId':"17050609270GD2SVzXPGNYRqD1B2x",
+		        	pageNo:1,
+		        	pageSize:10
+		        },
+		        success:function(data, status, xhr){
+		        	console.log(data)
+		        	
+		        },
+		        error:function(xhr, errorType, error){
+		        	console.log(000)
+		          	
+		        },
+			})
+		}
+		
     </script>
 </html>
