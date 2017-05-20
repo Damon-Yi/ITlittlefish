@@ -137,8 +137,8 @@
 	        type:"post",
 	        url:Config.url+"/showSalesPerformance",
 	        data:{
-	        	'userId':xiaoyuuserId,
-	        	/*'userId':"1705061831W7wm47bZ13av7C6MIw2"*/
+	        	/*'userId':xiaoyuuserId,*/
+	        	'userId':"1111"
 	        },
 	        success:function(data, status, xhr){
 	        	console.log(data)
@@ -152,5 +152,33 @@
 	          	
 	        },
 		})
+        //本月与上月记录
+        histroy();
+        function histroy(){
+        	var myDate = new Date();
+        	console.log(myDate.getMonth()+1)
+	        $.ajax({
+		        type:"post",
+		        url:Config.url+"/showMonthSalesPerformance",
+		        data:{
+		        	/*'userId':xiaoyuuserId,*/
+		        	'userid':"1705061831W7wm47bZ13av7C6MIw2",
+		        	currmonth:myDate.getMonth()+1,
+		        	flag:2
+		        },
+		        success:function(data, status, xhr){
+		        	console.log(data)
+		        	$(".upgrade").html(data.reolename);
+		        	$(".yieldrate").html(data.reachrate);
+		        	$('.allachievement').html(data.mothlyloanamt);
+		        	$('.allpackages').html(data.monthlyloans)
+		        },
+		        error:function(xhr, errorType, error){
+		        	console.log(000)
+		          	
+		        },
+			})
+        }
+       
     </script>
 </html>
