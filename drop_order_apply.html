@@ -256,7 +256,7 @@
     <script>
         var loader = new loading({'container':document.body,'hasBg':false});
         var careerData ={};//工作信息
-        var openid;
+        var openid,dropDrequencyFlag=true,dropDrequencyMsg='';
 
         if (!Cookie.get("xiaoyuerUserMes")) {
             getOpenId();
@@ -268,7 +268,7 @@
             }
         }
         checkRegisterUser();
-
+        dropDrequency();//判断甩单次数
 
         
         (function($, doc) {
@@ -436,231 +436,236 @@
         });
         //提交
         $('.apply_btn').on('click',function(){
-            if(isSaler('grab_order_sales_certification.html?path=drop_order_apply.html')){//判断是否是销售
-                var flag = true,
-                msg = '',
-                parmas={};
+            if(dropDrequencyFlag){//判断甩单次数
+                if(isSaler('grab_order_sales_certification.html?path=drop_order_apply.html')){//判断是否是销售
+                    var flag = true,
+                    msg = '',
+                    parmas={};
 
-                careerData ={};//工作信息
+                    careerData ={};//工作信息
 
-                $('.common_info .h_r_row_input').each(function(e){
-                    var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
-                    if($(this).val()==''){
-                        if(msg==''){
-                            flag = false;
-                            msg = '请填写'+title;
-                            tips(msg,'tips_center',1500);
-                        }
-                    }else{
-                        if($(this).attr('patt')){
-                            var patten = eval($(this).attr('patt'));
-                            if(!patten.test($(this).val())){
-                                if(msg==''){
-                                    flag = false;
-                                    msg = title+'格式不正确';
-                                    tips(msg,'tips_center',1500);
-                                }
+                    $('.common_info .h_r_row_input').each(function(e){
+                        var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
+                        if($(this).val()==''){
+                            if(msg==''){
+                                flag = false;
+                                msg = '请填写'+title;
+                                tips(msg,'tips_center',1500);
+                            }
+                        }else{
+                            if($(this).attr('patt')){
+                                var patten = eval($(this).attr('patt'));
+                                if(!patten.test($(this).val())){
+                                    if(msg==''){
+                                        flag = false;
+                                        msg = title+'格式不正确';
+                                        tips(msg,'tips_center',1500);
+                                    }
+                                }else{
+                                    parmas[this.id] = this.value.trim();
+                                }  
                             }else{
                                 parmas[this.id] = this.value.trim();
-                            }  
-                        }else{
-                            parmas[this.id] = this.value.trim();
-                        }
-                    }
-                });
-                var citySelect = $('#applycity');
-                if(citySelect.attr('data-val').trim()==''){
-                    if(msg==''){
-                        flag = false;
-                        var title = citySelect.parents('.h_r_row').find('.h_r_row_txt').text();
-                        msg = '请选择'+title;
-                        tips(msg,'tips_center',1500);
-                    }
-                }else{
-                    parmas[citySelect.attr('id')] = citySelect.attr('data-val').trim();
-                }
-                $('.common_info .h_r_col_input_1,.common_info .h_r_col_input_2').each(function(e){
-                    var title = $(this).parents('.h_r_col').find('.h_r_col_txt').text();
-                    if($(this).val()==''){
-                        if(msg==''){
-                            flag = false;
-                            msg = '请填写'+title;
-                            tips(msg,'tips_center',1500);
-                        }
-                    }else{
-                        if($(this).attr('patt')){
-                            var patten = eval($(this).attr('patt'));
-                            if(!patten.test($(this).val())){
-                                if(msg==''){
-                                    flag = false;
-                                    msg = title+'格式不正确';
-                                    tips(msg,'tips_center',1500);
-                                }
-                            }else{
-                                parmas[this.id] = this.value.trim();
-                            }  
-                        }else{
-                            parmas[this.id] = this.value.trim();
-                        }
-                    }
-                });
-                $('.common_info .h_r_row_radio').each(function(e){
-                    var spanActive = $(this).find('span.active');
-                    var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
-                    if(spanActive.length==0){
-                        if(msg==''){
-                            flag = false;
-                            msg = '请选择'+title;
-                            tips(msg,'tips_center',1500);
-                        }
-                    }else{
-                        parmas[this.id] = spanActive.eq(0).attr('data-val');
-                    }
-                });
-                $('.common_info .h_r_col .h_r_row_select').each(function(e){
-                    var title = $(this).parents('.h_r_col').find('.h_r_col_txt').text();
-                    if($(this).val()==''){
-                        if(msg==''){
-                            flag = false;
-                            msg = '请选择'+title;
-                            tips(msg,'tips_center',1500);
-                        }
-                    }else{
-                        careerData[this.id] = $(this).val();
-                    }
-                });
-                //验证码
-                /*var vildeCode = $('.vilde_code');
-                if(vildeCode.val().trim()==''){
-                    if(msg==''){
-                        flag = false;
-                        msg = '请填写验证码';
-                        tips(msg,'tips_center',1500);
-                    }
-                }else{
-                    console.log(vildeCode.val().trim())
-                    console.log(vildeCode.attr('data-code'))
-                    if(vildeCode.val().trim()!=vildeCode.attr('data-code')){
-                        if(msg==''){
-                            flag = false;
-                            msg = '验证码错误';
-                            tips(msg,'tips_center',1500);
-                        }
-                    }else{
-                        parmas[vildeCode.attr('id')] = vildeCode.val().trim();
-                    }
-                }*/
-                //工作信息
-                var careerInfo = $('.career_info');
-                parmas[careerInfo.attr('id')] = careerInfo.val();
-                
-                var careerInfoWrap = $('.career_type.active');//工作类型  详细信息
-
-                careerInfoWrap.find('.h_r_row_select').each(function(e){
-                    var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
-                    if($(this).val()==''){
-                        if(msg==''){
-                            flag = false;
-                            msg = '请选择'+title;
-                            tips(msg,'tips_center',1500);
-                        }
-                    }else{
-                        careerData[this.id] = $(this).val();
-                    }
-                });
-                careerInfoWrap.find('.h_r_row_radio').each(function(e){
-                    var spanActive = $(this).find('span.active');
-                    var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
-                    if(spanActive.length==0){
-                        if(msg==''){
-                            flag = false;
-                            msg = '请选择'+title;
-                            tips(msg,'tips_center',1500);
-                        }
-                    }else{
-                        if($(this).hasClass('radio_option')){
-                            careerData[this.id] = spanActive.eq(0).attr('data-val');
-                        }else if($(this).hasClass('checkbox_option')){
-                            var ids = '';
-                            spanActive.each(function(){
-                                ids += $(this).attr('data-val')+' ';
-                            });
-                            if(ids){
-                               careerData[this.id] = ids; 
                             }
-                        }
-                        
-                    }
-                });
-                careerInfoWrap.find('.h_r_row_input').each(function(e){
-                    if(this.value.trim()==''){
-                        if(msg==''){
-                            flag = false;
-                            var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
-                            msg = '请填写'+title;
-                            tips(msg,'tips_center',1500);
-                        }
-                    }else{
-                        careerData[this.id] = this.value.trim();
-                    }
-                });
-                careerInfoWrap.find('.city_select').each(function(e){
-                    if($(this).attr('data-val').trim()==''){
-                        if(msg==''){
-                            flag = false;
-                            var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
-                            msg = '请选择'+title;
-                            tips(msg,'tips_center',1500);
-                        }
-                    }else{
-                        careerData[$(this).attr('id')] = $(this).attr('data-val').trim();
-                    }
-                });
-                for(var i in careerData){
-                    parmas[i] = careerData[i];
-                }
-     
-                //是否同意协议
-                /*var ruleStatus = $('.h_rules_check');
-                if(ruleStatus.hasClass('active')){
-                    parmas[ruleStatus.attr('id')] = 1;
-                }else{
-                    if(msg==''){
-                        flag = false;
-                        msg = '请同意小鱼儿帮帮贷贷款申请协议';
-                        tips(msg,'tips_center',1500);
-                    }
-                }*/
-                parmas['userId'] = Cookie.get('userId');
-                
-                console.log(JSON.stringify(parmas));
-                if(flag){
-                    $.ajax({
-                        type:"post",
-                        url:Config.url+"/loanTossApply",
-                        //contentType:"application/json",
-                        data:parmas,
-                        beforeSend:function(xhr, settings){
-                            loader.show();
-                        },
-                        success:function(data, status, xhr){
-                            if(data){
-                                if(data.resultCode=='0000'){
-                                    location.href="drop_order_apply_suc.html"; 
-                                }
-                            }
-                        },
-                        error:function(xhr, errorType, error){
-                            error = error?error:'系统错误';
-                            loader.hide();
-                            tips(error,'tips_center',1500);
-                        },
-                        complete:function(xhr, status){
-                            loader.hide();
                         }
                     });
+                    var citySelect = $('#applycity');
+                    if(citySelect.attr('data-val').trim()==''){
+                        if(msg==''){
+                            flag = false;
+                            var title = citySelect.parents('.h_r_row').find('.h_r_row_txt').text();
+                            msg = '请选择'+title;
+                            tips(msg,'tips_center',1500);
+                        }
+                    }else{
+                        parmas[citySelect.attr('id')] = citySelect.attr('data-val').trim();
+                    }
+                    $('.common_info .h_r_col_input_1,.common_info .h_r_col_input_2').each(function(e){
+                        var title = $(this).parents('.h_r_col').find('.h_r_col_txt').text();
+                        if($(this).val()==''){
+                            if(msg==''){
+                                flag = false;
+                                msg = '请填写'+title;
+                                tips(msg,'tips_center',1500);
+                            }
+                        }else{
+                            if($(this).attr('patt')){
+                                var patten = eval($(this).attr('patt'));
+                                if(!patten.test($(this).val())){
+                                    if(msg==''){
+                                        flag = false;
+                                        msg = title+'格式不正确';
+                                        tips(msg,'tips_center',1500);
+                                    }
+                                }else{
+                                    parmas[this.id] = this.value.trim();
+                                }  
+                            }else{
+                                parmas[this.id] = this.value.trim();
+                            }
+                        }
+                    });
+                    $('.common_info .h_r_row_radio').each(function(e){
+                        var spanActive = $(this).find('span.active');
+                        var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
+                        if(spanActive.length==0){
+                            if(msg==''){
+                                flag = false;
+                                msg = '请选择'+title;
+                                tips(msg,'tips_center',1500);
+                            }
+                        }else{
+                            parmas[this.id] = spanActive.eq(0).attr('data-val');
+                        }
+                    });
+                    $('.common_info .h_r_col .h_r_row_select').each(function(e){
+                        var title = $(this).parents('.h_r_col').find('.h_r_col_txt').text();
+                        if($(this).val()==''){
+                            if(msg==''){
+                                flag = false;
+                                msg = '请选择'+title;
+                                tips(msg,'tips_center',1500);
+                            }
+                        }else{
+                            careerData[this.id] = $(this).val();
+                        }
+                    });
+                    //验证码
+                    /*var vildeCode = $('.vilde_code');
+                    if(vildeCode.val().trim()==''){
+                        if(msg==''){
+                            flag = false;
+                            msg = '请填写验证码';
+                            tips(msg,'tips_center',1500);
+                        }
+                    }else{
+                        console.log(vildeCode.val().trim())
+                        console.log(vildeCode.attr('data-code'))
+                        if(vildeCode.val().trim()!=vildeCode.attr('data-code')){
+                            if(msg==''){
+                                flag = false;
+                                msg = '验证码错误';
+                                tips(msg,'tips_center',1500);
+                            }
+                        }else{
+                            parmas[vildeCode.attr('id')] = vildeCode.val().trim();
+                        }
+                    }*/
+                    //工作信息
+                    var careerInfo = $('.career_info');
+                    parmas[careerInfo.attr('id')] = careerInfo.val();
+                    
+                    var careerInfoWrap = $('.career_type.active');//工作类型  详细信息
+
+                    careerInfoWrap.find('.h_r_row_select').each(function(e){
+                        var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
+                        if($(this).val()==''){
+                            if(msg==''){
+                                flag = false;
+                                msg = '请选择'+title;
+                                tips(msg,'tips_center',1500);
+                            }
+                        }else{
+                            careerData[this.id] = $(this).val();
+                        }
+                    });
+                    careerInfoWrap.find('.h_r_row_radio').each(function(e){
+                        var spanActive = $(this).find('span.active');
+                        var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
+                        if(spanActive.length==0){
+                            if(msg==''){
+                                flag = false;
+                                msg = '请选择'+title;
+                                tips(msg,'tips_center',1500);
+                            }
+                        }else{
+                            if($(this).hasClass('radio_option')){
+                                careerData[this.id] = spanActive.eq(0).attr('data-val');
+                            }else if($(this).hasClass('checkbox_option')){
+                                var ids = '';
+                                spanActive.each(function(){
+                                    ids += $(this).attr('data-val')+' ';
+                                });
+                                if(ids){
+                                   careerData[this.id] = ids; 
+                                }
+                            }
+                            
+                        }
+                    });
+                    careerInfoWrap.find('.h_r_row_input').each(function(e){
+                        if(this.value.trim()==''){
+                            if(msg==''){
+                                flag = false;
+                                var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
+                                msg = '请填写'+title;
+                                tips(msg,'tips_center',1500);
+                            }
+                        }else{
+                            careerData[this.id] = this.value.trim();
+                        }
+                    });
+                    careerInfoWrap.find('.city_select').each(function(e){
+                        if($(this).attr('data-val').trim()==''){
+                            if(msg==''){
+                                flag = false;
+                                var title = $(this).parents('.h_r_row').find('.h_r_row_txt').text();
+                                msg = '请选择'+title;
+                                tips(msg,'tips_center',1500);
+                            }
+                        }else{
+                            careerData[$(this).attr('id')] = $(this).attr('data-val').trim();
+                        }
+                    });
+                    for(var i in careerData){
+                        parmas[i] = careerData[i];
+                    }
+         
+                    //是否同意协议
+                    /*var ruleStatus = $('.h_rules_check');
+                    if(ruleStatus.hasClass('active')){
+                        parmas[ruleStatus.attr('id')] = 1;
+                    }else{
+                        if(msg==''){
+                            flag = false;
+                            msg = '请同意小鱼儿帮帮贷贷款申请协议';
+                            tips(msg,'tips_center',1500);
+                        }
+                    }*/
+                    parmas['userId'] = Cookie.get('userId');
+                    
+                    console.log(JSON.stringify(parmas));
+                    if(flag){
+                        $.ajax({
+                            type:"post",
+                            url:Config.url+"/loanTossApply",
+                            //contentType:"application/json",
+                            data:parmas,
+                            beforeSend:function(xhr, settings){
+                                loader.show();
+                            },
+                            success:function(data, status, xhr){
+                                if(data){
+                                    if(data.resultCode=='0000'){
+                                        location.href="drop_order_apply_suc.html"; 
+                                    }
+                                }
+                            },
+                            error:function(xhr, errorType, error){
+                                error = error?error:'系统错误';
+                                loader.hide();
+                                tips(error,'tips_center',1500);
+                            },
+                            complete:function(xhr, status){
+                                loader.hide();
+                            }
+                        });
+                    }
                 }
+            }else{
+                tips(dropDrequencyMsg,'tips_center',1500);
             }
+            
         });
         //判断是否是销售
         function isSaler(url){
@@ -686,6 +691,37 @@
                 }
             });
             return flag;
+        }
+        //判断甩单次数
+        function dropDrequency(){
+            $.ajax({
+                type:"post",
+                url:Config.url+"/queryPerWeekDayTossNum",
+                data:{userId:Cookie.get('userId')},
+                beforeSend:function(xhr, settings){
+                },
+                success:function(data, status, xhr){
+                    console.log(data);
+                    if(data.resultCode=='0000'){
+                        if(data.object.currentDateCode=="0"&&data.object.currentWeekCode=="0"){
+                            dropDrequencyFlag = true;
+                        }else{
+                            if(data.object.currentDateCode=="0"&&data.object.currentWeekCode=="1"){
+                                dropDrequencyMsg = data.object.currentWeekMessage;
+                            }else if(data.object.currentDateCode=="1"&&data.object.currentWeekCode=="0"){
+                                dropDrequencyMsg = data.object.currentDateMessage;
+                            }else{
+                               dropDrequencyMsg = data.object.currentDateMessage+data.object.currentWeekMessage; 
+                            }
+                            tips(dropDrequencyMsg,'tips_center',1500);
+                        }
+                    }
+                },
+                error:function(xhr, errorType, error){
+                },
+                complete:function(xhr, status){
+                }
+            });
         }
     </script>
 </body>
