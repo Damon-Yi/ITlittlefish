@@ -10,7 +10,20 @@
     <link rel="stylesheet" type="text/css" href="css/my_singlerecord.css"/>
     <script src="js/public.js"></script>
     <style>
-        
+        select{background: transparent;border: none;width: 100%;color: #ff811b;text-indent: 20%;}
+       select option{text-align: center;}
+        .selectnext{
+		   width: 0.15rem !important;
+		   height: 0.15rem;
+		   display: block;
+		   background: transparent;
+		   position: absolute;
+		   right: 8%;
+		   top: 0.1rem;
+		   border-left: .15rem solid transparent;
+		   border-bottom: .15rem solid #ff811b;
+		   transform: rotate(45deg);
+   		}
     </style>
     <script type="text/javascript">
         var aScroll;
@@ -52,8 +65,8 @@
             		<li class="dotdate bordernone">手机号</li>
             		<li class="dotstyle bordernone">抢单日期</li>
             		<li class="dotproduct bordernone">订单详情</li>
-            		<li class="dotdate bordernone">申请日期</li>
-            		<li class="dotstyle bordernone">是否申请</li>
+            		<li class="dotdate bordernone">是否申请</li>
+            		<li class="dotstyle bordernone">操作</li>
             	</ul>
             	<div class="singlefirst">
 	            	<ul>
@@ -61,16 +74,14 @@
 	            		<li>15118057969</li>
 	            		<li>2017/3/28</li>
 	            		<li>订单详情</li>
-	            		<li>-请选择-</li>
-	            		<li class="bordernone">-请选择-</li>
-	            	</ul>
-	            	<ul>
-	            		<li>张三</li>
-	            		<li>15118057969</li>
-	            		<li>2017/3/28</li>
-	            		<li>订单详情</li>
-	            		<li>-请选择-</li>
-	            		<li class="bordernone">-请选择-</li>
+	            		<li>
+	            			<select name="">
+	            				<option value="">-请选择-</option>
+	            				<option value="">是</option>
+	            				<option value="">否</option>
+            				</select>
+	            		</li>
+	            		<li class="bordernone">保存</li>
 	            	</ul>
             	</div>
             </div>
@@ -81,8 +92,8 @@
     <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
     <script>
         var hrefurl = window.location.href;
-    	reorientate();
-		checkRegisterUser();
+    	//reorientate();
+		//checkRegisterUser();
 		//切换抢单与甩单的状态
 		querySnatchRecord();
 		$(".singlerstyle").find("p").on("tap",function(){
@@ -108,8 +119,31 @@
 		        	pageSize:10
 		        },
 		        success:function(data, status, xhr){
-		        	console.log(data)
-		        	
+		        	var items = data.object.rows
+		        	for(var i = 0 ;i < items.length;i ++){
+		        		var Ul = $("<ul></ul>");
+		        		var Li01 = $("<li>"+items[i].customerName+"</li>");
+            			var Li02 = $("<li>"+items[i].mobilePhone+"</li>");
+            			var Li03 = $("<li>"+items[i].snatchDate+"</li>");
+            			var Li04 = $("<li>订单详情</li>");
+            			var Li05 = $("<li></li>");
+            			var select01 = $("<select></select>");
+			            var option01 = $("<option>-请选择-</option>") 
+			            var option02 = $("<option>-是-</option>") 
+	            		var option03 = $("<option>-否-</option>")
+	            		select01.append(option01);
+			            select01.append(option02);
+			            select01.append(option03);
+			            Li05.append(select01);
+        				var Li06 = $("<li onclick=conservation("+rows.loanserialno+","+this+")>保存</li>"); ;
+		        		Ul.append(Li01);
+			            Ul.append(Li02);
+			            Ul.append(Li03);
+			            Ul.append(Li04);
+			            Ul.append(Li05);
+			            Ul.append(Li04);
+			            $('.singlefirst').append(Ul)
+		        	}	
 		        },
 		        error:function(xhr, errorType, error){
 		        	console.log(000)
@@ -117,6 +151,10 @@
 		        },
 			})
 		}
+		function conservation(el){
+	    	console.log(el)
+	    	
+	    }
 		//甩单记录
 		function queryTossRecord(){
 			$.ajax({
@@ -130,6 +168,7 @@
 		        },
 		        success:function(data, status, xhr){
 		        	console.log(data)
+		        	
 		        	
 		        },
 		        error:function(xhr, errorType, error){

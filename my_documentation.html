@@ -174,7 +174,7 @@
 			data : {
 				userId : xiaoyuuserId,
 				pageNo : pageNo,
-				pageSize : 2
+				pageSize : 10
 			},
 			success : function(data, status, xhr) {
 				console.log(data)
@@ -213,6 +213,7 @@
 		}, 500);
 	}    
     function appentData(rows){
+    	console.log(rows)
 		var Div = $('.dotlist');
         for(var i=0;i<rows.length;i++){
             var Ul = $("<ul></ul>");
