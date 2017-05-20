@@ -7,10 +7,11 @@
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="plugin/mui/css/mui.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/my_singlerecord.css"/>
     <script src="js/public.js"></script>
     <style>
-        select{background: transparent;border: none;width: 100%;color: #ff811b;text-indent: 20%;}
+        select{background: transparent;border: none;width: 100%;color: #ff811b;text-indent: center;}
         select option{text-align: center;}
         .selectnext{
 		   width: 0.15rem !important;
@@ -24,8 +25,11 @@
 		   border-bottom: .15rem solid #ff811b;
 		   transform: rotate(45deg);
    		}
+   		.mui-content{background-color: #e9e9e9;}
+	        .mui-pull{font-size: 0;}
+	        .mui-scroll-wrapper{top: 1.12rem;}
     </style>
-    <script type="text/javascript">
+   <!-- <script type="text/javascript">
         var aScroll;
         function loaded () {
             aScroll = new IScroll('#cont_wrapper',{
@@ -37,11 +41,11 @@
             });
         }
        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-    </script>
+    </script>-->
 </head>
-<body onload="loaded()">
+<body>
     <div class="page_header">抢单/甩单记录</div>
-    <div id="cont_wrapper">
+    <div id="cont_wrapper" style="overflow: scroll;">
         <div>
             <div class="singlerLogo">
             	<a href="#" class="singlerMes">
@@ -59,7 +63,7 @@
             <div class="dottitle">
             	<span>抢单</span><span>记录</span>
             </div>
-            <div class="dotlist">
+            <div class="dotlist" style="overflow: scroll;"> 
             	<ul>
             		<li class="dotproduct bordernone">姓名</li>
             		<li class="dotdate bordernone">手机号</li>
@@ -84,14 +88,39 @@
 	            		<li class="bordernone">保存</li>
 	            	</ul>-->
             	</div>
+            	<div class="singlesecond" style="display: none;">
+	            	<!--<ul>
+	            		<li>张三</li>
+	            		<li>15118057969</li>
+	            		<li>2017/3/28</li>
+	            		<li>订单详情</li>
+	            		<li>
+	            			<select name="">
+	            				<option value="">-请选择-</option>
+	            				<option value="">是</option>
+	            				<option value="">否</option>
+            				</select>
+	            		</li>
+	            		<li class="bordernone">保存</li>
+	            	</ul>-->
+            	</div>
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
-    <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
+	<script src="plugin/mui/js/mui.min.js"></script>
+	<script src="plugin/mui/js/mui.pullToRefresh.js"></script>
+	<script src="plugin/mui/js/mui.pullToRefresh.material.js"></script>
     <script>
         var hrefurl = window.location.href;
+        var pageNo = 1;
+        var xiaoyuuserId;
+		if (Cookie.get("userId")) {
+			
+			xiaoyuuserId = Cookie.get("userId");
+		};
+		querySnatchRecord(pageNo);
+		var flag = 0 ;
     	reorientate();
 		checkRegisterUser();
 		//抢单甩单次数
@@ -99,7 +128,7 @@
 			type : "POST",
 			url : Config.url + "/querySnatchTossNum",
 			data : {
-				'userId':"17050609270GD2SVzXPGNYRqD1B2x",
+				'userId':xiaoyuuserId,
 			},
 			success : function(data, status, xhr) {
 				console.log(data)
@@ -120,29 +149,37 @@
 		})
 		//切换抢单与甩单的状态
 		
-		
-		querySnatchRecord();
 		$(".singlerstyle").find("p").on("tap",function(){
-			$(".singlefirst").children().remove()
+			pageNo = 1;
+			$(".singlesecond").children().remove();
+			$(".singlefirst").children().remove();
 			$(this).css("background","#f18a09").siblings("p").css("background","#ff9408");
 			var _index = $(this).index();
 			if(_index == 0){
+				flag = 0;
 				$(".dottitle").find("span").eq(0).html("抢单");
-				querySnatchRecord()
+				$(".singlesecond").hide()
+				$(".singlefirst").show()
+				
+				querySnatchRecord(pageNo)
 			}else{
+				flag = 1;
 				$(".dottitle").find("span").eq(0).html("甩单");
-				queryTossRecord()
+				$(".singlesecond").show()
+				$(".singlefirst").hide()
+				queryTossRecord(pageNo)
 			}
 		});
 		//抢单记录
-		function querySnatchRecord(){
+		
+		function querySnatchRecord(pageNo){
 			$.ajax({
 		        type:"post",
 		        url:Config.url+"/querySnatchRecord",
 		        data:{
 		        	/*'userId':xiaoyuuserId,*/
 		        	'userId':"17050609270GD2SVzXPGNYRqD1B2x",
-		        	pageNo:1,
+		        	pageNo:pageNo,
 		        	pageSize:10
 		        },
 		        success:function(data, status, xhr){
@@ -163,7 +200,7 @@
 			            select01.append(option02);
 			            select01.append(option03);
 			            Li05.append(select01);
-        				var Li06 = $("<li style='width:10%' onclick=conservation1("+items[i].contractNo+","+this+")>保存</li>");
+        				var Li06 = $("<li style='width:10%;' onclick='conservation1(\""+items[i].contractNo+"\",event);'>保存</li>");             
 		        		Ul.append(Li01);
 			            Ul.append(Li02);
 			            Ul.append(Li03);
@@ -184,36 +221,40 @@
 			var loanstatushtml = $(el).prev("li").find('select').val();
 	    	if(loanstatushtml == "是"){
 	    		loanstatus = 0
-	    	}else{
+	    	}else if(loanstatushtml == "否"){
 	    		loanstatus = 1
+	    	}else{
+	    		loanstatus = 2
 	    	}
-	    	console.log(loanstatus)
-			$.ajax({
-			type : "POST",
-			url : Config.url + "/updateSnatchRecordStatus",
-			data : {
-				'userId':"17050609270GD2SVzXPGNYRqD1B2x",
-				applyStatus:loanstatus,
-				contractNo:contractNo
-			},
-			success : function(data, status, xhr) {
-				console.log(data)	
-			},
-			error: function(xhr, errorType, error){
-                error = error?error:'系统错误';
-                tips(error,'tips_center',1500);
-            }
-		})
+	    	if(loanstatus ==0 || loanstatus == 1){
+		    	$.ajax({
+					type : "POST",
+					url : Config.url + "/updateSnatchRecordStatus",
+					data : {
+						'userId':"17050609270GD2SVzXPGNYRqD1B2x",
+						applyStatus:loanstatus,
+						contractNo:contractNo
+					},
+					success : function(data, status, xhr) {
+						console.log(data)	
+					},
+					error: function(xhr, errorType, error){
+		                error = error?error:'系统错误';
+		                tips(error,'tips_center',1500);
+		            }
+				})
+	    	}
+			
 		}
 		//甩单记录
-		function queryTossRecord(){
+		function queryTossRecord(pageNo){
 			$.ajax({
 		        type:"post",
 		        url:Config.url+"/queryTossRecord",
 		        data:{
 		        	/*'userId':xiaoyuuserId,*/
 		        	'userId':"17050609270GD2SVzXPGNYRqD1B2x",
-		        	pageNo:1,
+		        	pageNo:pageNo,
 		        	pageSize:10
 		        },
 		        success:function(data, status, xhr){
@@ -234,14 +275,14 @@
 			            select01.append(option02);
 			            select01.append(option03);
 			            Li05.append(select01);
-        				var Li06 = $("<li onclick=conservation1("+this+") style='width:10%'>保存</li>");
+        				var Li06 = $("<li style='width:10%;' onclick='conservation1(\""+items[i].contractNo+"\",event);'>保存</li>");             
 		        		Ul.append(Li01);
 			            Ul.append(Li02);
 			            Ul.append(Li03);
 			            Ul.append(Li04);
 			            Ul.append(Li05);
 			            Ul.append(Li06);
-			            $('.singlefirst').append(Ul)
+			            $('.singlesecond').append(Ul)
 		        	}		
 		        },
 		        error:function(xhr, errorType, error){
@@ -249,8 +290,60 @@
 		          	
 		        },
 			})
+		};
+		//更新摔单
+		function conservation2(contractNo,el){
+			var loanstatushtml = $(el).prev("li").find('select').val();
+	    	if(loanstatushtml == "是"){
+	    		loanstatus = 0
+	    	}else if(loanstatushtml == "否"){
+	    		loanstatus = 1
+	    	}else{
+	    		loanstatus = 2
+	    	}
+	    	if(loanstatus ==0 || loanstatus == 1){
+		    	$.ajax({
+					type : "POST",
+					url : Config.url + "/updateTossRecordStatus",
+					data : {
+						'userId':"17050609270GD2SVzXPGNYRqD1B2x",
+						applyStatus:loanstatus,
+						contractNo:contractNo
+					},
+					success : function(data, status, xhr) {
+						console.log(data)	
+					},
+					error: function(xhr, errorType, error){
+		                error = error?error:'系统错误';
+		                tips(error,'tips_center',1500);
+		            }
+				})
+	    	}
+			
 		}
+		mui.init({
+			pullRefresh: {
+				container: '#cont_wrapper',
+				up: {
+					contentrefresh: '正在加载...',
+					callback: pullupRefresh
+				}
+			}
+		});
 		
+		function pullupRefresh() {
+			setTimeout(function() {
+				pageNo++;
+				mui('#cont_wrapper').pullRefresh().endPullupToRefresh();
+				console.log()
+				if(flag == 0){
+					querySnatchRecord(pageNo);
+				}else{
+					queryTossRecord(pageNo);
+				}
+				
+			}, 500);
+		};
 		
     </script>
 </html>
