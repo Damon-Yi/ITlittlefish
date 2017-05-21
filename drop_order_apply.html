@@ -706,6 +706,7 @@
                         if(data.object.currentDateCode=="0"&&data.object.currentWeekCode=="0"){
                             dropDrequencyFlag = true;
                         }else{
+                            dropDrequencyFlag = false;
                             if(data.object.currentDateCode=="0"&&data.object.currentWeekCode=="1"){
                                 dropDrequencyMsg = data.object.currentWeekMessage;
                             }else if(data.object.currentDateCode=="1"&&data.object.currentWeekCode=="0"){
