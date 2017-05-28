@@ -49,7 +49,7 @@
 					
 				</div>
 				<div>
-					<a href="#"><span>分享链接给好友</span></a>
+					<a href="#"><span>长按二维码分享给好友</span></a>
 				</div>
 			</div>
 			<!--累计获佣-->	
@@ -70,17 +70,17 @@
     <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
     <script>
     	var xiaoyuuserId;
-    	var hrefurl = window.location.href;
-    	reorientate();
-		checkRegisterUser();
+    	//var hrefurl = window.location.href;
+    	//reorientate();
+		/*checkRegisterUser();
 		var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
 		if (Cookie.get("userId")) {
 			console.log(Cookie.get("xiaoyuerUserMes"))
 			xiaoyuuserId = Cookie.get("userId");
 			var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
 		}
-		console.log(openid)
-        $.ajax({
+		console.log(openid)*/
+        /*$.ajax({
 	        type:"post",
 	        url:Config.url+"/showqrcode",
 	        data:{
@@ -96,6 +96,21 @@
 	        	console.log(000)
 	          	
 	        },
-		})
+		});*/
+		$.ajax({
+	        type:"post",
+	        url:Config.url+"/transledger?transtype=2",
+	        data:{
+	        	userid:'22221'
+	        },
+	        success:function(data, status, xhr){
+	        	console.log(data)
+	        	
+	        },
+	        error:function(xhr, errorType, error){
+	        	console.log(000)
+	          	
+	        },
+		});
     </script>
 </html>

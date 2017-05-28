@@ -132,6 +132,7 @@
 			
 			xiaoyuuserId = Cookie.get("userId");
 		};
+	
 		$.ajax({
 			type : "post",
 			url : Config.url + "/accountledger",//查询账户信息
@@ -141,8 +142,8 @@
 			success : function(data, status, xhr) {
 				console.log(data)
 				if(data.length == 1){
-					$(".yue").html(data.balance);
-					$(".resultsyubi").html(data.fishbalance)
+					$(".yue").html(data[0].balance+'元');
+					$(".resultsyubi").html(data[0].fishbalance)
 				}
 				
 			},

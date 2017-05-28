@@ -91,7 +91,14 @@
             	<div class="content">
             		<p>
             			<span>月&nbsp;&nbsp;收&nbsp;&nbsp;入</span>
-            			<span><input style="font-size: .24rem;width: 50%;" type="text" name="monthlyincome" placeholder="请填写月收入"/></span>
+            			<select class="monthlyincome" name="">
+            				<option value="">1000以下</option>
+            				<option value="">1000-3000</option>
+            				<option value="">3000-5000</option>
+            				<option value="">5000-8000</option>
+            				<option value="">8000以上</option>
+            			</select>
+            			<span class="selectnext"></span>
             		</p>
             		<p>
             			<span>职业身份</span>
@@ -241,8 +248,8 @@
         	var sex = $(".sex option:checked").val();   	//性别
         	var mobilephone = $("input[name = mobilephone]")[0].value;  //手机号码
         	var city = $("#schoolCity").text(); //所有城市
-        	var birthday = $("#schoolTime").text(); // 生日
-        	var monthlyincome = $("input[name = monthlyincome]")[0].value; //月收入
+        	var birthday = $("#schoolTime").text(); // 生日      	
+        	var monthlyincome = $(".monthlyincome option:checked").val(); //月收入
         	var profession = $(".occupational option:checked").text(); //职业
         	console.log(socialsecurity);//社保
         	console.log(socialinsurance);//公积金
