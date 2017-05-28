@@ -49,7 +49,7 @@ select {
 	<div id="cont_wrapper">
 		<div>
 			<div class="user_info">
-				<p class="grade">等级V1</p>
+				<p class="grade"></p>
 				<div class="user_Mes">
 					<div class="user_Mes_img">
 						<div>
@@ -211,8 +211,8 @@ select {
 </body>
 <script type="text/javascript">
 	
-	//reorientate();
-	//checkRegisterUser();
+	reorientate();
+	checkRegisterUser();
 	var Data;
 	//用户信息
 	var xiaoyuuserId;
@@ -223,10 +223,11 @@ select {
 			type : "post",
 			url : Config.url + "/queryAccountInfo",//查询账户信息
 			data : {
-				userId : xiaoyuuserId
+				userId : xiaoyuuserId,
+				/*userId:'17050609270GD2SVzXPGNYRqD1B2x'*/
 			},
 			success : function(data, status, xhr) {
-				console.log(data.levelno)
+				console.log(data)
 				Data = data;
 				Cookie.set('userlevelName', data.levelName);
 				$(".nickname").html(data.nickname);
