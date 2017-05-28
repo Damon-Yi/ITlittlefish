@@ -76,7 +76,7 @@
             	<span class="pricemoney">100元</span>
             	<input type="number" class="pricemoneynumber" placeholder="输入金额" style="display: none;"/>
             </div>
-            <div class="rechargeapply">
+           <!-- <div class="rechargeapply">
             	<span>选择支付方式</span>
             </div>
             <div class="applylist">
@@ -93,13 +93,14 @@
             	<img src="images/yinlian.png"/>
             	<span>银联支付</span>
             	<span class="checked bordercolor02"></span>
-            </div>
-            <div class="applylist">
+            </div>-->
+            
+            <div class="goapply">立刻充值</div>
+            <div class="applylist" style="margin-top: 20px;background: #e2e2e2;">
             	<span class="choise bordercolor02"><img src="images/xuanzhong.png"/></span>
             	<em style="position: relative;top: -0.1rem;">同意</em>
             	<a href="#" class="h_rules" style="font-size: .2rem;position: relative;top: -0.13rem;color: #FFA835;"><< <em>小鱼儿助花帮充值协议</em> >></a>
             </div>
-            <div class="goapply">立刻充值</div>
             <div class="Tips">
             	<p>鱼币说明</p>
             	<p>鱼币是小鱼儿帮帮贷平台的电子贷向，1鱼币的价值等于1元人命币</p>
@@ -148,8 +149,8 @@
 
     <script src="plugin/layer_mobile/layer.js"></script>
     <script type="text/javascript">
-		reorientate();
-		checkRegisterUser();
+		//reorientate();
+		//checkRegisterUser();
 
     	 $('.h_rules').on('click',function(){
             var pageii = layer.open({
@@ -163,5 +164,10 @@
             });
         });
     	 
+    	 
+    	$('.goapply').on("click",function(){
+    		console.log(1111)
+    		
+    	})
     </script>
 </html>

@@ -12,23 +12,10 @@
     <style>
         
     </style>
-    <script type="text/javascript">
-        var aScroll;
-        function loaded () {
-            aScroll = new IScroll('#cont_wrapper',{
-                scrollbars: true,
-                mouseWheel: true,
-                interactiveScrollbars: true,
-                shrinkScrollbars: 'scale',
-                fadeScrollbars: true,click: true 
-            });
-        }
-       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-    </script>
 </head>
-<body onload="loaded()">
+<body>
     <div class="page_header">钱包</div>
-    <div id="cont_wrapper">
+    <div id="cont_wrapper"  style="overflow-y: scroll;">
         <div>
             <div class="performance_Mes">
             	<p>余额</p>
@@ -59,7 +46,7 @@
             			<span> 累计充值  ( 元 ) </span>
             		</p>
             		<p class="results">
-            			<span>0.00</span>
+            			<span  class="resultrecharge">0.00</span>
             		</p>
             	</div>
             </div>
@@ -70,7 +57,7 @@
             			<span> 累计总收入  ( 元 ) </span>
             		</p>
             		<p class="results">
-            			<span>0.00</span>
+            			<span class="resultallincome">0.00</span>
             		</p>
             	</div>
             	<div class="monthly bordernone">
@@ -79,7 +66,7 @@
             			<span> 累计总支出  ( 元 ) </span>
             		</p>
             		<p class="results">
-            			<span>0.00</span>
+            			<span class="resultalloutcome">0.00</span>
             		</p>
             	</div>
             </div>
@@ -92,30 +79,12 @@
             			<img class="next" src="images/next.png"/>
             		</a>
             	</p>
-            	<p class="account">
+            	<!--<p class="account">
             		<span>邀请好友</span>
             		<span>2017-03-03 09:30</span>
             		<span>返佣</span>
             		<span>+10</span>
-            	</p>
-            	<p class="account">
-            		<span>购买鱼币</span>
-            		<span>2017-03-03 09:30</span>
-            		<span>返佣</span>
-            		<span>+10</span>
-            	</p>
-            	<p class="account">
-            		<span>赠<span style="margin: 0 .1rem;"></span>送</span>
-            		<span>2017-03-03 09:30</span>
-            		<span>返佣</span>
-            		<span>+10</span>
-            	</p>
-            	<p class="account">
-            		<span>精准推送</span>
-            		<span>2017-03-03 09:30</span>
-            		<span>返佣</span>
-            		<span>+10</span>
-            	</p>
+            	</p>-->
             </div>
             <div class="empty"></div>	
         </div>
@@ -132,18 +101,72 @@
 			
 			xiaoyuuserId = Cookie.get("userId");
 		};
-	
+		function fmoney(s, n)   
+		{   
+		   n = n > 0 && n <= 20 ? n : 2;   
+		   s = parseFloat((s + "").replace(/[^\d\.-]/g, "")).toFixed(n) + "";   
+		   var l = s.split(".")[0].split("").reverse(),   
+		   r = s.split(".")[1];   
+		   t = "";   
+		   for(i = 0; i < l.length; i ++ )   
+		   {   
+		      t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? "," : "");   
+		   }   
+		   return t.split("").reverse().join("") + "." + r;   
+		} 
+		//头部信息
 		$.ajax({
 			type : "post",
 			url : Config.url + "/accountledger",//查询账户信息
 			data : {
-				userid:xiaoyuuserId
+				userid:xiaoyuuserId,
 			},
 			success : function(data, status, xhr) {
 				console.log(data)
 				if(data.length == 1){
-					$(".yue").html(data[0].balance+'元');
-					$(".resultsyubi").html(data[0].fishbalance)
+					$(".yue").html(fmoney(data[0].balance,2)+'元');
+					$('.resultrecharge').html(fmoney(data[0].totalrecharge),2)
+					$(".resultallincome").html(fmoney(data[0].totalearnings,2))
+					$(".resultalloutcome").html(fmoney(data[0].totalexpenses),2)
+					$(".resultsyubi").html(fmoney(data[0].fishbalance),2)
+				}
+				
+			},
+			error : function(xhr, errorType, error) {
+				console.log(000)
+			},
+		});
+		//底部记录
+		$.ajax({
+			type : "post",
+			url : Config.url + "/transledger",
+			data : {
+				userid:'1705071237LOHDBGOCmoiswqShfqI'
+			},
+			success : function(data, status, xhr) {
+				console.log(data)
+				var spantext0,payamt;
+				for(var i = 0 ;i < data.length;i++){
+					var P = $("<p class='account'></p>");
+					if(data[i].transtype == 1){
+						spantext0 = "充值";
+						payamt = '+'+ data[i].payamt
+					}else if(data[i].transtype == 2){
+						spantext0 = "会员分润";
+						payamt = '+'+ data[i].payamt
+					}else if(data[i].transtype == 3){
+						spantext0 = "提现";
+						payamt = '-'+ data[i].payamt
+					}
+					var span0 = $("<span>"+spantext0+"</span>");
+					var span1 = $("<span>"+data[i].transdate+"</span>");
+					var span2 = $("<span>返佣</span>")
+					var span3 = $("<span>"+payamt+"</span>");
+					P.append(span0);
+					P.append(span1);
+					P.append(span2);
+					P.append(span3);
+					$('.accountMes').append(P)
 				}
 				
 			},

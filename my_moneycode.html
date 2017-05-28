@@ -70,17 +70,17 @@
     <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
     <script>
     	var xiaoyuuserId;
-    	//var hrefurl = window.location.href;
-    	//reorientate();
-		/*checkRegisterUser();
+    	var hrefurl = window.location.href;
+    	reorientate();
+		checkRegisterUser();
 		var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
 		if (Cookie.get("userId")) {
 			console.log(Cookie.get("xiaoyuerUserMes"))
 			xiaoyuuserId = Cookie.get("userId");
 			var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
 		}
-		console.log(openid)*/
-        /*$.ajax({
+		console.log(openid)
+        $.ajax({
 	        type:"post",
 	        url:Config.url+"/showqrcode",
 	        data:{
@@ -96,18 +96,18 @@
 	        	console.log(000)
 	          	
 	        },
-		});*/
+		});
 		$.ajax({
 	        type:"post",
-	        url:Config.url+"/transledger?transtype=2",
+	        url:Config.url+"/recMemberLedger",
 	        data:{
-	        	userid:'22221'
+	        	userid:'11111'
 	        },
-	        success:function(data, status, xhr){
+	        success:function(data){
 	        	console.log(data)
 	        	
 	        },
-	        error:function(xhr, errorType, error){
+	        error:function(xhr){
 	        	console.log(000)
 	          	
 	        },
