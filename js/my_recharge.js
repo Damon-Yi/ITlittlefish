@@ -63,7 +63,7 @@ $(function(){
 	    			console.log(22222)
 	    			var eee = layer.open({
 	    				type:2,
-						content:'保存中。。。'
+						content:'请稍等。。。'
 	    			});
 	    			$.ajax({
 	    				type : "post",
@@ -77,7 +77,7 @@ $(function(){
 	    				},
 	    				success : function(data, status, xhr) {
 	    					flag = true;
-	    					layer.close(ee);
+	    					layer.close(eee);
 	    					if (data) {
 	    						if (data.resultCode == '0000') {
 	    							layer.open({
