@@ -157,7 +157,6 @@
 			ii = layer.open({
 				type:2,
 				content:'加载中。。。',
-				shadeClose:false,
 			})
 			pageNo = 1;
 			$(".singlesecond").children().remove();
@@ -187,12 +186,12 @@
 		        url:Config.url+"/querySnatchRecord",
 		        data:{
 		        	'userId':xiaoyuuserId,
-		        	/*'userId':"17050609270GD2SVzXPGNYRqD1B2x",*/
+		        	'userId':"17050609270GD2SVzXPGNYRqD1B2x",
 		        	pageNo:pageNo,
 		        	pageSize:10
 		        },
 		        success:function(data, status, xhr){
-		        	layer.open(ii);
+		        	layer.close(ii);
 		        	console.log(data)
 		        	var items = data.object.rows
 		        	for(var i = 0 ;i < items.length;i ++){
@@ -270,7 +269,7 @@
 		        },
 		        success:function(data, status, xhr){
 		        	console.log(data)
-		        	layer.open(ii);
+		        	layer.close(ii);
 		        	var items = data.object.rows
 		        	for(var i = 0 ;i < items.length;i ++){
 		        		var Ul = $("<ul></ul>");
