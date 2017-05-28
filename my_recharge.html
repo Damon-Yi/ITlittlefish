@@ -223,17 +223,12 @@
 	    					if (data) {
 	    						flag = true;
 	    						if (data.resultCode == '0000') {
-	    							layer.open({
-	    								content : data.resultMessage,
-	    								btn : "确定",
-	    								yes: function(index, layero){
-	    									MUSTPAY.init({
-												'apps_id': 'b96bd84713da4041b04389a611dbb9a1', 	//MustPay系统分配的应用ID号
-									            'prepay_id':'c6a872e1fda340abbd35a1877c101a26', //商户通过统一下单接口获取的预支付ID
-									            'pay_type': type//支付通道简称
-											});
-	    								}
-	    							});
+									MUSTPAY.init({
+										'apps_id': 'b96bd84713da4041b04389a611dbb9a1', 	//MustPay系统分配的应用ID号
+							            'prepay_id':'456dac2f24fd4199b9eba0a0bd6be90e', //商户通过统一下单接口获取的预支付ID
+							            'pay_type': type//支付通道简称
+									});
+	    							
 	    						} else if (data.resultCode == '9999') {
 	    							layer.open({
 	    								content : data.resultMessage,
