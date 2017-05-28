@@ -161,8 +161,8 @@
     
     
     
-		//reorientate();
-		//checkRegisterUser();
+		reorientate();
+		checkRegisterUser();
 		
 		
 		 $('.h_rules').on('click',function(){
@@ -236,7 +236,7 @@
 		        	if(data){
 		        		MUSTPAY.init({
 							'apps_id': data.object.apps_id, 	//MustPay系统分配的应用ID号
-				            'prepay_id':data.object.perpay_id, //商户通过统一下单接口获取的预支付ID
+				            'prepay_id':data.object.prepay_id, //商户通过统一下单接口获取的预支付ID
 				            'pay_type': type//支付通道简称
 				          /* 'apps_id': "b96bd84713da4041b04389a611dbb9a1", 	//MustPay系统分配的应用ID号
 				            'prepay_id':"1705281946bTLC8dK2upWQjlRJA0z", //商户通过统一下单接口获取的预支付ID
