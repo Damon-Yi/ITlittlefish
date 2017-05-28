@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>小鱼儿助花帮平台</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/grab_drop_order.css" rel="stylesheet" type="text/css">
+    <link href="plugin/swiper/swiper.3.1.7.min.css" rel="stylesheet" type="text/css">
+    <script src="js/public.js"></script>
+    <script type="text/javascript">
+        /*var aScroll;
+        function loaded () {
+            aScroll = new IScroll('#cont_wrapper',{
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true,click: true 
+            });
+        }
+       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);*/
+    </script>
+    <style>
+        body{background-color: #cccacb;}
+        .layui-m-layer1 .layui-m-layerchild{overflow-y: auto;}
+        .rule_txt_wrap{display: none;}
+        .rule_txt{font-size:0.2rem;line-height: 1.6;padding:0.2rem 0.12rem;color: #333;}
+        .rule_txt .p_title{text-align: center;font-size: 0.28rem;font-weight: bold;margin-bottom:0.2rem; }
+        .rule_txt .p_title_1{margin: 0.1rem 0 0.06rem;font-weight: bold;font-size: 0.24rem;color: #266273;}
+        .rule_txt .p_txt{text-indent: 0.2rem;text-align: justify;margin: 0.04rem auto;}
+        .rule_txt .p_txt_1{text-indent: 0.4rem;text-align: justify;}
+        .rule_txt_close{position: absolute;right: 5px;top: 5px;width: 30px;height: 30px;margin-left: 0;background-position: -149px -31px;background-image: url(images/icon.png);background-repeat:no-repeat;}
+        .apply_btn{display: none;}
+        .apply_btn.active{display: block;}
+    </style>
+</head>
+<body>
+    <div class="page_header">
+        <p>订单详情</p>
+        <div class="right_add"><span>抢单规则</span></div>
+    </div>
+    <div id="">
+        <div>
+            <div class="or_details">
+                <div class="or_header">
+                    <div class="or_col1">
+                        <p class="or_p1"><span class="u_name"></span><!-- <span class="u_pbone">13575612233</span> --></p>
+                        <p class="or_p2"><span class="u_time"></span><span class="applydate"></span></p>
+                    </div>
+                    <div class="or_col2">
+                        <img class="u_fish" src="images/grab_order_002.png" alt="">
+                        <p class="or_p3"><span  class="u_num"></span>鱼币</p>
+                    </div>
+                </div>
+                <div class="or_bord">
+                    <div class="or_col">
+                        <p class="or_num or_num_1"></p>
+                        <p>申请贷款金额（万）</p>
+                    </div>
+                    <div class="or_col">
+                        <p class="or_num or_num_2"></p>
+                        <p>贷款期限（个月）</p>
+                    </div>
+                </div>
+                <div class="or_u_info">
+                    <p class="or_u_title">身份信息</p>
+                    <p class="or_u_txt"><span>年龄</span><span class="age"></span></p>
+                    <p class="or_u_txt"><span>所在城市</span><span class="applycity"></span></p>
+                    <p class="or_u_txt"><span>置业身份</span><span class="profession"></span></p>
+                    <p class="or_u_txt"><span>月收入(元)</span><span class="monthlyincome"></span></p>
+                    <p class="or_u_title">资产信息</p>
+                    <p class="or_u_txt"><span>名下房产</span><span class="fixedassets_house"></span></p>
+                    <p class="or_u_txt"><span>名下车产</span><span class="fixedassets_car"></span></p>
+                    <p class="or_u_txt"><span>有无连续六个月以上缴纳公积金</span><span class="socialinsurance_1"></span></p>
+                    <p class="or_u_txt"><span>有无连续六个月以上缴纳社保</span><span class="socialinsurance_2"></span></p>
+                    <p class="or_u_txt"><span>是否有信用卡</span><span class="creditcard"></span></p>
+                </div>
+                <div class="or_oper">
+                    <a href="javascript:;" class="apply_btn">抢单</a>
+                    <a href="javascript:;" class="rule_btn">请遵守抢单规则</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rule_txt_wrap">
+        <div class="rule_txt">
+            <a class="rule_txt_close" href="javascript:;"></a>
+            <p class="p_title">抢单规则</p>
+            <p class="p_txt">1.抢单功能仅开放给实名认证的信贷人员，信贷人员需确保实名认证信息真实性。</p>
+            <p class="p_txt">2.抢单前需确保鱼币账户余额大于或等于抢单金额，可通过充值方式购买鱼币，1鱼币=1人民币。</p>
+            <p class="p_txt">3.抢单成功后，可进入“我的”-“抢单/甩单记录”中查看订单详情，以便后期订单的跟进。</p>
+            <p class="p_txt">当您的订单出现以下情况时，可以在抢单后的24小时内与客服联系提交退款申请</p>
+            <p class="p_txt">1.抢单成功后，存在借款人电话为无效号码时，可申请退款</p>
+            <p class="p_txt">2.如果在与借款人首次联系核对信息时，发现该借款人为同行/重复订单，可申请退款。</p>
+            <p class="p_title_1">平台声明：</p>
+            <p class="p_txt">  抢单后超过24小时，小鱼儿帮帮贷将不再受理该订单的退款申请。</p>
+            <p class="p_txt">  退款申请经平台审核通过后，系统会自动将对应的抢单金额到您的鱼币账户中。</p>
+        </div>
+    </div>
+    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <script type="text/javascript" src="plugin/zepto/touch.js"></script>
+    <script src="plugin/layer_mobile/layer.js"></script>
+    <!-- <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="js/getcurrCity.js"></script> -->
+    <script>
+        /*加载动画*/
+        var loader = new loading({'container':document.body,'hasBg':false});
+        var path = window.location.href;
+        var contractNo,orderPreice;
+        if(path.indexOf("contractNo=")>=0){
+            var arr = path.split("&");
+            for(var i = 0 ;i<arr.length;i++){
+                if(arr[i].indexOf("contractNo")>=0){
+                    var index = arr[i].indexOf("=");
+                    contractNo = arr[i].substring(index+1,arr[i].length);
+                }
+            }
+        }
+        var parmas = {
+            userId:Cookie.get('userId'),
+            contractNo:contractNo
+        }
+        $.ajax({
+            type:"post",
+            url:Config.url+"/querySnatchDetailInfo",
+            data:parmas,
+            beforeSend:function(xhr, settings){
+                loader.show();
+            },
+            success:function(data, status, xhr){
+                if(data.resultCode=='0000'){
+
+                    if(data.object.isRobbed==0){
+                        $('.apply_btn').addClass('active');
+                    }else{
+                       $('.apply_btn').removeClass('active'); 
+                    }
+                    orderPreice = data.object.tossforamt;
+                    var profession = '';
+                    switch(data.object.profession){
+                        case '001':
+                            profession = '在校学生';
+                            break;
+                        case '002':
+                            profession = '工薪族';
+                            break;
+                        case '003':
+                            profession = '企业主';
+                            break;
+                        case '004':
+                            profession = '网店主';
+                            break;
+                        case '005':
+                            profession = '自由职业者';
+                            break;
+                        default:
+                            profession = '';
+                    }
+                    $('.u_name').text(data.object.customername);//
+                    //$('.u_pbone').text(data.object.customername);//手机号
+                    $('.u_time').text(data.object.updatetime+'前更新');//更新时间
+                    $('.u_num').text(data.object.tossforamt);//抢单价格
+                    $('.or_num_1').text(data.object.loanamount);//贷款金额
+                    $('.or_num_2').text(data.object.loanperiod);//贷款期数
+                    $('.applydate').text(data.object.applydate+'申请');//申请时间
+                    $('.age').text(data.object.age);//年龄
+                    $('.applycity').text(data.object.applycity);//申请城市
+                    $('.profession').text(profession);//职业
+                    $('.monthlyincome').text(data.object.monthlyincome);//月收入
+                    $('.fixedassets_house').text(data.object.fixedassets==1?'有房产':'无房产');//固定资产，1，房，2车
+                    $('.fixedassets_car').text(data.object.fixedassets==2?'有车':'无车产');//固定资产，1，房，2车
+                    $('.socialinsurance_1').text(data.object.fixedassets==1?'有':'无');//社保公积金，1有，2无
+                    $('.socialinsurance_2').text(data.object.fixedassets==1?'有':'无');//社保公积金，1有，2无
+                    $('.creditcard').text(data.object.creditcard==1?'有':'无');//信用卡，1有，2无
+                }
+            },
+            error:function(xhr, errorType, error){
+                loader.hide();
+                error = error?error:'系统错误';
+                tips(error,'tips_center',1500);
+            },
+            complete:function(xhr, status){
+                loader.hide();
+            }
+        });
+        //协议
+        $('.or_oper .rule_btn,.right_add').on('click',function(){
+            var pageii = layer.open({
+              type: 1,
+              content: $('.rule_txt_wrap').html(),
+              anim: 'up',
+              style: 'position:fixed; left:0; top:0; width:100%; height:100%; border: none; -webkit-animation-duration: .5s; animation-duration: .5s;'
+            });
+            $('.rule_txt_close').on('click',function(){
+                layer.closeAll();
+            });
+        });
+        //抢单按钮
+        $('.apply_btn').on('click',function(){
+            grabOrder(contractNo,orderPreice);
+        });
+        //抢单
+        function grabOrder(ordreNum,orderPreice){
+            console.log(ordreNum);
+            console.log(orderPreice);
+            var path = 'grab_order_sales_certification.html?path=grab_order_details.html?contractNo='+contractNo;
+            if(isSaler(path)){
+                var parmas = {
+                    userId:Cookie.get('userId'),
+                    contractNo:ordreNum,
+                    snatchAmt:orderPreice
+                };
+                $.ajax({
+                    type:"post",
+                    url:Config.url+"/snatchContractLoan",
+                    data:parmas,
+                    beforeSend:function(xhr, settings){
+                        loader.show();
+                    },
+                    success:function(data, status, xhr){
+                        console.log(data);
+                        if(data.resultCode=='0000'){
+                            location.href = 'grab_order_apply_suc.html';
+                        }else{
+                            tips(data.resultMessage,'tips_center',1500);
+                        }
+                    },
+                    error:function(xhr, errorType, error){
+                        loader.hide();
+                        error = error?error:'系统错误';
+                        tips(error,'tips_center',1500);
+                    },
+                    complete:function(xhr, status){
+                        loader.hide();
+                    }
+                });
+            }else{
+                //location.href = 'grab_order_sales_certification.html?contractNo='+contractNo;
+            }
+        }
+        //判断是否是销售
+        function isSaler(url){
+            var flag = false;
+            $.ajax({
+                type:"post",
+                url:Config.url+"/checkSalesInfo",
+                data:{userId:Cookie.get('userId')},
+                async:false,
+                beforeSend:function(xhr, settings){
+                },
+                success:function(data, status, xhr){
+                    console.log(data);
+                    if(data.resultCode=='0000'){
+                        flag = true;
+                    }else{
+                        location.href = url;
+                    }
+                },
+                error:function(xhr, errorType, error){
+                },
+                complete:function(xhr, status){
+                }
+            });
+            return flag;
+        }
+    </script>
+    </body>
+</html>

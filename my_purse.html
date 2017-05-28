@@ -74,10 +74,10 @@
             <div class="accountMes">
             	<p class="accounttitle">
             		<span>账户明细</span>
-            		<a href="#">
+            		<!--<a href="#">
             			<span>更多</span>
             			<img class="next" src="images/next.png"/>
-            		</a>
+            		</a>-->
             	</p>
             	<!--<p class="account">
             		<span>邀请好友</span>
@@ -101,19 +101,7 @@
 			
 			xiaoyuuserId = Cookie.get("userId");
 		};
-		function fmoney(s, n)   
-		{   
-		   n = n > 0 && n <= 20 ? n : 2;   
-		   s = parseFloat((s + "").replace(/[^\d\.-]/g, "")).toFixed(n) + "";   
-		   var l = s.split(".")[0].split("").reverse(),   
-		   r = s.split(".")[1];   
-		   t = "";   
-		   for(i = 0; i < l.length; i ++ )   
-		   {   
-		      t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? "," : "");   
-		   }   
-		   return t.split("").reverse().join("") + "." + r;   
-		} 
+		
 		//头部信息
 		$.ajax({
 			type : "post",

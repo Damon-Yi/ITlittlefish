@@ -156,7 +156,7 @@
 		$(".singlerstyle").find("p").on("tap",function(){
 			ii = layer.open({
 				type:2,
-				content:'加载中。。。',
+				content:'保存中。。。',
 			})
 			pageNo = 1;
 			$(".singlesecond").children().remove();
@@ -226,7 +226,12 @@
 			})
 		};
 		//更新抢单
+		var kk;
 		function conservation1(contractNo,el){
+			kk = layer.open({
+				type:2,
+				content:'保存中。。。'
+			})
 			var loanstatushtml = $(el).prev("li").find('select').val();
 	    	if(loanstatushtml == "是"){
 	    		loanstatus = 0
@@ -247,6 +252,7 @@
 					},
 					success : function(data, status, xhr) {
 						console.log(data)	
+						layer.close(kk)
 					},
 					error: function(xhr, errorType, error){
 		                error = error?error:'系统错误';
@@ -304,6 +310,10 @@
 		};
 		//更新摔单
 		function conservation2(contractNo,el){
+			kk = layer.open({
+				type:2,
+				content:'加载中。。。'
+			})
 			var loanstatushtml = $(el).prev("li").find('select').val();
 	    	if(loanstatushtml == "是"){
 	    		loanstatus = 0
@@ -324,6 +334,7 @@
 					},
 					success : function(data, status, xhr) {
 						console.log(data)	
+						layer.close(kk)
 					},
 					error: function(xhr, errorType, error){
 		                error = error?error:'系统错误';

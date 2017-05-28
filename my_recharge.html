@@ -146,7 +146,7 @@
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
     <script type="text/javascript" src="js/my_recharge.js"></script>
-
+	<script src= "https://www.mustpay.com.cn/service/js/h5sdk.js" ></script>
     <script src="plugin/layer_mobile/layer.js"></script>
     <script type="text/javascript">
 		//reorientate();
@@ -165,9 +165,32 @@
         });
     	 
     	 
-    	$('.goapply').on("click",function(){
+    	/*$('.goapply').on("click",function(){
     		console.log(1111)
-    		
-    	})
+	    	$.ajax({
+		        type:"post",
+		        url:Config.url+"/mustPayPrePay",
+		        data:{
+		        	userId:'123456',
+		        	subject:'123',
+		        	totalFee:1,
+		        	body:'Nihao'
+		        },
+		        success:function(data, status, xhr){
+		        	console.log(data)
+		        	
+		        },
+		        error:function(xhr, errorType, error){
+		        	console.log(000)
+		          	
+		        },
+			});
+    	})*/
+    	//配置参数调起支付
+    	MUSTPAY.init ({
+	         'apps_id':'bc9416e3c3ab47b2b136a72b4993f408', //MustPay系统分配的应用ID号 2
+	         'prepay_id':'508f478449fd4ce7891f9a1abeb1a52a', //商户通过统一下单接口获取的预支付ID 3
+	         //'pay_type':['ali_pay_wap','union_pay_wap','bd_pay_wap','jd_pay_wap','wy_pay_wap'] //支付通道简称 4
+		});
     </script>
 </html>
