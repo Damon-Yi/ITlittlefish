@@ -12,19 +12,7 @@
     <style>
         
     </style>
-    <!--<script type="text/javascript">
-        var aScroll;
-        function loaded () {
-            aScroll = new IScroll('#cont_wrapper',{
-                scrollbars: true,
-                mouseWheel: true,
-                interactiveScrollbars: true,
-                shrinkScrollbars: 'scale',
-                fadeScrollbars: true,click: true 
-            });
-        }
-       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-    </script>-->
+   
 </head>
 <body>
     <div class="page_header">业绩管理</div>
@@ -105,8 +93,8 @@
     <script>
         var xiaoyuuserId;
     	var hrefurl = window.location.href;
-    	//reorientate();
-		//checkRegisterUser();
+    	reorientate();
+		checkRegisterUser();
 		if (Cookie.get("userId")) {
 			
 			xiaoyuuserId = Cookie.get("userId");
@@ -157,31 +145,41 @@
 		        			
 		        		}
 		        	};
-		        	
-		        	for(var i = 0;i<lastmouth.length;i++){
-		        		var Div = $("<div class='resultscontent'></div>");
-		        		var span0 = $("<span>"+lastmouth[i].areaName+"</span>");
-		        		var span1 = $("<span>"+lastmouth[i].currentperformance+'万'+"</span>");
-		        		var span2 = $("<span>"+lastmouth[i].achieverate+"%"+"</span>");
-		        		var span3 = $("<span>"+lastmouth[i].earnings+"</span>");
-		        		Div.append(span0)
-		        		Div.append(span1)
-		        		Div.append(span2)
-		        		Div.append(span3)
-		        		$(".resultslist").eq(1).append(Div)
+		        	if(lastmouth.length == 0){
+		        		var Div1 = $("<div class='resultscontent' style='text-align: center;'>暂无数据</div>");
+		        		$(".resultslist").eq(1).append(Div1)
+		        	}else{
+		        		for(var i = 0;i<lastmouth.length;i++){
+			        		var Div = $("<div class='resultscontent'></div>");
+			        		var span0 = $("<span>"+lastmouth[i].areaName+"</span>");
+			        		var span1 = $("<span>"+lastmouth[i].currentperformance+'万'+"</span>");
+			        		var span2 = $("<span>"+lastmouth[i].achieverate+"%"+"</span>");
+			        		var span3 = $("<span>"+lastmouth[i].earnings+"</span>");
+			        		Div.append(span0)
+			        		Div.append(span1)
+			        		Div.append(span2)
+			        		Div.append(span3)
+			        		$(".resultslist").eq(1).append(Div)
+		        		};
 		        	};
-		        	for(var i = 0;i<thismouth.length;i++){
-		        		var Div = $("<div class='resultscontent'></div>");
-		        		var span0 = $("<span>"+thismouth[i].areaName+"</span>");
-		        		var span1 = $("<span>"+thismouth[i].currentperformance+'万'+"</span>");
-		        		var span2 = $("<span>"+thismouth[i].achieverate+"%"+"</span>");
-		        		var span3 = $("<span>"+thismouth[i].earnings+"</span>");
-		        		Div.append(span0)
-		        		Div.append(span1)
-		        		Div.append(span2)
-		        		Div.append(span3)
-		        		$(".resultslist").eq(0).append(Div)
+		        	if(thismouth.length == 0){
+		        		var Div2 = $("<div class='resultscontent' style='text-align: center;'>暂无数据</div>");
+		        		$(".resultslist").eq(0).append(Div2)
+		        	}else{
+		        		for(var i = 0;i<thismouth.length;i++){
+			        		var Div = $("<div class='resultscontent'></div>");
+			        		var span0 = $("<span>"+thismouth[i].areaName+"</span>");
+			        		var span1 = $("<span>"+thismouth[i].currentperformance+'万'+"</span>");
+			        		var span2 = $("<span>"+thismouth[i].achieverate+"%"+"</span>");
+			        		var span3 = $("<span>"+thismouth[i].earnings+"</span>");
+			        		Div.append(span0)
+			        		Div.append(span1)
+			        		Div.append(span2)
+			        		Div.append(span3)
+			        		$(".resultslist").eq(0).append(Div)
+		        		}
 		        	}
+		        	
 		        	
 		        },
 		        error:function(xhr, errorType, error){

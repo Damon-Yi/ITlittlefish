@@ -152,12 +152,13 @@
             }
 		})
 		//切换抢单与甩单的状态
-		var ii = layer.open({
-			type:'2',
-			content:'加载中。。。',
-			shadeClose:false,
-		})
+		var ii;
 		$(".singlerstyle").find("p").on("tap",function(){
+			ii = layer.open({
+				type:2,
+				content:'加载中。。。',
+				shadeClose:false,
+			})
 			pageNo = 1;
 			$(".singlesecond").children().remove();
 			$(".singlefirst").children().remove();

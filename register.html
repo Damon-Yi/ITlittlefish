@@ -17,7 +17,7 @@
 	        .logo img{width: 80%;height: auto;margin-top:.3rem;}
 	        .banner{text-align: center;}
 	        .banner img{width: 90%;height: auto;margin: 0 auto;}
-	        .contentinput{width: 90%;height: 1.9rem;background: white;margin: 0 auto;margin-top: 1rem;}
+	        .contentinput{width: 90%;height: 1.9rem;background: white;margin: 0 auto;}
 	        .contentinput div{width: 90%;height: .95rem;margin: 0 auto;position: relative;}
 	        .contentinput input{position: absolute;top: 0;height: .92rem;width: 100%;border: none;font-size: .28rem;}
 	        .phonenumber{border-bottom: 2px solid #c4c4c4;}
@@ -63,21 +63,8 @@
 	        	background: #DEDEDE !important;
 	        }
 	    </style>
-	   <!-- <script type="text/javascript">
-	       var aScroll;
-	        function loaded () {
-	            aScroll = new IScroll('#cont_wrapper',{
-	                scrollbars: true,
-	                mouseWheel: true,
-	                interactiveScrollbars: true,
-	                shrinkScrollbars: 'scale',
-	                fadeScrollbars: true,click: true 
-	            });
-	        }
-	       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-	    </script>-->
 	</head>
-	<body style="background: #ffd75e">
+	<body style="background: #ffd75e;overflow: scroll;">
     <div class="page_header">
     	<a href="#">
     		<span class="page_header_left">
@@ -87,10 +74,11 @@
         <p>新手注册</p>
         <div class="right_add"><i class="position"></i><span>深圳</span></div>
     </div>
-    <div>
+    <div style="overflow-y: scroll;">
         <div class="logo">
-        	<img src="images/regist_login.png"/>
+        	<img src="images/re.png"/>
         </div>
+        
        <div class="banner">
         	<img src="images/regist_01.png"/>
         	<img src="images/regist_02.png"/>
@@ -222,7 +210,7 @@
     	var URLopenid;
     	var xiaoyuopenId;
     	var xiaoyuerUserMes;
-    	getOpenId();
+    	//getOpenId();
     	if(Cookie.get("xiaoyuerUserMes")){
     		//console.log(Cookie.get("xiaoyuerUserMes"))
     		xiaoyuerUserMes = Cookie.get("xiaoyuerUserMes");
