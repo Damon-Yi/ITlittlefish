@@ -87,22 +87,19 @@
 	
 		<div class="type-con">
 			<div class="type-box">
-				<img src="https://www.mustpay.com.cn/testpay/images/zfb-h.png" onclick="selPay('ali_pay_wap');">
+				<img src="https://www.mustpay.com.cn/testpay/images/wx-h.png" onclick="fffffff('wx_pay_wap');">
 			</div>
 			<div class="type-box">
-				<img src="https://www.mustpay.com.cn/testpay/images/wx-h.png" onclick="selPay('wx_pay_wap');">
+				<img src="https://www.mustpay.com.cn/testpay/images/yl-h.png" onclick="fffffff('union_pay_wap');">
 			</div>
 			<div class="type-box">
-				<img src="https://www.mustpay.com.cn/testpay/images/yl-h.png" onclick="selPay('union_pay_wap');">
+				<img src="https://www.mustpay.com.cn/testpay/images/bd-h.png" onclick="fffffff('bd_pay_wap');">
 			</div>
 			<div class="type-box">
-				<img src="https://www.mustpay.com.cn/testpay/images/bd-h.png" onclick="selPay('bd_pay_wap');">
+				<img src="https://www.mustpay.com.cn/testpay/images/jd-h.png" onclick="fffffff('jd_pay_wap');">
 			</div>
 			<div class="type-box">
-				<img src="https://www.mustpay.com.cn/testpay/images/jd-h.png" onclick="selPay('jd_pay_wap');">
-			</div>
-			<div class="type-box">
-				<img src="https://www.mustpay.com.cn/testpay/images/wy-h.png" onclick="selPay('wy_pay_wap');">
+				<img src="https://www.mustpay.com.cn/testpay/images/wy-h.png" onclick="fffffff('wy_pay_wap');">
 			</div>
 			<div style="clear:both;"></div>
 		</div>
@@ -156,14 +153,19 @@
     
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
-    <script src= "https://www.mustpay.com.cn/service/js/h5sdk.js" ></script>
-    <script type="text/javascript" src="js/my_recharge.js"></script>	
+    <!--<script type="text/javascript" src="js/my_recharge.js"></script>-->
+	<script src= "https://www.mustpay.com.cn/service/js/h5sdk.js" ></script>
     <script src="plugin/layer_mobile/layer.js"></script>
     <script type="text/javascript">
-		reorientate();
-		checkRegisterUser();
-
-    	 $('.h_rules').on('click',function(){
+    
+    
+    
+    
+		//reorientate();
+		//checkRegisterUser();
+		
+		
+		 $('.h_rules').on('click',function(){
             var pageii = layer.open({
               type: 1,
               content: $('.rule_txt_wrap').html(),
@@ -174,12 +176,84 @@
                 layer.closeAll();
             });
         });
-    	 
-		 var flag = true;
-    //立刻充值
-   
-    	//调用第三方
-    function selPay(type){	
+		
+		
+		$(".rechargeprice").on("tap",function(){
+		$(this).toggleClass("backcolor");
+		$(this).siblings().removeClass("backcolor");
+		if($(this).index() !=6){
+			$(".pricemoney").show();
+			$(".pricemoneynumber").hide();
+			var text = $(this).find("span").eq(0).html();
+			var price = text.slice(0,text.length-2);
+			$(".rechargenum").find("span").eq(1).html(price + "元");
+		}else{
+			$(".pricemoney").hide();
+			$(".pricemoneynumber").show();
+		}
+	});
+	
+    //是否同意小鱼儿协议
+    $(".choise").on("tap",function(){
+    	if($(this).children().length){
+    		$(this).removeClass("bordercolor01").addClass("bordercolor02");
+    		$(this).children().remove();
+    	}else{
+    		$(this).removeClass("bordercolor02").addClass("bordercolor01");
+    		$(this).append("<img src='images/xuanzhong.png'/>");
+    	}
+    });
+    	
+    	 var xiaoyuuserId;
+		if (Cookie.get("userId")) {			
+			xiaoyuuserId = Cookie.get("userId");
+		}; 
+    	function  fffffff(type){
+    		if($(".pricemoneynumber").css("display") == 'none'){
+    			var paymoney = $(".rechargenum").find("span").eq(1).html();
+    		}else{
+    			var paymoney = $(".pricemoneynumber").val()+"元";
+    			if(paymoney.length == 1){
+    				layer.open({
+    					content:'请输入金额',
+    					btn:'确认'
+    				});
+    				return;
+    			}
+    		}  
+    		paymoney = paymoney.substring(0,paymoney.length-1);
+    		$.ajax({
+		        type:"post",
+		        url:Config.url+"/mustPayPrePay",
+		        data:{
+		        	userId:xiaoyuuserId,
+		        	subject:'123',
+		        	totalFee:paymoney,
+		        	body:'Nihao'
+		        },
+		        success:function(data, status, xhr){
+		        	console.log(data)
+		        	if(data){
+		        		MUSTPAY.init({
+							/*'apps_id': data.apps_id, 	//MustPay系统分配的应用ID号
+				            'prepay_id':data.perpay_id, //商户通过统一下单接口获取的预支付ID
+				            'pay_type': type//支付通道简称*/
+				           'apps_id': "b96bd84713da4041b04389a611dbb9a1", 	//MustPay系统分配的应用ID号
+				            'prepay_id':"1705281946bTLC8dK2upWQjlRJA0z", //商户通过统一下单接口获取的预支付ID
+				            'pay_type': type
+						});
+		        	}
+		        	
+		        },
+		        error:function(xhr, errorType, error){
+		        	console.log(000)
+		          	
+		        },
+			});
+    	}
+    	//配置参数调起支付
+    /*	var flag = true;
+	function selPay(type){	
     	console.log(1111)
     	if(flag){
     		flag = false;
@@ -199,14 +273,10 @@
 	    			}
 	    		}   		
 	    		paymoney = paymoney.substring(0,paymoney.length-1);
+	    		
 	    		var paystatus = 'SUCCESS';
 	    		apply();
 	    		function apply(){
-	    			console.log(22222)
-	    			var eee = layer.open({
-	    				type:2,
-						content:'请稍等。。。'
-	    			});
 	    			$.ajax({
 	    				type : "post",
 	    				url : Config.url + "/recharge",
@@ -217,15 +287,13 @@
 	    					chargeAmount : paymoney,
 	    					payStatus : paystatus
 	    				},
-	    				success : function(data, status, xhr) {
-	    					
-	    					layer.close(eee);
+	    				success : function(data, status, xhr) {    					
 	    					if (data) {
 	    						flag = true;
 	    						if (data.resultCode == '0000') {
 									MUSTPAY.init({
-										'apps_id': 'b96bd84713da4041b04389a611dbb9a1', 	//MustPay系统分配的应用ID号
-							            'prepay_id':'456dac2f24fd4199b9eba0a0bd6be90e', //商户通过统一下单接口获取的预支付ID
+										'apps_id': data.apps_id, 	//MustPay系统分配的应用ID号
+							            'prepay_id':data.perpay_id, //商户通过统一下单接口获取的预支付ID
 							            'pay_type': type//支付通道简称
 									});
 	    							
@@ -247,7 +315,9 @@
 	    		}
 	    			
 	    	}
-    	}   	
-   }
+	    	
+	    	}*/
+    	 
+		
     </script>
 </html>
