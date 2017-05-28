@@ -59,6 +59,7 @@ $(function(){
 	    		paymoney = paymoney.substring(0,paymoney.length-1);
 	    		var paystatus = 'SUCCESS';
 	    		if (openid) {
+	    			console.log(22222)
 	    			var ee = layer.open({
 	    				type:'2',
 	    				content:'请稍后。。。',
