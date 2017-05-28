@@ -107,7 +107,7 @@ select {
 							</dl>
 					</li>
 					</a>
-					<a href="my_performance.html">
+					<a class="my_performance">
 						<li class="navigation_list">
 							<dl>
 								<dt>
@@ -211,8 +211,8 @@ select {
 </body>
 <script type="text/javascript">
 	
-	reorientate();
-	checkRegisterUser();
+	//reorientate();
+	//checkRegisterUser();
 	var Data;
 	//用户信息
 	var xiaoyuuserId;
@@ -324,5 +324,30 @@ select {
 		} else {
 			location.href = "my_membersev.html?levelno=" + Data.levelno;
 		}
+	});
+	$('.my_performance').on("click",function(){
+		$.ajax({
+			type : "POST",
+			url : Config.url + "/checkSalesInfo",
+			data : {
+				'userId':Cookie.get("userId"),
+			},
+			success : function(data) {
+				console.log(data)
+				if(data.resultCode == '1111'){
+					layer.open({
+						content: '该功能仅对工作人员开放'
+						,skin: 'msg'
+						,time: 2 //2秒后自动关闭
+					})
+				}else{
+					location.href='my_performance.html'
+				}
+			},
+			error : function(xhr) {
+				console.log(000)
+
+			},
+		})
 	})
 </script>

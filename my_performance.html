@@ -105,8 +105,8 @@
     <script>
         var xiaoyuuserId;
     	var hrefurl = window.location.href;
-    	reorientate();
-		checkRegisterUser();
+    	//reorientate();
+		//checkRegisterUser();
 		if (Cookie.get("userId")) {
 			
 			xiaoyuuserId = Cookie.get("userId");
@@ -157,6 +157,7 @@
 		        			
 		        		}
 		        	};
+		        	
 		        	for(var i = 0;i<lastmouth.length;i++){
 		        		var Div = $("<div class='resultscontent'></div>");
 		        		var span0 = $("<span>"+lastmouth[i].areaName+"</span>");
