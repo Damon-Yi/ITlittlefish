@@ -20,6 +20,13 @@
         .rule_txt .p_txt{text-indent: 0.2rem;text-align: justify;margin: 0.04rem auto;}
         .rule_txt .p_txt_1{text-indent: 0.4rem;text-align: justify;}
         .rule_txt_close{position: absolute;right: 5px;top: 5px;width: 30px;height: 30px;margin-left: 0;background-position: -149px -31px;background-image: url(images/icon.png);background-repeat:no-repeat;}
+    	.order-header{background:#333;}
+		.order-header .title{font-size:15px;color:#FFF;text-align:center;padding-top:20px;}
+		.order-header .amount{font-size:16px;color:#52e2c6;text-align:center;padding:20px 0;font-weight:bold;}
+		.order-header .amount font{font-size:26px;}
+		.type-title{text-align:center;color:#333;padding:15px;font-size:15px;}
+		.type-con .type-box{width:33.3%;text-align:center;float:left;margin:10px 0;box-sizing:border-box;}
+		.type-con .type-box img{width:80%;}
     </style>
    <!--<script type="text/javascript">
         var aScroll;
@@ -76,26 +83,30 @@
             	<span class="pricemoney">100元</span>
             	<input type="number" class="pricemoneynumber" placeholder="输入金额" style="display: none;"/>
             </div>
-           <!-- <div class="rechargeapply">
-            	<span>选择支付方式</span>
-            </div>
-            <div class="applylist">
-            	<img src="images/weixin.png"/>
-            	<span>微信支付</span>
-            	<span class="checked bordercolor01"><img src="images/xuanzhong.png"/></span>
-            </div>
-            <div class="applylist">
-            	<img src="images/jingdong.png"/>
-            	<span>京东支付</span>
-            	<span class="checked bordercolor02"></span>
-            </div>
-            <div class="applylist">
-            	<img src="images/yinlian.png"/>
-            	<span>银联支付</span>
-            	<span class="checked bordercolor02"></span>
-            </div>-->
-            
-            <div class="goapply">立刻充值</div>
+	<div class="type-title">请选择支付方式</div>
+	
+		<div class="type-con">
+			<div class="type-box">
+				<img src="https://www.mustpay.com.cn/testpay/images/zfb-h.png" onclick="selPay('ali_pay_wap');">
+			</div>
+			<div class="type-box">
+				<img src="https://www.mustpay.com.cn/testpay/images/wx-h.png" onclick="selPay('wx_pay_wap');">
+			</div>
+			<div class="type-box">
+				<img src="https://www.mustpay.com.cn/testpay/images/yl-h.png" onclick="selPay('union_pay_wap');">
+			</div>
+			<div class="type-box">
+				<img src="https://www.mustpay.com.cn/testpay/images/bd-h.png" onclick="selPay('bd_pay_wap');">
+			</div>
+			<div class="type-box">
+				<img src="https://www.mustpay.com.cn/testpay/images/jd-h.png" onclick="selPay('jd_pay_wap');">
+			</div>
+			<div class="type-box">
+				<img src="https://www.mustpay.com.cn/testpay/images/wy-h.png" onclick="selPay('wy_pay_wap');">
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+       
             <div class="applylist" style="margin-top: 20px;background: #e2e2e2;">
             	<span class="choise bordercolor02"><img src="images/xuanzhong.png"/></span>
             	<em style="position: relative;top: -0.1rem;">同意</em>
@@ -145,8 +156,8 @@
     
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
     <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
-    <script type="text/javascript" src="js/my_recharge.js"></script>
-	<script src= "https://www.mustpay.com.cn/service/js/h5sdk.js" ></script>
+    <script src= "https://www.mustpay.com.cn/service/js/h5sdk.js" ></script>
+    <script type="text/javascript" src="js/my_recharge.js"></script>	
     <script src="plugin/layer_mobile/layer.js"></script>
     <script type="text/javascript">
 		reorientate();
@@ -164,33 +175,84 @@
             });
         });
     	 
-    	 
-    	/*$('.goapply').on("click",function(){
-    		console.log(1111)
-	    	$.ajax({
-		        type:"post",
-		        url:Config.url+"/mustPayPrePay",
-		        data:{
-		        	userId:'123456',
-		        	subject:'123',
-		        	totalFee:1,
-		        	body:'Nihao'
-		        },
-		        success:function(data, status, xhr){
-		        	console.log(data)
-		        	
-		        },
-		        error:function(xhr, errorType, error){
-		        	console.log(000)
-		          	
-		        },
-			});
-    	})*/
-    	//配置参数调起支付
-    	MUSTPAY.init ({
-	         'apps_id':'bc9416e3c3ab47b2b136a72b4993f408', //MustPay系统分配的应用ID号 2
-	         'prepay_id':'508f478449fd4ce7891f9a1abeb1a52a', //商户通过统一下单接口获取的预支付ID 3
-	         //'pay_type':['ali_pay_wap','union_pay_wap','bd_pay_wap','jd_pay_wap','wy_pay_wap'] //支付通道简称 4
-		});
+		 var flag = true;
+    //立刻充值
+   
+    	//调用第三方
+    function selPay(type){	
+    	console.log(1111)
+    	if(flag){
+    		flag = false;
+	    	if (Cookie.get("xiaoyuerUserMes")) {
+	    		var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
+	    		var userid = Cookie.get("userId");
+	    		if($(".pricemoneynumber").css("display") == 'none'){
+	    			var paymoney = $(".rechargenum").find("span").eq(1).html();
+	    		}else{
+	    			var paymoney = $(".pricemoneynumber").val()+"元";
+	    			if(paymoney.length == 1){
+	    				layer.open({
+	    					content:'请输入金额',
+	    					btn:'确认'
+	    				});
+	    				return;
+	    			}
+	    		}   		
+	    		paymoney = paymoney.substring(0,paymoney.length-1);
+	    		var paystatus = 'SUCCESS';
+	    		apply();
+	    		function apply(){
+	    			console.log(22222)
+	    			var eee = layer.open({
+	    				type:2,
+						content:'请稍等。。。'
+	    			});
+	    			$.ajax({
+	    				type : "post",
+	    				url : Config.url + "/recharge",
+	    				async : false,
+	    				data : {
+	    					openid : openid,
+	    					userid : userid,
+	    					chargeAmount : paymoney,
+	    					payStatus : paystatus
+	    				},
+	    				success : function(data, status, xhr) {
+	    					
+	    					layer.close(eee);
+	    					if (data) {
+	    						flag = true;
+	    						if (data.resultCode == '0000') {
+	    							layer.open({
+	    								content : data.resultMessage,
+	    								btn : "确定",
+	    								yes: function(index, layero){
+	    									MUSTPAY.init({
+												'apps_id': 'b96bd84713da4041b04389a611dbb9a1', 	//MustPay系统分配的应用ID号
+									            'prepay_id':'c6a872e1fda340abbd35a1877c101a26', //商户通过统一下单接口获取的预支付ID
+									            'pay_type': type//支付通道简称
+											});
+	    								}
+	    							});
+	    						} else if (data.resultCode == '9999') {
+	    							layer.open({
+	    								content : data.resultMessage,
+	    								btn : "确定"
+	    							});
+	    						}
+	    					}
+	    				},
+	    				error : function(xhr, errorType, error) {
+							layer.open({
+								content : error,
+								btn : "确定"
+							});
+	    				}
+	    			})
+	    		}
+	    			
+	    	}
+    	}   	
+   }
     </script>
 </html>
