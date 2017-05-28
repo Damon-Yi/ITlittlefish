@@ -58,12 +58,12 @@ $(function(){
 	    		}   		
 	    		paymoney = paymoney.substring(0,paymoney.length-1);
 	    		var paystatus = 'SUCCESS';
-	    		if (openid) {
+	    		apply();
+	    		function apply(){
 	    			console.log(22222)
-	    			var ee = layer.open({
-	    				type:'2',
-	    				content:'请稍后。。。',
-	    				shadeClose:false
+	    			var eee = layer.open({
+	    				type:2,
+						content:'保存中。。。'
 	    			});
 	    			$.ajax({
 	    				type : "post",
@@ -103,6 +103,7 @@ $(function(){
 	    				}
 	    			})
 	    		}
+	    			
 	    	}
     	}   	
     })
