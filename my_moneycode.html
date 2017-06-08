@@ -58,14 +58,11 @@
 				<span>更多 <a href="#" style="color:#ff8f00">记录</a><img class="next" src="images/next.png"/></span>
 			</div>
 			<!--获佣记录列表-->
-			<div class="Re_list">
-				<!--<p class="recordlist">
-					<span>张先生</span>
-					<span>一级</span>
-					<span>2017-03-03 09:30</span>
-				</p>-->
-			</div>
-			
+			<p class="recordlist">
+				<span>张先生</span>
+				<span>一级</span>
+				<span>2017-03-03 09:30</span>
+			</p>
         </div>
     </div>
     <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
@@ -104,20 +101,11 @@
 	        type:"post",
 	        url:Config.url+"/recMemberLedger",
 	        data:{
-	        	userid:xiaoyuuserId
+	        	userid:'11111'
 	        },
 	        success:function(data){
 	        	console.log(data)
-	        	for(var i = 0 ;i <data.length;i++){
-	        		var P = $("<p class='recordlist'></p>");
-	        		var span0 = $("<span>"+data[i].username+"</span>")
-	        		var span1 = $("<span>"+data[i].recommendlevel+"</span>")
-	        		var span2 = $("<span>"+data[i].recommenddate+"</span>")
-	        		P.append(span0);
-	        		P.append(span1);
-	        		P.append(span2);
-	        		$(".Re_list").append(P)
-	        	}
+	        	
 	        },
 	        error:function(xhr){
 	        	console.log(000)

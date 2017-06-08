@@ -20,6 +20,17 @@
 <script src="plugin/jquery/ajaxfileuploadProgress.js"
 	type="text/javascript" charset="utf-8"></script>
 <script src="js/public.js"></script>
+<style type="text/css">
+        .layui-m-layer1 .layui-m-layerchild{overflow-y: auto;}
+        .rule_txt_wrap{display: none;}
+        .rule_txt{font-size:0.2rem;line-height: 1.6;padding:0.2rem 0.12rem;color: #333;}
+        .rule_txt .p_title{text-align: center;font-size: 0.28rem;font-weight: bold;margin-bottom:0.2rem; }
+        .rule_txt .p_title_1{margin: 0.1rem 0 0.06rem;font-weight: bold;font-size: 0.24rem;color: #266273;}
+        .rule_txt .p_txt{text-indent: 0.2rem;text-align: justify;margin: 0.04rem auto;}
+        .rule_txt .p_txt_1{text-indent: 0.4rem;text-align: justify;}
+        .rule_txt_close{position: absolute;right: 5px;top: 5px;width: 30px;height: 30px;margin-left: 0;background-position: -149px -31px;background-image: url(images/icon.png);background-repeat:no-repeat;}
+
+</style>
 <script type="text/javascript">
 	var aScroll;
 	function loaded() {
@@ -41,6 +52,10 @@
 select {
 	background: transparent;
 }
+
+.divcss5{position:fixed; left:0; top:0; width:100%; height:100%; border: none; background-color: white;text-align:center;padding-top:100px;} 
+.divcss5 img{width:300px;_width:expression(this.width > 300 ? "300px" : this.width);}
+
 </style>
 </head>
 <body onload="loaded()" style="background: white;">
@@ -73,17 +88,10 @@ select {
 					</div>
 				</div>
 				<div class="member">
-
 					<p class="upgrade">升级V会员</p>
-
-
-					<a href="my_recharge.html">
-						<p class="recharge">充值</p>
-					</a>
-
+					<p class="recharge">充值</p>
 				</div>
 			</div>
-
 			<!--基本功能导航-->
 			<div class="navigation">
 				<ul class="navigationUl">
@@ -113,9 +121,9 @@ select {
 								<dt>
 									<img src="images/yejiguanli.png" />
 								</dt>
-								<dd>业绩管理</dd>
+								<dd>代理人</dd>
 							</dl>
-					</li>
+						</li>
 					</a>
 				</ul>
 				<ul class="navigationUl">
@@ -161,7 +169,7 @@ select {
 							</dl>
 					</li>
 					</a>
-					<a href="#">
+					<a href="javascript:void(0)" onclick="itgmgr()">
 						<li class="navigation_list border_left_right">
 							<dl>
 								<dt>
@@ -171,7 +179,7 @@ select {
 							</dl>
 					</li>
 					</a>
-					<a href="#">
+					<a href="javascript:void(0)" onclick="aboutus()" class= "aboutus">
 						<li class="navigation_list">
 							<dl>
 								<dt>
@@ -186,15 +194,15 @@ select {
 			<!--扫描二维码分享给好友-->
 			<div class="sharefriend">
 				<div>
-					<a href="#">
+					<a href="#" class= "members">
 						<dl>
 							<dt>
 								<img class="memberurl" src="" />
 							</dt>
-							<dd>让好友扫描您的二维码</dd>
+							<dd>小鱼儿，助您实现创业梦想</dd>
+							<dd>微信扫描二维码，加入我们</dd>
 						</dl>
 					</a>
-
 				</div>
 				<div>
 					<a href="#"><span>长按二维码分享好友</span></a>
@@ -203,6 +211,17 @@ select {
 			<div class="empty"></div>
 		</div>
 	</div>
+    <div class="rule_txt_wrap">
+        <div class="rule_txt">
+            <a class="rule_txt_close" href="javascript:;"></a>
+            <p class="p_title">关于我们</p>
+            <p class="p_title">About us</p>
+            <p class="p_title_1">一、小鱼儿，专注于新金融领域的资讯、研究、服务机构</p>
+            <p class="p_title_1">二、 小鱼儿主要解决什么？</p>
+            <p class="p_txt">深圳市佰汇信息技术有限公司（品牌简称小鱼儿）是目前领先的互联网金融资讯、研究和优质的移动金融智选平台，筹建于2017年3月，2017年6月正式公司化运作。                                                                  小鱼儿的创业团队在国内拥有丰富的传统金融与互联网跨界的结合，团队主要人员拥有丰富的的消费金融、小贷、供应链、理财等复合行业背景及人脉资源，通过“用户←内容←渠道←服务←融资”的闭环，将复杂的、非标准化的金融产品变成可供搜索的标准化信息，为客户提供极其简便的使用体验；全力切入国内金融创新和财富管理数十万亿的市场份额和增值空间环节。</p>
+        </div>
+    </div>
+	
 </body>
 </html>
 <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
@@ -210,98 +229,123 @@ select {
 <script type="text/javascript" src="plugin/zepto/touch.js"></script>
 </body>
 <script type="text/javascript">
+	// 微信公众号
+	var openId = Cookie.get("openId");
+	var levelNo = Cookie.get("levelno");
+	var userId = Cookie.get("userId");
+	var qrcodeurl = Cookie.get("qrcodeurl");
+	//alert(openId);
+	if (openId == null ||openId == '' || openId == undefined) {
+		getOpenId();		
+		openId = Cookie.get("openId");
+		//alert(openId);
+	}
+	//alert(openId);
+	// userId为空
+	if (userId == '' || userId == undefined) {
+		checkRegisterUser();
+		userId = Cookie.get("userId");
+	}
+		
 	
-	reorientate();
-	checkRegisterUser();
-	var Data;
-	//用户信息
-	var xiaoyuuserId;
-	if (Cookie.get("userId")) {
-		console.log(Cookie.get("xiaoyuerUserMes"))
-		xiaoyuuserId = Cookie.get("userId");
-		$.ajax({
-			type : "post",
-			url : Config.url + "/queryAccountInfo",//查询账户信息
-			data : {
-				userId : xiaoyuuserId,
-				/*userId:'17050609270GD2SVzXPGNYRqD1B2x'*/
-			},
-			success : function(data, status, xhr) {
-				console.log(data)
-				Data = data;
-				Cookie.set('userlevelName', data.levelName);
-				$(".nickname").html(data.nickname);
-				if(data.levelName == null){
-					$(".grade").html("非会员");
-				}else{
-					$(".grade").html(data.levelName)
-				}
-				
-				if (data.headimgurl) {
-					$(".user_img").attr("src", data.headimgurl);
-				}
-				;
-				$(".balance").find("span").html(data.balance);
-				var mobilephone = data.mobilephone;
-				if (mobilephone) {
-					$(".mobilephone").html(
-							mobilephone.substr(0, 3) + '****'
-									+ mobilephone.substr(7))
-				}
-
-			},
-			error : function(xhr, errorType, error) {
-				console.log(000)
-			},
-		})
+	// 查询账户信息
+	queryAccountInfo(userId,function(d){
+		var data = d.object;
+		$(".nickname").html(data.nickname);
+		if(data.levelno == null || data.levelno == '0'){
+			$(".grade").html("注册用户");
+		}else{
+			$(".grade").html(data.levelname)
+		}
+		if (data.headimgurl) {
+			$(".user_img").attr("src", data.headimgurl);
+		}
+		$(".balance").find("span").html(data.balance);
+		var mobilephone = data.mobilephone;
 		
-		var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
+		if (mobilephone) {
+			$(".mobilephone").html(mobilephone.substr(0, 3) + '****'+ mobilephone.substr(7))
+		}
+	   openId =data.openid;
+	   levelNo = Cookie.get("levelno");
+	     var memberType;
+		if (levelNo == '0') {
+			memberType = '1';
+		} else {
+			memberType = '2';
+		}
+		//openId ='oGLlkwEVgYFiRsBBx8bJudCI4tuI';		
+		showcode(openId,memberType,'123',function(url){
+			$(".memberurl").attr("src", url);
+	  });	
 		
-		//用户二维码
-		$.ajax({
-			type : "POST",
-			url : Config.url + "/showqrcode",
-			data : {
-				'openid':openid,
-				type : 1,
-				scenestr : '123'
-			},
-			success : function(data, status, xhr) {
-				$(".memberurl").attr("src", data.qrcodeurl)
-			},
-			error : function(xhr, errorType, error) {
-				console.log(000)
-
-			},
+	});
+		
+    //alert(openId);		
+	  // 二维码
+	/* levelNo = Cookie.get("levelno");
+	  var memberType;
+		if (levelNo == '0') {
+			memberType = '1';
+		} else {
+			memberType = '2';
+		}
+		//openId ='oGLlkwEVgYFiRsBBx8bJudCI4tuI';		
+		showcode(openId,memberType,'123',function(url){
+			$(".memberurl").attr("src", url);
+	});	*/
+	
+ 	// 注册二维码
+	$('.members').on('click',function(){
+	    var pageii = layer.open({
+	      type: 1,
+	      content: '<div class="divcss5"><a class="rule_txt_close" href="javascript:;"></a><img class="memberurl" src="'+$('.memberurl')[0].src+'" /></div>',
+	      anim: 'up',
+	      style: 'position:fixed; left:0; top:0; width:100%; height:100%;'
+	    });
+	    $('.rule_txt_close').on('click',function(){
+	        layer.closeAll();
+	    });
+	});
+	// 积分功能
+	function itgmgr() {
+		layer.open({
+			area: ['100px', '200px'],
+			content: '该功能玩命开放中...'
+			,skin: 'msg'
+			,time: 2 //2秒后自动关闭
 		})
-
-	} else {
-		//Cookie.get("xiaoyuerUserMes")
-	};
-	console.log(Cookie.get("userId"))
-
-	var contractflag = null;
-	$.ajax({
-		type : "POST",
-		url : Config.url + "/checkMemberInfo",
-		data : {
-			userId : Cookie.get("userId"),
-		},
-		success : function(data, status, xhr) {
-			console.log(data)
-			if(data.resultCode == "1111"){
-				contractflag = true;
-			}else{
-				contractflag = false;
-			}
-		},
-		error : function(xhr, errorType, error) {
-			console.log(000)
-
-		},
-	})
+	} 	
+	// 关于我们
+	$('.aboutus').on('click',function(){
+	    var pageii = layer.open({
+	      type: 1,
+	      content: $('.rule_txt_wrap').html(),
+	      anim: 'up',
+	      style: 'position:fixed; left:0; top:0; width:100%; height:100%; border: none; -webkit-animation-duration: .5s; animation-duration: .5s;'
+	    });
+	    $('.rule_txt_close').on('click',function(){
+	        layer.closeAll();
+	    });
+	});
+	// 1.升级V会员时
+	$(".upgrade").on("tap", function() {
+		if (levelNo == '2') {
+			layer.open({
+				content : '您是最高级会员，无需升级',
+				btn : '确定'
+			})
+		} else {
+			location.href = "my_membersev.html?levelno=" + levelNo;
+		}
+	});
+	// 2.充值
+	$(".recharge").on("tap", function() {
+		location.href = "my_recharge.html";
+	});
+	// 3.赚钱二维码
 	$(".my_moneycode").on("tap",function(){
-		if(contractflag){
+		if(levelNo == '0'){
 			layer.open({
 				content:'您还不是会员,前往购买？',
 				btn:["确定","取消"],
@@ -313,42 +357,29 @@ select {
 			location.href = "my_moneycode.html"
 		}
 	})
-	
-	//点击升级V会员时
-	$(".upgrade").on("tap", function() {
-		
-		if (Data.levelno == 2) {
-			layer.open({
-				content : '您是最高级会员，无需升级',
-				btn : '确定'
-			})
-		} else {
-			location.href = "my_membersev.html?levelno=" + Data.levelno;
-		}
-	});
+	// 代理人
 	$('.my_performance').on("click",function(){
 		$.ajax({
 			type : "POST",
 			url : Config.url + "/checkSalesInfo",
 			data : {
-				'userId':Cookie.get("userId"),
+				'userId': userId,
 			},
 			success : function(data) {
-				console.log(data)
-				if(data.resultCode == '1111'){
-					layer.open({
-						content: '该功能仅对工作人员开放'
-						,skin: 'msg'
-						,time: 2 //2秒后自动关闭
-					})
-				}else{
-					location.href='my_performance.html'
+				if(data.resultCode == '0000'){
+					if (data.object.roleNo != '0') {
+						location.href='my_performance.html'
+					}
 				}
+				layer.open({
+					content: '仅对代理人开放.'
+					,skin: 'msg'
+					,time: 2
+				});
 			},
 			error : function(xhr) {
 				console.log(000)
-
-			},
+			}
 		})
 	})
 </script>
