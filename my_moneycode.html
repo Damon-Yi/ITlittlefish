@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>小鱼儿助花帮平台</title>
@@ -7,110 +8,174 @@
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <link href="css/public.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="css/my_moneycode.css"/>
+    <link rel="stylesheet" type="text/css" href="css/my_moneycode.css" />
+    <link rel="stylesheet" type="text/css" href="plugin/layer/mobile/need/layer.css" />
+    <script src="plugin/layer/mobile/layer.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/public.js"></script>
     <style>
-        
+
     </style>
     <script type="text/javascript">
         var aScroll;
-        function loaded () {
-            aScroll = new IScroll('#cont_wrapper',{
+
+        function loaded() {
+            aScroll = new IScroll('#cont_wrapper', {
                 scrollbars: true,
                 mouseWheel: true,
                 interactiveScrollbars: true,
                 shrinkScrollbars: 'scale',
-                fadeScrollbars: true,click: true 
+                fadeScrollbars: true,
+                click: true
             });
         }
-       document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+        document.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        }, false);
     </script>
+    <style type="text/css">
+        select {
+            background: transparent;
+        }
+        
+        .divcss5 {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            text-align: center;
+            padding-top: 100px;
+        }
+        
+        .divcss5 .memberurl {
+            width: 3rem;
+            position: relative;
+            top: 3rem;
+            left: -0.6rem;
+        }
+        
+        .layout-user {
+            position: relative;
+            width: 1.2rem;
+            height: 1.2rem;
+            top: -2.2rem;
+            left: 1.5rem;
+        }
+    </style>
 </head>
+
 <body onload="loaded()">
     <div class="page_header">挣钱二维码</div>
     <div id="cont_wrapper">
         <div>
-        	<!--头部logo-->
+            <!--头部logo-->
             <div class="moneycodelogo">
-            	<img src="images/moneycodelogo.png"/>
+                <img src="images/moneycodelogo.png" />
             </div>
             <div class="upgrade">
-           		<a href="#"><span>点击V生级，获得更高返佣比例</span></a>
+                <a href="#"><span>点击V生级，获得更高返佣比例</span></a>
             </div>
-            <!--扫描二维码分享给好友-->	
-			<div class="sharefriend">
-				<div>
-					<a href="#">
-						<dl>
-							<dt><img class="memberurl" src=""/></dt>
-							<dd></dd>
-						</dl>
-					</a>
-					
-				</div>
-				<div>
-					<a href="#"><span>长按二维码分享给好友</span></a>
-				</div>
-			</div>
-			<!--累计获佣-->	
-			<div class="accumulative">
-				<span>累计获佣 ：<span style="color:#ff8f00">66</span> 人</span>
-				<span>更多 <a href="#" style="color:#ff8f00">记录</a><img class="next" src="images/next.png"/></span>
-			</div>
-			<!--获佣记录列表-->
-			<p class="recordlist">
-				<span>张先生</span>
-				<span>一级</span>
-				<span>2017-03-03 09:30</span>
-			</p>
+            <!--扫描二维码分享给好友-->
+            <div class="sharefriend">
+                <div>
+                    <a href="#" class="members">
+                        <dl>
+                            <dt><img class="memberurl" src=""/></dt>
+                            <dd></dd>
+                        </dl>
+                    </a>
+
+                </div>
+                <div>
+                    <a href="#"><span>长按二维码分享给好友</span></a>
+                </div>
+            </div>
+            <!--累计获佣-->
+            <div class="accumulative">
+                <span>累计获佣 ：<span style="color:#ff8f00">66</span> 人</span>
+                <span>更多 <a href="#" style="color:#ff8f00">记录</a><img class="next" src="images/next.png"/></span>
+            </div>
+            <!--获佣记录列表-->
+            <p class="recordlist">
+                <span>张先生</span>
+                <span>一级</span>
+                <span>2017-03-03 09:30</span>
+            </p>
         </div>
     </div>
     <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
-    <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
-    <script>
-    	var xiaoyuuserId;
-    	var hrefurl = window.location.href;
-    	reorientate();
-		checkRegisterUser();
-		var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
-		if (Cookie.get("userId")) {
-			console.log(Cookie.get("xiaoyuerUserMes"))
-			xiaoyuuserId = Cookie.get("userId");
-			var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
-		}
-		console.log(openid)
-        $.ajax({
-	        type:"post",
-	        url:Config.url+"/showqrcode",
-	        data:{
-	        	'openid':openid,
-	        	type:2,
-	        	scenestr:'123'
-	        },
-	        success:function(data, status, xhr){
-	        	console.log(data)
-	        	$(".memberurl").attr("src",data.memberurl)
-	        },
-	        error:function(xhr, errorType, error){
-	        	console.log(000)
-	          	
-	        },
-		});
-		$.ajax({
-	        type:"post",
-	        url:Config.url+"/recMemberLedger",
-	        data:{
-	        	userid:'11111'
-	        },
-	        success:function(data){
-	        	console.log(data)
-	        	
-	        },
-	        error:function(xhr){
-	        	console.log(000)
-	          	
-	        },
-		});
-    </script>
+    <script type="text/javascript" src="plugin/zepto/touch.js"></script>
+</body>
+<script>
+    var xiaoyuuserId;
+    var hrefurl = window.location.href;
+    var headImgUrl;
+    reorientate();
+    checkRegisterUser();
+    var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
+    if (Cookie.get("userId")) {
+        console.log(Cookie.get("xiaoyuerUserMes"))
+        xiaoyuuserId = Cookie.get("userId");
+        var openid = JSON.parse(Cookie.get("xiaoyuerUserMes")).openid;
+    }
+    // 查询账户信息
+    queryAccountInfo(xiaoyuuserId, function(d) {
+        var data = d.object;
+        headImgUrl = data.headimgurl;
+    });
+
+
+    console.log(openid)
+    $.ajax({
+        type: "post",
+        url: Config.url + "/showqrcode",
+        data: {
+            'openid': openid,
+            type: 2,
+            scenestr: '123'
+        },
+        success: function(data, status, xhr) {
+            console.log(data)
+            $(".memberurl").attr("src", data.memberurl)
+        },
+        error: function(xhr, errorType, error) {
+            console.log(000)
+
+        },
+    });
+    $.ajax({
+        type: "post",
+        url: Config.url + "/recMemberLedger",
+        data: {
+            userid: '11111'
+        },
+        success: function(data) {
+            console.log(data)
+
+        },
+        error: function(xhr) {
+            console.log(000)
+
+        },
+    });
+    // 注册二维码
+    $('.members').on('click', function() {
+        try {
+            var pageii = layer.open({
+                type: 1,
+                content: '<div class="divcss5"><img src=' + headImgUrl + ' class="layout-user"> <a class="rule_txt_close" href="javascript:;"></a><img class="memberurl" src="' + $('.memberurl')[0].src + '" /></div>',
+                anim: 'up',
+                style: 'position:fixed; left:0; top:0; width:100%; height:100%; background: url(images/code_layer_bg.png) 50% 0px no-repeat;background-size: cover;'
+            });
+            $('.rule_txt_close').on('click', function() {
+                layer.closeAll();
+            });
+        } catch (error) {
+
+        }
+    });
+</script>
+
 </html>
