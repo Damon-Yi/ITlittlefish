@@ -19,24 +19,35 @@
         .m-user .u-p4{text-align: center;color: #fff;margin-top:0.2rem; }
         .m-user .u-p5{text-align: center;font-size: 0.68rem;color: #fff;line-height: 1;}
         .m-user .u-p6{text-align: center;color: #fff;margin-top:0.06rem; }
-        .m-user .m-bottom{text-align: center;98213456780position: absolute;bottom: 0;width: 100%;}
+        .m-user .m-bottom{text-align: center;position: absolute;bottom: 0;width: 100%;}
         .m-user .m-bottom>a{display: block;float: left;width: 50%;color: #fff;position: relative;height: 0.5rem;line-height: 0.5rem;}
         .m-user .m-bottom>a:after{content:'';display:block;width: 1px;height: 0.36rem;position: absolute;right: 0;top: 0.07rem;background-color:#eee;-webkit-transform: scaleX(0.5);transform: scaleX(0.5);}
         .m-user .m-bottom>a:last-child:after{display: none;}
         .m-user .m-bottom>a>span{display: inline-block;vertical-align: middle;margin-right:0.08rem; }
         .m-user .m-bottom>a>img{display: inline-block;vertical-align: middle;width:0.32rem;height:0.3rem;}
-        .m-table{font-size:0.24rem;color: #aaa;margin:0.2rem 0;background-color:#fff; }
-        .m-table .m-tr{position: relative;overflow: auto;padding:0.28rem 0;}
+        .m-table{font-size:0.24rem;color: #aaa;margin:0.2rem 0 0;background-color:#fff; }
+        .m-table .m-tr{position: relative;overflow: auto;padding:0.6rem 0 0.58rem;}
         .m-table .m-tr:after{content:'';display:block;width:100%;height:1px;position: absolute;bottom: 0;left: 0;background-color:#e6e6e6;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
-        .m-table .m-tr .m-td{width: 33.33%;float: left;text-align: center;position: relative;color: #aaa;}
+        .m-table .m-tr .m-td{width: 50%;float: left;text-align: center;position: relative;color: #aaa;overflow: auto;}
         .m-table .m-tr .m-td:after{content:'';display:block;width:1px;height:100%;position: absolute;right: 0;top: 0;background-color:#e6e6e6;-webkit-transform: scaleX(0.5);transform: scaleX(0.5);}
-        .m-table .m-tr .m-td>img{width: 0.68rem;height: 0.68rem;}
-        .m-table .m-tr .m-td>p{}
-        .qcode-box{font-size: 0.28rem;padding: 0.2rem 0;overflow: auto;}
-        .qcode-box .q-left{width: 1.44rem;height: 1.44rem;padding:0.06rem;background-color: #fff;float: left;margin: 0 0.58rem 0 0.5rem;}
-        .qcode-box .q-left>img{width: 100%;height: 100%;}
-        .qcode-box .q-right{float: left;}
-        .qcode-box .q-right .q-btn{padding: 0.22rem 0.48rem;background-color: #e77401;border-radius: 0.5rem;color: #fff;margin-top:0.3rem }
+        .m-table .m-tr .m-td:last-child:after{display: none;}
+        .m-table .m-tr .m-td .m-left{width:33%;float: left;font-size: 0;}
+        .m-table .m-tr .m-td .m-left>img{width: 0.54rem;height:0.48rem;}
+        .m-table .m-tr .m-td .m-right{margin-left:33%;text-align: left;}
+        .m-table .m-tr .m-td .m-right .m-p1{font-size: 0.25rem;color: #444;margin-bottom:0.1rem;margin-top:0.08rem;}
+        .m-table .m-tr .m-td .m-right .m-p2{font-size: 0.34rem;color: #ffa147;}
+        .s-title{color: #444;font-size: 0.25rem;padding:0.16rem 0.16rem 0.04rem;}
+        
+        .bil-list{}
+        .bil-list .bil-item{background-color: #fff;overflow: auto;position: relative;}
+        .bil-list .bil-item:after{content:'';display:block;width:100%;height:1px;position: absolute;bottom: 0;left: 0;background-color:#e6e6e6;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+        .bil-list .bil-item>span{text-align: center;line-height: 0.6rem;display: block;float: left;}
+        .bil-list .bil-item .bil-col1{width: 26%;font-size: 0.24rem;color: #444;}
+        .bil-list .bil-item .bil-col2{width: 36%;font-size: 0.2rem;color: #aaa;}
+        .bil-list .bil-item .bil-col3{width: 38%;font-size: 0.2rem;color: #aaa;}
+        .bil-list .bil-item.recharge .bil-col3{color: #ff9747;}
+        .checkMore{background-color: #fff;font-size: 0.2rem;color: #444;line-height: 0.6rem;text-align: center;display: block;}
+        .checkMore:active{background-color: #eeeef1;}
     </style>
 </head>
 <body>
@@ -55,41 +66,43 @@
                     <a href="javascript:;" class="m-td">
                         <div class="m-left"><img src="images/20170707/page4-4.png" alt=""></div>
                         <div class="m-right">
-                            <p>鱼币余额</p>
-                            <p>999,770.00</p>
+                            <p class="m-p1">鱼币余额</p>
+                            <p class="m-p2">999,770.00</p>
                         </div>
                     </a>
                     <a href="javascript:;" class="m-td">
-                        <div class="m-left"><img src="images/20170707/page4-4.png" alt=""></div>
+                        <div class="m-left"><img src="images/20170707/page4-5.png" alt=""></div>
                         <div class="m-right">
-                            <p>累计充值</p>
-                            <p>0.00</p>
+                            <p class="m-p1">累计充值</p>
+                            <p class="m-p2">0.00</p>
                         </div>
                     </a>
                 </div>
                 <div class="m-tr">
                     <a href="javascript:;" class="m-td">
-                        <div class="m-left"><img src="images/20170707/page4-4.png" alt=""></div>
+                        <div class="m-left"><img src="images/20170707/page4-6.png" alt=""></div>
                         <div class="m-right">
-                            <p>鱼币余额</p>
-                            <p>999,770.00</p>
+                            <p class="m-p1">累计总收入(元)</p>
+                            <p class="m-p2">999,770.00</p>
                         </div>
                     </a>
                     <a href="javascript:;" class="m-td">
-                        <div class="m-left"><img src="images/20170707/page4-4.png" alt=""></div>
+                        <div class="m-left"><img src="images/20170707/page4-7.png" alt=""></div>
                         <div class="m-right">
-                            <p>鱼币余额</p>
-                            <p>999,770.00</p>
+                            <p class="m-p1">累计总支出(元)</p>
+                            <p class="m-p2">999,770.00</p>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="qcode-box">
-                <div class="q-left"><img src="images/shareerweima.png" alt=""></div>
-                <div class="q-right">
-                    <p class="q-btn">长按二维码分享好友</p>
-                </div>
+            <p class="s-title">账户明细</p>
+            <div class="bil-list">
+                <div class="bil-item"><span class="bil-col1">消费</span><span class="bil-col2">2017/06/15</span><span class="bil-col3">-99</span></div>
+                <div class="bil-item recharge"><span class="bil-col1">充值</span><span class="bil-col2">2017/06/15</span><span class="bil-col3">+99</span></div>
+                <div class="bil-item"><span class="bil-col1">消费</span><span class="bil-col2">2017/06/15</span><span class="bil-col3">-2299</span></div>
+                <div class="bil-item"><span class="bil-col1">消费</span><span class="bil-col2">2017/06/15</span><span class="bil-col3">-99</span></div>
             </div>
+            <a class="checkMore" href="javascript:;">查看更多明细</a>
         </div>
     </article>
     <script>
