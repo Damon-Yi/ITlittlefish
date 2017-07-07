@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>小鱼儿助花帮平台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <script type="text/javascript" src="plugin/zepto/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color: #e6e6e6;}
+        .m-header{height: 0.6rem;line-height: 0.6rem;background-color: #e77401;color: #fff;padding:0 0.2rem;font-size: 0.29rem;}
+        .m-user{background: url(images/20170707/bg.jpg) no-repeat center center;background-size:cover;font-size: 0.23rem;height: 3.5rem;padding-top: 0.2rem;position: relative;}
+        .m-user .m-top{text-align: center;font-size: 0;margin-top:0.1rem; }
+        .m-user .m-top>img{width: 0.58rem;height: 0.58rem;}
+        .m-user .u-p4{text-align: center;color: #fff;margin-top:0.2rem; }
+        .m-user .u-p5{text-align: center;font-size: 0.68rem;color: #fff;line-height: 1;}
+        .m-user .u-p6{text-align: center;color: #fff;margin-top:0.06rem; }
+        .m-user .m-bottom{text-align: center;98213456780position: absolute;bottom: 0;width: 100%;}
+        .m-user .m-bottom>a{display: block;float: left;width: 50%;color: #fff;position: relative;height: 0.5rem;line-height: 0.5rem;}
+        .m-user .m-bottom>a:after{content:'';display:block;width: 1px;height: 0.36rem;position: absolute;right: 0;top: 0.07rem;background-color:#eee;-webkit-transform: scaleX(0.5);transform: scaleX(0.5);}
+        .m-user .m-bottom>a:last-child:after{display: none;}
+        .m-user .m-bottom>a>span{display: inline-block;vertical-align: middle;margin-right:0.08rem; }
+        .m-user .m-bottom>a>img{display: inline-block;vertical-align: middle;width:0.32rem;height:0.3rem;}
+        .m-table{font-size:0.24rem;color: #aaa;margin:0.2rem 0;background-color:#fff; }
+        .m-table .m-tr{position: relative;overflow: auto;padding:0.28rem 0;}
+        .m-table .m-tr:after{content:'';display:block;width:100%;height:1px;position: absolute;bottom: 0;left: 0;background-color:#e6e6e6;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+        .m-table .m-tr .m-td{width: 33.33%;float: left;text-align: center;position: relative;color: #aaa;}
+        .m-table .m-tr .m-td:after{content:'';display:block;width:1px;height:100%;position: absolute;right: 0;top: 0;background-color:#e6e6e6;-webkit-transform: scaleX(0.5);transform: scaleX(0.5);}
+        .m-table .m-tr .m-td>img{width: 0.68rem;height: 0.68rem;}
+        .m-table .m-tr .m-td>p{}
+        .qcode-box{font-size: 0.28rem;padding: 0.2rem 0;overflow: auto;}
+        .qcode-box .q-left{width: 1.44rem;height: 1.44rem;padding:0.06rem;background-color: #fff;float: left;margin: 0 0.58rem 0 0.5rem;}
+        .qcode-box .q-left>img{width: 100%;height: 100%;}
+        .qcode-box .q-right{float: left;}
+        .qcode-box .q-right .q-btn{padding: 0.22rem 0.48rem;background-color: #e77401;border-radius: 0.5rem;color: #fff;margin-top:0.3rem }
+    </style>
+</head>
+<body>
+    <article id="body-wrapper">
+        <div>
+            <div class="m-header">钱包</div>
+            <div class="m-user">
+                <div class="m-top"><img src="images/20170707/page4-1.png" alt=""></div>
+                <p class="u-p4">账户余额(元)</p>
+                <p class="u-p5">99999.55</p>
+                <p class="u-p6">收入计入余额，可消费可提现</p>
+                <div class="m-bottom"><a href="javascript:;"><span>我要提现</span><img src="images/20170707/page4-3.png" alt=""></a><a href="javascript:;"><span>我要充值</span><img src="images/20170707/page4-2.png" alt=""></a></div>
+            </div>
+            <div class="m-table">
+                <div class="m-tr">
+                    <a href="javascript:;" class="m-td">
+                        <div class="m-left"><img src="images/20170707/page4-4.png" alt=""></div>
+                        <div class="m-right">
+                            <p>鱼币余额</p>
+                            <p>999,770.00</p>
+                        </div>
+                    </a>
+                    <a href="javascript:;" class="m-td">
+                        <div class="m-left"><img src="images/20170707/page4-4.png" alt=""></div>
+                        <div class="m-right">
+                            <p>累计充值</p>
+                            <p>0.00</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="m-tr">
+                    <a href="javascript:;" class="m-td">
+                        <div class="m-left"><img src="images/20170707/page4-4.png" alt=""></div>
+                        <div class="m-right">
+                            <p>鱼币余额</p>
+                            <p>999,770.00</p>
+                        </div>
+                    </a>
+                    <a href="javascript:;" class="m-td">
+                        <div class="m-left"><img src="images/20170707/page4-4.png" alt=""></div>
+                        <div class="m-right">
+                            <p>鱼币余额</p>
+                            <p>999,770.00</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="qcode-box">
+                <div class="q-left"><img src="images/shareerweima.png" alt=""></div>
+                <div class="q-right">
+                    <p class="q-btn">长按二维码分享好友</p>
+                </div>
+            </div>
+        </div>
+    </article>
+    <script>
+        var loader = new loading({'container':document.body,'hasBg':false});
+        //var loader = new loading({'container':document.getElementById('body-wrapper'),'hasBg':false});
+        //loader.show();
+    </script>
+</body>
+</html>

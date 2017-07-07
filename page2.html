@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>小鱼儿助花帮平台</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="plugin/swiper/swiper.3.1.7.min.css" rel="stylesheet" type="text/css">
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color: #e6e6e6;}
+        .m-header{height: 0.6rem;line-height: 0.6rem;background-color: #e77401;color: #fff;padding:0 0.2rem;font-size: 0.29rem;}
+        .h_ad{position: relative;width: 100%;height: 3.07rem;overflow: hidden;}
+        .h_ad a{display: block;width: 100%;height:100%;position: relative;}
+        .h_ad a>img{max-width: 100%;max-height:100%;position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);-webkit-transform: translate(-50%,-50%);}
+        
+        .swiper-container-horizontal>.swiper-pagination{font-size: 0;}
+        .swiper-pagination-bullet-active{background-color: #ff9000;}
+        .swiper-pagination{transition:none;}
+        .swiper-container-horizontal>.swiper-pagination{bottom: 4px;}
+        .s-title{color: #444;font-size: 0.25rem;padding:0.16rem 0.16rem 0.04rem;}
+        .m-table{font-size:0.24rem;color: #aaa;background-color:#fff; }
+        .m-table .m-tr{position: relative;overflow: auto;padding:0.28rem 0;}
+        .m-table .m-tr:after{content:'';display:block;width:100%;height:1px;position: absolute;bottom: 0;left: 0;background-color:#e6e6e6;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+        .m-table .m-tr .m-td{width: 33.33%;float: left;text-align: center;position: relative;color: #aaa;}
+        .m-table .m-tr .m-td:after{content:'';display:block;width:1px;height:100%;position: absolute;right: 0;top: 0;background-color:#e6e6e6;-webkit-transform: scaleX(0.5);transform: scaleX(0.5);}
+        .m-table .m-tr .m-td>img{width: 0.76rem;height: 0.62rem;}
+        .m-table .m-tr .m-td>p{font-size: 0.2rem;}
+        .m-table .m-tr .m-td>p.p1{font-size: 0.25rem;color: #e77401;}
+
+        .m-ad{margin-top:0.2rem; }
+        .m-ad>a{overflow: auto;display: block;width: 100%;padding: 0.1rem 0;background-color: #fff;color: #aaa;}
+        .m-ad .m-ad-left{float: left;width: 18%;font-size: 0;text-align: center;}
+        .m-ad .m-ad-left>img{width: 0.85rem;height: 0.85rem;}
+        .m-ad .m-ad-right{margin-left: 18%;font-size: 0.24rem;}
+        .m-ad .m-ad-right .m-p1{color: #444;margin-top: 0.14rem;}
+        .m-ad .m-ad-right .m-p2{font-size: 0.2rem;}
+
+        .r-box{overflow: auto;display: block;width: 100%;padding: 0.1rem 0;background-color: #fff;color: #aaa;}
+        .r-box .r-left{float: left;width: 18%;font-size: 0;text-align: center;}
+        .r-box .r-left>img{width: 0.75rem;height: 0.75rem;}
+        .r-box .r-right{margin-left: 18%;color: #aaa;font-size: 0.2rem;}
+        .r-box .r-right .r-p1{color: #444;font-size: 0.24rem;line-height: 1.1;margin-bottom: 0.04rem;}
+        .r-box .r-right .r-p2{}
+        .r-box .r-right .r-p3{color: #e77401;}
+        .r-box .r-right .r-p4{color: #444;}
+        .r-box .r-right .r-row{overflow: auto;position: relative;padding:0.1rem 0;margin-top:0.1rem; }
+        .r-box .r-right .r-row:after{content:'';display:block;width:100%;height:1px;position: absolute;top: 0;left: 0;background-color:#e6e6e6;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+        .r-box .r-right .r-row .r-col{width: 25%;float: left;text-align: center;}
+    </style>
+</head>
+<body>
+    <article id="body-wrapper">
+        <div>
+            <div class="m-header">小鱼儿助花帮平台</div>
+            <div class="h_ad">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><a href="javascript:;"><img src="images/20170707/page2.png"></a></div>
+                    <div class="swiper-slide"><a href="javascript:;"><img src="images/20170707/page2.png"></a></div>
+                    <div class="swiper-slide"><a href="javascript:;"><img src="images/20170707/page2.png"></a></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <p class="s-title">贷款产品大全</p>
+            <div class="m-table">
+                <div class="m-tr">
+                    <a href="javascript:;" class="m-td">
+                        <img src="images/20170707/page2-1.png" alt="">
+                        <p class="p1">工薪贷</p>
+                        <p class="p2">有固定收入即可贷款</p>
+                    </a>
+                    <a href="javascript:;" class="m-td">
+                        <img src="images/20170707/page2-2.png" alt="">
+                        <p class="p1">网店贷</p>
+                        <p class="p2">有淘宝账户即可贷</p>
+                    </a>
+                    <a href="javascript:;" class="m-td">
+                        <img src="images/20170707/page2-3.png" alt="">
+                        <p class="p1">信用卡贷</p>
+                        <p class="p2">有信用卡即可贷</p>
+                    </a>
+                </div>
+                <div class="m-tr">
+                    <a href="javascript:;" class="m-td">
+                        <img src="images/20170707/page2-4.png" alt="">
+                        <p class="p1">企业贷</p>
+                        <p class="p2">有营业执照即可贷</p>
+                    </a>
+                    <a href="javascript:;" class="m-td">
+                        <img src="images/20170707/page2-5.png" alt="">
+                        <p class="p1">公积金贷</p>
+                        <p class="p2">有公积金即可贷</p>
+                    </a>
+                    <a href="javascript:;" class="m-td">
+                        <img src="images/20170707/page2-6.png" alt="">
+                        <p class="p1">学生贷</p>
+                        <p class="p2">学生即可贷</p>
+                    </a>
+                </div>
+            </div>
+            <div class="m-ad">
+                <a href="javascript:;">
+                    <div class="m-ad-left"><img src="images/20170707/page2-11.png" alt=""></div>
+                    <div class="m-ad-right">
+                        <p class="m-p1">鱼帮帮</p>
+                        <p class="m-p2">小住，让我来帮你精确选择符合您的产品吧！   >></p>
+                    </div>
+                </a>
+            </div>
+            <p class="s-title">热门推荐</p>
+            <div class="r-box">
+                <div class="r-left"><img src="images/20170707/page2-10.png" alt=""></div>
+                <div class="r-right">
+                    <p class="r-p1">钱到</p>
+                    <p class="r-p2">适用人群：所有人群</p>
+                    <p class="r-p2">申请人数：1000</p>
+                    <div class="r-row">
+                        <div class="r-col">
+                            <p class="r-p3">40%</p>
+                            <p class="r-p4">成功率</p>
+                        </div>
+                        <div class="r-col">
+                            <p class="r-p3">1%</p>
+                            <p class="r-p4">月利率</p>
+                        </div>
+                        <div class="r-col">
+                            <p class="r-p3">0.2万</p>
+                            <p class="r-p4">平均额度</p>
+                        </div>
+                        <div class="r-col">
+                            <p class="r-p3">30秒</p>
+                            <p class="r-p4">平均用时</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
+    <script type="text/javascript" src="plugin/swiper/swiper.3.1.7.min.js"></script>
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <script type="text/javascript" src="plugin/zepto/touch.js"></script></body>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="js/getcurrCity.js"></script>
+    <script>
+        var msgSwiper = new Swiper('.h_ad', {
+            autoplay: 1000,//可选选项，自动滑动
+            pagination : '.swiper-pagination',
+        });
+        var loader = new loading({'container':document.body,'hasBg':false});
+        //var loader = new loading({'container':document.getElementById('body-wrapper'),'hasBg':false});
+        //loader.show();
+    </script>
+</body>
+</html>

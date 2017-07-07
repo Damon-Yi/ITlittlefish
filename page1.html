@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>小鱼儿助花帮平台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <script type="text/javascript" src="plugin/zepto/touch.js"></script>
+    <script src="js/public.js"></script>
+    <style>
+        body{background-color: #e6e6e6;}
+        .m-header{height: 0.6rem;line-height: 0.6rem;background-color: #e77401;color: #fff;padding:0 0.2rem;font-size: 0.29rem;}
+        .m-user{background: url(images/20170707/bg.jpg) no-repeat center center;background-size:cover;font-size: 0.23rem;height: 3.5rem;padding-top: 0.2rem;position: relative;}
+        .m-user .m-top{}
+        .m-user .m-top .u-icon{width:33.33%;height: 1.48rem;float: left;text-align: center;}
+        .m-user .m-top .u-icon>img{width: 1.48rem;height: 100%;}
+        .m-user .m-top .u-info{margin-left:33.33%;font-size: 0.25rem;height: 1.48rem;}
+        .m-user .m-top .u-p1{display: inline-block;padding:0 0.08rem;background-color: #fff;color: #e77401;border-radius: 0.14rem;margin-top: 0.2rem;font-size:0.22rem;}
+        .m-user .m-top .u-p2{color: #fff;margin:0.08rem 0 0.02rem;}
+        .m-user .m-top .u-p3{color: #e77401;}
+        .m-user .u-p4{text-align: center;color: #fff;margin-top:0.2rem; }
+        .m-user .u-p5{text-align: center;font-size: 0.68rem;color: #fff;line-height: 1;}
+        .m-user .m-bottom{text-align: center;position: absolute;bottom: 0;width: 100%;}
+        .m-user .m-bottom>a{display: block;float: left;width: 50%;color: #fff;position: relative;height: 0.5rem;line-height: 0.5rem;}
+        .m-user .m-bottom>a:after{content:'';display:block;width: 1px;height: 0.36rem;position: absolute;right: 0;top: 0.07rem;background-color:#eee;-webkit-transform: scaleX(0.5);transform: scaleX(0.5);}
+        .m-user .m-bottom>a:last-child:after{display: none;}
+        .m-table{font-size:0.24rem;color: #aaa;margin:0.2rem 0;background-color:#fff; }
+        .m-table .m-tr{position: relative;overflow: auto;padding:0.28rem 0;}
+        .m-table .m-tr:after{content:'';display:block;width:100%;height:1px;position: absolute;bottom: 0;left: 0;background-color:#e6e6e6;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+        .m-table .m-tr .m-td{width: 33.33%;float: left;text-align: center;position: relative;color: #aaa;}
+        .m-table .m-tr .m-td:after{content:'';display:block;width:1px;height:100%;position: absolute;right: 0;top: 0;background-color:#e6e6e6;-webkit-transform: scaleX(0.5);transform: scaleX(0.5);}
+        .m-table .m-tr .m-td>img{width: 0.68rem;height: 0.68rem;}
+        .m-table .m-tr .m-td>p{}
+        .qcode-box{font-size: 0.28rem;padding: 0.2rem 0;overflow: auto;}
+        .qcode-box .q-left{width: 1.44rem;height: 1.44rem;padding:0.06rem;background-color: #fff;float: left;margin: 0 0.58rem 0 0.5rem;}
+        .qcode-box .q-left>img{width: 100%;height: 100%;}
+        .qcode-box .q-right{float: left;}
+        .qcode-box .q-right .q-btn{padding: 0.22rem 0.48rem;background-color: #e77401;border-radius: 0.5rem;color: #fff;margin-top:0.3rem }
+    </style>
+</head>
+<body>
+    <article id="body-wrapper">
+        <div>
+            <div class="m-header">我的主页</div>
+            <div class="m-user">
+                <div class="m-top">
+                    <div class="u-icon"><img src="images/20170707/user_bg.png" alt=""></div>
+                    <div class="u-info">
+                        <p class="u-p1">初级VIP</p>
+                        <p class="u-p2">昵称<span>花心太少</span></p>
+                        <p class="u-p3">手机<span>158****7888</span></p>
+                    </div>
+                </div>
+                <p class="u-p4">账户余额(元)</p>
+                <p class="u-p5">99999.55</p>
+                <div class="m-bottom"><a href="javascript:;">升级会员</a><a href="javascript:;">充值</a></div>
+            </div>
+            <div class="m-table">
+                <div class="m-tr">
+                    <a href="javascript:;" class="m-td">
+                        <img src="images/20170707/t-01.png" alt="">
+                        <p>挣钱二维码</p>
+                    </a>
+                    <a href="javascript:;" class="m-td">
+                        <img src="images/20170707/t-02.png" alt="">
+                        <p>资料认证</p>
+                    </a>
+                    <a href="javascript:;" class="m-td">
+                        <img src="images/20170707/t-03.png" alt="">
+                        <p>代理人</p>
+                    </a>
+                </div>
+                <div class="m-tr">
+                    <a href="javascript:;" class="m-td">
+                        <img src="images/20170707/t-04.png" alt="">
+                        <p>会员功能</p>
+                    </a>
+                    <a href="javascript:;" class="m-td">
+                        <img src="images/20170707/t-05.png" alt="">
+                        <p>贷款记录</p>
+                    </a>
+                    <a href="javascript:;" class="m-td">
+                        <img src="images/20170707/t-06.png" alt="">
+                        <p>抢单/甩单记录</p>
+                    </a>
+                </div>
+                <div class="m-tr">
+                    <a href="javascript:;" class="m-td">
+                        <img src="images/20170707/t-07.png" alt="">
+                        <p>钱包</p>
+                    </a>
+                    <a href="javascript:;" class="m-td">
+                        <img src="images/20170707/t-08.png" alt="">
+                        <p>积分管理</p>
+                    </a>
+                    <a href="javascript:;" class="m-td">
+                        <img src="images/20170707/t-09.png" alt="">
+                        <p>关于我们</p>
+                    </a>
+                </div>
+            </div>
+            <div class="qcode-box">
+                <div class="q-left"><img src="images/shareerweima.png" alt=""></div>
+                <div class="q-right">
+                    <p class="q-btn">长按二维码分享好友</p>
+                </div>
+            </div>
+        </div>
+    </article>
+    <script>
+        var loader = new loading({'container':document.body,'hasBg':false});
+        //var loader = new loading({'container':document.getElementById('body-wrapper'),'hasBg':false});
+        //loader.show();
+    </script>
+</body>
+</html>
